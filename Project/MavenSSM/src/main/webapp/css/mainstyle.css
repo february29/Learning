@@ -93,7 +93,8 @@ ul#userMenu li a::after {
   padding: 10px;
   position: fixed;
   top: 56px;
-  right: -200px;
+  /*right: -200px;*/
+  left: -200;
   width: 200px;
   z-index: 4;
 }
