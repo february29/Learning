@@ -19,7 +19,7 @@
       if (isNaN(dirPos)) {
         console.log("Please define the object's position in the css.");
 
-        
+
       }
 
       if (dirPos === 0) {
