@@ -12,6 +12,9 @@
 		210F71C41FA2D16E00B1674F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210F71C21FA2D16E00B1674F /* Main.storyboard */; };
 		210F71C61FA2D16E00B1674F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210F71C51FA2D16E00B1674F /* Assets.xcassets */; };
 		210F71C91FA2D16E00B1674F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210F71C71FA2D16E00B1674F /* LaunchScreen.storyboard */; };
+		210F71D41FA3030400B1674F /* BBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F71D31FA3030400B1674F /* BBaseViewController.swift */; };
+		210F71D61FA3040F00B1674F /* BBaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F71D51FA3040F00B1674F /* BBaseNavigationViewController.swift */; };
+		210F71D81FA3148A00B1674F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F71D71FA3148A00B1674F /* MainViewController.swift */; };
 		2EC2A949C2BA6F318AE9400B /* Pods_ReactiveCocoaDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CC480290C160B69D38F4B /* Pods_ReactiveCocoaDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +28,9 @@
 		210F71C51FA2D16E00B1674F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		210F71C81FA2D16E00B1674F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		210F71CA1FA2D16E00B1674F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		210F71D31FA3030400B1674F /* BBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBaseViewController.swift; sourceTree = "<group>"; };
+		210F71D51FA3040F00B1674F /* BBaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBaseNavigationViewController.swift; sourceTree = "<group>"; };
+		210F71D71FA3148A00B1674F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		244CC480290C160B69D38F4B /* Pods_ReactiveCocoaDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactiveCocoaDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,7 +76,9 @@
 		210F71BD1FA2D16E00B1674F /* ReactiveCocoaDemo */ = {
 			isa = PBXGroup;
 			children = (
+				210F71D21FA3030400B1674F /* BBaseClass */,
 				210F71BE1FA2D16E00B1674F /* AppDelegate.swift */,
+				210F71D71FA3148A00B1674F /* MainViewController.swift */,
 				210F71C01FA2D16E00B1674F /* ViewController.swift */,
 				210F71C21FA2D16E00B1674F /* Main.storyboard */,
 				210F71C51FA2D16E00B1674F /* Assets.xcassets */,
@@ -78,6 +86,15 @@
 				210F71CA1FA2D16E00B1674F /* Info.plist */,
 			);
 			path = ReactiveCocoaDemo;
+			sourceTree = "<group>";
+		};
+		210F71D21FA3030400B1674F /* BBaseClass */ = {
+			isa = PBXGroup;
+			children = (
+				210F71D31FA3030400B1674F /* BBaseViewController.swift */,
+				210F71D51FA3040F00B1674F /* BBaseNavigationViewController.swift */,
+			);
+			path = BBaseClass;
 			sourceTree = "<group>";
 		};
 		FE8CCAB0D7E6B364581F8F09 /* Frameworks */ = {
@@ -212,7 +229,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				210F71C11FA2D16E00B1674F /* ViewController.swift in Sources */,
+				210F71D41FA3030400B1674F /* BBaseViewController.swift in Sources */,
+				210F71D61FA3040F00B1674F /* BBaseNavigationViewController.swift in Sources */,
 				210F71BF1FA2D16E00B1674F /* AppDelegate.swift in Sources */,
+				210F71D81FA3148A00B1674F /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +402,7 @@
 				210F71CF1FA2D16E00B1674F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,18 +1,19 @@
 PODS:
-  - ReactiveCocoa (5.0.3):
-    - ReactiveSwift (~> 1.1)
-  - ReactiveSwift (1.1.1):
-    - Result (~> 3.2)
-  - Result (3.2.1)
+  - RxCocoa (3.4.1):
+    - RxSwift (~> 3.4)
+  - RxSwift (3.4.1)
+  - SnapKit (3.2.0)
 
 DEPENDENCIES:
-  - ReactiveCocoa (~> 5.0.3)
+  - RxCocoa (~> 3.4.1)
+  - RxSwift (~> 3.4.1)
+  - SnapKit (~> 3.2.0)
 
 SPEC CHECKSUMS:
-  ReactiveCocoa: 066a855f613fb72f68258771095805fdb10312d2
-  ReactiveSwift: 2489549e3231a6ff68ec99f3d320bb264f10ba0a
-  Result: 2453a22e5c5b11c0c3a478736e82cd02f763b781
+  RxCocoa: a8a5f1d061d0043e28f56976829f31ce63e8eb09
+  RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 7d58a34716721dfb1ea5531f136f9590156dc444
+PODFILE CHECKSUM: 9b19489c875ce5ca63c0e24f601d55c4b56cb6a0
 
 COCOAPODS: 1.2.0

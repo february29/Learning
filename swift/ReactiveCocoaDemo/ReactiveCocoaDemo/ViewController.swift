@@ -8,11 +8,17 @@
 
 import UIKit
 
+
+
+
 class ViewController: UIViewController {
 
+    let userName = UILabel();
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        userName.text = "hellow";
     }
 
     override func didReceiveMemoryWarning() {

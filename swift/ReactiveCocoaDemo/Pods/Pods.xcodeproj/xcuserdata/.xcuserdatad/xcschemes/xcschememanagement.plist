@@ -9,17 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ReactiveCocoa.xcscheme</key>
+		<key>RxCocoa.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>ReactiveSwift.xcscheme</key>
+		<key>RxSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Result.xcscheme</key>
+		<key>SnapKit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
