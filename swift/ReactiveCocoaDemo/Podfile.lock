@@ -1,19 +1,25 @@
 PODS:
+  - BAlertView (1.0.7)
+  - MJRefresh (3.1.12)
   - RxCocoa (3.4.1):
     - RxSwift (~> 3.4)
   - RxSwift (3.4.1)
   - SnapKit (3.2.0)
 
 DEPENDENCIES:
+  - BAlertView
+  - MJRefresh
   - RxCocoa (~> 3.4.1)
   - RxSwift (~> 3.4.1)
   - SnapKit (~> 3.2.0)
 
 SPEC CHECKSUMS:
+  BAlertView: eb0c21c26262e8ac2bb6a4fd68a76832f2ffd1d6
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   RxCocoa: a8a5f1d061d0043e28f56976829f31ce63e8eb09
   RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
 
-PODFILE CHECKSUM: 9b19489c875ce5ca63c0e24f601d55c4b56cb6a0
+PODFILE CHECKSUM: a7e2fb6d0def84ec341f05b79dd6d584779540c3
 
 COCOAPODS: 1.2.0

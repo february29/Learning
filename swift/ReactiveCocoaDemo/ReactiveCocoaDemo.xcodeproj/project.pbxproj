@@ -15,6 +15,7 @@
 		210F71D41FA3030400B1674F /* BBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F71D31FA3030400B1674F /* BBaseViewController.swift */; };
 		210F71D61FA3040F00B1674F /* BBaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F71D51FA3040F00B1674F /* BBaseNavigationViewController.swift */; };
 		210F71D81FA3148A00B1674F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F71D71FA3148A00B1674F /* MainViewController.swift */; };
+		21FD97311FA6FC1F00A87A43 /* UIView+BExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21FD97301FA6FC1F00A87A43 /* UIView+BExtension.swift */; };
 		2EC2A949C2BA6F318AE9400B /* Pods_ReactiveCocoaDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 244CC480290C160B69D38F4B /* Pods_ReactiveCocoaDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		210F71D31FA3030400B1674F /* BBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBaseViewController.swift; sourceTree = "<group>"; };
 		210F71D51FA3040F00B1674F /* BBaseNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBaseNavigationViewController.swift; sourceTree = "<group>"; };
 		210F71D71FA3148A00B1674F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		21FD97301FA6FC1F00A87A43 /* UIView+BExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+BExtension.swift"; sourceTree = "<group>"; };
 		244CC480290C160B69D38F4B /* Pods_ReactiveCocoaDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReactiveCocoaDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 		210F71BD1FA2D16E00B1674F /* ReactiveCocoaDemo */ = {
 			isa = PBXGroup;
 			children = (
+				21FD972B1FA6FA3000A87A43 /* BTools */,
 				210F71D21FA3030400B1674F /* BBaseClass */,
 				210F71BE1FA2D16E00B1674F /* AppDelegate.swift */,
 				210F71D71FA3148A00B1674F /* MainViewController.swift */,
@@ -95,6 +98,30 @@
 				210F71D51FA3040F00B1674F /* BBaseNavigationViewController.swift */,
 			);
 			path = BBaseClass;
+			sourceTree = "<group>";
+		};
+		21FD972B1FA6FA3000A87A43 /* BTools */ = {
+			isa = PBXGroup;
+			children = (
+				21FD972C1FA6FA3000A87A43 /* BExtension */,
+				21FD972D1FA6FA3000A87A43 /* BUtils */,
+			);
+			path = BTools;
+			sourceTree = "<group>";
+		};
+		21FD972C1FA6FA3000A87A43 /* BExtension */ = {
+			isa = PBXGroup;
+			children = (
+				21FD97301FA6FC1F00A87A43 /* UIView+BExtension.swift */,
+			);
+			path = BExtension;
+			sourceTree = "<group>";
+		};
+		21FD972D1FA6FA3000A87A43 /* BUtils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BUtils;
 			sourceTree = "<group>";
 		};
 		FE8CCAB0D7E6B364581F8F09 /* Frameworks */ = {
@@ -229,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				210F71C11FA2D16E00B1674F /* ViewController.swift in Sources */,
+				21FD97311FA6FC1F00A87A43 /* UIView+BExtension.swift in Sources */,
 				210F71D41FA3030400B1674F /* BBaseViewController.swift in Sources */,
 				210F71D61FA3040F00B1674F /* BBaseNavigationViewController.swift in Sources */,
 				210F71BF1FA2D16E00B1674F /* AppDelegate.swift in Sources */,
@@ -363,6 +391,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xianzhi.www.ReactiveCocoaDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -379,6 +408,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.xianzhi.www.ReactiveCocoaDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

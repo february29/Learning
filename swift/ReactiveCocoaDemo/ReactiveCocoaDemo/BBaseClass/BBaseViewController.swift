@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
+
 class BBaseViewController: UIViewController {
 
     
@@ -19,6 +20,7 @@ class BBaseViewController: UIViewController {
 
         self.view.backgroundColor = UIColor.white;
         
+                
         
     }
 
