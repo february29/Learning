@@ -1,0 +1,6 @@
+framework module Pods_Fch_Contact {
+  umbrella header "Pods-Fch_Contact-umbrella.h"
+
+  export *
+  module * { export * }
+}
