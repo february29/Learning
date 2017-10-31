@@ -52,6 +52,9 @@ class MainViewController: BBaseViewController ,UITableViewDelegate,UITableViewDa
         
         mTableView.isHidden = false;
         
+        mTableView.rx
+        
+        
         
 //        let view = UIView(frame: CGRect(x: 100, y: 100, width: 100, height: 45));
 ////        view.layer.borderWidth = 1;
@@ -92,16 +95,33 @@ class MainViewController: BBaseViewController ,UITableViewDelegate,UITableViewDa
 //        }
 //        
 //        let disposeBag = DisposeBag()
-//        
+//
 //        Observable<Int>.empty()
 //            .subscribe { event in
 //                print(event)
 //            }
 //            .addDisposableTo(disposeBag)
-        
-        
+//        
+//        
 //        let neverSequence = Observable<String>.never()
+        
+        
+//        Observable.just("2","3","3").subscribe { (event) in
+//            print(event);
+//        }.addDisposableTo(dis)
+        
+        let scheduler = SerialDispatchQueueScheduler(qos: .default)
+        let subscription = Observable<Int>.interval(0.3, scheduler: scheduler)
+            .subscribe { event in
+                print(event)
+        }
+        
+        Thread.sleep(forTimeInterval: 2.0)
+        
+        subscription.dispose()
 
+        
+//        Observable
         
     }
     

@@ -15,7 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds);
+        let rootVc = LaunchViewController();
+        
+        //如果登陆
+//        if <#condition#> {
+//            <#code#>
+//        }
+        
+        let nv = BBaseNavigationViewController(rootViewController: rootVc);
+        window?.rootViewController = nv;
+        window?.makeKeyAndVisible();
         return true
     }
 
