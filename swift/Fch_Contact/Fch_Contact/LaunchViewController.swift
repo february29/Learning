@@ -14,6 +14,8 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
     let lanuchImages = ["launch_1.jpg","launch_2.jpg","launch_3.jpg"];
     
     
+    
+    
     /// 懒加载创建
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -85,7 +87,27 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
             tempView = imageView;
             
         }
+        let par = ["loginName":"风驰电话本",
+                   "password":"jjy1117".md5];
         
+        
+//        BNetWorkingManager.shared.request(url: "userLogin", method:.post, parameters: par) { (response) in
+//            
+//            
+//            
+//            
+//            
+//        };
+        
+        BNetWorkingManager.shared.RXRequset(url: "userLogin", method:.post, parameters: par).subscribe { (event) in
+            print(event);
+        }
+        
+        
+        
+//        BNetWorkingManager.get(url: "userLogin", parameters: par) { (response) in
+//            
+//        }
 
         
         

@@ -94,34 +94,127 @@ class MainViewController: BBaseViewController ,UITableViewDelegate,UITableViewDa
 //            
 //        }
 //        
-//        let disposeBag = DisposeBag()
+        let disposeBag = DisposeBag()
+
+        Observable<Int>.empty()
+            .subscribe { event in
+                print(event)
+            }
+            .addDisposableTo(disposeBag)
+        
+        
 //
-//        Observable<Int>.empty()
-//            .subscribe { event in
-//                print(event)
-//            }
-//            .addDisposableTo(disposeBag)
-//        
 //        
 //        let neverSequence = Observable<String>.never()
         
         
 //        Observable.just("2","3","3").subscribe { (event) in
 //            print(event);
-//        }.addDisposableTo(dis)
+//        }.addDisposableTo(disposeBag)
         
-        let scheduler = SerialDispatchQueueScheduler(qos: .default)
-        let subscription = Observable<Int>.interval(0.3, scheduler: scheduler)
-            .subscribe { event in
-                print(event)
-        }
-        
-        Thread.sleep(forTimeInterval: 2.0)
-        
-        subscription.dispose()
+//        let scheduler = SerialDispatchQueueScheduler(qos: .default)
+////        let scheduler = SerialDispatchQueueScheduler(qos: DispatchQoS)
+//        let subscription = Observable<Int>.interval(0.3, scheduler: scheduler)
+//            .subscribe { event in
+//                print(event)
+//        }
+//        
+//        Thread.sleep(forTimeInterval: 2.0)
+//        
+//        subscription.dispose()
 
         
+//        let subscription = Observable<Int>.interval(0.3, scheduler: scheduler)
+//            .observeOn(MainScheduler.instance)
+//            .subscribe { event in
+//                print(event)
+//        }
+//        
+//        Thread.sleep(forTimeInterval: 2.0)
+//        
+//        subscription.dispose() // called from main thread
+        
+//        let subscription = Observable<Int>.interval(0.3, scheduler: scheduler)
+//            .observeOn(scheduler)
+//            .subscribe { event in
+//                print(event)
+//        }
+//        
+//        Thread.sleep(forTimeInterval: 2.0)
+        
+//        subscription.dispose() // executing on same `serialScheduler`
+        
 //        Observable
+        
+        
+//        func myJust<E>(_ element: E) -> Observable<E> {
+//            return Observable.create { observer in
+//                observer.on(.next(element))
+//                observer.on(.completed)
+//                return Disposables.create()
+//            }
+//        }
+//        
+//        myJust(0)
+//            .subscribe(onNext: { n in
+//                print(n)
+//            })
+        
+//        _ = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+//            .subscribe(onNext: { _ in
+//                print("Resource count \(RxSwift.Resources.total)")
+//            })
+        func myInterval(_ interval: TimeInterval) -> Observable<Int> {
+            return Observable.create { observer in
+                print("Subscribed")
+                let timer = DispatchSource.makeTimerSource(queue: DispatchQueue.global())
+                timer.scheduleRepeating(deadline: DispatchTime.now() + interval, interval: interval)
+                
+                let cancel = Disposables.create {
+                    print("Disposed")
+                    timer.cancel()
+                }
+                
+                var next = 0
+                timer.setEventHandler {
+                    if cancel.isDisposed {
+                        return
+                    }
+                    observer.on(.next(next))
+                    next += 1
+                }
+                timer.resume()
+                
+                return cancel
+            }
+        }
+        
+        let counter = myInterval(0.1)
+            .shareReplay(1)
+        
+        print("Started ----")
+        
+        let subscription1 = counter
+            .subscribe(onNext: { n in
+                print("First \(n)")
+            })
+        let subscription2 = counter
+            .subscribe(onNext: { n in
+                print("Second \(n)")
+            })
+
+        
+        Thread.sleep(forTimeInterval: 0.9)
+        
+        subscription1.dispose()
+        
+       
+        
+        Thread.sleep(forTimeInterval: 0.5)
+        
+        subscription2.dispose()
+        
+        print("Ended ----")
         
     }
     
