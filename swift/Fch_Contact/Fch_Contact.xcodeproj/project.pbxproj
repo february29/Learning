@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		213CD42A1FAB0538004A5E8F /* ObservableType+BMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD4291FAB0538004A5E8F /* ObservableType+BMapModel.swift */; };
+		213CD42A1FAB0538004A5E8F /* RxObservableType+BMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD4291FAB0538004A5E8F /* RxObservableType+BMapModel.swift */; };
 		213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD42F1FAB0A90004A5E8F /* UserModel.swift */; };
-		213CD4341FAC08C7004A5E8F /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD4331FAC08C7004A5E8F /* MapModel.swift */; };
+		213CD4361FAC31A6004A5E8F /* HandyJSONDeserializer+BModeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD4351FAC31A6004A5E8F /* HandyJSONDeserializer+BModeArray.swift */; };
 		21CC634D1FA7294300B8E491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC634C1FA7294300B8E491 /* AppDelegate.swift */; };
 		21CC634F1FA7294300B8E491 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC634E1FA7294300B8E491 /* ViewController.swift */; };
 		21CC63521FA7294300B8E491 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21CC63501FA7294300B8E491 /* Main.storyboard */; };
@@ -38,9 +38,9 @@
 
 /* Begin PBXFileReference section */
 		1ACC8DA08CD14DB85409BD70 /* Pods-Fch_Contact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.release.xcconfig"; sourceTree = "<group>"; };
-		213CD4291FAB0538004A5E8F /* ObservableType+BMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+BMapModel.swift"; sourceTree = "<group>"; };
+		213CD4291FAB0538004A5E8F /* RxObservableType+BMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxObservableType+BMapModel.swift"; sourceTree = "<group>"; };
 		213CD42F1FAB0A90004A5E8F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		213CD4331FAC08C7004A5E8F /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		213CD4351FAC31A6004A5E8F /* HandyJSONDeserializer+BModeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HandyJSONDeserializer+BModeArray.swift"; sourceTree = "<group>"; };
 		21CC63491FA7294300B8E491 /* Fch_Contact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fch_Contact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CC634C1FA7294300B8E491 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21CC634E1FA7294300B8E491 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -202,8 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				21CC637E1FA82D6400B8E491 /* BNetWorkingManager.swift */,
-				213CD4291FAB0538004A5E8F /* ObservableType+BMapModel.swift */,
-				213CD4331FAC08C7004A5E8F /* MapModel.swift */,
+				213CD4291FAB0538004A5E8F /* RxObservableType+BMapModel.swift */,
+				213CD4351FAC31A6004A5E8F /* HandyJSONDeserializer+BModeArray.swift */,
 			);
 			path = BRxAlamofire;
 			sourceTree = "<group>";
@@ -398,9 +398,9 @@
 				21CC636B1FA805F200B8E491 /* LaunchViewController.swift in Sources */,
 				21CC63751FA80BEE00B8E491 /* BBaseConstant.swift in Sources */,
 				21CC63671FA803A800B8E491 /* BBaseNavigationViewController.swift in Sources */,
-				213CD4341FAC08C7004A5E8F /* MapModel.swift in Sources */,
 				21CC63961FA83B2B00B8E491 /* BJumpingBarView.m in Sources */,
 				21CC637F1FA82D6400B8E491 /* BNetWorkingManager.swift in Sources */,
+				213CD4361FAC31A6004A5E8F /* HandyJSONDeserializer+BModeArray.swift in Sources */,
 				21CC63921FA83B2B00B8E491 /* BHudContentView.m in Sources */,
 				21CC63951FA83B2B00B8E491 /* BFchView.m in Sources */,
 				21CC63691FA803A800B8E491 /* UIView+BExtension.swift in Sources */,
@@ -408,7 +408,7 @@
 				21CC634F1FA7294300B8E491 /* ViewController.swift in Sources */,
 				21CC639D1FA9AE5500B8E491 /* BMD5.swift in Sources */,
 				21CC634D1FA7294300B8E491 /* AppDelegate.swift in Sources */,
-				213CD42A1FAB0538004A5E8F /* ObservableType+BMapModel.swift in Sources */,
+				213CD42A1FAB0538004A5E8F /* RxObservableType+BMapModel.swift in Sources */,
 				213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */,
 				21CC63941FA83B2B00B8E491 /* BCircleLoadingView.m in Sources */,
 			);

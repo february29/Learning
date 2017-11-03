@@ -120,22 +120,21 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
 //        }
 
         
-//        BNetWorkingManager.shared.RxRequsetString(url: "userLogin", method:.post, parameters: par).mapModel(UserModel.self)
-//            .subscribe { (event) in
-//            }.addDisposableTo(dispose);
-        
-        let nsdic :NSDictionary?
-        let dic:Dictionary<String,Any>?
-        let d:[String:Any]?
-        
-        
-        BNetWorkingManager.shared.RxRequset(url: "userLogin", method:.post, parameters: par)
-            .mapModel(UserModel.self)
-            .subscribe { (event) in
+        BNetWorkingManager.shared.RxRequsetString(url: "userLogin", method:.post, parameters: par).mapModel(UserModel.self)
+            .subscribe(onNext: { (model) in
                 
-            }.addDisposableTo(dispose);
+            })
+            .addDisposableTo(dispose);
         
        
+        
+//        BNetWorkingManager.shared.r(url: "userLogin", method:.post, parameters: par)
+//            .mapModel(UserModel.self)
+//            .subscribe { (event) in
+//
+//            }.addDisposableTo(dispose);
+//
+//
         
         
     }
