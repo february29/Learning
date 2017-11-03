@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 
 class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
@@ -39,6 +40,26 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
      }();
     
     
+    lazy var  userName: UITextField  = {
+        let tf = UITextField();
+        tf.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
+        tf.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
+        tf.placeholder = "用户名";
+        tf.textAlignment = .center;
+//        tf.layer.cornerRadius = 5;
+        tf.background = UIImage.init(named: "bg_guide_text");
+        
+        return tf;
+    }();
+    lazy var  passWord: UITextField  = {
+        let tf = UITextField();
+        tf.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
+        tf.placeholder = "密码";
+        tf.textAlignment = .center;
+//        tf.layer.cornerRadius = 5;
+        tf.background = UIImage.init(named: "bg_guide_text");
+        return tf;
+    }();
     
     
     
@@ -57,39 +78,12 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
         self.automaticallyAdjustsScrollViewInsets = false;
 
         
-        //布局
-        view.addSubview(scrollView);
-        scrollView.snp.makeConstraints { (make) in
-            make.edges.equalTo(view);
-        }
+        setUpUI();
         
-        let totlew = BSCREENW * CGFloat(lanuchImages.count);
-        scrollView.addSubview(contentView);
-        contentView.snp.makeConstraints { (make) in
-            make.edges.equalTo(scrollView);
-            make.height.equalTo(scrollView);
-            make.width.equalTo(totlew);
-        }
         
-        var tempView:UIView?;
         
-        for imageStr in lanuchImages {
-            let image = UIImage(named: imageStr);
-            let imageView = UIImageView(image: image);
-            contentView.addSubview(imageView);
-            imageView.snp.makeConstraints({ (make) in
-                make.top.bottom.equalTo(contentView);
-                if tempView == nil{
-                    make.left.equalTo(contentView);
-                }else{
-                    make.left.equalTo(tempView!.snp.right);
-                }
-                make.width.equalTo(BSCREENW);
-                
-            });
-            tempView = imageView;
-            
-        }
+        
+        
         let par = ["loginName":"风驰电话本",
                    "password":"jjy1117".md5];
         
@@ -139,6 +133,56 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
         
     }
     
+    //布局
+    func setUpUI() {
+        //布局
+        view.addSubview(scrollView);
+        scrollView.snp.makeConstraints { (make) in
+            make.edges.equalTo(view);
+        }
+        
+        let totlew = BSCREENW * CGFloat(lanuchImages.count);
+        scrollView.addSubview(contentView);
+        contentView.snp.makeConstraints { (make) in
+            make.edges.equalTo(scrollView);
+            make.height.equalTo(scrollView);
+            make.width.equalTo(totlew);
+        }
+        
+        var tempView:UIView?;
+        
+        for imageStr in lanuchImages {
+            let image = UIImage(named: imageStr);
+            let imageView = UIImageView(image: image);
+            contentView.addSubview(imageView);
+            imageView.snp.makeConstraints({ (make) in
+                make.top.bottom.equalTo(contentView);
+                if tempView == nil{
+                    make.left.equalTo(contentView);
+                }else{
+                    make.left.equalTo(tempView!.snp.right);
+                }
+                make.width.equalTo(BSCREENW);
+                
+            });
+            tempView = imageView;
+            
+        }
+        
+        contentView .addSubview(userName);
+        userName.snp.makeConstraints { (make) in
+            make.center.equalTo(tempView ?? contentView);
+            make.width.equalTo(200);
+            make.height.equalTo(35);
+        }
+        contentView.addSubview(passWord);
+        passWord.snp.makeConstraints { (make) in
+            make.top.equalTo(userName.snp.bottom).offset(10);
+            make.centerX.equalTo(userName);
+            make.width.equalTo(200);
+            make.height.equalTo(35);
+        }
+    }
     
 
     override func didReceiveMemoryWarning() {

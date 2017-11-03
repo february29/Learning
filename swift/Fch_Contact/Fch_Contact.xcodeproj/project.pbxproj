@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		213CD42A1FAB0538004A5E8F /* RxObservableType+BMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD4291FAB0538004A5E8F /* RxObservableType+BMapModel.swift */; };
 		213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD42F1FAB0A90004A5E8F /* UserModel.swift */; };
-		213CD4361FAC31A6004A5E8F /* HandyJSONDeserializer+BModeArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD4351FAC31A6004A5E8F /* HandyJSONDeserializer+BModeArray.swift */; };
+		213CD43A1FAC6CAA004A5E8F /* bg_guide_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 213CD4391FAC6CAA004A5E8F /* bg_guide_text.png */; };
 		21CC634D1FA7294300B8E491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC634C1FA7294300B8E491 /* AppDelegate.swift */; };
 		21CC634F1FA7294300B8E491 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC634E1FA7294300B8E491 /* ViewController.swift */; };
 		21CC63521FA7294300B8E491 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21CC63501FA7294300B8E491 /* Main.storyboard */; };
@@ -40,7 +40,7 @@
 		1ACC8DA08CD14DB85409BD70 /* Pods-Fch_Contact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.release.xcconfig"; sourceTree = "<group>"; };
 		213CD4291FAB0538004A5E8F /* RxObservableType+BMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxObservableType+BMapModel.swift"; sourceTree = "<group>"; };
 		213CD42F1FAB0A90004A5E8F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		213CD4351FAC31A6004A5E8F /* HandyJSONDeserializer+BModeArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HandyJSONDeserializer+BModeArray.swift"; sourceTree = "<group>"; };
+		213CD4391FAC6CAA004A5E8F /* bg_guide_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_guide_text.png; sourceTree = "<group>"; };
 		21CC63491FA7294300B8E491 /* Fch_Contact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fch_Contact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CC634C1FA7294300B8E491 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21CC634E1FA7294300B8E491 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +182,7 @@
 		21CC636F1FA8095D00B8E491 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				213CD4391FAC6CAA004A5E8F /* bg_guide_text.png */,
 				21CC63761FA824D500B8E491 /* launch_1.jpg */,
 				21CC63771FA824D500B8E491 /* launch_2.jpg */,
 				21CC63781FA824D500B8E491 /* launch_3.jpg */,
@@ -203,7 +204,6 @@
 			children = (
 				21CC637E1FA82D6400B8E491 /* BNetWorkingManager.swift */,
 				213CD4291FAB0538004A5E8F /* RxObservableType+BMapModel.swift */,
-				213CD4351FAC31A6004A5E8F /* HandyJSONDeserializer+BModeArray.swift */,
 			);
 			path = BRxAlamofire;
 			sourceTree = "<group>";
@@ -333,6 +333,7 @@
 				21CC637B1FA824D500B8E491 /* launch_3.jpg in Resources */,
 				21CC63791FA824D500B8E491 /* launch_1.jpg in Resources */,
 				21CC637A1FA824D500B8E491 /* launch_2.jpg in Resources */,
+				213CD43A1FAC6CAA004A5E8F /* bg_guide_text.png in Resources */,
 				21CC63521FA7294300B8E491 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,7 +401,6 @@
 				21CC63671FA803A800B8E491 /* BBaseNavigationViewController.swift in Sources */,
 				21CC63961FA83B2B00B8E491 /* BJumpingBarView.m in Sources */,
 				21CC637F1FA82D6400B8E491 /* BNetWorkingManager.swift in Sources */,
-				213CD4361FAC31A6004A5E8F /* HandyJSONDeserializer+BModeArray.swift in Sources */,
 				21CC63921FA83B2B00B8E491 /* BHudContentView.m in Sources */,
 				21CC63951FA83B2B00B8E491 /* BFchView.m in Sources */,
 				21CC63691FA803A800B8E491 /* UIView+BExtension.swift in Sources */,
