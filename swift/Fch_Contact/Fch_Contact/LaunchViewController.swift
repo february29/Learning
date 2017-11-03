@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import RxSwift
 
 
 class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
     
     let lanuchImages = ["launch_1.jpg","launch_2.jpg","launch_3.jpg"];
+    
+    let dispose = DisposeBag();
     
     
     
@@ -99,9 +102,16 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
 //            
 //        };
         
-        BNetWorkingManager.shared.RXRequset(url: "userLogin", method:.post, parameters: par).subscribe { (event) in
-            print(event);
-        }
+       
+        
+       
+//        BNetWorkingManager.shared.RxRequset(url: "userLogin", method:.post, parameters: par)
+//            .subscribe { (event) in
+//                let userModel = UserModel();
+//
+////                userModel.mj_keyValues();
+//
+//            }.addDisposableTo(dispose);
         
         
         
@@ -110,7 +120,22 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
 //        }
 
         
+//        BNetWorkingManager.shared.RxRequsetString(url: "userLogin", method:.post, parameters: par).mapModel(UserModel.self)
+//            .subscribe { (event) in
+//            }.addDisposableTo(dispose);
         
+        let nsdic :NSDictionary?
+        let dic:Dictionary<String,Any>?
+        let d:[String:Any]?
+        
+        
+        BNetWorkingManager.shared.RxRequset(url: "userLogin", method:.post, parameters: par)
+            .mapModel(UserModel.self)
+            .subscribe { (event) in
+                
+            }.addDisposableTo(dispose);
+        
+       
         
         
     }

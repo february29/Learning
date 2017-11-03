@@ -10,10 +10,13 @@ target 'Fch_Contact' do
     pod 'SnapKit', '~> 3.2.0'
     pod 'RxSwift',   '~> 3.4.1'
     pod 'RxCocoa',   '~> 3.4.1'
+    pod 'RxDataSources', '~> 1.0.3'
     pod 'MJRefresh', '~> 3.1.12'
-    pod 'MJExtension', '~> 3.0.13'
+    pod 'HandyJSON', '~> 1.7.1'
+#    pod 'MJExtension', '~> 3.0.13'
     pod 'BAlertView', '~> 1.0.7'
     pod 'Alamofire', '~> 4.4.0'
+#     pod 'SwiftyJSON'
 #    pod 'Moya', '~> 8.0.4'
 
 

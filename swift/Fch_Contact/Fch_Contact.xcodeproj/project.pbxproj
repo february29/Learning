@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		213CD42A1FAB0538004A5E8F /* ObservableType+BMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD4291FAB0538004A5E8F /* ObservableType+BMapModel.swift */; };
+		213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD42F1FAB0A90004A5E8F /* UserModel.swift */; };
+		213CD4341FAC08C7004A5E8F /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD4331FAC08C7004A5E8F /* MapModel.swift */; };
 		21CC634D1FA7294300B8E491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC634C1FA7294300B8E491 /* AppDelegate.swift */; };
 		21CC634F1FA7294300B8E491 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC634E1FA7294300B8E491 /* ViewController.swift */; };
 		21CC63521FA7294300B8E491 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21CC63501FA7294300B8E491 /* Main.storyboard */; };
@@ -35,6 +38,9 @@
 
 /* Begin PBXFileReference section */
 		1ACC8DA08CD14DB85409BD70 /* Pods-Fch_Contact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.release.xcconfig"; sourceTree = "<group>"; };
+		213CD4291FAB0538004A5E8F /* ObservableType+BMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+BMapModel.swift"; sourceTree = "<group>"; };
+		213CD42F1FAB0A90004A5E8F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		213CD4331FAC08C7004A5E8F /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		21CC63491FA7294300B8E491 /* Fch_Contact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fch_Contact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CC634C1FA7294300B8E491 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21CC634E1FA7294300B8E491 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		213CD42B1FAB0A32004A5E8F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				213CD42F1FAB0A90004A5E8F /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		21CC63401FA7294300B8E491 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +120,7 @@
 		21CC634B1FA7294300B8E491 /* Fch_Contact */ = {
 			isa = PBXGroup;
 			children = (
+				213CD42B1FAB0A32004A5E8F /* Model */,
 				21CC637C1FA82D1900B8E491 /* Libs */,
 				21CC636E1FA8093C00B8E491 /* Resource */,
 				21CC63601FA803A800B8E491 /* BBaseClass */,
@@ -178,17 +193,19 @@
 			isa = PBXGroup;
 			children = (
 				21CC63801FA83B2B00B8E491 /* BHUD */,
-				21CC637D1FA82D1900B8E491 /* BRXAlamofire */,
+				21CC637D1FA82D1900B8E491 /* BRxAlamofire */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
 		};
-		21CC637D1FA82D1900B8E491 /* BRXAlamofire */ = {
+		21CC637D1FA82D1900B8E491 /* BRxAlamofire */ = {
 			isa = PBXGroup;
 			children = (
 				21CC637E1FA82D6400B8E491 /* BNetWorkingManager.swift */,
+				213CD4291FAB0538004A5E8F /* ObservableType+BMapModel.swift */,
+				213CD4331FAC08C7004A5E8F /* MapModel.swift */,
 			);
-			path = BRXAlamofire;
+			path = BRxAlamofire;
 			sourceTree = "<group>";
 		};
 		21CC63801FA83B2B00B8E491 /* BHUD */ = {
@@ -282,6 +299,7 @@
 					21CC63481FA7294300B8E491 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = ALEG9GB89Q;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -380,6 +398,7 @@
 				21CC636B1FA805F200B8E491 /* LaunchViewController.swift in Sources */,
 				21CC63751FA80BEE00B8E491 /* BBaseConstant.swift in Sources */,
 				21CC63671FA803A800B8E491 /* BBaseNavigationViewController.swift in Sources */,
+				213CD4341FAC08C7004A5E8F /* MapModel.swift in Sources */,
 				21CC63961FA83B2B00B8E491 /* BJumpingBarView.m in Sources */,
 				21CC637F1FA82D6400B8E491 /* BNetWorkingManager.swift in Sources */,
 				21CC63921FA83B2B00B8E491 /* BHudContentView.m in Sources */,
@@ -389,6 +408,8 @@
 				21CC634F1FA7294300B8E491 /* ViewController.swift in Sources */,
 				21CC639D1FA9AE5500B8E491 /* BMD5.swift in Sources */,
 				21CC634D1FA7294300B8E491 /* AppDelegate.swift in Sources */,
+				213CD42A1FAB0538004A5E8F /* ObservableType+BMapModel.swift in Sources */,
+				213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */,
 				21CC63941FA83B2B00B8E491 /* BCircleLoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,7 +477,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -500,7 +521,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -523,6 +544,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/OC-Swift-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -542,6 +564,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/OC-Swift-Header.h";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
