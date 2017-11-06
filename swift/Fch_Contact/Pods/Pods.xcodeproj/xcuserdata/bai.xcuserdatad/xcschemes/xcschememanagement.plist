@@ -19,6 +19,11 @@
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
+		<key>Kingfisher.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 		<key>MJExtension.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -52,7 +57,7 @@
 		<key>RxDataSources.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>13</integer>
 		</dict>
 		<key>RxSwift.xcscheme</key>
 		<dict>

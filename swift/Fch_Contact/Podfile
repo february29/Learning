@@ -19,7 +19,10 @@ target 'Fch_Contact' do
     
     pod 'Alamofire', '~> 4.4.0'
 #     pod 'SwiftyJSON'
-#    pod 'Moya', '~> 8.0.4'
+#    pod 'Moya/RxSwift'
+#    pod 'Moya/RxSwift'
+   pod 'Kingfisher', '~> 3.8.0'
+   
 
     
 

@@ -1,5 +1,5 @@
 //
-//  BMD5.swift
+//  String+BMD5.swift
 //  Fch_Contact
 //
 //  Created by bai on 2017/11/1.

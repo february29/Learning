@@ -10,50 +10,10 @@ import UIKit
 import RxCocoa
 import RxSwift
 import Alamofire
+import HandyJSON
 
 
 
-
-/// 服务器地址
-let BASE_URL = "http://telbook.fchsoft.com:8099/"
-
-
-
-//public protocol Request {
-//    
-//    var path:String{get}
-//    
-//    var method:HTTPMethod{get}
-//    
-//    var parameters: [String:Any]? {get}
-//    
-//    var hud:Bool{get}
-//    
-//}
-//
-//
-//extension Request{
-//    
-//    var hud:Bool{
-//        
-//        return false
-//        
-//    }
-//    
-//    var method:HTTPMethod{
-//        
-//        return HTTPMethod.get
-//        
-//    }
-//    
-//    
-//    
-//}
-//
-
-
-
- 
 
 class BNetWorkingManager: NSObject {
     
@@ -181,16 +141,17 @@ class BNetWorkingManager: NSObject {
     func RxRequset(url:String,method:HTTPMethod,parameters:[String:Any])->Observable<Any> {
         return Observable.create({ (observer) -> Disposable in
            
-           let request = self.sessionManager.request(BASE_URL + url, method: HTTPMethod.get, parameters: parameters).responseJSON(completionHandler: { (response) in
-            
-                switch response.result {
-                case let .success(value):
-                    observer.onNext(value)
+           
+            let request = self.sessionManager.request(BASE_URL + url, method: HTTPMethod.get, parameters: parameters).responseJSON(completionHandler: { (response) in
+                let result = response.result
+                switch result {
+                case .success:
+                    observer.onNext(result)
                     observer.onCompleted()
                 case let .failure(error):
                     observer.onError(error)
                 }
-           });
+            });
             
             return Disposables.create() {
                 request.cancel()
@@ -203,16 +164,18 @@ class BNetWorkingManager: NSObject {
         
         return Observable.create({ (observer) -> Disposable in
             
+            
             let request = self.sessionManager.request(BASE_URL + url, method: HTTPMethod.get, parameters: parameters).responseString(completionHandler: { (response) in
-//                observer.onNext(response)
                 
-                    switch response.result {
-                    case let .success(value):
-                        observer.onNext(value);
-                        observer.onCompleted();
-                    case let .failure(error):
-                        observer.onError(error);
-                    }
+                
+                let result = response.result
+                switch result {
+                case let .success(result):
+                    observer.onNext(result);
+                    observer.onCompleted();
+                case let .failure(error):
+                    observer.onError(error);
+                }
                 
             })
             

@@ -116,10 +116,16 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
         
         BNetWorkingManager.shared.RxRequsetString(url: "userLogin", method:.post, parameters: par).mapModel(UserModel.self)
             .subscribe(onNext: { (model) in
+
+                
+                
+                
                 
             })
             .addDisposableTo(dispose);
         
+        
+
        
         
 //        BNetWorkingManager.shared.r(url: "userLogin", method:.post, parameters: par)
@@ -170,19 +176,32 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
         }
         
         contentView .addSubview(userName);
-        userName.snp.makeConstraints { (make) in
-            make.center.equalTo(tempView ?? contentView);
-            make.width.equalTo(200);
-            make.height.equalTo(35);
-        }
         contentView.addSubview(passWord);
+        
         passWord.snp.makeConstraints { (make) in
-            make.top.equalTo(userName.snp.bottom).offset(10);
-            make.centerX.equalTo(userName);
+            make.bottom.equalTo((tempView ?? contentView).snp.bottom).offset(-20);
+            make.centerX.equalTo(tempView ?? contentView);
             make.width.equalTo(200);
             make.height.equalTo(35);
         }
+      
+        userName.snp.makeConstraints { (make) in
+            make.centerX.equalTo(passWord);
+            make.bottom.equalTo(passWord.snp.top).offset(-10)
+            make.width.equalTo(200);
+            make.height.equalTo(35);
+        }
+       
+        
+        
+        //
+        
+        
+
+        
     }
+    
+    
     
 
     override func didReceiveMemoryWarning() {
