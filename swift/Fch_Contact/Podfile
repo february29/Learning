@@ -11,7 +11,7 @@ target 'Fch_Contact' do
     pod 'RxSwift',   '~> 3.4.1'
     pod 'RxCocoa',   '~> 3.4.1'
     pod 'RxDataSources', '~> 1.0.3'
-
+#     pod 'RxBlocking', '~> 3.4.1'
     pod 'MJRefresh', '~> 3.1.12'
     pod 'HandyJSON', '~> 1.7.1'
 #    pod 'MJExtension', '~> 3.0.13'
@@ -19,9 +19,8 @@ target 'Fch_Contact' do
     
     pod 'Alamofire', '~> 4.4.0'
 #     pod 'SwiftyJSON'
-#    pod 'Moya/RxSwift'
-#    pod 'Moya/RxSwift'
-   pod 'Kingfisher', '~> 3.8.0'
+ #  pod 'Kingfisher', '~> 3.8.0'
+   pod 'IQKeyboardManagerSwift', '~> 5.0.0'
    
 
     

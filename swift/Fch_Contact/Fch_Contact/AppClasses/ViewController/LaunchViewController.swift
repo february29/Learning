@@ -114,15 +114,15 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
 //        }
 
         
-        BNetWorkingManager.shared.RxRequsetString(url: "userLogin", method:.post, parameters: par).mapModel(UserModel.self)
-            .subscribe(onNext: { (model) in
-
-                
-                
-                
-                
-            })
-            .addDisposableTo(dispose);
+//        BNetWorkingManager.shared.RxRequsetString(url: "userLogin", method:.post, parameters: par).mapModel(UserModel.self)
+//            .subscribe(onNext: { (model) in
+//
+//
+//
+//
+//
+//            })
+//            .addDisposableTo(dispose);
         
         
 
@@ -198,6 +198,18 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
         
         
 
+
+//        userName.rx.controlEvent([.editingDidBegin]) //状态可以组合
+//            .asObservable()
+//            .subscribe(onNext: { _ in
+//                self.passWord.snp.remakeConstraints({ (make) in
+//                    make.centerX.equalTo(self.passWord);
+//                    make.bottom.equalTo(self.contentView.snp.top).offset(-10)
+//                    make.width.equalTo(200);
+//                    make.height.equalTo(35);
+//                })
+//            }).disposed(by: dispose)
+        
         
     }
     

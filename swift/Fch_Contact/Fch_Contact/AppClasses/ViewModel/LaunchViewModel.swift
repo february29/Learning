@@ -28,6 +28,8 @@ class LaunchViewModel: NSObject {
     
     func bind(){
         
+//        let userNameAndPasswordDriver = Driver.com
+        
     }
     
     
