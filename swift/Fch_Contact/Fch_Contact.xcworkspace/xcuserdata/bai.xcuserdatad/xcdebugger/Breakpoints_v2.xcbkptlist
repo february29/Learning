@@ -19,5 +19,69 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fch_Contact/AppClasses/ViewController/LaunchViewController.swift"
+            timestampString = "531719848.063869"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "setUpUI()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #6 () -&gt; () in Fch_Contact.LaunchViewController.setUpUI() -&gt; ()"
+                  moduleName = "Fch_Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/AppClasses/ViewController/LaunchViewController.swift"
+                  timestampString = "531719848.091133"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "205"
+                  endingLineNumber = "205"
+                  offsetFromSymbolStart = "25">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SnapKit.ConstraintMaker) -&gt; () in closure #6 () -&gt; () in Fch_Contact.LaunchViewController.setUpUI() -&gt; ()"
+                  moduleName = "Fch_Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/AppClasses/ViewController/LaunchViewController.swift"
+                  timestampString = "531719848.098921"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "206"
+                  endingLineNumber = "206"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fch_Contact/AppClasses/ViewController/LaunchViewController.swift"
+            timestampString = "531719848.064296"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
+            landmarkName = "setUpUI()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

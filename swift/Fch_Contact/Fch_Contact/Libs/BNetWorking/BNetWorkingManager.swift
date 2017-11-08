@@ -68,8 +68,6 @@ class BNetWorkingManager: NSObject {
                 print(value);
             }
             
-            
-            
             completionHandler(response);
             
             

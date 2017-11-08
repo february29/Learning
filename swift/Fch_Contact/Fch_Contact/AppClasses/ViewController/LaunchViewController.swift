@@ -199,16 +199,18 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
         
 
 
-//        userName.rx.controlEvent([.editingDidBegin]) //状态可以组合
-//            .asObservable()
-//            .subscribe(onNext: { _ in
-//                self.passWord.snp.remakeConstraints({ (make) in
-//                    make.centerX.equalTo(self.passWord);
-//                    make.bottom.equalTo(self.contentView.snp.top).offset(-10)
-//                    make.width.equalTo(200);
-//                    make.height.equalTo(35);
-//                })
-//            }).disposed(by: dispose)
+        userName.rx.controlEvent(.editingDidBegin) //状态可以组合
+            .asObservable()
+            .subscribe(onNext: { _ in
+                self.passWord.snp.remakeConstraints({ (make) in
+                    make.bottom.equalTo(self.contentView);
+                    make.centerX.equalTo(tempView ?? self.contentView);
+                    make.width.equalTo(200);
+                    make.height.equalTo(35);
+                })
+            }).disposed(by: dispose)
+        
+        
         
         
     }
