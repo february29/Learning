@@ -16,21 +16,26 @@ class LaunchViewModel: NSObject {
     var userNameDriver:Driver<String>?;
     var passWordDriver:Driver<String>?;
     var loginTapDriver:Driver<Void>?;
+    var textFieldTapDriver:Driver<Void>?;
+//    var loginTapDriver:Driver<Void>?;
+    
+    
+//    var resSut = <#value#>
     
     
     
-    init(input:(username:Driver<String>,passWord:Driver<String>,loginTap:Driver<Void>)) {
+    
+    init(input:(username:Driver<String>,passWord:Driver<String>,usernameTFTap:Driver<Void>,passWordTFTap:Driver<Void>,loginTap:Driver<Void>)) {
         userNameDriver = input.username;
         passWordDriver = input.passWord;
-        loginTapDriver = input.loginTap;
-//        bind();
+//        loginTapDriver = input.loginTap;
+        textFieldTapDriver = Driver.combineLatest(input.passWordTFTap, input.usernameTFTap){ (username: $0, password: $1) };
+        
+       
+
     }
     
-    func bind(){
-        
-//        let userNameAndPasswordDriver = Driver.com
-        
-    }
+  
     
     
 }

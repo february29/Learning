@@ -194,22 +194,28 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
        
         
         
-        //
-        
+        //点击事件
         
 
-
-        userName.rx.controlEvent(.editingDidBegin) //状态可以组合
-            .asObservable()
-            .subscribe(onNext: { _ in
-                self.passWord.snp.remakeConstraints({ (make) in
-                    make.bottom.equalTo(self.contentView);
-                    make.centerX.equalTo(tempView ?? self.contentView);
-                    make.width.equalTo(200);
-                    make.height.equalTo(35);
-                })
-            }).disposed(by: dispose)
+        let viewModel = LaunchViewModel(input:(userName.rx.text.orEmpty.asDriver(),passWord.rx.text.orEmpty.asDriver(),userName.rx.controlEvent(.editingDidBegin).asDriver(),passWord.rx.controlEvent(.editingDidBegin).asDriver(),passWord.rx.controlEvent(.editingDidBegin).asDriver()))
         
+        
+       
+        
+        viewModel.textFieldTapDriver?.drive(onNext: { (element) in
+            self.passWord.snp.remakeConstraints({ (make) in
+                make.bottom.equalTo(self.contentView.snp.centerY);
+                make.centerX.equalTo(tempView ?? self.contentView);
+                make.width.equalTo(200);
+                make.height.equalTo(35);
+            })
+            
+            UIView.animate(withDuration: 0.25, animations: {
+                self.view.layoutIfNeeded();
+            })
+        }, onCompleted: {
+            
+        }).disposed(by: dispose);
         
         
         
