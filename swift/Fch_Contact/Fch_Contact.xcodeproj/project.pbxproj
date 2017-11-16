@@ -12,6 +12,9 @@
 		210F2F2C1FAFF71D00A87AA6 /* Array+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2F2B1FAFF71D00A87AA6 /* Array+BBase.swift */; };
 		213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD42F1FAB0A90004A5E8F /* UserModel.swift */; };
 		213CD43A1FAC6CAA004A5E8F /* bg_guide_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 213CD4391FAC6CAA004A5E8F /* bg_guide_text.png */; };
+		215BEF2B1FBC314B007BB452 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BEF2A1FBC314B007BB452 /* MainViewController.swift */; };
+		215BEF2E1FBC3577007BB452 /* BSlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BEF2D1FBC3577007BB452 /* BSlideMenuViewController.swift */; };
+		215BEF301FBC4590007BB452 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BEF2F1FBC4590007BB452 /* LeftMenuViewController.swift */; };
 		21B10DE31FB04AD6006257F2 /* HandyJSON+BRXModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B10DE21FB04AD6006257F2 /* HandyJSON+BRXModel.swift */; };
 		21B10DE51FB04BA0006257F2 /* BMoyaNetWorkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B10DE41FB04BA0006257F2 /* BMoyaNetWorkingManager.swift */; };
 		21B10DE71FB04BC8006257F2 /* APPAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B10DE61FB04BC8006257F2 /* APPAPIManager.swift */; };
@@ -49,6 +52,9 @@
 		210F2F2B1FAFF71D00A87AA6 /* Array+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+BBase.swift"; sourceTree = "<group>"; };
 		213CD42F1FAB0A90004A5E8F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		213CD4391FAC6CAA004A5E8F /* bg_guide_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_guide_text.png; sourceTree = "<group>"; };
+		215BEF2A1FBC314B007BB452 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		215BEF2D1FBC3577007BB452 /* BSlideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSlideMenuViewController.swift; sourceTree = "<group>"; };
+		215BEF2F1FBC4590007BB452 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		21B10DE21FB04AD6006257F2 /* HandyJSON+BRXModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HandyJSON+BRXModel.swift"; sourceTree = "<group>"; };
 		21B10DE41FB04BA0006257F2 /* BMoyaNetWorkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMoyaNetWorkingManager.swift; sourceTree = "<group>"; };
 		21B10DE61FB04BC8006257F2 /* APPAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPAPIManager.swift; sourceTree = "<group>"; };
@@ -132,6 +138,8 @@
 			isa = PBXGroup;
 			children = (
 				21CC636A1FA805F200B8E491 /* LaunchViewController.swift */,
+				215BEF2A1FBC314B007BB452 /* MainViewController.swift */,
+				215BEF2F1FBC4590007BB452 /* LeftMenuViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -142,6 +150,14 @@
 				213CD42F1FAB0A90004A5E8F /* UserModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		215BEF2C1FBC33C2007BB452 /* BSlideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				215BEF2D1FBC3577007BB452 /* BSlideMenuViewController.swift */,
+			);
+			path = BSlideMenu;
 			sourceTree = "<group>";
 		};
 		21B10DE81FB04BD1006257F2 /* BMoya */ = {
@@ -249,6 +265,7 @@
 		21CC637C1FA82D1900B8E491 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				215BEF2C1FBC33C2007BB452 /* BSlideMenu */,
 				21CC63801FA83B2B00B8E491 /* BHUD */,
 				21CC637D1FA82D1900B8E491 /* BNetWorking */,
 			);
@@ -465,13 +482,16 @@
 				21CC637F1FA82D6400B8E491 /* BNetWorkingManager.swift in Sources */,
 				21CC63921FA83B2B00B8E491 /* BHudContentView.m in Sources */,
 				210F2F2C1FAFF71D00A87AA6 /* Array+BBase.swift in Sources */,
+				215BEF2B1FBC314B007BB452 /* MainViewController.swift in Sources */,
 				21CC63951FA83B2B00B8E491 /* BFchView.m in Sources */,
+				215BEF2E1FBC3577007BB452 /* BSlideMenuViewController.swift in Sources */,
 				21CC63691FA803A800B8E491 /* UIView+BBase.swift in Sources */,
 				21CC63971FA83B2B00B8E491 /* BLaunchBarView.m in Sources */,
 				21B10DE31FB04AD6006257F2 /* HandyJSON+BRXModel.swift in Sources */,
 				21CC634F1FA7294300B8E491 /* ViewController.swift in Sources */,
 				210F2F2A1FAFF5FD00A87AA6 /* UITextFiled+BBase.swift in Sources */,
 				21CC639D1FA9AE5500B8E491 /* String+BBase.swift in Sources */,
+				215BEF301FBC4590007BB452 /* LeftMenuViewController.swift in Sources */,
 				21CC634D1FA7294300B8E491 /* AppDelegate.swift in Sources */,
 				213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */,
 				21CC63941FA83B2B00B8E491 /* BCircleLoadingView.m in Sources */,

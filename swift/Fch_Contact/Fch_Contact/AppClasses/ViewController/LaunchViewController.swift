@@ -9,11 +9,14 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import BAlertView
 
 
 class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
     
     let lanuchImages = ["launch_1.jpg","launch_2.jpg","launch_3.jpg"];
+    
+    var tempView:UIView?;//布局使用的临时view
     
     let dispose = DisposeBag();
     
@@ -76,65 +79,14 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
         
         //防止scrollerview 中 contentview 出现在状态栏下方
         self.automaticallyAdjustsScrollViewInsets = false;
-
-        
         setUpUI();
         
+        setupRx();
         
         
-        
-        
-        let par = ["loginName":"风驰电话本",
-                   "password":"jjy1117".md5];
-        
-        
-//        BNetWorkingManager.shared.request(url: "userLogin", method:.post, parameters: par) { (response) in
-//            
-//            
-//            
-//            
-//            
-//        };
-        
-       
-        
-       
-//        BNetWorkingManager.shared.RxRequset(url: "userLogin", method:.post, parameters: par)
-//            .subscribe { (event) in
-//                let userModel = UserModel();
-//
-////                userModel.mj_keyValues();
-//
-//            }.addDisposableTo(dispose);
-        
-        
-        
-//        BNetWorkingManager.get(url: "userLogin", parameters: par) { (response) in
-//            
-//        }
-
-        
-//        BNetWorkingManager.shared.RxRequsetString(url: "userLogin", method:.post, parameters: par).mapModel(UserModel.self)
-//            .subscribe(onNext: { (model) in
-//
-//
-//
-//
-//
-//            })
-//            .addDisposableTo(dispose);
         
         
 
-       
-        
-//        BNetWorkingManager.shared.r(url: "userLogin", method:.post, parameters: par)
-//            .mapModel(UserModel.self)
-//            .subscribe { (event) in
-//
-//            }.addDisposableTo(dispose);
-//
-//
         
         
     }
@@ -155,7 +107,7 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
             make.width.equalTo(totlew);
         }
         
-        var tempView:UIView?;
+        
         
         for imageStr in lanuchImages {
             let image = UIImage(named: imageStr);
@@ -191,38 +143,109 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
             make.width.equalTo(200);
             make.height.equalTo(35);
         }
+        
+        
+        tempView?.isUserInteractionEnabled = true;
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(LaunchViewController.loginAction));
+        tempView?.addGestureRecognizer(tap)
+    
+        
+        
+    }
+    
+    
+    func setupRx() {
        
         
+        // 初始化是UI->ViewModel
+        let viewModel = LaunchViewModel(input:(userName.rx.text.orEmpty.asDriver(),
+                                               passWord.rx.text.orEmpty.asDriver(),
+                                               userName.rx.controlEvent(.editingDidBegin).asDriver(),
+                                               passWord.rx.controlEvent(.editingDidBegin).asDriver(),
+                                               passWord.rx.controlEvent(.editingDidBegin).asDriver()
+            )
+        );
         
-        //点击事件
-        
-
-        let viewModel = LaunchViewModel(input:(userName.rx.text.orEmpty.asDriver(),passWord.rx.text.orEmpty.asDriver(),userName.rx.controlEvent(.editingDidBegin).asDriver(),passWord.rx.controlEvent(.editingDidBegin).asDriver(),passWord.rx.controlEvent(.editingDidBegin).asDriver()))
         
         
-       
         
-        viewModel.textFieldTapDriver?.drive(onNext: { (element) in
+        //ViewModel->UI
+        viewModel.textFieldTapDriver1?.drive(onNext: { (element) in
             self.passWord.snp.remakeConstraints({ (make) in
                 make.bottom.equalTo(self.contentView.snp.centerY);
-                make.centerX.equalTo(tempView ?? self.contentView);
+                make.centerX.equalTo(self.tempView ?? self.contentView);
                 make.width.equalTo(200);
                 make.height.equalTo(35);
             })
             
-            UIView.animate(withDuration: 0.25, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.view.layoutIfNeeded();
             })
         }, onCompleted: {
             
         }).disposed(by: dispose);
         
+        viewModel.textFieldTapDriver2?.drive(onNext: { (element) in
+            self.passWord.snp.remakeConstraints({ (make) in
+                make.bottom.equalTo(self.contentView.snp.centerY);
+                make.centerX.equalTo(self.tempView ?? self.contentView);
+                make.width.equalTo(200);
+                make.height.equalTo(35);
+            })
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded();
+            })
+        }).disposed(by: dispose);
         
         
     }
     
     
     
+    @objc func loginAction(){
+        
+        if userName.text == "" {
+            userName.b_shark();
+            return;
+        }
+        if passWord.text == "" {
+            passWord.b_shark();
+            return;
+        }
+        
+        
+        
+        let par = ["loginName":userName.text,
+                   "password":passWord.text?.md5];
+        
+        BNetWorkingManager.shared.request(url: "userLogin", method:.post, parameters: par) { (response) in
+        
+            
+            if let value = response.result.value as? [String: AnyObject]{
+                print(value);
+                if let error = value["error"]{
+                    
+                    let mainVC = MainViewController();
+                    let leftMenuVC = LeftMenuViewController();
+                    let siderMenuVC = BSlideMenuViewController(mainViewController: mainVC, leftMenuViewController: leftMenuVC);
+                    
+                    self.navigationController?.pushViewController(siderMenuVC, animated: true);
+                    
+                    BAlertModal.sharedInstance().makeToast(error as! String);
+                }else{
+                    
+                }
+               
+            }else{
+                BAlertModal.sharedInstance().makeToast("网络异常");
+            }
+        
+            
+        };
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

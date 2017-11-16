@@ -106,4 +106,66 @@ extension UIView{
             center = tempCenter;
         }
     }
+    
+    
+    //抖动动画
+    func b_shark() {
+        // 获取到当前的View
+        let viewLayer = self.layer
+        
+       
+        
+        // 获取当前View的位置
+        
+        let position = viewLayer.position;
+        
+        // 移动的两个终点位置
+        
+        let x = CGPoint(x: position.x + 10, y: position.y);
+        let y = CGPoint(x: position.x - 10, y: position.y);
+        
+        
+//        let x = CGPointMake(position.x + 10, position.y);
+//
+//        let y = CGPointMake(position.x - 10, position.y);
+        
+        // 设置动画
+        
+        let animation = CABasicAnimation.init(keyPath: "position")
+        
+        
+//        let animation = [CABasicAnimation animationWithKeyPath:@"position"];
+        
+        // 设置运动形式
+        
+        animation.timingFunction = CAMediaTimingFunction.init(name:"default" )
+//        [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+        
+        // 设置开始位置
+        
+        animation.fromValue = NSValue.init(cgPoint: x);
+        
+//        [animation setFromValue:[NSValue valueWithCGPoint:x]];
+        
+        // 设置结束位置
+        animation.toValue = NSValue.init(cgPoint: y);
+//        [animation setToValue:[NSValue valueWithCGPoint:y]];
+        
+        // 设置自动反转
+        
+        animation.autoreverses = true;
+//        [animation setAutoreverses:YES];
+        
+        // 设置时间
+        animation.duration = 0.06;
+//        [animation setDuration:.06];
+        
+        // 设置次数
+        animation.repeatCount = 3;
+//        [animation setRepeatCount:3];
+        
+        // 添加上动画
+        viewLayer.add(animation, forKey: nil);
+//        [viewLayer addAnimation:animation forKey:nil];
+    }
 }

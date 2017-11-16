@@ -68,6 +68,7 @@ class BNetWorkingManager: NSObject {
                 print(value);
             }
             
+            
             completionHandler(response);
             
             
@@ -75,64 +76,10 @@ class BNetWorkingManager: NSObject {
         }
 
     }
-    
-    
-    
-
-    //-------------------------------类方法----------------------------------
-    
-    
-   class func getJson(url:String, parameters:[String:Any],completionHandler:@escaping (DataResponse<Any>) -> Void){
-        
 
     
-        Alamofire.request(BASE_URL+url, method:.get, parameters: parameters).responseJSON { (response) in
-           
-
-            
-            if let value = response.result.value as? [String: AnyObject]{
-                print(value);
-            }
-            
-            completionHandler(response);
-
-            
-            
-        }
-        
     
-        
-    }
-    
-    
-    
-    class func postJSON(url:String, parameters:[String:Any],completionHandler:@escaping (DataResponse<Any>) -> Void){
-        
-        
-        
-        
-        
-        
-        Alamofire.request(BASE_URL+url, method:.post, parameters: parameters).responseJSON { (response) in
-            
-            
-            
-            if let value = response.result.value as? [String: AnyObject]{
-                print(value);
-            }
-            
-            completionHandler(response);
-            
-            
-            
-        }
-        
-        
-        
-    }
-
-
-    
+   
     
      //-------------------------------rx方法----------------------------------
     

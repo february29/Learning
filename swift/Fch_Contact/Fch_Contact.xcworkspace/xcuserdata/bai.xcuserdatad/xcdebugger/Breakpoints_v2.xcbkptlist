@@ -22,49 +22,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fch_Contact/AppClasses/ViewController/LaunchViewController.swift"
-            timestampString = "532403299.130192"
+            filePath = "Fch_Contact/Libs/BSlideMenu/BSlideMenuViewController.swift"
+            timestampString = "532519182.607953"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "setUpUI()"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "moveViewToPosionX(postionX:animation:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #6 () -&gt; () in Fch_Contact.LaunchViewController.setUpUI() -&gt; ()"
+                  symbolName = "closure #2 (Swift.Bool) -&gt; () in Fch_Contact.BSlideMenuViewController.moveViewToPosionX(postionX: CoreGraphics.CGFloat, animation: Swift.Bool) -&gt; ()"
                   moduleName = "Fch_Contact"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/AppClasses/ViewController/LaunchViewController.swift"
-                  timestampString = "532403299.186508"
+                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/Libs/BSlideMenu/BSlideMenuViewController.swift"
+                  timestampString = "532512757.915453"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "206"
-                  endingLineNumber = "206"
-                  offsetFromSymbolStart = "35">
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (SnapKit.ConstraintMaker) -&gt; () in closure #6 () -&gt; () in Fch_Contact.LaunchViewController.setUpUI() -&gt; ()"
+                  symbolName = "closure #1 () -&gt; () in closure #2 (Swift.Bool) -&gt; () in Fch_Contact.BSlideMenuViewController.moveViewToPosionX(postionX: CoreGraphics.CGFloat, animation: Swift.Bool) -&gt; ()"
                   moduleName = "Fch_Contact"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/AppClasses/ViewController/LaunchViewController.swift"
-                  timestampString = "532403299.19235"
+                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/Libs/BSlideMenu/BSlideMenuViewController.swift"
+                  timestampString = "532512757.918945"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "207"
-                  endingLineNumber = "207"
-                  offsetFromSymbolStart = "32">
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "29">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fch_Contact/Libs/BSlideMenu/BSlideMenuViewController.swift"
+            timestampString = "532519182.608569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "handlePanGesture(recognizer:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
