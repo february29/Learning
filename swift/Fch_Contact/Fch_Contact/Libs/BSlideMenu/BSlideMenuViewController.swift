@@ -10,6 +10,9 @@ import UIKit
 
 //侧滑菜单宽度
 let menuViewExpandedOffset: CGFloat = 150;
+let leftDragbleWidth:CGFloat = 150;
+
+
 //弹簧动画偏移量
 let springOffset:CGFloat = 5;
 //动画时常
@@ -23,18 +26,22 @@ enum BSliderState {
 
 protocol BSliderMenuViewControllerProtocol {
     func showLeftMenu();
-    
-    func hide();
-    
+    func hideLeftMenu();
 }
 
 
-class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtocol {
-    
+
+class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtocol,UIGestureRecognizerDelegate {
     
     var leftVC:UIViewController?
     var mainVC:UIViewController?
-   
+    var rigthVC:UIViewController?
+    
+    
+    let _mainContainerView = UIView(frame:UIScreen.main.bounds);
+    let _leftContainerView = UIView(frame:UIScreen.main.bounds);
+    let _rightContainerView = UIView(frame:UIScreen.main.bounds);
+//    let _maskView = UIView(frame:UIScreen.main.bounds);
     
     
     var nowPostionX:CGFloat = 0.0;
@@ -46,6 +53,9 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
             if state == BSliderState.Close
             {
                nowPostionX = 0;
+            }else if state == BSliderState.Sliding
+            {
+                
             }else if state == BSliderState.Open
             {
                 nowPostionX = menuViewExpandedOffset;
@@ -54,34 +64,69 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
     }
     
     
+    init(mainViewController:UIViewController?,leftViewController:UIViewController?,rightViewContoller:UIViewController?) {
+        
+        super.init(nibName: nil, bundle: nil);
+
+        self.leftVC = leftViewController;
+        self.mainVC = mainViewController
+//        self.delegate = mainViewController as! BSliderMenuViewControllerDelegate;
+        self.rigthVC = rightViewContoller;
+        self.state = BSliderState.Close;
+        
+        prepare();
+
     
+    }
     
-    
-    convenience init(mainViewController:UIViewController,leftMenuViewController:UIViewController) {
-        self.init();
+    func prepare() {
         
+//        _maskView.isHidden = true;
         
-        leftVC = leftMenuViewController;
-        mainVC = mainViewController
-        state = BSliderState.Close;
-        self.addViewController(VC: leftVC!);
-        self.addViewController(VC: mainVC!);
+        _mainContainerView.layer.shadowColor = UIColor.black.cgColor;
+        _mainContainerView.layer.shadowOffset = CGSize(width: -3, height: 0);
+        _mainContainerView.layer.shadowOpacity = 0.5;
+       
+
+        if let left = self.leftVC {
+            self.addChildViewController(left)
+            _leftContainerView.addSubview((left.view)!);
+            _leftContainerView.transform = CGAffineTransform(translationX: -menuViewExpandedOffset, y: 0);
+            self.view.addSubview(_leftContainerView);
+        }
+        if let right = self.rigthVC {
+            self.addChildViewController(right)
+            _rightContainerView.addSubview((right.view)!);
+            self.view.addSubview(_rightContainerView);
+        }
         
-        
+        if let mian = self.mainVC {
+            self.addChildViewController(mian)
+            _mainContainerView.addSubview((mian.view)!);
+            self.view.addSubview(_mainContainerView);
+//            _mainContainerView.addSubview(_maskView);
+        }
        
         
-        
-    }
-    
-    
-    
-    
-    
-    
-    func setupGes(){
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(BSlideMenuViewController.handlePanGesture))
-        mainVC?.view.addGestureRecognizer(panGestureRecognizer)
+        panGestureRecognizer.delegate = self;
+        _mainContainerView.addGestureRecognizer(panGestureRecognizer)
     }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+   
+    
+    
+    
+    
+    
+    
+    
+    
     
 
     
@@ -102,6 +147,7 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
             
         // 刚刚开始滑动
         case .began:
+            
             state = BSliderState.Sliding;
         case .changed:
             state = BSliderState.Sliding;
@@ -131,39 +177,30 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
         }
     }
     
-    func addViewController(VC:UIViewController) {
-        addChildViewController(VC);
-        self.view.addSubview(VC.view);
-        VC.view.frame = CGRect(x: 0, y: 0, width:BSCREENW, height: BSCREENH);
-        VC.didMove(toParentViewController: self);
-    }
+    
     
     func showLeftMenu() {
       
-        guard let left = leftVC else { return }
-       
-        view.window?.endEditing(true)
-        left.view.isHidden = false
-        
-      
-        
-        UIView.animate(withDuration: animateTime, animations: {
-            
-        }) { (completion) in
-            
+        if let _ = leftVC{
+            moveViewToPosionX(postionX: menuViewExpandedOffset, animation: true);
         }
-    
-    
+       
+       
         
     }
     
-    func hide() {
+    func hideLeftMenu() {
+        if let _ = leftVC{
+            moveViewToPosionX(postionX: 0, animation: true);
+        }
         
     }
     
     
     //移动主试图
     func moveViewToPosionX(postionX:CGFloat, animation:Bool) {
+        
+        
         if animation {
 
             //弹簧动画
@@ -174,16 +211,16 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
                 springx = -5;
             }
             UIView.animate(withDuration: animateTime, animations: {
-                self.mainVC?.view!.transform =  CGAffineTransform(translationX:springx, y: 0);
+                self._mainContainerView.transform =  CGAffineTransform(translationX:springx, y: 0);
 //                self.mainVC?.view.fr
             }, completion: { (completion) in
                 UIView.animate(withDuration: animateTime, animations: {
-                    self.mainVC?.view!.transform =  CGAffineTransform(translationX:postionX, y: 0);
+                    self._mainContainerView.transform =  CGAffineTransform(translationX:postionX, y: 0);
                 })
                 
             })
         }else{
-            self.mainVC?.view!.transform =  CGAffineTransform(translationX:postionX, y: 0);
+            self._mainContainerView.transform =  CGAffineTransform(translationX:postionX, y: 0);
         }
         
          print("postionX:\(postionX)")
@@ -194,25 +231,47 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor.blue;
-        self .setupGes();
+       
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        _leftContainerView.isHidden = false;
+        _rightContainerView.isHidden = false;
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated);
+        _leftContainerView.isHidden = true;
+        _rightContainerView.isHidden = true;
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        // 防止进入多级界面后依然可以呼出侧滑菜单栏
+        
+        if  (mainVC?.isKind(of: UINavigationController.self))!{
+            if mainVC!.childViewControllers.count > 1{
+                return false;
+            }
+        }else{
+            for  contoller in (mainVC?.childViewControllers)!{
+                if contoller.isKind(of: UINavigationController.self){
+                    if contoller.childViewControllers.count > 1{
+                        return false;
+                    }
+                }
+            }
+        }
+        
+        
+        
+        // 判断点击拖动手势是否在允许拖动范围内
+        if gestureRecognizer.location(in: _mainContainerView).x < leftDragbleWidth {
+            return true;
+        }
+       
+        return false;
+        
+       
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

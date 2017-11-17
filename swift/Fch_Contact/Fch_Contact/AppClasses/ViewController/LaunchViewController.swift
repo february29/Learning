@@ -217,24 +217,35 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
         
         
         
-        let par = ["loginName":userName.text,
-                   "password":passWord.text?.md5];
+        let par = ["loginName":userName.text!,
+                   "password":passWord.text!.md5];
         
-        BNetWorkingManager.shared.request(url: "userLogin", method:.post, parameters: par) { (response) in
+        BNetWorkingManager.shared.request(url: "userLogin", method:.post, parameters: par ) { (response) in
         
             
-            if let value = response.result.value as? [String: AnyObject]{
+            if let value = response.result.value as? NSDictionary{
                 print(value);
                 if let error = value["error"]{
                     
-                    let mainVC = MainViewController();
-                    let leftMenuVC = LeftMenuViewController();
-                    let siderMenuVC = BSlideMenuViewController(mainViewController: mainVC, leftMenuViewController: leftMenuVC);
-                    
-                    self.navigationController?.pushViewController(siderMenuVC, animated: true);
-                    
                     BAlertModal.sharedInstance().makeToast(error as! String);
                 }else{
+                    
+                    if let user = value.object(forKey: "user") as? NSDictionary{
+                        let userModel = UserModel.deserialize(from: user)
+                        if userModel != nil{
+                            UserDefaults.standard.setUserModel(model: userModel!);
+                            
+                        }
+                        let user = UserDefaults.standard.getUserModel();
+                        
+                        print(user);
+                    }
+                    
+                   
+                    
+//                    风驰电话本
+//                    jjy1117
+                    
                     
                 }
                

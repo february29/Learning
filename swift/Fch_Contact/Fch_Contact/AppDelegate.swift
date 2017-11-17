@@ -33,13 +33,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        //如果登陆
-//        if <#condition#> {
-//            <#code#>
-//        }
         
-        let nv = BBaseNavigationViewController(rootViewController: rootVc);
-        window?.rootViewController = nv;
+        //如果登陆
+        if  UserDefaults.standard.getUserModel() != nil  {
+            let mainVC = MainViewController();
+            let mainNV = BBaseNavigationViewController(rootViewController: mainVC)
+            let leftMenuVC = LeftMenuViewController();
+            
+            let sliderMenuVC = BSlideMenuViewController.init(mainViewController: mainNV, leftViewController: leftMenuVC, rightViewContoller: nil);
+            window?.rootViewController = sliderMenuVC;
+        }else{
+            let nv = BBaseNavigationViewController(rootViewController: rootVc);
+            window?.rootViewController = nv;
+        }
+        
+       
         window?.makeKeyAndVisible();
         return true
     }

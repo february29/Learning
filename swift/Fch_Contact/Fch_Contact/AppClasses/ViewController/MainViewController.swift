@@ -8,13 +8,24 @@
 
 import UIKit
 
-class MainViewController: BBaseViewController {
+class MainViewController: BBaseViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor.green;
+        self.title = "风驰电话本";
         self.navigationController?.isNavigationBarHidden = false;
+        
+        let but = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 40))
+        but.backgroundColor = UIColor .yellow;
+        but.layer.shadowColor = UIColor.black.cgColor;
+        but.layer.shadowOffset = CGSize(width: -5, height: 0);
+        but.layer.shadowOpacity = 0.5;
+        view.addSubview(but);
+        
+    }
+    
+    override func back() {
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,14 +34,7 @@ class MainViewController: BBaseViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+   
 
 }

@@ -26,60 +26,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fch_Contact/Libs/BSlideMenu/BSlideMenuViewController.swift"
-            timestampString = "532519182.607953"
+            timestampString = "532593814.418587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "moveViewToPosionX(postionX:animation:)"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "handlePanGesture(recognizer:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Swift.Bool) -&gt; () in Fch_Contact.BSlideMenuViewController.moveViewToPosionX(postionX: CoreGraphics.CGFloat, animation: Swift.Bool) -&gt; ()"
-                  moduleName = "Fch_Contact"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/Libs/BSlideMenu/BSlideMenuViewController.swift"
-                  timestampString = "532512757.915453"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "154"
-                  endingLineNumber = "154"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #2 (Swift.Bool) -&gt; () in Fch_Contact.BSlideMenuViewController.moveViewToPosionX(postionX: CoreGraphics.CGFloat, animation: Swift.Bool) -&gt; ()"
-                  moduleName = "Fch_Contact"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/Libs/BSlideMenu/BSlideMenuViewController.swift"
-                  timestampString = "532512757.918945"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "155"
-                  endingLineNumber = "155"
-                  offsetFromSymbolStart = "29">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Fch_Contact/Libs/BSlideMenu/BSlideMenuViewController.swift"
-            timestampString = "532519182.608569"
+            filePath = "Fch_Contact/BTools/BExtension/UserDefaults+BBase.swift"
+            timestampString = "532593814.419071"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "handlePanGesture(recognizer:)"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "setUserModel(model:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
