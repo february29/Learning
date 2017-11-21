@@ -52,31 +52,61 @@ class BNetWorkingManager: NSObject {
     
 
     
-    func request(url:String,method:HTTPMethod,parameters:[String:Any],completionHandler:@escaping (DataResponse<Any>) -> Void) {
+    func request(url:String,method:HTTPMethod = .get,
+                 parameters:[String:Any]? = nil,
+                 completionHandler:@escaping (DataResponse<Any>) -> Void) {
         
-        self.sessionManager.request(url, method: method, parameters:parameters);
         
         self.sessionManager.request(BASE_URL+url, method:method, parameters: parameters).responseJSON { (response) in
             
             
             //方便调试显示
-            
+            print("😊😊😊😊😊😊😊😊😊😊😊😊😊");
             print(response.request?.url ?? "requset error");
             print("statusCode:\(response.response?.statusCode ?? 0)");
-            if method == .post{print(parameters);}else{print("get");}
-            if let value = response.result.value as? [String: AnyObject]{
-                print(value);
+            if method == .post{print("parameters:\(parameters!)");}else{print("get");}
+    
+            if let value = response.result.value as? NSDictionary{
+//                print(value);
+                
+                let data : NSData! = try? JSONSerialization.data(withJSONObject: value, options: []) as NSData!
+                let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
+                
+                print(JSONString ?? "");
             }
             
             
             completionHandler(response);
-            
-            
-            
         }
 
     }
 
+    
+    func download(url:String,
+                  method:HTTPMethod,
+                  parameters:[String:Any],
+                  progress:@escaping Request.ProgressHandler,
+                  toLocalPath:URL,
+                  fileName:String = "default",
+                  completionHandler:@escaping (DownloadResponse<Data>) -> Void) {
+        
+        var downloadRequest: DownloadRequest!
+        downloadRequest = self.sessionManager.download(BASE_URL + url, method: method, parameters: parameters,  to: { (url, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
+            let documentsURL = FileManager.default.urls(for: .documentDirectory,
+                                                        in: .userDomainMask)[0]
+            let fileURL = documentsURL.appendingPathComponent(response.suggestedFilename!)
+            //两个参数表示如果有同名文件则会覆盖，如果路径中文件夹不存在则会自动创建
+            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+        })
+        //设置进度条
+        downloadRequest.downloadProgress(queue: DispatchQueue.main, closure: progress)
+        //开始请求数据
+        downloadRequest.responseData(completionHandler: completionHandler);
+        
+       
+    }
+    
+    
     
     
    

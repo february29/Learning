@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fch_Contact/Libs/BSlideMenu/BSlideMenuViewController.swift"
-            timestampString = "532593814.418587"
+            timestampString = "532605129.678745"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "handlePanGesture(recognizer:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,12 +42,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fch_Contact/BTools/BExtension/UserDefaults+BBase.swift"
-            timestampString = "532593814.419071"
+            timestampString = "532605129.678862"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
             endingLineNumber = "23"
             landmarkName = "setUserModel(model:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fch_Contact/AppClasses/ViewController/MainViewController.swift"
+            timestampString = "532863290.713287"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "checkTelBookDBHadUpDate(telBookID:successHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fch_Contact.MainViewController.checkTelBookDBHadUpDate(telBookID: Swift.Int, successHandler: () -&gt; ()) -&gt; ()"
+                  moduleName = "Fch_Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/AppClasses/ViewController/MainViewController.swift"
+                  timestampString = "532863290.875263"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "29">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in Fch_Contact.MainViewController.checkTelBookDBHadUpDate(telBookID: Swift.Int, successHandler: () -&gt; ()) -&gt; ()"
+                  moduleName = "Fch_Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/AppClasses/ViewController/MainViewController.swift"
+                  timestampString = "532863290.878394"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "96"
+                  endingLineNumber = "96"
+                  offsetFromSymbolStart = "17">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fch_Contact/AppClasses/ViewController/MainViewController.swift"
+            timestampString = "532863290.713452"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "getUserTelBooks(userId:successHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

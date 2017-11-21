@@ -10,5 +10,6 @@
 #define OC_Swift_Header_h
 
 #import <CommonCrypto/CommonDigest.h>
+#import "BHudView.h"
 
 #endif /* OC_Swift_Header_h */

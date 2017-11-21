@@ -215,37 +215,39 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
             return;
         }
         
+        BHudView.showIndicator(in: self.view, indicatorViewStyle: .fchIndicatorView)
         
         
         let par = ["loginName":userName.text!,
                    "password":passWord.text!.md5];
         
-        BNetWorkingManager.shared.request(url: "userLogin", method:.post, parameters: par ) { (response) in
+        BNetWorkingManager.shared.request(url: Login_URL, method:.post, parameters: par ) { (response) in
         
             
+            BHudView.hideHud(in: self.view);
             if let value = response.result.value as? NSDictionary{
-                print(value);
                 if let error = value["error"]{
                     
                     BAlertModal.sharedInstance().makeToast(error as! String);
                 }else{
                     
-                    if let user = value.object(forKey: "user") as? NSDictionary{
+                    if let user = value["user"] as? Dictionary<String,Any>{
                         let userModel = UserModel.deserialize(from: user)
                         if userModel != nil{
                             UserDefaults.standard.setUserModel(model: userModel!);
                             
                         }
-                        let user = UserDefaults.standard.getUserModel();
                         
-                        print(user);
+                        let mainVC = MainViewController();
+                        
+                        let mainNV = BBaseNavigationViewController(rootViewController: mainVC)
+                        let leftMenuVC = LeftMenuViewController();
+                        
+                        let sliderMenuVC = BSlideMenuViewController.init(mainViewController: mainNV, leftViewController: leftMenuVC, rightViewContoller: nil);
+                       
+                        self.navigationController?.pushViewController(sliderMenuVC, animated: true);
+                        
                     }
-                    
-                   
-                    
-//                    风驰电话本
-//                    jjy1117
-                    
                     
                 }
                

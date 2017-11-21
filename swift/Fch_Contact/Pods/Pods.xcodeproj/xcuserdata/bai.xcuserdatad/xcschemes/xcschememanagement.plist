@@ -57,7 +57,7 @@
 		<key>RxBlocking.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>13</integer>
 		</dict>
 		<key>RxCocoa.xcscheme</key>
 		<dict>
@@ -67,7 +67,7 @@
 		<key>RxDataSources.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>13</integer>
+			<integer>14</integer>
 		</dict>
 		<key>RxSwift.xcscheme</key>
 		<dict>

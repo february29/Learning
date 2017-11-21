@@ -9,4 +9,27 @@
 import Foundation
 
 /// 服务器地址
-let BASE_URL = "http://telbook.fchsoft.com:8099/"
+let BASE_URL = "http://telbook.fchsoft.com:8099"
+
+
+//enum APPAPI:String {
+//
+//    case Login_URL =  "/userLogin"
+//    case TelBook_Detail_URL = "telBook/detail"
+//    case TelBooksList_URL = "telBook/list.json"
+//}
+//
+//extension APPAPI{
+//    func totoleURL(url:String ) ->String{
+//        return BASE_URL+url;
+//    }
+//}
+
+//登录
+let Login_URL = "userLogin";
+
+let TelBook_Detail_URL = "telBook/detail"
+
+let TelBooksList_URL = "telBook/list.json"
+
+

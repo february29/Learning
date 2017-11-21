@@ -1,39 +1,34 @@
 PODS:
-  - Alamofire (4.4.0)
+  - Alamofire (4.5.1)
   - BAlertView (1.0.7)
-  - HandyJSON (1.7.2)
+  - HandyJSON (4.0.0-beta.1)
   - IQKeyboardManagerSwift (5.0.6)
   - MJRefresh (3.1.15)
-  - RxCocoa (3.4.1):
-    - RxSwift (~> 3.4)
-  - RxDataSources (1.0.4):
-    - RxCocoa (~> 3.0)
-    - RxSwift (~> 3.0)
-  - RxSwift (3.4.1)
-  - SnapKit (3.2.0)
+  - RxCocoa (4.0.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.0.0)
+  - SnapKit (4.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 4.4.0)
+  - Alamofire (~> 4.5.1)
   - BAlertView (~> 1.0.7)
-  - HandyJSON (~> 1.7.1)
+  - HandyJSON (= 4.0.0-beta.1)
   - IQKeyboardManagerSwift (~> 5.0.0)
   - MJRefresh (~> 3.1.12)
-  - RxCocoa (~> 3.4.1)
-  - RxDataSources (~> 1.0.3)
-  - RxSwift (~> 3.4.1)
-  - SnapKit (~> 3.2.0)
+  - RxCocoa (~> 4.0.0)
+  - RxSwift (~> 4.0.0)
+  - SnapKit (~> 4.0.0)
 
 SPEC CHECKSUMS:
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   BAlertView: eb0c21c26262e8ac2bb6a4fd68a76832f2ffd1d6
-  HandyJSON: e7ad0483005826baba1d1c251cd98d0aa8bd8cce
+  HandyJSON: 428bb18e2c34c2a77361accebf90cf64e4f74118
   IQKeyboardManagerSwift: 02bfbb0dff71c66d0ab77d80d25dfce0c3717735
   MJRefresh: 9af70f5f9327a2cf87f0fb5929f35fcc2fa638ea
-  RxCocoa: a8a5f1d061d0043e28f56976829f31ce63e8eb09
-  RxDataSources: b3389acc5fe2eefb8fcd81a2b76a876ad08bc82a
-  RxSwift: 656f8fbeca5bc372121a72d9ebdd3cd3bc0ffade
-  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
+  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: ab722b0bc28cc5257264dbd648806539d3d880ca
+PODFILE CHECKSUM: 6e5d106108ed6b1ced89720bf9858f806fea6d8b
 
 COCOAPODS: 1.2.0

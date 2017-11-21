@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //如果登陆
         if  UserDefaults.standard.getUserModel() != nil  {
             let mainVC = MainViewController();
+            
             let mainNV = BBaseNavigationViewController(rootViewController: mainVC)
             let leftMenuVC = LeftMenuViewController();
             
