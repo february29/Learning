@@ -13,8 +13,7 @@ let BSCREENW = UIScreen.main.bounds.size.width
 /// 屏幕的高
 let BSCREENH = UIScreen.main.bounds.size.height
 
-//数据库存储文件夹
-let DBFileSavePath = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.Fch_OA");
+
 
 /// RGBA的颜色设置
 func YMColor(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {

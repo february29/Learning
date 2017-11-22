@@ -19,7 +19,7 @@ target 'Fch_Contact' do
     pod 'BAlertView', '~> 1.0.7'
     
     pod 'Alamofire', '~> 4.5.1'
-#     pod 'SwiftyJSON'
+    pod 'FMDB', '~> 2.7.2'
  #  pod 'Kingfisher', '~> 3.8.0'
    pod 'IQKeyboardManagerSwift', '~> 5.0.0'
    

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E699AF696B873DBE7936F3E056A14785'
+               BlueprintIdentifier = 'C25BD169DF05F65FD336850855B7F492'
                BlueprintName = 'Pods-Fch_Contact'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods-Fch_Contact.framework'>

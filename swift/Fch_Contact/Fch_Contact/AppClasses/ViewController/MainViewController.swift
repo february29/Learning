@@ -28,6 +28,8 @@ class MainViewController: BBaseViewController{
             checkTelBookDBShouldUpDate(telBookID: telBook.id, successHandler: {
                 
             });
+           let allPersons =  DBHelper.sharedInstance.getPersonsFromDB(deptId: -1);
+            print(allPersons);
         }else{
             if let user = UserDefaults.standard.getUserModel(){
                 getUserTelBooks(userId: user.id, successHandler: {
@@ -126,8 +128,6 @@ class MainViewController: BBaseViewController{
                             
                             if webInfomation! > localInfomation!{
                                 
-                                
-                                
                                 //需要更新数据库
                                 let alert = UIAlertController(title: "提示", message: "电话本数据已变更，是否现在更新?", preferredStyle: .alert);
                                 let action = UIAlertAction(title: "确定", style: UIAlertActionStyle.default, handler: { (action) in
@@ -175,7 +175,7 @@ class MainViewController: BBaseViewController{
         print("开始下载数据库文件");
         BHudView.showHud(in: self.view);
         
-        let fileName =  self.getDBSaveName(telBook: telBook);
+        let fileName =  DBHelper.sharedInstance.getDBSaveName(telBook: telBook);
         let url = "\(DownLoadDB_URL)/\(telBook.id!)"
        
         BNetWorkingManager.shared.download(url:url, method: .get, parameters: nil, progress: { (progress) in
@@ -226,6 +226,8 @@ class MainViewController: BBaseViewController{
     }
     
     
+    
+    
     //返回按钮打开侧滑菜单
     override func back() {
         let sliderVC = self.sliderVC();
@@ -240,9 +242,9 @@ class MainViewController: BBaseViewController{
     }
 
     
-    func getDBSaveName(telBook:TelBookModel) -> String {
-        return "\(telBook.bookName!)_\(telBook.id!).db";
-    }
+//    func getDBSaveName(telBook:TelBookModel) -> String {
+//        return "\(telBook.bookName!)_\(telBook.id!).db";
+//    }
     
     
     override func didReceiveMemoryWarning() {

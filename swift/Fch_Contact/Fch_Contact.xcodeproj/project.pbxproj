@@ -50,6 +50,8 @@
 		21D1B0C41FC3DA55002E4357 /* TimeTelBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0C31FC3DA55002E4357 /* TimeTelBookModel.swift */; };
 		21D1B0C81FC3E795002E4357 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0C71FC3E795002E4357 /* AppModel.swift */; };
 		21D1B0CB1FC50F23002E4357 /* BDateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0CA1FC50F23002E4357 /* BDateTool.swift */; };
+		21D1B0CD1FC53999002E4357 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0CC1FC53999002E4357 /* DBHelper.swift */; };
+		21D1B0CF1FC54470002E4357 /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0CE1FC54470002E4357 /* PersonModel.swift */; };
 		3AB90C5C3DA5860E446F4CD3 /* Pods_Fch_Contact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */; };
 /* End PBXBuildFile section */
 
@@ -109,6 +111,8 @@
 		21D1B0C71FC3E795002E4357 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		21D1B0C91FC4231B002E4357 /* Fch_Contact.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fch_Contact.entitlements; sourceTree = "<group>"; };
 		21D1B0CA1FC50F23002E4357 /* BDateTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDateTool.swift; sourceTree = "<group>"; };
+		21D1B0CC1FC53999002E4357 /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		21D1B0CE1FC54470002E4357 /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
 		402F35785043CE5C78CF273B /* Pods-Fch_Contact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.debug.xcconfig"; sourceTree = "<group>"; };
 		651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fch_Contact.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -169,6 +173,7 @@
 				215AFADA1FC2C43C00D6BD59 /* TelBookModel.swift */,
 				21D1B0C31FC3DA55002E4357 /* TimeTelBookModel.swift */,
 				21D1B0C71FC3E795002E4357 /* AppModel.swift */,
+				21D1B0CE1FC54470002E4357 /* PersonModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 			children = (
 				211B4E9F1FBEA5060033C793 /* UserDefaults+BBase.swift */,
 				215AFAD81FC2BC0400D6BD59 /* AppLoginHelper.swift */,
+				21D1B0CC1FC53999002E4357 /* DBHelper.swift */,
 			);
 			path = AppToolBox;
 			sourceTree = "<group>";
@@ -525,12 +531,14 @@
 				21B10DEA1FB062A5006257F2 /* BNetWokingBase.swift in Sources */,
 				21CC637F1FA82D6400B8E491 /* BNetWorkingManager.swift in Sources */,
 				21CC63921FA83B2B00B8E491 /* BHudContentView.m in Sources */,
+				21D1B0CD1FC53999002E4357 /* DBHelper.swift in Sources */,
 				21CBAE2A1FBEE299007E4446 /* UIViewController+BSlider.swift in Sources */,
 				210F2F2C1FAFF71D00A87AA6 /* Array+BBase.swift in Sources */,
 				215BEF2B1FBC314B007BB452 /* MainViewController.swift in Sources */,
 				21CC63951FA83B2B00B8E491 /* BFchView.m in Sources */,
 				215BEF2E1FBC3577007BB452 /* BSlideMenuViewController.swift in Sources */,
 				21D1B0CB1FC50F23002E4357 /* BDateTool.swift in Sources */,
+				21D1B0CF1FC54470002E4357 /* PersonModel.swift in Sources */,
 				21CC63691FA803A800B8E491 /* UIView+BBase.swift in Sources */,
 				21CC63971FA83B2B00B8E491 /* BLaunchBarView.m in Sources */,
 				21B10DE31FB04AD6006257F2 /* HandyJSON+BRXModel.swift in Sources */,
