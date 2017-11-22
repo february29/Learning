@@ -12,7 +12,7 @@ extension UserDefaults{
     
     func getUserModel() -> UserModel? {
         let jsonStr = UserDefaults.standard.string(forKey: "userModel");
-        return UserModel.deserialize(from:jsonStr)!;
+        return UserModel.deserialize(from:jsonStr);
     }
     
     func setUserModel(model:UserModel)  {
@@ -21,6 +21,20 @@ extension UserDefaults{
         }
         
        
+    }
+    
+    
+    func getTelBookModel() -> TelBookModel? {
+        let jsonStr = UserDefaults.standard.string(forKey: "TelBookModel");
+        return TelBookModel.deserialize(from:jsonStr);
+    }
+    
+    func setTelBookModel(model:TelBookModel)  {
+        if let jsonStr = model.toJSONString(){
+            UserDefaults.standard.set(jsonStr, forKey: "TelBookModel")
+        }
+        
+        
     }
     
     

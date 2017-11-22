@@ -58,6 +58,7 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
         let tf = UITextField();
         tf.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
         tf.placeholder = "密码";
+        tf.isSecureTextEntry = true;
         tf.textAlignment = .center;
 //        tf.layer.cornerRadius = 5;
         tf.background = UIImage.init(named: "bg_guide_text");
@@ -206,6 +207,8 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
     
     @objc func loginAction(){
         
+        
+        
         if userName.text == "" {
             userName.b_shark();
             return;
@@ -214,6 +217,8 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
             passWord.b_shark();
             return;
         }
+        userName.resignFirstResponder();
+        passWord.resignFirstResponder();
         
         BHudView.showIndicator(in: self.view, indicatorViewStyle: .fchIndicatorView)
         

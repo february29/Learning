@@ -17,7 +17,7 @@ class UserModel : HandyJSON,NSCoding{
     
     var deleted : Int!
     var id : Int!
-    var lastLoginTime : Int!
+    var lastLoginTime : TimeInterval!
     var loginCount : Int!
     var loginName : String!
     var mobile : String!
@@ -31,7 +31,7 @@ class UserModel : HandyJSON,NSCoding{
     init(fromDictionary dictionary: [String:Any]){
         deleted = dictionary["deleted"] as? Int
         id = dictionary["id"] as? Int
-        lastLoginTime = dictionary["lastLoginTime"] as? Int
+        lastLoginTime = dictionary["lastLoginTime"] as? TimeInterval
         loginCount = dictionary["loginCount"] as? Int
         loginName = dictionary["loginName"] as? String
         mobile = dictionary["mobile"] as? String
@@ -80,7 +80,7 @@ class UserModel : HandyJSON,NSCoding{
     {
         deleted = aDecoder.decodeObject(forKey: "deleted") as? Int
         id = aDecoder.decodeObject(forKey: "id") as? Int
-        lastLoginTime = aDecoder.decodeObject(forKey: "lastLoginTime") as? Int
+        lastLoginTime = aDecoder.decodeObject(forKey: "lastLoginTime") as? TimeInterval
         loginCount = aDecoder.decodeObject(forKey: "loginCount") as? Int
         loginName = aDecoder.decodeObject(forKey: "loginName") as? String
         mobile = aDecoder.decodeObject(forKey: "mobile") as? String

@@ -57,21 +57,21 @@ class BNetWorkingManager: NSObject {
                  completionHandler:@escaping (DataResponse<Any>) -> Void) {
         
         
-        self.sessionManager.request(BASE_URL+url, method:method, parameters: parameters).responseJSON { (response) in
+        self.sessionManager.request(url, method:method, parameters: parameters).responseJSON { (response) in
             
             
             //方便调试显示
             print("😊😊😊😊😊😊😊😊😊😊😊😊😊");
             print(response.request?.url ?? "requset error");
             print("statusCode:\(response.response?.statusCode ?? 0)");
-            if method == .post{print("parameters:\(parameters!)");}else{print("get");}
+            if method == .post{print("POST parameters:\(parameters)");}else{print("GET parameters:\(parameters)")}
     
             if let value = response.result.value as? NSDictionary{
 //                print(value);
                 
                 let data : NSData! = try? JSONSerialization.data(withJSONObject: value, options: []) as NSData!
                 let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
-                
+
                 print(JSONString ?? "");
             }
             
@@ -84,19 +84,26 @@ class BNetWorkingManager: NSObject {
     
     func download(url:String,
                   method:HTTPMethod,
-                  parameters:[String:Any],
+                  parameters:[String:Any]?,
                   progress:@escaping Request.ProgressHandler,
-                  toLocalPath:URL,
-                  fileName:String = "default",
+                  toLocalPath:URL! = FileManager.default.urls(for: .documentDirectory,in: .userDomainMask)[0],
+                  fileName:String? = nil,
                   completionHandler:@escaping (DownloadResponse<Data>) -> Void) {
         
         var downloadRequest: DownloadRequest!
-        downloadRequest = self.sessionManager.download(BASE_URL + url, method: method, parameters: parameters,  to: { (url, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
-            let documentsURL = FileManager.default.urls(for: .documentDirectory,
-                                                        in: .userDomainMask)[0]
-            let fileURL = documentsURL.appendingPathComponent(response.suggestedFilename!)
-            //两个参数表示如果有同名文件则会覆盖，如果路径中文件夹不存在则会自动创建
+        downloadRequest = self.sessionManager.download(url, method: method, parameters: parameters,  to: { (url, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
+            
+            
+            var fileURL:URL!;
+            
+            if let name = fileName{
+                 fileURL = toLocalPath.appendingPathComponent(name)
+            }else{
+                fileURL = toLocalPath.appendingPathComponent(response.suggestedFilename!)
+            }
             return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
+            
+            
         })
         //设置进度条
         downloadRequest.downloadProgress(queue: DispatchQueue.main, closure: progress)
@@ -117,7 +124,7 @@ class BNetWorkingManager: NSObject {
         return Observable.create({ (observer) -> Disposable in
            
            
-            let request = self.sessionManager.request(BASE_URL + url, method: HTTPMethod.get, parameters: parameters).responseJSON(completionHandler: { (response) in
+            let request = self.sessionManager.request( url, method: HTTPMethod.get, parameters: parameters).responseJSON(completionHandler: { (response) in
                 let result = response.result
                 switch result {
                 case .success:
@@ -140,7 +147,7 @@ class BNetWorkingManager: NSObject {
         return Observable.create({ (observer) -> Disposable in
             
             
-            let request = self.sessionManager.request(BASE_URL + url, method: HTTPMethod.get, parameters: parameters).responseString(completionHandler: { (response) in
+            let request = self.sessionManager.request( url, method: HTTPMethod.get, parameters: parameters).responseString(completionHandler: { (response) in
                 
                 
                 let result = response.result

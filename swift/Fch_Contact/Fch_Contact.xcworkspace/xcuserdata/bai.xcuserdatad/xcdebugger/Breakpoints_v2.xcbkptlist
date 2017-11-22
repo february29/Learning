@@ -58,60 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fch_Contact/AppClasses/ViewController/MainViewController.swift"
-            timestampString = "532863290.713287"
+            timestampString = "533012243.322164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "checkTelBookDBHadUpDate(telBookID:successHandler:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Fch_Contact.MainViewController.checkTelBookDBHadUpDate(telBookID: Swift.Int, successHandler: () -&gt; ()) -&gt; ()"
-                  moduleName = "Fch_Contact"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/AppClasses/ViewController/MainViewController.swift"
-                  timestampString = "532863290.875263"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "94"
-                  endingLineNumber = "94"
-                  offsetFromSymbolStart = "29">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in Fch_Contact.MainViewController.checkTelBookDBHadUpDate(telBookID: Swift.Int, successHandler: () -&gt; ()) -&gt; ()"
-                  moduleName = "Fch_Contact"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/AppClasses/ViewController/MainViewController.swift"
-                  timestampString = "532863290.878394"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "96"
-                  endingLineNumber = "96"
-                  offsetFromSymbolStart = "17">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Fch_Contact/AppClasses/ViewController/MainViewController.swift"
-            timestampString = "532863290.713452"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "getUserTelBooks(userId:successHandler:)"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "checkTelBookDBShouldUpDate(telBookID:successHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -47,6 +47,9 @@
 		21CC63981FA83B2B00B8E491 /* img_network_error.png in Resources */ = {isa = PBXBuildFile; fileRef = 21CC638F1FA83B2B00B8E491 /* img_network_error.png */; };
 		21CC63991FA83B2B00B8E491 /* UILabel+BAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CC63911FA83B2B00B8E491 /* UILabel+BAnimation.m */; };
 		21CC639D1FA9AE5500B8E491 /* String+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC639C1FA9AE5500B8E491 /* String+BBase.swift */; };
+		21D1B0C41FC3DA55002E4357 /* TimeTelBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0C31FC3DA55002E4357 /* TimeTelBookModel.swift */; };
+		21D1B0C81FC3E795002E4357 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0C71FC3E795002E4357 /* AppModel.swift */; };
+		21D1B0CB1FC50F23002E4357 /* BDateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0CA1FC50F23002E4357 /* BDateTool.swift */; };
 		3AB90C5C3DA5860E446F4CD3 /* Pods_Fch_Contact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +105,10 @@
 		21CC63911FA83B2B00B8E491 /* UILabel+BAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+BAnimation.m"; sourceTree = "<group>"; };
 		21CC639C1FA9AE5500B8E491 /* String+BBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+BBase.swift"; sourceTree = "<group>"; };
 		21CC63A31FA9B11600B8E491 /* OC-Swift-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OC-Swift-Header.h"; sourceTree = "<group>"; };
+		21D1B0C31FC3DA55002E4357 /* TimeTelBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTelBookModel.swift; sourceTree = "<group>"; };
+		21D1B0C71FC3E795002E4357 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		21D1B0C91FC4231B002E4357 /* Fch_Contact.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fch_Contact.entitlements; sourceTree = "<group>"; };
+		21D1B0CA1FC50F23002E4357 /* BDateTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BDateTool.swift; sourceTree = "<group>"; };
 		402F35785043CE5C78CF273B /* Pods-Fch_Contact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.debug.xcconfig"; sourceTree = "<group>"; };
 		651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fch_Contact.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -160,6 +167,8 @@
 			children = (
 				213CD42F1FAB0A90004A5E8F /* UserModel.swift */,
 				215AFADA1FC2C43C00D6BD59 /* TelBookModel.swift */,
+				21D1B0C31FC3DA55002E4357 /* TimeTelBookModel.swift */,
+				21D1B0C71FC3E795002E4357 /* AppModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -213,6 +222,7 @@
 		21CC634B1FA7294300B8E491 /* Fch_Contact */ = {
 			isa = PBXGroup;
 			children = (
+				21D1B0C91FC4231B002E4357 /* Fch_Contact.entitlements */,
 				210F2F231FAFF38D00A87AA6 /* AppClasses */,
 				21CC637C1FA82D1900B8E491 /* Libs */,
 				21CC636E1FA8093C00B8E491 /* Resource */,
@@ -261,6 +271,7 @@
 		21CC63661FA803A800B8E491 /* BUtils */ = {
 			isa = PBXGroup;
 			children = (
+				21D1B0CA1FC50F23002E4357 /* BDateTool.swift */,
 			);
 			path = BUtils;
 			sourceTree = "<group>";
@@ -399,6 +410,11 @@
 						DevelopmentTeam = ALEG9GB89Q;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -493,6 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21CC63991FA83B2B00B8E491 /* UILabel+BAnimation.m in Sources */,
+				21D1B0C41FC3DA55002E4357 /* TimeTelBookModel.swift in Sources */,
 				21CC63681FA803A800B8E491 /* BBaseViewController.swift in Sources */,
 				215AFADB1FC2C43C00D6BD59 /* TelBookModel.swift in Sources */,
 				21CC63931FA83B2B00B8E491 /* BHudView.m in Sources */,
@@ -504,6 +521,7 @@
 				211B4EA01FBEA5060033C793 /* UserDefaults+BBase.swift in Sources */,
 				210F2F281FAFF43D00A87AA6 /* LaunchViewModel.swift in Sources */,
 				21CC63961FA83B2B00B8E491 /* BJumpingBarView.m in Sources */,
+				21D1B0C81FC3E795002E4357 /* AppModel.swift in Sources */,
 				21B10DEA1FB062A5006257F2 /* BNetWokingBase.swift in Sources */,
 				21CC637F1FA82D6400B8E491 /* BNetWorkingManager.swift in Sources */,
 				21CC63921FA83B2B00B8E491 /* BHudContentView.m in Sources */,
@@ -512,6 +530,7 @@
 				215BEF2B1FBC314B007BB452 /* MainViewController.swift in Sources */,
 				21CC63951FA83B2B00B8E491 /* BFchView.m in Sources */,
 				215BEF2E1FBC3577007BB452 /* BSlideMenuViewController.swift in Sources */,
+				21D1B0CB1FC50F23002E4357 /* BDateTool.swift in Sources */,
 				21CC63691FA803A800B8E491 /* UIView+BBase.swift in Sources */,
 				21CC63971FA83B2B00B8E491 /* BLaunchBarView.m in Sources */,
 				21B10DE31FB04AD6006257F2 /* HandyJSON+BRXModel.swift in Sources */,
@@ -648,6 +667,7 @@
 			baseConfigurationReference = 402F35785043CE5C78CF273B /* Pods-Fch_Contact.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Fch_Contact/Fch_Contact.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ALEG9GB89Q;
 				INFOPLIST_FILE = Fch_Contact/Info.plist;
@@ -668,6 +688,7 @@
 			baseConfigurationReference = 1ACC8DA08CD14DB85409BD70 /* Pods-Fch_Contact.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Fch_Contact/Fch_Contact.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ALEG9GB89Q;
 				INFOPLIST_FILE = Fch_Contact/Info.plist;
