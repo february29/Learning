@@ -13,9 +13,40 @@ import RxDataSources
 class MainViewModel: NSObject {
 
     
-    func getPersons(deptId:Int) {
+//    var dataSource = [SectionModel<String, PersonModel>]();
+    public var result:Observable<[SectionModel<String, PersonModel>]>?
+    
+    
+    
+    
+    func getPersons(deptId:Int)->Observable<[PersonModel]> {
         
+        return Observable.create({ (observer) -> Disposable in
+            let persons = DBHelper.sharedInstance.getPersonsFromDB(deptId: deptId);
+            observer.onNext(persons);
+            observer.onCompleted();
+            return Disposables.create {
+            }
+        })
     }
+    
+    func getPersonsNoSorted(deptId:Int) -> Observable<[SectionModel<String, PersonModel>]> {
+       return self.getPersons(deptId:deptId).map({ (persons) -> [SectionModel<String, PersonModel>] in
+            return [SectionModel(model: "", items: persons)]
+       });
+    }
+    
+    func reloadData()  {
+        result = self.getPersonsNoSorted(deptId: -1);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
    
 }

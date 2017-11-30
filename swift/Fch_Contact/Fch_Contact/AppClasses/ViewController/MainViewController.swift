@@ -13,7 +13,7 @@ import RxSwift
 import RxDataSources
 import MJRefresh
 
-class MainViewController: BBaseViewController{
+class MainViewController: BBaseViewController,UITableViewDelegate{
     
     
     
@@ -26,11 +26,19 @@ class MainViewController: BBaseViewController{
         table.estimatedRowHeight = 30;
         table.register(MainTableViewCell.self, forCellReuseIdentifier: "cell")
         table.rowHeight = UITableViewAutomaticDimension;
-        
+        table.tableFooterView = UIView();
         table.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            
+            
+            
             self.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!, finshedHandler: { (isSuccess) in
+                
+                if isSuccess {
+                    
+                }
+                
                 table.mj_header.endRefreshing();
-                self.mainViewModel.getPersons(deptId: -1);
+                
             })
             
         });
@@ -38,15 +46,21 @@ class MainViewController: BBaseViewController{
     }();
     
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, PersonModel>>(configureCell: { ds, tv, ip, item in
-        let cell = tv.dequeueReusableCell(withIdentifier: "cell")
-        cell?.textLabel?.text = "ee"
-        return cell!
+        let cell = tv.dequeueReusableCell(withIdentifier: "cell") as! MainTableViewCell;
+        cell.coloumLable1?.text = item.column1;
+        cell.coloumLable2?.text = item.column2;
+        cell.coloumLable3?.text = item.column3;
+        cell.coloumLable4?.text = item.column4;
+        cell.coloumLable5?.text = item.column5;
+        return cell;
     });
+
+    
     
    
     
     
-    let mainViewModel = MainViewModel();
+    let viewModel = MainViewModel();
     let disposeBag = DisposeBag();
     
     
@@ -62,14 +76,18 @@ class MainViewController: BBaseViewController{
         }
         
         
+        
+        
         //已经设置电话本
         if let telBook = UserDefaults.standard.getTelBookModel() {
             
             checkTelBookDBShouldUpDate(telBookID: telBook.id, successHandler: {
                 
             });
-           let allPersons =  DBHelper.sharedInstance.getPersonsFromDB(deptId: -1);
-            print(allPersons);
+            
+            bindViewModel();
+            
+            
         }else{
             if let user = UserDefaults.standard.getUserModel(){
                 getUserTelBooks(userId: user.id, successHandler: {
@@ -83,12 +101,20 @@ class MainViewController: BBaseViewController{
         
     }
     
-    // MARK: bindding viewModel
-
-    func bindingViewModel() {
+    
+    // MARK: VM绑定
+    func bindViewModel()  {
+        viewModel.reloadData();
+        viewModel.result?.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag);
+    }
+    
+    
+    // MARK: tableView代理
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
     
+   
     
     // MARK: 网络请求
     
@@ -122,10 +148,16 @@ class MainViewController: BBaseViewController{
                         }else if telbooks.count == 1{
                             //一个电话本
                             if let telBook = telbooks[0]!.telBook{
-                                UserDefaults.standard.setTelBookModel(model:telBook);
-                                self.downLoadDB(telBook: telBook, finshedHandler: { (isSuccessful) in
-                                    
-                                });
+                               
+                                if self.checkTelBookExpired(expiredTime:0, timeNow: "",days: (telbooks[0]?.days)!){
+                                    UserDefaults.standard.setTelBookModel(model:telBook);
+                                    self.downLoadDB(telBook: telBook, finshedHandler: { (isSuccessful) in
+                                        
+                                    });
+                                }else{
+                                    BAlertModal.sharedInstance().makeToast("电话本已过期，请续费后使用！")
+                                }
+                                
                             }
                             
                         }else{
