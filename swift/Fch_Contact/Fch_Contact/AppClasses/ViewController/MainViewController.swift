@@ -29,7 +29,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
         table.tableFooterView = UIView();
         table.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             
-            
+            //这里应该在判断一次是否过期...
             
             self.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!, finshedHandler: { (isSuccess) in
                 
