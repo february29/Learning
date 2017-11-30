@@ -9,10 +9,22 @@
 import UIKit
 import BAlertView
 
-class MainViewController: BBaseViewController{
+class MainViewController: BBaseViewController,UITableViewDataSource,UITableViewDelegate{
     
     
     
+    
+
+    lazy var tableView:UITableView = {
+        let table = UITableView();
+        table.showsVerticalScrollIndicator = false;
+        table.showsHorizontalScrollIndicator = false;
+        table.estimatedRowHeight = 30;
+        table.delegate = self;
+        table.dataSource = self;
+        table.rowHeight = UITableViewAutomaticDimension;
+        return table;
+    }();
     
    
     
@@ -21,6 +33,9 @@ class MainViewController: BBaseViewController{
         super.viewDidLoad()
         self.title = "风驰电话本";
         self.navigationController?.isNavigationBarHidden = false;
+        
+        self.tableView.showsHorizontalScrollIndicator = true;
+        self.tableView.showsHorizontalScrollIndicator = true;
         
         //已经设置电话本
         if let telBook = UserDefaults.standard.getTelBookModel() {
@@ -43,6 +58,23 @@ class MainViewController: BBaseViewController{
         
     }
     
+    // MARK: TableView
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1;
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell();
+    }
+    
+    
+    
+    // MARK: 网络请求
     
     
     /// 获取用户电话本列表
