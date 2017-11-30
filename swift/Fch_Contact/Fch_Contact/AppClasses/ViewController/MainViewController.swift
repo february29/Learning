@@ -8,8 +8,12 @@
 
 import UIKit
 import BAlertView
+import RxCocoa
+import RxSwift
+import RxDataSources
+import MJRefresh
 
-class MainViewController: BBaseViewController,UITableViewDataSource,UITableViewDelegate{
+class MainViewController: BBaseViewController{
     
     
     
@@ -20,13 +24,31 @@ class MainViewController: BBaseViewController,UITableViewDataSource,UITableViewD
         table.showsVerticalScrollIndicator = false;
         table.showsHorizontalScrollIndicator = false;
         table.estimatedRowHeight = 30;
-        table.delegate = self;
-        table.dataSource = self;
+        table.register(MainTableViewCell.self, forCellReuseIdentifier: "cell")
         table.rowHeight = UITableViewAutomaticDimension;
+        
+        table.mj_header = MJRefreshNormalHeader(refreshingBlock: {
+            self.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!, finshedHandler: { (isSuccess) in
+                table.mj_header.endRefreshing();
+                self.mainViewModel.getPersons(deptId: -1);
+            })
+            
+        });
         return table;
     }();
     
+    let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, PersonModel>>(configureCell: { ds, tv, ip, item in
+        let cell = tv.dequeueReusableCell(withIdentifier: "cell")
+        cell?.textLabel?.text = "ee"
+        return cell!
+    });
+    
    
+    
+    
+    let mainViewModel = MainViewModel();
+    let disposeBag = DisposeBag();
+    
     
 
     override func viewDidLoad() {
@@ -34,8 +56,11 @@ class MainViewController: BBaseViewController,UITableViewDataSource,UITableViewD
         self.title = "风驰电话本";
         self.navigationController?.isNavigationBarHidden = false;
         
-        self.tableView.showsHorizontalScrollIndicator = true;
-        self.tableView.showsHorizontalScrollIndicator = true;
+        self.view.addSubview(self.tableView);
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.view);
+        }
+        
         
         //已经设置电话本
         if let telBook = UserDefaults.standard.getTelBookModel() {
@@ -58,20 +83,11 @@ class MainViewController: BBaseViewController,UITableViewDataSource,UITableViewD
         
     }
     
-    // MARK: TableView
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1;
+    // MARK: bindding viewModel
+
+    func bindingViewModel() {
+        
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5;
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell();
-    }
-    
     
     
     // MARK: 网络请求
@@ -203,27 +219,35 @@ class MainViewController: BBaseViewController,UITableViewDataSource,UITableViewD
     /// 下载telBook对应的db文件
     ///
     /// - Parameter telBook: telBook
-    func downLoadDB(telBook:TelBookModel, finshedHandler:@escaping (_ isSuccess:Bool)->Void)  {
+    func downLoadDB(telBook:TelBookModel?, finshedHandler:@escaping (_ isSuccess:Bool)->Void)  {
         print("开始下载数据库文件");
-        BHudView.showHud(in: self.view);
         
-        let fileName =  DBHelper.sharedInstance.getDBSaveName(telBook: telBook);
-        let url = "\(DownLoadDB_URL)/\(telBook.id!)"
-       
-        BNetWorkingManager.shared.download(url:url, method: .get, parameters: nil, progress: { (progress) in
-            print("\(progress.completedUnitCount)/\(progress.totalUnitCount)");
-        }, toLocalPath: DBFileSavePath,fileName:fileName) { (response) in
-            BHudView.hideHud(in: self.view);
-             if let data =  response.result.value {
-                print("文件下载成功:\(data.count)");
-                //下载成功后重新设置本地的telBook
-                UserDefaults.standard.setTelBookModel(model: telBook);
-                finshedHandler(true);
-            }else{
-                finshedHandler(false);
-                BAlertModal.sharedInstance().makeToast("文件下载失败");
+        if let telBookModel = telBook {
+           
+            BHudView.showHud(in: self.view);
+            
+            let fileName =  DBHelper.sharedInstance.getDBSaveName(telBook: telBookModel);
+            let url = "\(DownLoadDB_URL)/\(telBookModel.id!)"
+            
+            BNetWorkingManager.shared.download(url:url, method: .get, parameters: nil, progress: { (progress) in
+                print("\(progress.completedUnitCount)/\(progress.totalUnitCount)");
+            }, toLocalPath: DBFileSavePath,fileName:fileName) { (response) in
+                BHudView.hideHud(in: self.view);
+                if let data =  response.result.value {
+                    print("文件下载成功:\(data.count)");
+                    //下载成功后重新设置本地的telBook  防止重复提示新数据
+                    UserDefaults.standard.setTelBookModel(model: telBookModel);
+                    finshedHandler(true);
+                }else{
+                    finshedHandler(false);
+                    BAlertModal.sharedInstance().makeToast("文件下载失败");
+                }
             }
+        }else{
+            finshedHandler(false);
         }
+        
+        
     }
     
     
