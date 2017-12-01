@@ -9,7 +9,7 @@
 import UIKit
 
 //侧滑菜单宽度
-let menuViewExpandedOffset: CGFloat = 150;
+let menuViewExpandedOffset: CGFloat = 110;
 let leftDragbleWidth:CGFloat = 150;
 
 

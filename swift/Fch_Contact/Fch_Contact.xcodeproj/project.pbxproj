@@ -17,6 +17,7 @@
 		212C0FF31FD114990044EA6C /* DeptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C0FF21FD114990044EA6C /* DeptModel.swift */; };
 		212C0FF51FD1161B0044EA6C /* LeftDeptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C0FF41FD1161B0044EA6C /* LeftDeptTableViewCell.swift */; };
 		212C0FF71FD11AB20044EA6C /* LeftMemuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C0FF61FD11AB20044EA6C /* LeftMemuViewModel.swift */; };
+		212C0FFD1FD1558B0044EA6C /* UIDevice+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C0FFC1FD1558B0044EA6C /* UIDevice+BBase.swift */; };
 		213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD42F1FAB0A90004A5E8F /* UserModel.swift */; };
 		215AFAD91FC2BC0400D6BD59 /* AppLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215AFAD81FC2BC0400D6BD59 /* AppLoginHelper.swift */; };
 		215AFADB1FC2C43C00D6BD59 /* TelBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215AFADA1FC2C43C00D6BD59 /* TelBookModel.swift */; };
@@ -68,6 +69,7 @@
 		212C0FF21FD114990044EA6C /* DeptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeptModel.swift; sourceTree = "<group>"; };
 		212C0FF41FD1161B0044EA6C /* LeftDeptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftDeptTableViewCell.swift; sourceTree = "<group>"; };
 		212C0FF61FD11AB20044EA6C /* LeftMemuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMemuViewModel.swift; sourceTree = "<group>"; };
+		212C0FFC1FD1558B0044EA6C /* UIDevice+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+BBase.swift"; sourceTree = "<group>"; };
 		213CD42F1FAB0A90004A5E8F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		215AFAD81FC2BC0400D6BD59 /* AppLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoginHelper.swift; sourceTree = "<group>"; };
 		215AFADA1FC2C43C00D6BD59 /* TelBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelBookModel.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				21CC63651FA803A800B8E491 /* UIView+BBase.swift */,
 				210F2F291FAFF5FD00A87AA6 /* UITextFiled+BBase.swift */,
 				210F2F2B1FAFF71D00A87AA6 /* Array+BBase.swift */,
+				212C0FFC1FD1558B0044EA6C /* UIDevice+BBase.swift */,
 			);
 			path = BExtension;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				215BEF301FBC4590007BB452 /* LeftMenuViewController.swift in Sources */,
 				21CC634D1FA7294300B8E491 /* AppDelegate.swift in Sources */,
 				213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */,
+				212C0FFD1FD1558B0044EA6C /* UIDevice+BBase.swift in Sources */,
 				21CC63941FA83B2B00B8E491 /* BCircleLoadingView.m in Sources */,
 				215AFAD91FC2BC0400D6BD59 /* AppLoginHelper.swift in Sources */,
 			);
