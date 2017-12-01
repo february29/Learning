@@ -18,6 +18,20 @@ class MainViewModel: NSObject {
     
     
     
+    override init() {
+        super.init();
+        prepare();
+        
+    }
+    
+    func prepare(){
+        if let telBook = UserDefaults.standard.getTelBookModel() {
+            print("显示telbook\(telBook.bookName)")
+            reloadData();
+        }
+        
+    }
+    
     
     func getPersons(deptId:Int)->Observable<[PersonModel]> {
         

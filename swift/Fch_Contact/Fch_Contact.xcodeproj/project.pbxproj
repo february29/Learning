@@ -14,8 +14,10 @@
 		212C0FE91FCFADD60044EA6C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C0FE81FCFADD60044EA6C /* MainViewModel.swift */; };
 		212C0FEB1FCFB24C0044EA6C /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C0FEA1FCFB24C0044EA6C /* MainTableViewCell.swift */; };
 		212C0FED1FCFB27B0044EA6C /* BBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C0FEC1FCFB27B0044EA6C /* BBaseTableViewCell.swift */; };
+		212C0FF31FD114990044EA6C /* DeptModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C0FF21FD114990044EA6C /* DeptModel.swift */; };
+		212C0FF51FD1161B0044EA6C /* LeftDeptTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C0FF41FD1161B0044EA6C /* LeftDeptTableViewCell.swift */; };
+		212C0FF71FD11AB20044EA6C /* LeftMemuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C0FF61FD11AB20044EA6C /* LeftMemuViewModel.swift */; };
 		213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD42F1FAB0A90004A5E8F /* UserModel.swift */; };
-		213CD43A1FAC6CAA004A5E8F /* bg_guide_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 213CD4391FAC6CAA004A5E8F /* bg_guide_text.png */; };
 		215AFAD91FC2BC0400D6BD59 /* AppLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215AFAD81FC2BC0400D6BD59 /* AppLoginHelper.swift */; };
 		215AFADB1FC2C43C00D6BD59 /* TelBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215AFADA1FC2C43C00D6BD59 /* TelBookModel.swift */; };
 		215BEF2B1FBC314B007BB452 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BEF2A1FBC314B007BB452 /* MainViewController.swift */; };
@@ -25,7 +27,6 @@
 		21B10DE51FB04BA0006257F2 /* BMoyaNetWorkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B10DE41FB04BA0006257F2 /* BMoyaNetWorkingManager.swift */; };
 		21B10DE71FB04BC8006257F2 /* APPAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B10DE61FB04BC8006257F2 /* APPAPIManager.swift */; };
 		21B10DEA1FB062A5006257F2 /* BNetWokingBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B10DE91FB062A5006257F2 /* BNetWokingBase.swift */; };
-		21CBAE281FBEB91E007E4446 /* btn_top_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 21CBAE271FBEB91E007E4446 /* btn_top_menu.png */; };
 		21CBAE2A1FBEE299007E4446 /* UIViewController+BSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CBAE291FBEE299007E4446 /* UIViewController+BSlider.swift */; };
 		21CC634D1FA7294300B8E491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC634C1FA7294300B8E491 /* AppDelegate.swift */; };
 		21CC634F1FA7294300B8E491 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC634E1FA7294300B8E491 /* ViewController.swift */; };
@@ -37,9 +38,6 @@
 		21CC63691FA803A800B8E491 /* UIView+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC63651FA803A800B8E491 /* UIView+BBase.swift */; };
 		21CC636B1FA805F200B8E491 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC636A1FA805F200B8E491 /* LaunchViewController.swift */; };
 		21CC63751FA80BEE00B8E491 /* BBaseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC63741FA80BEE00B8E491 /* BBaseConstant.swift */; };
-		21CC63791FA824D500B8E491 /* launch_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 21CC63761FA824D500B8E491 /* launch_1.jpg */; };
-		21CC637A1FA824D500B8E491 /* launch_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 21CC63771FA824D500B8E491 /* launch_2.jpg */; };
-		21CC637B1FA824D500B8E491 /* launch_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 21CC63781FA824D500B8E491 /* launch_3.jpg */; };
 		21CC637F1FA82D6400B8E491 /* BNetWorkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC637E1FA82D6400B8E491 /* BNetWorkingManager.swift */; };
 		21CC63921FA83B2B00B8E491 /* BHudContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CC63821FA83B2B00B8E491 /* BHudContentView.m */; };
 		21CC63931FA83B2B00B8E491 /* BHudView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21CC63841FA83B2B00B8E491 /* BHudView.m */; };
@@ -67,8 +65,10 @@
 		212C0FE81FCFADD60044EA6C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		212C0FEA1FCFB24C0044EA6C /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		212C0FEC1FCFB27B0044EA6C /* BBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBaseTableViewCell.swift; sourceTree = "<group>"; };
+		212C0FF21FD114990044EA6C /* DeptModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeptModel.swift; sourceTree = "<group>"; };
+		212C0FF41FD1161B0044EA6C /* LeftDeptTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftDeptTableViewCell.swift; sourceTree = "<group>"; };
+		212C0FF61FD11AB20044EA6C /* LeftMemuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMemuViewModel.swift; sourceTree = "<group>"; };
 		213CD42F1FAB0A90004A5E8F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		213CD4391FAC6CAA004A5E8F /* bg_guide_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_guide_text.png; sourceTree = "<group>"; };
 		215AFAD81FC2BC0400D6BD59 /* AppLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoginHelper.swift; sourceTree = "<group>"; };
 		215AFADA1FC2C43C00D6BD59 /* TelBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelBookModel.swift; sourceTree = "<group>"; };
 		215BEF2A1FBC314B007BB452 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -78,7 +78,6 @@
 		21B10DE41FB04BA0006257F2 /* BMoyaNetWorkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMoyaNetWorkingManager.swift; sourceTree = "<group>"; };
 		21B10DE61FB04BC8006257F2 /* APPAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPAPIManager.swift; sourceTree = "<group>"; };
 		21B10DE91FB062A5006257F2 /* BNetWokingBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNetWokingBase.swift; sourceTree = "<group>"; };
-		21CBAE271FBEB91E007E4446 /* btn_top_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_top_menu.png; sourceTree = "<group>"; };
 		21CBAE291FBEE299007E4446 /* UIViewController+BSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+BSlider.swift"; sourceTree = "<group>"; };
 		21CC63491FA7294300B8E491 /* Fch_Contact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fch_Contact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CC634C1FA7294300B8E491 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -92,9 +91,6 @@
 		21CC63651FA803A800B8E491 /* UIView+BBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+BBase.swift"; sourceTree = "<group>"; };
 		21CC636A1FA805F200B8E491 /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		21CC63741FA80BEE00B8E491 /* BBaseConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BBaseConstant.swift; sourceTree = "<group>"; };
-		21CC63761FA824D500B8E491 /* launch_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launch_1.jpg; sourceTree = "<group>"; };
-		21CC63771FA824D500B8E491 /* launch_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launch_2.jpg; sourceTree = "<group>"; };
-		21CC63781FA824D500B8E491 /* launch_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launch_3.jpg; sourceTree = "<group>"; };
 		21CC637E1FA82D6400B8E491 /* BNetWorkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BNetWorkingManager.swift; sourceTree = "<group>"; };
 		21CC63811FA83B2B00B8E491 /* BHudContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHudContentView.h; sourceTree = "<group>"; };
 		21CC63821FA83B2B00B8E491 /* BHudContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHudContentView.m; sourceTree = "<group>"; };
@@ -152,6 +148,7 @@
 			children = (
 				210F2F271FAFF43D00A87AA6 /* LaunchViewModel.swift */,
 				212C0FE81FCFADD60044EA6C /* MainViewModel.swift */,
+				212C0FF61FD11AB20044EA6C /* LeftMemuViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -160,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				212C0FEA1FCFB24C0044EA6C /* MainTableViewCell.swift */,
+				212C0FF41FD1161B0044EA6C /* LeftDeptTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +180,7 @@
 				21D1B0C31FC3DA55002E4357 /* TimeTelBookModel.swift */,
 				21D1B0C71FC3E795002E4357 /* AppModel.swift */,
 				21D1B0CE1FC54470002E4357 /* PersonModel.swift */,
+				212C0FF21FD114990044EA6C /* DeptModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,21 +293,8 @@
 		21CC636E1FA8093C00B8E491 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				21CC636F1FA8095D00B8E491 /* images */,
 			);
 			path = Resource;
-			sourceTree = "<group>";
-		};
-		21CC636F1FA8095D00B8E491 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				21CBAE271FBEB91E007E4446 /* btn_top_menu.png */,
-				213CD4391FAC6CAA004A5E8F /* bg_guide_text.png */,
-				21CC63761FA824D500B8E491 /* launch_1.jpg */,
-				21CC63771FA824D500B8E491 /* launch_2.jpg */,
-				21CC63781FA824D500B8E491 /* launch_3.jpg */,
-			);
-			path = images;
 			sourceTree = "<group>";
 		};
 		21CC637C1FA82D1900B8E491 /* Libs */ = {
@@ -457,13 +443,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				21CC63981FA83B2B00B8E491 /* img_network_error.png in Resources */,
-				21CBAE281FBEB91E007E4446 /* btn_top_menu.png in Resources */,
 				21CC63571FA7294300B8E491 /* LaunchScreen.storyboard in Resources */,
 				21CC63541FA7294300B8E491 /* Assets.xcassets in Resources */,
-				21CC637B1FA824D500B8E491 /* launch_3.jpg in Resources */,
-				21CC63791FA824D500B8E491 /* launch_1.jpg in Resources */,
-				21CC637A1FA824D500B8E491 /* launch_2.jpg in Resources */,
-				213CD43A1FAC6CAA004A5E8F /* bg_guide_text.png in Resources */,
 				21CC63521FA7294300B8E491 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				212C0FF51FD1161B0044EA6C /* LeftDeptTableViewCell.swift in Sources */,
 				21CC63991FA83B2B00B8E491 /* UILabel+BAnimation.m in Sources */,
 				21D1B0C41FC3DA55002E4357 /* TimeTelBookModel.swift in Sources */,
 				21CC63681FA803A800B8E491 /* BBaseViewController.swift in Sources */,
@@ -541,6 +523,7 @@
 				21CC637F1FA82D6400B8E491 /* BNetWorkingManager.swift in Sources */,
 				21CC63921FA83B2B00B8E491 /* BHudContentView.m in Sources */,
 				21D1B0CD1FC53999002E4357 /* DBHelper.swift in Sources */,
+				212C0FF71FD11AB20044EA6C /* LeftMemuViewModel.swift in Sources */,
 				21CBAE2A1FBEE299007E4446 /* UIViewController+BSlider.swift in Sources */,
 				212C0FE91FCFADD60044EA6C /* MainViewModel.swift in Sources */,
 				210F2F2C1FAFF71D00A87AA6 /* Array+BBase.swift in Sources */,
@@ -555,6 +538,7 @@
 				21B10DE31FB04AD6006257F2 /* HandyJSON+BRXModel.swift in Sources */,
 				21CC634F1FA7294300B8E491 /* ViewController.swift in Sources */,
 				210F2F2A1FAFF5FD00A87AA6 /* UITextFiled+BBase.swift in Sources */,
+				212C0FF31FD114990044EA6C /* DeptModel.swift in Sources */,
 				21CC639D1FA9AE5500B8E491 /* String+BBase.swift in Sources */,
 				212C0FED1FCFB27B0044EA6C /* BBaseTableViewCell.swift in Sources */,
 				215BEF301FBC4590007BB452 /* LeftMenuViewController.swift in Sources */,

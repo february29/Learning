@@ -29,7 +29,9 @@ class BBaseViewController: UIViewController {
         let leftBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 44));
         leftBtn.addTarget(self, action: #selector(BBaseViewController.back), for:.touchUpInside)
         leftBtn.setImage(leftImage, for: .normal);
-        leftBtn.imageEdgeInsets = UIEdgeInsetsMake(10, 0, 10, 55);
+        leftBtn.contentHorizontalAlignment = .left;
+//        leftBtn.contentMode = .left;
+//        leftBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
         let leftBtnItem = UIBarButtonItem.init(customView: leftBtn);
         self.navigationItem.leftBarButtonItem = leftBtnItem;
         

@@ -92,7 +92,6 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
         if let left = self.leftVC {
             self.addChildViewController(left)
             _leftContainerView.addSubview((left.view)!);
-            _leftContainerView.transform = CGAffineTransform(translationX: -menuViewExpandedOffset, y: 0);
             self.view.addSubview(_leftContainerView);
         }
         if let right = self.rigthVC {
@@ -105,7 +104,6 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
             self.addChildViewController(mian)
             _mainContainerView.addSubview((mian.view)!);
             self.view.addSubview(_mainContainerView);
-//            _mainContainerView.addSubview(_maskView);
         }
        
         

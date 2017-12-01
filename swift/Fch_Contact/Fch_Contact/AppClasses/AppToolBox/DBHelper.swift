@@ -51,10 +51,6 @@ class DBHelper {
                 persons.append(PersonModel.deserialize(from: dic! as NSDictionary)!)
             };
             
-            
-            
-            
-            
         }
         
         
@@ -62,5 +58,28 @@ class DBHelper {
     }
     
     
+    func getDepsFromDB() -> Array<DeptModel> {
+        
+        var deps:[DeptModel] = Array();
+        let dbName = getDBSaveName(telBook: UserDefaults.standard.getTelBookModel()!);
+        let db = FMDatabase.init(url: DBFileSavePath?.appendingPathComponent(dbName))
+        if db.open() {
+            let selectSql:String?;
+           
+                selectSql="select * from \(deptTableName)";
+            
+            
+            let resultSet =  db.executeQuery(selectSql!, withParameterDictionary: nil);
+            
+            while resultSet!.next() {
+                let dic =  resultSet?.resultDictionary;
+                deps.append(DeptModel.deserialize(from: dic! as NSDictionary)!)
+            };
+            
+        }
+        
+        
+        return deps;
+    }
    
 }

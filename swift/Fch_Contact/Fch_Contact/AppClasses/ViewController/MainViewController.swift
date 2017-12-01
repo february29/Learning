@@ -24,6 +24,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
         table.showsVerticalScrollIndicator = false;
         table.showsHorizontalScrollIndicator = false;
         table.estimatedRowHeight = 30;
+        table.delegate = self;
         table.register(MainTableViewCell.self, forCellReuseIdentifier: "cell")
         table.rowHeight = UITableViewAutomaticDimension;
         table.tableFooterView = UIView();
@@ -75,6 +76,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
             make.edges.equalTo(self.view);
         }
         
+        bindViewModel();
+        
         
         
         
@@ -85,7 +88,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
                 
             });
             
-            bindViewModel();
+            
             
             
         }else{
@@ -104,7 +107,6 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
     
     // MARK: VM绑定
     func bindViewModel()  {
-        viewModel.reloadData();
         viewModel.result?.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag);
     }
     
@@ -266,7 +268,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
             }, toLocalPath: DBFileSavePath,fileName:fileName) { (response) in
                 BHudView.hideHud(in: self.view);
                 if let data =  response.result.value {
-                    print("文件下载成功:\(data.count)");
+                    print("文件下载成功:\(String(describing: DBFileSavePath))\(fileName)\(data.count)");
                     //下载成功后重新设置本地的telBook  防止重复提示新数据
                     UserDefaults.standard.setTelBookModel(model: telBookModel);
                     finshedHandler(true);
