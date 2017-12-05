@@ -223,6 +223,7 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
         BHudView.showIndicator(in: self.view, indicatorViewStyle: .fchIndicatorView)
         
         
+        //风驰电话本
         let par = ["loginName":userName.text!,
                    "password":passWord.text!.md5];
         

@@ -13,6 +13,8 @@ import RxDataSources
 class MainViewModel: NSObject {
 
     
+    var loadData = PublishSubject<Bool>();
+    
 //    var dataSource = [SectionModel<String, PersonModel>]();
     public var result:Observable<[SectionModel<String, PersonModel>]>?
     
@@ -26,7 +28,7 @@ class MainViewModel: NSObject {
     
     func prepare(){
         if let telBook = UserDefaults.standard.getTelBookModel() {
-            print("显示telbook\(telBook.bookName)")
+            print("显示telbook\(telBook.bookName!)")
             reloadData();
         }
         
@@ -51,7 +53,16 @@ class MainViewModel: NSObject {
     }
     
     func reloadData()  {
-        result = self.getPersonsNoSorted(deptId: -1);
+        
+        result =
+//        result = loadData.flatMapLatest({ (isSorted) -> Observable<[SectionModel<String, PersonModel>]>? in
+//            if isSorted {
+//                return self.getPersonsNoSorted(deptId: -1);
+//            }else{
+//                return self.getPersonsNoSorted(deptId: -1);
+//            }
+//
+//        })
     }
     
     

@@ -33,11 +33,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
             //这里应该在判断一次是否过期...
             
             self.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!, finshedHandler: { (isSuccess) in
-                
-                if isSuccess {
-                    
-                }
-                
+                self.viewModel.prepare();
+                table.reloadData();
                 table.mj_header.endRefreshing();
                 
             })
@@ -154,7 +151,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
                                 if self.checkTelBookExpired(expiredTime:0, timeNow: "",days: (telbooks[0]?.days)!){
                                     UserDefaults.standard.setTelBookModel(model:telBook);
                                     self.downLoadDB(telBook: telBook, finshedHandler: { (isSuccessful) in
-                                        
+                                        self.viewModel.prepare();
+                                        self.tableView.reloadData();
                                     });
                                 }else{
                                     BAlertModal.sharedInstance().makeToast("电话本已过期，请续费后使用！")
@@ -218,7 +216,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
                                         BAlertModal.sharedInstance().makeToast("电话本已过期,数据无法更新");
                                     }else{
                                         self.downLoadDB(telBook: webTelbookModel, finshedHandler: { (isSuccess) in
-                                            
+                                            self.viewModel.prepare();
+                                            self.tableView.reloadData();
                                         })
                                         
                                     }
@@ -268,7 +267,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
             }, toLocalPath: DBFileSavePath,fileName:fileName) { (response) in
                 BHudView.hideHud(in: self.view);
                 if let data =  response.result.value {
-                    print("文件下载成功:\(String(describing: DBFileSavePath))\(fileName)\(data.count)");
+                    print("文件下载成功:\(String(describing: DBFileSavePath))\(fileName)\\n size:\(data.count)");
                     //下载成功后重新设置本地的telBook  防止重复提示新数据
                     UserDefaults.standard.setTelBookModel(model: telBookModel);
                     finshedHandler(true);
@@ -299,7 +298,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
             if days <= 3{
                 BAlertModal.sharedInstance().makeToast("电话本使用即将到期，请您尽快续费!");
             }
-            return days == 0;
+            return days > 0;
         }else{
             let now = BDateTool.sharedInstance.dateFromGMTTimeString(timeString: timeNow);
             let timeNowTimeInterval = BDateTool.sharedInstance.timeIntervalSince1970FromDate(date: now);

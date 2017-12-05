@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fch_Contact/Libs/BSlideMenu/BSlideMenuViewController.swift"
-            timestampString = "533812277.355594"
+            timestampString = "534128494.518999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "128"
@@ -64,6 +64,182 @@
             startingLineNumber = "51"
             endingLineNumber = "51"
             landmarkName = "getPersonsFromDB(deptId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fch_Contact/AppClasses/ViewModel/MainViewModel.swift"
+            timestampString = "534142320.166534"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "reloadData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fch_Contact/AppClasses/ViewModel/MainViewModel.swift"
+            timestampString = "534142329.374454"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "getPersons(deptId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fch_Contact/AppClasses/ViewModel/MainViewModel.swift"
+            timestampString = "534142345.332744"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "getPersonsNoSorted(deptId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fch_Contact/AppClasses/ViewModel/MainViewModel.swift"
+            timestampString = "534142360.048686"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "getPersonsNoSorted(deptId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fch_Contact.MainViewModel.getPersonsNoSorted(deptId: Swift.Int) -&gt; RxSwift.Observable&lt;Swift.Array&lt;Differentiator.SectionModel&lt;Swift.String, Fch_Contact.PersonModel&gt;&gt;&gt;"
+                  moduleName = "Fch_Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/AppClasses/ViewModel/MainViewModel.swift"
+                  timestampString = "534142360.159264"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;Fch_Contact.PersonModel&gt;) -&gt; Swift.Array&lt;Differentiator.SectionModel&lt;Swift.String, Fch_Contact.PersonModel&gt;&gt; in Fch_Contact.MainViewModel.getPersonsNoSorted(deptId: Swift.Int) -&gt; RxSwift.Observable&lt;Swift.Array&lt;Differentiator.SectionModel&lt;Swift.String, Fch_Contact.PersonModel&gt;&gt;&gt;"
+                  moduleName = "Fch_Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/AppClasses/ViewModel/MainViewModel.swift"
+                  timestampString = "534142360.162121"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fch_Contact/AppClasses/ViewModel/MainViewModel.swift"
+            timestampString = "534142377.677813"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "getPersons(deptId:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Fch_Contact.MainViewModel.getPersons(deptId: Swift.Int) -&gt; RxSwift.Observable&lt;Swift.Array&lt;Fch_Contact.PersonModel&gt;&gt;"
+                  moduleName = "Fch_Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/AppClasses/ViewModel/MainViewModel.swift"
+                  timestampString = "534142377.683792"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RxSwift.AnyObserver&lt;Swift.Array&lt;Fch_Contact.PersonModel&gt;&gt;) -&gt; RxSwift.Disposable in Fch_Contact.MainViewModel.getPersons(deptId: Swift.Int) -&gt; RxSwift.Observable&lt;Swift.Array&lt;Fch_Contact.PersonModel&gt;&gt;"
+                  moduleName = "Fch_Contact"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bai/Documents/gitHub/Learning/swift/Fch_Contact/Fch_Contact/AppClasses/ViewModel/MainViewModel.swift"
+                  timestampString = "534142377.687518"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "25">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fch_Contact/AppClasses/ViewModel/MainViewModel.swift"
+            timestampString = "534142382.79202"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "getPersons(deptId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Fch_Contact/AppClasses/ViewModel/MainViewModel.swift"
+            timestampString = "534142486.03994"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "prepare()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
