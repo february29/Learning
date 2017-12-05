@@ -11,7 +11,7 @@
 ##### 创建项目配置tomcat
 
 [创建项目配置tomcat](http://www.jianshu.com/p/455c7c11dfb2)
-[test](weixin://)
+[test](weixin://39943)
 
 
 ##### 项目创建问题
