@@ -27,10 +27,14 @@ class MainViewModel: NSObject {
     }
     
     func prepare(){
-        if let telBook = UserDefaults.standard.getTelBookModel() {
-            print("显示telbook\(telBook.bookName!)")
-            reloadData();
-        }
+        
+        result = loadData.flatMapLatest({ (isSorted) -> Observable<[SectionModel<String, PersonModel>]> in
+            return self.getPersonsNoSorted(deptId: -1);
+        })
+//        if let telBook = UserDefaults.standard.getTelBookModel() {
+//            print("显示telbook\(telBook.bookName!)")
+//
+//        }
         
     }
     
@@ -53,16 +57,7 @@ class MainViewModel: NSObject {
     }
     
     func reloadData()  {
-        
-        result =
-//        result = loadData.flatMapLatest({ (isSorted) -> Observable<[SectionModel<String, PersonModel>]>? in
-//            if isSorted {
-//                return self.getPersonsNoSorted(deptId: -1);
-//            }else{
-//                return self.getPersonsNoSorted(deptId: -1);
-//            }
-//
-//        })
+        loadData.onNext(true);
     }
     
     

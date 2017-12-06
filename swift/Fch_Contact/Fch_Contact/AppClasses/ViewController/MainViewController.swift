@@ -33,7 +33,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
             //这里应该在判断一次是否过期...
             
             self.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!, finshedHandler: { (isSuccess) in
-                self.viewModel.prepare();
+                self.viewModel.reloadData();
                 table.reloadData();
                 table.mj_header.endRefreshing();
                 
@@ -105,6 +105,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
     // MARK: VM绑定
     func bindViewModel()  {
         viewModel.result?.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag);
+        self.viewModel.reloadData();
     }
     
     
@@ -151,7 +152,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
                                 if self.checkTelBookExpired(expiredTime:0, timeNow: "",days: (telbooks[0]?.days)!){
                                     UserDefaults.standard.setTelBookModel(model:telBook);
                                     self.downLoadDB(telBook: telBook, finshedHandler: { (isSuccessful) in
-                                        self.viewModel.prepare();
+                                        self.viewModel.reloadData();
                                         self.tableView.reloadData();
                                     });
                                 }else{
@@ -216,7 +217,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
                                         BAlertModal.sharedInstance().makeToast("电话本已过期,数据无法更新");
                                     }else{
                                         self.downLoadDB(telBook: webTelbookModel, finshedHandler: { (isSuccess) in
-                                            self.viewModel.prepare();
+                                            self.viewModel.reloadData();
                                             self.tableView.reloadData();
                                         })
                                         
