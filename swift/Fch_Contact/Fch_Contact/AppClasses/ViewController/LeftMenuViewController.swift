@@ -11,6 +11,12 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 
+
+protocol LeftMemuViewDelegate {
+    func depSelected(cell:LeftDeptTableViewCell,dept:DeptModel ,idx:NSIndexPath);
+    
+}
+
 class LeftMenuViewController: BBaseViewController,UITableViewDelegate {
     
     
@@ -101,13 +107,15 @@ class LeftMenuViewController: BBaseViewController,UITableViewDelegate {
         
         
     
+        
+        
         self.bindViewModel();
         
     }
     
     func bindViewModel()  {
         viewModel.result?.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag);
-        
+        self.viewModel.reloadData();
     }
 
     override func didReceiveMemoryWarning() {

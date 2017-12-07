@@ -12,7 +12,7 @@ import RxDataSources
 
 class LeftMemuViewModel: NSObject {
 
-    
+    var loadData = PublishSubject<Bool>();
     public var result:Observable<[SectionModel<String, DeptModel>]>?
     
     override init() {
@@ -22,10 +22,11 @@ class LeftMemuViewModel: NSObject {
     }
     
     func prepare(){
-        if let telBook = UserDefaults.standard.getTelBookModel() {
-            print("显示telbook\(telBook.bookName)")
-            reloadData();
-        }
+        
+        result = loadData.flatMapLatest({ (isSorted) -> Observable<[SectionModel<String, DeptModel>]> in
+            return self.getDepts2();
+        })
+        
         
     }
     
@@ -49,7 +50,7 @@ class LeftMemuViewModel: NSObject {
    
     
     func reloadData()  {
-        result = self.getDepts2();
+        loadData.onNext(true);
     }
     
      
