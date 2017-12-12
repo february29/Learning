@@ -11,5 +11,7 @@
 
 #import <CommonCrypto/CommonDigest.h>
 #import "BHudView.h"
+#import "pinyin.h"
+
 
 #endif /* OC_Swift_Header_h */

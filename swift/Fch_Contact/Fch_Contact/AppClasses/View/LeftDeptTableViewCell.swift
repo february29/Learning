@@ -20,7 +20,7 @@ class LeftDeptTableViewCell: BBaseTableViewCell {
         
         self.selectionStyle = .default;
         self.backgroundColor = UIColor.clear;
-        self.contentView.backgroundColor = UIColor.clear;
+//        self.contentView.backgroundColor = UIColor.clear;
        
         lineView.image = UIImage.init(named: "bg_menu_item");
         self.contentView.addSubview(lineView);
@@ -65,7 +65,8 @@ class LeftDeptTableViewCell: BBaseTableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+ 
+        self.selectedBackgroundView = UIImageView(image: UIImage.init(named: "bg_menu_head"));
         // Configure the view for the selected state
     }
 

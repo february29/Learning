@@ -14,6 +14,10 @@ let BSCREENW = UIScreen.main.bounds.size.width
 let BSCREENH = UIScreen.main.bounds.size.height
 
 
+let relodDataNotificationName =  NSNotification.Name("fch_contact_reloadData")
+
+let showAllDataNotificationName =  NSNotification.Name("fch_contact_showAllData")
+
 
 /// RGBA的颜色设置
 func YMColor(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {

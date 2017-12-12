@@ -248,7 +248,7 @@ class LaunchViewController: BBaseViewController,UIScrollViewDelegate{
                         
                         let mainNV = BBaseNavigationViewController(rootViewController: mainVC)
                         let leftMenuVC = LeftMenuViewController();
-                        
+                        leftMenuVC.menuSelectedDelegate = mainVC;
                         let sliderMenuVC = BSlideMenuViewController.init(mainViewController: mainNV, leftViewController: leftMenuVC, rightViewContoller: nil);
                        
                         self.navigationController?.pushViewController(sliderMenuVC, animated: true);

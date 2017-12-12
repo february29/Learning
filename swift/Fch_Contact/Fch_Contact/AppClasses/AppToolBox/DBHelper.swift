@@ -25,8 +25,14 @@ class DBHelper {
     
     
     
-    func getDBSaveName(telBook:TelBookModel) -> String {
-        return "\(telBook.bookName!)_\(telBook.id!).db";
+    func getDBSaveName(telBook:TelBookModel?) -> String {
+        if let model = telBook {
+            return "\(model.bookName!)_\(model.id!).db";
+        }else{
+            return "";
+        }
+        
+        
     }
     
     
@@ -34,7 +40,7 @@ class DBHelper {
     func getPersonsFromDB(deptId:Int) -> Array<PersonModel> {
         
         var persons:[PersonModel] = Array();
-        let dbName = getDBSaveName(telBook: UserDefaults.standard.getTelBookModel()!);
+        let dbName = getDBSaveName(telBook: UserDefaults.standard.getTelBookModel());
         let db = FMDatabase.init(url: DBFileSavePath?.appendingPathComponent(dbName))
         if db.open() {
             let selectSql:String?;
@@ -61,7 +67,7 @@ class DBHelper {
     func getDepsFromDB() -> Array<DeptModel> {
         
         var deps:[DeptModel] = Array();
-        let dbName = getDBSaveName(telBook: UserDefaults.standard.getTelBookModel()!);
+        let dbName = getDBSaveName(telBook: UserDefaults.standard.getTelBookModel());
         let db = FMDatabase.init(url: DBFileSavePath?.appendingPathComponent(dbName))
         if db.open() {
             let selectSql:String?;

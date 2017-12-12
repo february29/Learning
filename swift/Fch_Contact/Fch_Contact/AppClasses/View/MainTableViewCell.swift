@@ -25,6 +25,10 @@ class MainTableViewCell: BBaseTableViewCell {
     
        super.init(style: style, reuseIdentifier: reuseIdentifier)
        
+        
+    
+        let h = 30;
+        
         coloumLable1 = UILabel();
         coloumLable1?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
         coloumLable1?.numberOfLines = 0;
@@ -47,7 +51,7 @@ class MainTableViewCell: BBaseTableViewCell {
         coloumLable2?.snp.makeConstraints({ (make) in
             make.left.equalTo(coloumLable1!.snp.right);
             make.centerY.equalTo(self.contentView);
-            make.height.greaterThanOrEqualTo(35);
+            make.height.greaterThanOrEqualTo(h);
             make.width.equalTo(BSCREENW/5);
         });
         
@@ -60,7 +64,7 @@ class MainTableViewCell: BBaseTableViewCell {
         coloumLable3?.snp.makeConstraints({ (make) in
             make.left.equalTo(coloumLable2!.snp.right);
             make.centerY.equalTo(self.contentView);
-            make.height.greaterThanOrEqualTo(35);
+            make.height.greaterThanOrEqualTo(h);
             make.width.equalTo(BSCREENW/5);
         });
         
@@ -73,7 +77,7 @@ class MainTableViewCell: BBaseTableViewCell {
         coloumLable4?.snp.makeConstraints({ (make) in
             make.left.equalTo(coloumLable3!.snp.right);
             make.centerY.equalTo(self.contentView);
-            make.height.greaterThanOrEqualTo(35);
+            make.height.greaterThanOrEqualTo(h);
             make.width.equalTo(BSCREENW/5);
         });
         
@@ -86,7 +90,7 @@ class MainTableViewCell: BBaseTableViewCell {
         coloumLable5?.snp.makeConstraints({ (make) in
             make.left.equalTo(coloumLable4!.snp.right)
             make.centerY.equalTo(self.contentView);
-            make.height.greaterThanOrEqualTo(35);
+            make.height.greaterThanOrEqualTo(h);
             make.width.equalTo(BSCREENW/5);
         });
         

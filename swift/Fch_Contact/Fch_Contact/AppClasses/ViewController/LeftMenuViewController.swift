@@ -13,11 +13,14 @@ import RxDataSources
 
 
 protocol LeftMemuViewDelegate {
-    func depSelected(cell:LeftDeptTableViewCell,dept:DeptModel ,idx:NSIndexPath);
+    func depSelected(dept:DeptModel ,idx:IndexPath);
     
 }
 
 class LeftMenuViewController: BBaseViewController,UITableViewDelegate {
+    
+    
+    var menuSelectedDelegate:LeftMemuViewDelegate?
     
     
     let viewModel = LeftMemuViewModel();
@@ -42,8 +45,15 @@ class LeftMenuViewController: BBaseViewController,UITableViewDelegate {
         btn.setTitle("公司架构", for: .normal);
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 18);
         btn.setTitleColor(UIColor.white, for: .normal);
+        let selector = #selector(self.cancelSelected);
+        btn.addTarget(self, action: selector, for: .touchUpInside)
         return btn;
     }();
+    @objc func cancelSelected() {
+        self.tableView.reloadData();
+        self.sliderVC().hideLeftMenu();
+        NotificationCenter.default.post(name: showAllDataNotificationName, object: nil);
+    }
     
     lazy var bgImageView:UIImageView = {
         let bg = UIImageView(image:UIImage(named:"bg_memu"));
@@ -67,7 +77,10 @@ class LeftMenuViewController: BBaseViewController,UITableViewDelegate {
     
     // MARK: tableview 代理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected \(indexPath.row)");
+        if let delegate = menuSelectedDelegate {
+            delegate.depSelected(dept: dataSource[indexPath],idx: indexPath)
+        }
+        self.sliderVC().hideLeftMenu();
         
     }
 
@@ -111,6 +124,20 @@ class LeftMenuViewController: BBaseViewController,UITableViewDelegate {
         
         self.bindViewModel();
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        NotificationCenter.default.addObserver(forName: relodDataNotificationName, object: nil, queue: nil) { (notifaction) in
+            self.viewModel.reloadData();
+            self.tableView.reloadData();
+            
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        NotificationCenter.default.removeObserver(self);
     }
     
     func bindViewModel()  {

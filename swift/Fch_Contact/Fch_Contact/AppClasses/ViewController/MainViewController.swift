@@ -12,12 +12,13 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import MJRefresh
+import WebKit
 
-class MainViewController: BBaseViewController,UITableViewDelegate{
+class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDelegate{
     
     
     
-    
+    var webView = UIWebView();
 
     lazy var tableView:UITableView = {
         let table = UITableView();
@@ -32,17 +33,13 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
             
             //这里应该在判断一次是否过期...
             
-            self.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!, finshedHandler: { (isSuccess) in
-                self.viewModel.reloadData();
-                table.reloadData();
-                table.mj_header.endRefreshing();
+            self.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!,showHud: false,finshedHandler: { (isSuccess) in
                 
             })
             
         });
         return table;
     }();
-    
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, PersonModel>>(configureCell: { ds, tv, ip, item in
         let cell = tv.dequeueReusableCell(withIdentifier: "cell") as! MainTableViewCell;
         cell.coloumLable1?.text = item.column1;
@@ -51,7 +48,24 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
         cell.coloumLable4?.text = item.column4;
         cell.coloumLable5?.text = item.column5;
         return cell;
-    });
+    },titleForHeaderInSection: { dataSource, index in
+        let section = dataSource[index];
+        return section.model;
+    })
+    
+    
+//    let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, PersonModel>>(configureCell: { ds, tv, ip, item in
+//        let cell = tv.dequeueReusableCell(withIdentifier: "cell") as! MainTableViewCell;
+//        cell.coloumLable1?.text = item.column1;
+//        cell.coloumLable2?.text = item.column2;
+//        cell.coloumLable3?.text = item.column3;
+//        cell.coloumLable4?.text = item.column4;
+//        cell.coloumLable5?.text = item.column5;
+//        return cell;
+//    });
+    
+    
+
 
     
     
@@ -101,21 +115,57 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        NotificationCenter.default.addObserver(forName: relodDataNotificationName, object: nil, queue: nil) { (notifaction) in
+            self.viewModel.reloadData(depId: -1);
+            self.tableView.reloadData();
+            self.tableView.mj_header.endRefreshing();
+        }
+        
+        NotificationCenter.default.addObserver(forName: showAllDataNotificationName, object: nil, queue: nil) { (notifaction) in
+            self.viewModel.reloadData(depId: -1);
+            self.tableView.reloadData();
+            self.tableView.mj_header.endRefreshing();
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated);
+        NotificationCenter.default.removeObserver(self);
+    }
+    
     
     // MARK: VM绑定
     func bindViewModel()  {
         viewModel.result?.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag);
-        self.viewModel.reloadData();
+        self.viewModel.reloadData(depId: -1);
     }
     
     
     // MARK: tableView代理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let personModel = dataSource[indexPath];
+        let url =  URL(string: "tel:" + personModel.column3);
+//        let webView = WKWebView();
+//        webView.load(URLRequest(url: url!));
+    
+        
+        webView.loadRequest(URLRequest(url: url!));
+        self.view.addSubview(webView);
         
     }
     
-   
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 25;
+    }
+
     
+    // MARK: 左侧菜单代理
+    func depSelected(dept: DeptModel, idx: IndexPath) {
+        self.viewModel.reloadData(depId: dept.id);
+        self.tableView.reloadData();
+    }
     // MARK: 网络请求
     
     
@@ -151,9 +201,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
                                
                                 if self.checkTelBookExpired(expiredTime:0, timeNow: "",days: (telbooks[0]?.days)!){
                                     UserDefaults.standard.setTelBookModel(model:telBook);
-                                    self.downLoadDB(telBook: telBook, finshedHandler: { (isSuccessful) in
-                                        self.viewModel.reloadData();
-                                        self.tableView.reloadData();
+                                    self.downLoadDB(telBook: telBook,showHud: true, finshedHandler: { (isSuccessful) in
+                                        
                                     });
                                 }else{
                                     BAlertModal.sharedInstance().makeToast("电话本已过期，请续费后使用！")
@@ -216,9 +265,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
                                     if self.checkTelBookExpired(expiredTime: webTelbookModel.expiredTime, timeNow: response.response?.allHeaderFields["Date"] as! String, days: 0){
                                         BAlertModal.sharedInstance().makeToast("电话本已过期,数据无法更新");
                                     }else{
-                                        self.downLoadDB(telBook: webTelbookModel, finshedHandler: { (isSuccess) in
-                                            self.viewModel.reloadData();
-                                            self.tableView.reloadData();
+                                        self.downLoadDB(telBook: webTelbookModel,showHud: true, finshedHandler: { (isSuccess) in
+                                           
                                         })
                                         
                                     }
@@ -253,12 +301,14 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
     /// 下载telBook对应的db文件
     ///
     /// - Parameter telBook: telBook
-    func downLoadDB(telBook:TelBookModel?, finshedHandler:@escaping (_ isSuccess:Bool)->Void)  {
+    func downLoadDB(telBook:TelBookModel?,showHud:Bool, finshedHandler:@escaping (_ isSuccess:Bool)->Void)  {
         print("开始下载数据库文件");
         
         if let telBookModel = telBook {
            
-            BHudView.showHud(in: self.view);
+            if showHud {
+                BHudView.showHud(in: self.view);
+            }
             
             let fileName =  DBHelper.sharedInstance.getDBSaveName(telBook: telBookModel);
             let url = "\(DownLoadDB_URL)/\(telBookModel.id!)"
@@ -266,11 +316,15 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
             BNetWorkingManager.shared.download(url:url, method: .get, parameters: nil, progress: { (progress) in
                 print("\(progress.completedUnitCount)/\(progress.totalUnitCount)");
             }, toLocalPath: DBFileSavePath,fileName:fileName) { (response) in
-                BHudView.hideHud(in: self.view);
+                if showHud {
+                    BHudView.hideHud(in: self.view);
+                }
                 if let data =  response.result.value {
                     print("文件下载成功:\(String(describing: DBFileSavePath))\(fileName)\\n size:\(data.count)");
                     //下载成功后重新设置本地的telBook  防止重复提示新数据
                     UserDefaults.standard.setTelBookModel(model: telBookModel);
+                    //发送通知 刷新数据
+                    NotificationCenter.default.post(name:relodDataNotificationName, object: nil);
                     finshedHandler(true);
                 }else{
                     finshedHandler(false);
@@ -283,6 +337,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate{
         
         
     }
+    
     
     
     /// 判断电话本是否过期，如果timeNow == ""则根据 days判断
