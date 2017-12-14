@@ -38,6 +38,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             })
             
         });
+        
+        
         return table;
     }();
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, PersonModel>>(configureCell: { ds, tv, ip, item in
@@ -165,6 +167,10 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     func depSelected(dept: DeptModel, idx: IndexPath) {
         self.viewModel.reloadData(depId: dept.id);
         self.tableView.reloadData();
+//        self.tableView.setContentOffset(CGPoint(x:0,y:0), animated: true);
+//        var offset = self.tableView.contentOffset;
+//        offset.y = self.tableView.contentInset.top;
+//        self.tableView.setContentOffset(offset, animated: true);
     }
     // MARK: 网络请求
     

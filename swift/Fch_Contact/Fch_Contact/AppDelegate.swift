@@ -23,6 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        keyboardManager.enableAutoToolbar = false;
         
         
+
+//        if #available(iOS 11.0, *) {
+//            UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
+//        } else {
+//            // Fallback on earlier versions
+//        };
+
         
         
         
