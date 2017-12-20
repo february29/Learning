@@ -42,6 +42,16 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         
         return table;
     }();
+    
+    lazy var menuView: RightMenuView = {
+        let menuView =  RightMenuView();
+        if UIDevice.isIPhoneX() {
+            menuView.frame = CGRect(x: BSCREENW-110, y: 88, width: 100, height: 100)
+        }else{
+            menuView.frame = CGRect(x: BSCREENW-110, y: 64, width: 100, height: 100);
+        }
+        return menuView;
+    }()
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, PersonModel>>(configureCell: { ds, tv, ip, item in
         let cell = tv.dequeueReusableCell(withIdentifier: "cell") as! MainTableViewCell;
         cell.coloumLable1?.text = item.column1;
@@ -83,6 +93,18 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         super.viewDidLoad()
         self.title = "风驰电话本";
         self.navigationController?.isNavigationBarHidden = false;
+        
+        //右侧按钮
+        let rightImage = UIImage(named: "btn_top_pop")
+        let rightBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 44));
+        rightBtn.addTarget(self, action: #selector(MainViewController.showRightMenu), for:.touchUpInside)
+        rightBtn.setImage(rightImage, for: .normal);
+        rightBtn.contentHorizontalAlignment = .right;
+        //        leftBtn.contentMode = .left;
+        //        leftBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+        let rightBtnItem = UIBarButtonItem.init(customView: rightBtn);
+        self.navigationItem.rightBarButtonItem = rightBtnItem;
+        
         
         self.view.addSubview(self.tableView);
         tableView.snp.makeConstraints { (make) in
@@ -172,6 +194,63 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
 //        offset.y = self.tableView.contentInset.top;
 //        self.tableView.setContentOffset(offset, animated: true);
     }
+    // MARK: 右侧菜单
+    
+    @objc func showRightMenu() {
+        
+        BAlert.sharedInstance.show(view: menuView, showHandler: { (view) in
+            
+            // 显示动画
+            let animation1 = CABasicAnimation(keyPath: "position.y");
+            animation1.fromValue = view.frame.origin.y;
+            animation1.toValue = view.centerY;
+            animation1.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn);
+            
+            let animation2 = CABasicAnimation(keyPath: "position.x");
+            animation2.fromValue = view.frame.origin.x+view.frame.width;
+            animation2.toValue = view.centerX;
+            animation2.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn);
+           
+            
+            let animation3 = CABasicAnimation(keyPath: "transform.scale");
+            animation3.fromValue = 0;
+            animation3.toValue = 1;
+            animation3.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn);
+            
+            let animations = CAAnimationGroup();
+            animations.duration = BAlert.sharedInstance.b_AnimationTime;
+            animation2.fillMode = kCAFillModeForwards;
+            animation2.isRemovedOnCompletion = false;
+            animations.animations = [animation1,animation2,animation3];
+            
+            view.layer.add(animations, forKey: "startAn");
+        }) { (view) in
+            // 显示动画
+            let animation1 = CABasicAnimation(keyPath: "position.y");
+            animation1.fromValue = view.centerY;
+            animation1.toValue = view.frame.origin.y;
+            animation1.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn);
+            
+            let animation2 = CABasicAnimation(keyPath: "position.x");
+            animation2.fromValue = view.centerX;
+            animation2.toValue = view.frame.origin.x+view.frame.width ;
+            animation2.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn);
+            
+            let animation3 = CABasicAnimation(keyPath: "transform.scale");
+            animation3.fromValue = 1;
+            animation3.toValue = 0;
+            animation3.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn);
+            
+            let animations = CAAnimationGroup();
+            animations.duration = BAlert.sharedInstance.b_AnimationTime;
+            animation2.fillMode = kCAFillModeForwards;
+            animation2.isRemovedOnCompletion = false;
+            animations.animations = [animation1,animation2,animation3];
+            
+            view.layer.add(animations, forKey: "hideAn");
+        }
+    }
+    
     // MARK: 网络请求
     
     

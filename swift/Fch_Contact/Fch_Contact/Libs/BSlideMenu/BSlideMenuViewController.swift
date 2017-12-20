@@ -10,7 +10,7 @@ import UIKit
 
 //侧滑菜单宽度
 let menuViewExpandedOffset: CGFloat = 110;
-let leftDragbleWidth:CGFloat = 150;
+let leftDragbleWidth:CGFloat = 200;
 
 
 //弹簧动画偏移量
@@ -137,7 +137,7 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
             state = BSliderState.Sliding;
             moveViewToPosionX(postionX: newPostionX, animation: false);
         case .ended:
-            if newPostionX>menuViewExpandedOffset/2{
+            if newPostionX > menuViewExpandedOffset/2{
                 //超过一半，则展开
                 state = BSliderState.Open;
                 moveViewToPosionX(postionX:menuViewExpandedOffset, animation: true);
