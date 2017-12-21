@@ -27,7 +27,7 @@ class TriangleView: UIView {
     }
 }
 
-class RightMenuView: UIView {
+class RightMenuView: UIView,UITableViewDelegate,UITableViewDataSource {
 
     
     var arroww:CGFloat = 10.0;
@@ -35,8 +35,22 @@ class RightMenuView: UIView {
     var arrowPaddingRight:CGFloat = 10.0;
     var contentCornerRadius:CGFloat = 5;
     
-    
-    
+    lazy var tableView:UITableView {
+        let table = UITableView();
+        table.showsVerticalScrollIndicator = false;
+        table.showsHorizontalScrollIndicator = false;
+        table.estimatedRowHeight = 30;
+        table.delegate = self;
+        table.dataSource = self;
+        table.register(MainTableViewCell.self, forCellReuseIdentifier: "cell")
+        table.rowHeight = UITableViewAutomaticDimension;
+        table.tableFooterView = UIView();
+
+        return table;
+    }();
+
+
+
     
     
     let arrowView = TriangleView();
@@ -64,6 +78,8 @@ class RightMenuView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+
     
 
 }
