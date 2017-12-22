@@ -46,10 +46,29 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     lazy var menuView: RightMenuView = {
         let menuView =  RightMenuView();
         if UIDevice.isIPhoneX() {
-            menuView.frame = CGRect(x: BSCREENW-110, y: 88, width: 100, height: 100)
+            menuView.frame = CGRect(x: BSCREENW-95, y: 88, width: 85, height: 100)
         }else{
-            menuView.frame = CGRect(x: BSCREENW-110, y: 64, width: 100, height: 100);
+            menuView.frame = CGRect(x: BSCREENW-95, y: 64, width: 85, height: 100);
         }
+        
+        
+        menuView.seletedHandle = {(idx) in
+            if idx == 0 {
+                
+                BAlert.sharedInstance.hide(view: menuView);
+                self.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!,showHud: false,finshedHandler: { (isSuccess) in
+                    
+                })
+            }else if idx == 1 {
+                
+            }else if idx == 2 {
+                BAlert.sharedInstance.hide(view: menuView, finishedHandle: {
+                    let settingVC = SettingViewController();
+                    self.navigationController?.pushViewController(settingVC, animated: true);
+                })
+               
+            }
+        };
         return menuView;
     }()
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, PersonModel>>(configureCell: { ds, tv, ip, item in
@@ -194,7 +213,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
 //        offset.y = self.tableView.contentInset.top;
 //        self.tableView.setContentOffset(offset, animated: true);
     }
-    // MARK: 右侧菜单
+    // MARK: 显示右侧菜单
     
     @objc func showRightMenu() {
         

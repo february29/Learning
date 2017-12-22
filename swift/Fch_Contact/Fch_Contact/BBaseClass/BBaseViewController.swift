@@ -16,6 +16,8 @@ import SnapKit
 class BBaseViewController: UIViewController {
 
     
+    var leftBtn:UIButton?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,18 +28,20 @@ class BBaseViewController: UIViewController {
         
         //左侧按钮
         let leftImage = UIImage(named: "btn_top_menu")
-        let leftBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 44));
-        leftBtn.addTarget(self, action: #selector(BBaseViewController.back), for:.touchUpInside)
-        leftBtn.setImage(leftImage, for: .normal);
-        leftBtn.contentHorizontalAlignment = .left;
+        leftBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 44));
+        leftBtn!.addTarget(self, action: #selector(BBaseViewController.back), for:.touchUpInside)
+        leftBtn!.setImage(leftImage, for: .normal);
+        leftBtn!.contentHorizontalAlignment = .left;
 //        leftBtn.contentMode = .left;
 //        leftBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-        let leftBtnItem = UIBarButtonItem.init(customView: leftBtn);
+        let leftBtnItem = UIBarButtonItem.init(customView: leftBtn!);
         self.navigationItem.leftBarButtonItem = leftBtnItem;
         
         
         
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

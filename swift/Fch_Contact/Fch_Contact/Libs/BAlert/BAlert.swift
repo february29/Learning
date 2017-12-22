@@ -15,13 +15,15 @@ let b_alertBackGroundColor = UIColor.init(white: 0, alpha: 0.3);
 
 
 
+typealias AnimationOverHandle = ()->Void;
+
 class BAlert {
 //    UIWindow *window;
 //    BAlerterViewController *viewController;
 //    UIView *contentView;
     
     //动画时间
-    var b_AnimationTime = 0.25;
+    var b_AnimationTime = 0.20;
     
     let alertWindow = UIWindow(frame:UIScreen.main.bounds);
     let alertVC = BAlertViewController();
@@ -82,7 +84,9 @@ class BAlert {
 
     }
     
-    func hide() {
+    
+    /// 全部隐藏
+    func hideAllView(finishedHandle:AnimationOverHandle? = nil) {
         
         for (_, view) in viewArrays.enumerated(){
             view.b_hideHandler?(view);
@@ -99,13 +103,19 @@ class BAlert {
             self.viewArrays.removeAll();
             
             UIApplication.shared.delegate?.window??.makeKeyAndVisible();
+            
+            if finishedHandle != nil{
+                finishedHandle!();
+            }
         }
-        
-        
-       
     }
     
-    func hide(view:UIView){
+    
+    
+    /// 隐藏特定view
+    ///
+    /// - Parameter view: view
+    func hide(view:UIView,finishedHandle:AnimationOverHandle? = nil){
         
         view.b_hideHandler?(view);
         
@@ -115,13 +125,18 @@ class BAlert {
         }) { (over) in
             view.removeFromSuperview();
             UIApplication.shared.delegate?.window??.makeKeyAndVisible();
+            if finishedHandle != nil{
+                finishedHandle!();
+            }
         }
         
-       
         if let index = viewArrays.index(of: view) {
              viewArrays.remove(at: index);
         }
        
        
     }
+    
+    
+    
 }

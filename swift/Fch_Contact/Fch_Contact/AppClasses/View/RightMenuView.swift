@@ -27,6 +27,8 @@ class TriangleView: UIView {
     }
 }
 
+typealias  SelectedRowHandle = (_ index:Int)->Void;
+
 class RightMenuView: UIView,UITableViewDelegate,UITableViewDataSource {
 
     
@@ -35,20 +37,32 @@ class RightMenuView: UIView,UITableViewDelegate,UITableViewDataSource {
     var arrowPaddingRight:CGFloat = 10.0;
     var contentCornerRadius:CGFloat = 5;
     
-    lazy var tableView:UITableView {
+    var seletedHandle:SelectedRowHandle?;
+    
+    lazy var tableView:UITableView = {
         let table = UITableView();
         table.showsVerticalScrollIndicator = false;
         table.showsHorizontalScrollIndicator = false;
-        table.estimatedRowHeight = 30;
+        table.estimatedRowHeight = 20;
         table.delegate = self;
         table.dataSource = self;
-        table.register(MainTableViewCell.self, forCellReuseIdentifier: "cell")
+        table.layer.cornerRadius = 5;
+        table.separatorStyle = .none;
+        table.layer.masksToBounds = true;
+        table.register(RightMenuViewTableViewCell.self, forCellReuseIdentifier: "cell")
         table.rowHeight = UITableViewAutomaticDimension;
         table.tableFooterView = UIView();
-
+        
         return table;
     }();
 
+    
+    let menuArray = [
+                     ["icon":"icon_menu_refresh","name":"刷  新"],
+                     ["icon":"icon_menu_share","name":"分  享"],
+                     ["icon":"icon_menu_setting","name":"设  置"]
+                    ];
+    
 
 
     
@@ -65,12 +79,16 @@ class RightMenuView: UIView,UITableViewDelegate,UITableViewDataSource {
         contentView.backgroundColor = UIColor.white;
         self.addSubview(arrowView);
         self.addSubview(contentView);
+        contentView .addSubview(tableView);
+        
     }
     
     override func layoutSubviews() {
         super.layoutSubviews();
         arrowView.frame = CGRect(x: self.frame.size.width - arrowPaddingRight - arroww, y: 0, width: arroww, height: arrowh);
         contentView.frame = CGRect(x: 0, y: arrowh, width: self.frame.size.width, height: self.frame.size.height - arrowh);
+        tableView.frame = contentView.bounds;
+        
     }
     
 
@@ -79,6 +97,31 @@ class RightMenuView: UIView,UITableViewDelegate,UITableViewDataSource {
         fatalError("init(coder:) has not been implemented")
     }
 
+    
+    // MARK: tableview代理
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuArray.count;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell:RightMenuViewTableViewCell?
+        
+        cell = RightMenuViewTableViewCell(style: .default, reuseIdentifier:"cell");
+        
+        cell?.iconImageView?.image = UIImage.init(named: menuArray[indexPath.row]["icon"]!)
+        cell?.nameLable?.text = menuArray[indexPath.row]["name"];
+        //        cell?.textLabel?.font = UIFont.systemFont(ofSize: 13);
+        
+        return cell!;
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if seletedHandle != nil {
+            seletedHandle!(indexPath.row);
+        }
+    }
+    
+    
 
     
 
