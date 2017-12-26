@@ -61,6 +61,8 @@
 		21D966011FECD8380089D12E /* BAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D965FE1FECD8380089D12E /* BAlert.swift */; };
 		21D966021FECD8380089D12E /* BAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D965FF1FECD8380089D12E /* BAlertViewController.swift */; };
 		21D966031FECD8380089D12E /* UIView+BAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D966001FECD8380089D12E /* UIView+BAlert.swift */; };
+		21F0E57D1FF2462D002AA057 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */; };
+		21F0E57F1FF24673002AA057 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0E57E1FF24673002AA057 /* SettingViewModel.swift */; };
 		3AB90C5C3DA5860E446F4CD3 /* Pods_Fch_Contact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +134,8 @@
 		21D965FE1FECD8380089D12E /* BAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BAlert.swift; sourceTree = "<group>"; };
 		21D965FF1FECD8380089D12E /* BAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BAlertViewController.swift; sourceTree = "<group>"; };
 		21D966001FECD8380089D12E /* UIView+BAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+BAlert.swift"; sourceTree = "<group>"; };
+		21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		21F0E57E1FF24673002AA057 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		402F35785043CE5C78CF273B /* Pods-Fch_Contact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.debug.xcconfig"; sourceTree = "<group>"; };
 		651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fch_Contact.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -166,6 +170,7 @@
 				210F2F271FAFF43D00A87AA6 /* LaunchViewModel.swift */,
 				212C0FE81FCFADD60044EA6C /* MainViewModel.swift */,
 				212C0FF61FD11AB20044EA6C /* LeftMemuViewModel.swift */,
+				21F0E57E1FF24673002AA057 /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -177,6 +182,7 @@
 				212C0FF41FD1161B0044EA6C /* LeftDeptTableViewCell.swift */,
 				212CE1901FE38C6800E786E8 /* RightMenuView.swift */,
 				21D965E91FECAE120089D12E /* RightMenuViewTableViewCell.swift */,
+				21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -541,6 +547,7 @@
 				212C0FF51FD1161B0044EA6C /* LeftDeptTableViewCell.swift in Sources */,
 				21CC63991FA83B2B00B8E491 /* UILabel+BAnimation.m in Sources */,
 				21D1B0C41FC3DA55002E4357 /* TimeTelBookModel.swift in Sources */,
+				21F0E57F1FF24673002AA057 /* SettingViewModel.swift in Sources */,
 				21CC63681FA803A800B8E491 /* BBaseViewController.swift in Sources */,
 				21D966031FECD8380089D12E /* UIView+BAlert.swift in Sources */,
 				215AFADB1FC2C43C00D6BD59 /* TelBookModel.swift in Sources */,
@@ -565,6 +572,7 @@
 				212C0FE91FCFADD60044EA6C /* MainViewModel.swift in Sources */,
 				210F2F2C1FAFF71D00A87AA6 /* Array+BBase.swift in Sources */,
 				215BEF2B1FBC314B007BB452 /* MainViewController.swift in Sources */,
+				21F0E57D1FF2462D002AA057 /* SettingTableViewCell.swift in Sources */,
 				212C0FEB1FCFB24C0044EA6C /* MainTableViewCell.swift in Sources */,
 				21CC63951FA83B2B00B8E491 /* BFchView.m in Sources */,
 				215BEF2E1FBC3577007BB452 /* BSlideMenuViewController.swift in Sources */,
