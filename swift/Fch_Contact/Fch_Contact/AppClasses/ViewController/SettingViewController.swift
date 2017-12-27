@@ -35,6 +35,8 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
         return table;
     }();
     
+    let dataSource = RxTableViewSectionedAnimatedDataSource
+    
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String,String >>(configureCell: { ds, tv, ip, item in
         let cell = tv.dequeueReusableCell(withIdentifier: "cell") as! SettingTableViewCell;
         cell.coloumLable1?.text = item;
