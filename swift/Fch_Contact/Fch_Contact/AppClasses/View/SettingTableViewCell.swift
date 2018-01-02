@@ -11,7 +11,7 @@ import UIKit
 class SettingTableViewCell: BBaseTableViewCell {
 
     var coloumLable1:UILabel?;
-    let lineView = UIImageView();
+//    let lineView = UIView();
     
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -21,14 +21,14 @@ class SettingTableViewCell: BBaseTableViewCell {
         self.backgroundColor = UIColor.clear;
         //        self.contentView.backgroundColor = UIColor.clear;
         
-        lineView.image = UIImage.init(named: "bg_menu_item");
-        self.contentView.addSubview(lineView);
-        lineView.snp.makeConstraints { (make) in
-            make.bottom.left.right.equalTo(self.contentView);
-            make.height.equalTo(0.5);
-        }
+//        lineView.image = UIImage.init(named: "bg_menu_item");
+//        self.contentView.addSubview(lineView);
+//        lineView.snp.makeConstraints { (make) in
+//            make.bottom.left.right.equalTo(self.contentView);
+//            make.height.equalTo(0.5);
+//        }
         
-        self.selectedBackgroundView = UIImageView(image: UIImage.init(named: "bg_menu_head"));
+//        self.selectedBackgroundView = UIImageView(image: UIImage.init(named: "bg_menu_head"));
         
         
         coloumLable1 = UILabel();
@@ -43,11 +43,11 @@ class SettingTableViewCell: BBaseTableViewCell {
             make.top.equalTo(self.contentView);
             make.left.equalTo(self.contentView).offset(15);
             make.right.equalTo(self.contentView).offset(-15);
-            make.bottom.equalTo(lineView.snp.top);
-            make.height.greaterThanOrEqualTo(35);
+            make.bottom.equalTo(self.contentView);
+            
         });
         
-        
+        self.contentView.backgroundColor = UIColor.white;
         
         
     }
@@ -64,7 +64,7 @@ class SettingTableViewCell: BBaseTableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        self.selectedBackgroundView = UIImageView(image: UIImage.init(named: "bg_menu_head"));
+//        self.selectedBackgroundView = UIImageView(image: UIImage.init(named: "bg_menu_head"));
         // Configure the view for the selected state
     }
 

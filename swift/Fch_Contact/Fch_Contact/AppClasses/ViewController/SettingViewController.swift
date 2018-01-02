@@ -15,13 +15,15 @@ import RxDataSources
 class SettingViewController: BBaseViewController,UITableViewDelegate {
     
     lazy var tableView:UITableView = {
-        let table = UITableView();
+        let table = UITableView.init(frame: CGRect.zero, style: .grouped);
         table.showsVerticalScrollIndicator = false;
         table.showsHorizontalScrollIndicator = false;
         table.estimatedRowHeight = 30;
         table.delegate = self;
         table.register(SettingTableViewCell.self, forCellReuseIdentifier: "cell")
         table.rowHeight = UITableViewAutomaticDimension;
+//        table.separatorStyle = .none;
+        table.backgroundColor  = BGlobalGrayColor();
         table.tableFooterView = UIView();
 //        table.mj_header = MJRefreshNormalHeader(refreshingBlock: {
 //
@@ -35,7 +37,7 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
         return table;
     }();
     
-    let dataSource = RxTableViewSectionedAnimatedDataSource
+    
     
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String,String >>(configureCell: { ds, tv, ip, item in
         let cell = tv.dequeueReusableCell(withIdentifier: "cell") as! SettingTableViewCell;
@@ -43,8 +45,10 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
         return cell;
     },titleForHeaderInSection: { dataSource, index in
         let section = dataSource[index];
+        
         return section.model;
     })
+    
     
     let viewModel = SettingViewModel();
     let disposeBag = DisposeBag();
@@ -54,7 +58,6 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
         super.viewDidLoad()
         self.title = "设置";
         leftBtn?.setImage(UIImage.init(named: "btn_top_back"), for: .normal);
-        
         self.view.addSubview(self.tableView);
         tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view);
@@ -75,6 +78,30 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
     // MARK: tableview 代理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45;
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45;
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let data = dataSource[section];
+        let sectionHead = UILabel();
+        sectionHead.backgroundColor = BGlobalGrayColor();
+        sectionHead.textColor = BGlobalRedColor();
+        sectionHead.text = data.model;
+        return sectionHead;
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1;
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView();
         
     }
 

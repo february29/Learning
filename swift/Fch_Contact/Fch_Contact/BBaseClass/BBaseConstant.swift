@@ -25,12 +25,12 @@ func YMColor(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {
 }
 
 /// 背景灰色
-func BGlobalColor() -> UIColor {
+func BGlobalGrayColor() -> UIColor {
     return YMColor(r: 240, g: 240, b: 240, a: 1)
 }
 
 /// 红色
 func BGlobalRedColor() -> UIColor {
-    return YMColor(r: 245, g: 80, b: 83, a: 1.0)
+    return YMColor(r: 166, g: 41, b: 40, a: 1.0)
 }
 
