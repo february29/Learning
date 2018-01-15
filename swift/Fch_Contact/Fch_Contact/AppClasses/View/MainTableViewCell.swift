@@ -26,11 +26,12 @@ class MainTableViewCell: BBaseTableViewCell {
        super.init(style: style, reuseIdentifier: reuseIdentifier)
        
         
+      let fontSize =   UserDefaults.standard.getUserSettingModel().fontSize
     
         let h = 30;
         
         coloumLable1 = UILabel();
-        coloumLable1?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
+        coloumLable1?.font = UIFont.systemFont(ofSize: fontSize!);
         coloumLable1?.numberOfLines = 0;
         coloumLable1?.lineBreakMode = .byCharWrapping;
         coloumLable1?.sizeToFit();
@@ -43,7 +44,7 @@ class MainTableViewCell: BBaseTableViewCell {
         });
         
         coloumLable2 = UILabel();
-        coloumLable2?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
+        coloumLable2?.font = UIFont.systemFont(ofSize:fontSize! );
         coloumLable2?.numberOfLines = 0;
         coloumLable2?.lineBreakMode = .byCharWrapping;
         coloumLable2?.sizeToFit();
@@ -56,7 +57,7 @@ class MainTableViewCell: BBaseTableViewCell {
         });
         
         coloumLable3 = UILabel();
-        coloumLable3?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
+        coloumLable3?.font = UIFont.systemFont(ofSize: fontSize!);
         coloumLable3?.numberOfLines = 0;
         coloumLable3?.lineBreakMode = .byCharWrapping;
         coloumLable3?.sizeToFit();
@@ -69,7 +70,7 @@ class MainTableViewCell: BBaseTableViewCell {
         });
         
         coloumLable4 = UILabel();
-        coloumLable4?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
+        coloumLable4?.font = UIFont.systemFont(ofSize: fontSize!);
         coloumLable4?.numberOfLines = 0;
         coloumLable4?.lineBreakMode = .byCharWrapping;
         coloumLable4?.sizeToFit();
@@ -82,7 +83,7 @@ class MainTableViewCell: BBaseTableViewCell {
         });
         
         coloumLable5 = UILabel();
-        coloumLable5?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
+        coloumLable5?.font = UIFont.systemFont(ofSize: fontSize!);
         coloumLable5?.numberOfLines = 0;
         coloumLable5?.lineBreakMode = .byCharWrapping;
         coloumLable5?.sizeToFit();

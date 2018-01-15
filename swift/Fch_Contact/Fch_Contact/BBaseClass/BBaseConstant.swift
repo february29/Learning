@@ -18,6 +18,10 @@ let relodDataNotificationName =  NSNotification.Name("fch_contact_reloadData")
 
 let showAllDataNotificationName =  NSNotification.Name("fch_contact_showAllData")
 
+let changeFontNotificationName =  NSNotification.Name("fch_contact_changeFont")
+
+
+
 
 /// RGBA的颜色设置
 func YMColor(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {

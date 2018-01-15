@@ -20,6 +20,8 @@
 		212C0FFD1FD1558B0044EA6C /* UIDevice+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212C0FFC1FD1558B0044EA6C /* UIDevice+BBase.swift */; };
 		212CE1141FDE5FC600E786E8 /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 212CE1121FDE5FC600E786E8 /* pinyin.c */; };
 		212CE1911FE38C6800E786E8 /* RightMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212CE1901FE38C6800E786E8 /* RightMenuView.swift */; };
+		2134596C200C3B8C00D41CF9 /* FontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2134596B200C3B8C00D41CF9 /* FontViewController.swift */; };
+		2134596E200C3C8000D41CF9 /* UserSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2134596D200C3C8000D41CF9 /* UserSettingModel.swift */; };
 		213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD42F1FAB0A90004A5E8F /* UserModel.swift */; };
 		215AFAD91FC2BC0400D6BD59 /* AppLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215AFAD81FC2BC0400D6BD59 /* AppLoginHelper.swift */; };
 		215AFADB1FC2C43C00D6BD59 /* TelBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215AFADA1FC2C43C00D6BD59 /* TelBookModel.swift */; };
@@ -82,6 +84,8 @@
 		212CE1121FDE5FC600E786E8 /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
 		212CE1131FDE5FC600E786E8 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
 		212CE1901FE38C6800E786E8 /* RightMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuView.swift; sourceTree = "<group>"; };
+		2134596B200C3B8C00D41CF9 /* FontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewController.swift; sourceTree = "<group>"; };
+		2134596D200C3C8000D41CF9 /* UserSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingModel.swift; sourceTree = "<group>"; };
 		213CD42F1FAB0A90004A5E8F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		215AFAD81FC2BC0400D6BD59 /* AppLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoginHelper.swift; sourceTree = "<group>"; };
 		215AFADA1FC2C43C00D6BD59 /* TelBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelBookModel.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 				215BEF2A1FBC314B007BB452 /* MainViewController.swift */,
 				215BEF2F1FBC4590007BB452 /* LeftMenuViewController.swift */,
 				21D965ED1FECD2340089D12E /* SettingViewController.swift */,
+				2134596B200C3B8C00D41CF9 /* FontViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				21D1B0C71FC3E795002E4357 /* AppModel.swift */,
 				21D1B0CE1FC54470002E4357 /* PersonModel.swift */,
 				212C0FF21FD114990044EA6C /* DeptModel.swift */,
+				2134596D200C3C8000D41CF9 /* UserSettingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -546,6 +552,7 @@
 			files = (
 				212C0FF51FD1161B0044EA6C /* LeftDeptTableViewCell.swift in Sources */,
 				21CC63991FA83B2B00B8E491 /* UILabel+BAnimation.m in Sources */,
+				2134596C200C3B8C00D41CF9 /* FontViewController.swift in Sources */,
 				21D1B0C41FC3DA55002E4357 /* TimeTelBookModel.swift in Sources */,
 				21F0E57F1FF24673002AA057 /* SettingViewModel.swift in Sources */,
 				21CC63681FA803A800B8E491 /* BBaseViewController.swift in Sources */,
@@ -562,6 +569,7 @@
 				210F2F281FAFF43D00A87AA6 /* LaunchViewModel.swift in Sources */,
 				21CC63961FA83B2B00B8E491 /* BJumpingBarView.m in Sources */,
 				21D1B0C81FC3E795002E4357 /* AppModel.swift in Sources */,
+				2134596E200C3C8000D41CF9 /* UserSettingModel.swift in Sources */,
 				21B10DEA1FB062A5006257F2 /* BNetWokingBase.swift in Sources */,
 				21D966011FECD8380089D12E /* BAlert.swift in Sources */,
 				21CC637F1FA82D6400B8E491 /* BNetWorkingManager.swift in Sources */,

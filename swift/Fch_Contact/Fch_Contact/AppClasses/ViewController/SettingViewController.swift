@@ -79,6 +79,14 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
         
+        if indexPath.section == 0 {
+            if indexPath.row == 0{
+                let userSettingModel = UserDefaults.standard.getUserSettingModel();
+                userSettingModel.fontSize = userSettingModel.fontSize + 2;
+                UserDefaults.standard.setUserSettingModel(model: userSettingModel);
+                NotificationCenter.default.post(name: changeFontNotificationName, object: nil);
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

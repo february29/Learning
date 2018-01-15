@@ -9,7 +9,7 @@
 import Foundation
 
 class AppLoginHelper{
-    //超时重新登录，（客户端登录一段时间无操作，服务端将提出客户端，需要重新调用登录接口才能请求其它接口）
+    //超时重新登录，（客户端登录一段时间无操作，服务端将剔除客户端，需要重新调用登录接口才能请求其它接口）
     class func loginForTimeOut(successHandler:@escaping ()->Void) {
         
         if let user = UserDefaults.standard.getUserModel(){

@@ -24,6 +24,22 @@ extension UserDefaults{
     }
     
     
+    func getUserSettingModel() ->UserSettingModel  {
+        
+        let jsonStr = UserDefaults.standard.string(forKey: "UserSettingModel");
+        return UserSettingModel.deserialize(from:jsonStr) ?? UserSettingModel() ;
+    }
+    
+    
+    func setUserSettingModel(model:UserSettingModel)  {
+        if let jsonStr = model.toJSONString(){
+            UserDefaults.standard.set(jsonStr, forKey: "UserSettingModel")
+        }
+        
+        
+    }
+    
+    
     func getTelBookModel() -> TelBookModel? {
         let jsonStr = UserDefaults.standard.string(forKey: "TelBookModel")
         return TelBookModel.deserialize(from:jsonStr);
