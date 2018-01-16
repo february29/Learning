@@ -13,6 +13,9 @@ class UserSettingModel: HandyJSON {
     required init() {
         
         fontSize = 13.0
+        
+        
+        
     }
     
     var fontSize : CGFloat!
