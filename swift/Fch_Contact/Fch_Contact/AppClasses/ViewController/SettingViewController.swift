@@ -81,10 +81,10 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
         
         if indexPath.section == 0 {
             if indexPath.row == 0{
-                let userSettingModel = UserDefaults.standard.getUserSettingModel();
-                userSettingModel.fontSize = userSettingModel.fontSize + 2;
-                UserDefaults.standard.setUserSettingModel(model: userSettingModel);
-                NotificationCenter.default.post(name: changeFontNotificationName, object: nil);
+
+                let  vc  = FontViewController();
+                self.navigationController!.pushViewController(vc, animated: true);
+                
             }
         }
     }

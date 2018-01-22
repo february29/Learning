@@ -23,6 +23,7 @@
 		2134596C200C3B8C00D41CF9 /* FontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2134596B200C3B8C00D41CF9 /* FontViewController.swift */; };
 		2134596E200C3C8000D41CF9 /* UserSettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2134596D200C3C8000D41CF9 /* UserSettingModel.swift */; };
 		213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213CD42F1FAB0A90004A5E8F /* UserModel.swift */; };
+		213FF3662015D1B5002B1D2D /* FontTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FF3652015D1B5002B1D2D /* FontTableViewCell.swift */; };
 		215AFAD91FC2BC0400D6BD59 /* AppLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215AFAD81FC2BC0400D6BD59 /* AppLoginHelper.swift */; };
 		215AFADB1FC2C43C00D6BD59 /* TelBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215AFADA1FC2C43C00D6BD59 /* TelBookModel.swift */; };
 		215BEF2B1FBC314B007BB452 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215BEF2A1FBC314B007BB452 /* MainViewController.swift */; };
@@ -87,6 +88,7 @@
 		2134596B200C3B8C00D41CF9 /* FontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontViewController.swift; sourceTree = "<group>"; };
 		2134596D200C3C8000D41CF9 /* UserSettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingModel.swift; sourceTree = "<group>"; };
 		213CD42F1FAB0A90004A5E8F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		213FF3652015D1B5002B1D2D /* FontTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTableViewCell.swift; sourceTree = "<group>"; };
 		215AFAD81FC2BC0400D6BD59 /* AppLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoginHelper.swift; sourceTree = "<group>"; };
 		215AFADA1FC2C43C00D6BD59 /* TelBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelBookModel.swift; sourceTree = "<group>"; };
 		215BEF2A1FBC314B007BB452 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				212CE1901FE38C6800E786E8 /* RightMenuView.swift */,
 				21D965E91FECAE120089D12E /* RightMenuViewTableViewCell.swift */,
 				21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */,
+				213FF3652015D1B5002B1D2D /* FontTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -591,6 +594,7 @@
 				21CC63971FA83B2B00B8E491 /* BLaunchBarView.m in Sources */,
 				21D965EE1FECD2340089D12E /* SettingViewController.swift in Sources */,
 				21B10DE31FB04AD6006257F2 /* HandyJSON+BRXModel.swift in Sources */,
+				213FF3662015D1B5002B1D2D /* FontTableViewCell.swift in Sources */,
 				21CC634F1FA7294300B8E491 /* ViewController.swift in Sources */,
 				210F2F2A1FAFF5FD00A87AA6 /* UITextFiled+BBase.swift in Sources */,
 				212C0FF31FD114990044EA6C /* DeptModel.swift in Sources */,
