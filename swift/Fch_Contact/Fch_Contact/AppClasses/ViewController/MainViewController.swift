@@ -155,11 +155,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         }
     
         
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated);
+        //z
         NotificationCenter.default.addObserver(forName: relodDataNotificationName, object: nil, queue: nil) { (notifaction) in
             self.viewModel.reloadData(depId: -1);
             self.tableView.reloadData();
@@ -171,6 +167,12 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             self.tableView.reloadData();
             self.tableView.mj_header.endRefreshing();
         }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated);
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

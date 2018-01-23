@@ -69,6 +69,9 @@ class MainTableViewCell: BBaseTableViewCell {
             make.width.equalTo(BSCREENW/5);
         });
         
+        
+        
+        
         coloumLable4 = UILabel();
         coloumLable4?.font = UIFont.systemFont(ofSize: fontSize!);
         coloumLable4?.numberOfLines = 0;
