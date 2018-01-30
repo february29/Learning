@@ -23,18 +23,25 @@ let changeFontNotificationName =  NSNotification.Name("fch_contact_changeFont")
 
 
 
+func BLocalizedString(key:String) -> String{
+    return Bundle.main.localizedString(forKey: key, value: nil, table: nil);
+
+}
+
 /// RGBA的颜色设置
-func YMColor(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {
+func BRGBColor(r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {
     return UIColor(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: a)
 }
 
+
+
 /// 背景灰色
 func BGlobalGrayColor() -> UIColor {
-    return YMColor(r: 240, g: 240, b: 240, a: 1)
+    return BRGBColor(r: 240, g: 240, b: 240, a: 1)
 }
 
 /// 红色
 func BGlobalRedColor() -> UIColor {
-    return YMColor(r: 166, g: 41, b: 40, a: 1.0)
+    return BRGBColor(r: 166, g: 41, b: 40, a: 1.0)
 }
 

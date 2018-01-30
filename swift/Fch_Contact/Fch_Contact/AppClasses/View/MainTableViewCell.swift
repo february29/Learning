@@ -35,6 +35,7 @@ class MainTableViewCell: BBaseTableViewCell {
         coloumLable1?.numberOfLines = 0;
         coloumLable1?.lineBreakMode = .byCharWrapping;
         coloumLable1?.sizeToFit();
+        coloumLable1?.setTextColor(.primary);
         self.contentView.addSubview(coloumLable1!);
         coloumLable1?.snp.makeConstraints({ (make) in
             make.left.equalTo(self.contentView);
@@ -48,6 +49,7 @@ class MainTableViewCell: BBaseTableViewCell {
         coloumLable2?.numberOfLines = 0;
         coloumLable2?.lineBreakMode = .byCharWrapping;
         coloumLable2?.sizeToFit();
+        coloumLable2?.setTextColor(.primary);
         self.contentView.addSubview(coloumLable2!);
         coloumLable2?.snp.makeConstraints({ (make) in
             make.left.equalTo(coloumLable1!.snp.right);
@@ -61,6 +63,7 @@ class MainTableViewCell: BBaseTableViewCell {
         coloumLable3?.numberOfLines = 0;
         coloumLable3?.lineBreakMode = .byCharWrapping;
         coloumLable3?.sizeToFit();
+        coloumLable3?.setTextColor(.primary);
         self.contentView.addSubview(coloumLable3!);
         coloumLable3?.snp.makeConstraints({ (make) in
             make.left.equalTo(coloumLable2!.snp.right);
@@ -77,6 +80,7 @@ class MainTableViewCell: BBaseTableViewCell {
         coloumLable4?.numberOfLines = 0;
         coloumLable4?.lineBreakMode = .byCharWrapping;
         coloumLable4?.sizeToFit();
+        coloumLable4?.setTextColor(.primary);
         self.contentView.addSubview(coloumLable4!);
         coloumLable4?.snp.makeConstraints({ (make) in
             make.left.equalTo(coloumLable3!.snp.right);
@@ -90,6 +94,7 @@ class MainTableViewCell: BBaseTableViewCell {
         coloumLable5?.numberOfLines = 0;
         coloumLable5?.lineBreakMode = .byCharWrapping;
         coloumLable5?.sizeToFit();
+        coloumLable5?.setTextColor(.primary);
         self.contentView.addSubview(coloumLable5!);
         coloumLable5?.snp.makeConstraints({ (make) in
             make.left.equalTo(coloumLable4!.snp.right)

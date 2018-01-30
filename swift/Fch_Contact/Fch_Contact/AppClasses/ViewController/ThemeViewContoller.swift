@@ -1,24 +1,40 @@
 //
-//  FontViewController.swift
+//  ThemeViewContoller.swift
 //  Fch_Contact
 //
-//  Created by bai on 2018/1/15.
+//  Created by bai on 2018/1/30.
 //  Copyright © 2018年 北京仙指信息技术有限公司. All rights reserved.
 //
 
 import UIKit
+
 import SnapKit
 
-class FontViewController: BBaseViewController ,UITableViewDelegate,UITableViewDataSource{
+class ThemeViewContoller: BBaseViewController ,UITableViewDelegate,UITableViewDataSource{
+//    case white
+//    case black
+//    case green
+//    case red
+//    case blue
+//    case purple
+//    case pink
     
-    let dataArray = ["小","中","大"]
+    
+    let dataArray =
+        [Theme.white,
+         Theme.black,
+         Theme.green,
+        Theme.red,
+        Theme.blue,
+        Theme.purple,
+        Theme.pink]
     
     
     lazy var tableView:UITableView = {
         let table = UITableView.init(frame: CGRect.zero, style: .grouped);
         table.showsVerticalScrollIndicator = false;
         table.showsHorizontalScrollIndicator = false;
-//        table.estimatedRowHeight = 30;
+        //        table.estimatedRowHeight = 30;
         table.delegate = self;
         table.dataSource = self;
         table.register(FontTableViewCell.self, forCellReuseIdentifier: "cell")
@@ -33,59 +49,42 @@ class FontViewController: BBaseViewController ,UITableViewDelegate,UITableViewDa
     }();
     
     
-
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "字体大小";
+        self.title = BLocalizedString(key: "Theme");
         leftBtn?.setImage(UIImage.init(named: "btn_top_back"), for: .normal);
         
         self.view.addSubview(self.tableView);
         
-
+        
         self.tableView.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalToSuperview();
         }
         
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3;
+        return dataArray.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = FontTableViewCell.init(style: .default, reuseIdentifier: "cell");
         
-        cell.coloumLable1?.text = dataArray[indexPath.row];
-        if indexPath.row == 0 {
-            cell.coloumLable1?.font = UIFont.systemFont(ofSize: 11);
-        }else if indexPath.row == 1{
-            cell.coloumLable1?.font = UIFont.systemFont(ofSize: 13);
-        }else{
-            cell.coloumLable1?.font = UIFont.systemFont(ofSize: 15);
-        }
+        cell.coloumLable1?.text = dataArray[indexPath.row].displayName;
         
         return cell;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    
+        ColorCenter.shared.theme = dataArray[indexPath.row] ;
         
-        var fontSize:CGFloat = 13.0;
-        if indexPath.row == 0 {
-            fontSize = 11;
-            ColorCenter.shared.theme = .green;
-        }else if indexPath.row == 1{
-             fontSize = 13;
-        }else{
-             fontSize = 15;
-        }
-        let userSettingModel = UserDefaults.standard.getUserSettingModel();
-        userSettingModel.fontSize = fontSize;
-        UserDefaults.standard.setUserSettingModel(model: userSettingModel);
-        NotificationCenter.default.post(name: changeFontNotificationName, object: nil);
+        
         
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -105,7 +104,8 @@ class FontViewController: BBaseViewController ,UITableViewDelegate,UITableViewDa
         
     }
     
-
-  
-
+    
+    
+    
 }
+

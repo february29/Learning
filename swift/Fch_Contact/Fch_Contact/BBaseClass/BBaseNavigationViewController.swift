@@ -13,6 +13,9 @@ class BBaseNavigationViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationBar.setBarTintColor(.navBar)
+        self.navigationBar.setContentColor(.navBarTint)
+        self.navigationBar.isTranslucent = true;
         
     }
 

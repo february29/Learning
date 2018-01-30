@@ -33,7 +33,7 @@ class SettingViewModel: NSObject {
     func getSettingConfig() -> Observable<[SectionModel<String, String>]> {
         return Observable.create({ (observer) -> Disposable in
             
-            let secion1 = SectionModel(model: "  通用", items: ["字体大小","检查更新","关于"]);
+            let secion1 = SectionModel(model: "  通用", items: ["字体大小","主题颜色","检查更新","关于"]);
             let secion2 = SectionModel(model: "  电话本", items: ["选择电话本"]);
             let secion3 = SectionModel(model: "  用户", items: ["退出登录"]);
             

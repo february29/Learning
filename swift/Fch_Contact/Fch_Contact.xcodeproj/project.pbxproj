@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2105AE852020529B003DF0DE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105AE842020529B003DF0DE /* Theme.swift */; };
+		2105AE87202054BF003DF0DE /* UIColor+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105AE86202054BF003DF0DE /* UIColor+BBase.swift */; };
+		2105AE8920205599003DF0DE /* CGFloat+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105AE8820205599003DF0DE /* CGFloat+BBase.swift */; };
+		2105AE8E202059F6003DF0DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2105AE90202059F6003DF0DE /* Localizable.strings */; };
+		2105AE94202063F9003DF0DE /* UIImage+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105AE93202063F9003DF0DE /* UIImage+BBase.swift */; };
+		2105AE962020724C003DF0DE /* ThemeViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105AE952020724C003DF0DE /* ThemeViewContoller.swift */; };
 		210F2F281FAFF43D00A87AA6 /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2F271FAFF43D00A87AA6 /* LaunchViewModel.swift */; };
 		210F2F2A1FAFF5FD00A87AA6 /* UITextFiled+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2F291FAFF5FD00A87AA6 /* UITextFiled+BBase.swift */; };
 		210F2F2C1FAFF71D00A87AA6 /* Array+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2F2B1FAFF71D00A87AA6 /* Array+BBase.swift */; };
@@ -71,6 +77,15 @@
 
 /* Begin PBXFileReference section */
 		1ACC8DA08CD14DB85409BD70 /* Pods-Fch_Contact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.release.xcconfig"; sourceTree = "<group>"; };
+		2105AE842020529B003DF0DE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		2105AE86202054BF003DF0DE /* UIColor+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+BBase.swift"; sourceTree = "<group>"; };
+		2105AE8820205599003DF0DE /* CGFloat+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+BBase.swift"; sourceTree = "<group>"; };
+		2105AE8A20205801003DF0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		2105AE8B20205801003DF0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		2105AE8F202059F6003DF0DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2105AE91202059F8003DF0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		2105AE93202063F9003DF0DE /* UIImage+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+BBase.swift"; sourceTree = "<group>"; };
+		2105AE952020724C003DF0DE /* ThemeViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewContoller.swift; sourceTree = "<group>"; };
 		210F2F271FAFF43D00A87AA6 /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
 		210F2F291FAFF5FD00A87AA6 /* UITextFiled+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextFiled+BBase.swift"; sourceTree = "<group>"; };
 		210F2F2B1FAFF71D00A87AA6 /* Array+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+BBase.swift"; sourceTree = "<group>"; };
@@ -202,6 +217,7 @@
 				215BEF2F1FBC4590007BB452 /* LeftMenuViewController.swift */,
 				21D965ED1FECD2340089D12E /* SettingViewController.swift */,
 				2134596B200C3B8C00D41CF9 /* FontViewController.swift */,
+				2105AE952020724C003DF0DE /* ThemeViewContoller.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -225,6 +241,7 @@
 			children = (
 				211B4E9F1FBEA5060033C793 /* UserDefaults+BBase.swift */,
 				215AFAD81FC2BC0400D6BD59 /* AppLoginHelper.swift */,
+				2105AE842020529B003DF0DE /* Theme.swift */,
 				21D1B0CC1FC53999002E4357 /* DBHelper.swift */,
 				212CE1121FDE5FC600E786E8 /* pinyin.c */,
 				212CE1131FDE5FC600E786E8 /* pinyin.h */,
@@ -284,6 +301,7 @@
 				21CC63531FA7294300B8E491 /* Assets.xcassets */,
 				21CC63551FA7294300B8E491 /* LaunchScreen.storyboard */,
 				21CC63581FA7294300B8E491 /* Info.plist */,
+				2105AE90202059F6003DF0DE /* Localizable.strings */,
 			);
 			path = Fch_Contact;
 			sourceTree = "<group>";
@@ -316,6 +334,9 @@
 				210F2F291FAFF5FD00A87AA6 /* UITextFiled+BBase.swift */,
 				210F2F2B1FAFF71D00A87AA6 /* Array+BBase.swift */,
 				212C0FFC1FD1558B0044EA6C /* UIDevice+BBase.swift */,
+				2105AE86202054BF003DF0DE /* UIColor+BBase.swift */,
+				2105AE8820205599003DF0DE /* CGFloat+BBase.swift */,
+				2105AE93202063F9003DF0DE /* UIImage+BBase.swift */,
 			);
 			path = BExtension;
 			sourceTree = "<group>";
@@ -475,6 +496,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 21CC63401FA7294300B8E491;
 			productRefGroup = 21CC634A1FA7294300B8E491 /* Products */;
@@ -491,6 +513,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2105AE8E202059F6003DF0DE /* Localizable.strings in Resources */,
 				21CC63981FA83B2B00B8E491 /* img_network_error.png in Resources */,
 				21CC63571FA7294300B8E491 /* LaunchScreen.storyboard in Resources */,
 				21CC63541FA7294300B8E491 /* Assets.xcassets in Resources */,
@@ -555,6 +578,7 @@
 			files = (
 				212C0FF51FD1161B0044EA6C /* LeftDeptTableViewCell.swift in Sources */,
 				21CC63991FA83B2B00B8E491 /* UILabel+BAnimation.m in Sources */,
+				2105AE87202054BF003DF0DE /* UIColor+BBase.swift in Sources */,
 				2134596C200C3B8C00D41CF9 /* FontViewController.swift in Sources */,
 				21D1B0C41FC3DA55002E4357 /* TimeTelBookModel.swift in Sources */,
 				21F0E57F1FF24673002AA057 /* SettingViewModel.swift in Sources */,
@@ -587,6 +611,7 @@
 				212C0FEB1FCFB24C0044EA6C /* MainTableViewCell.swift in Sources */,
 				21CC63951FA83B2B00B8E491 /* BFchView.m in Sources */,
 				215BEF2E1FBC3577007BB452 /* BSlideMenuViewController.swift in Sources */,
+				2105AE962020724C003DF0DE /* ThemeViewContoller.swift in Sources */,
 				21D1B0CB1FC50F23002E4357 /* BDateTool.swift in Sources */,
 				21D1B0CF1FC54470002E4357 /* PersonModel.swift in Sources */,
 				21D966021FECD8380089D12E /* BAlertViewController.swift in Sources */,
@@ -594,7 +619,9 @@
 				21CC63971FA83B2B00B8E491 /* BLaunchBarView.m in Sources */,
 				21D965EE1FECD2340089D12E /* SettingViewController.swift in Sources */,
 				21B10DE31FB04AD6006257F2 /* HandyJSON+BRXModel.swift in Sources */,
+				2105AE852020529B003DF0DE /* Theme.swift in Sources */,
 				213FF3662015D1B5002B1D2D /* FontTableViewCell.swift in Sources */,
+				2105AE94202063F9003DF0DE /* UIImage+BBase.swift in Sources */,
 				21CC634F1FA7294300B8E491 /* ViewController.swift in Sources */,
 				210F2F2A1FAFF5FD00A87AA6 /* UITextFiled+BBase.swift in Sources */,
 				212C0FF31FD114990044EA6C /* DeptModel.swift in Sources */,
@@ -605,6 +632,7 @@
 				213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */,
 				212C0FFD1FD1558B0044EA6C /* UIDevice+BBase.swift in Sources */,
 				21CC63941FA83B2B00B8E491 /* BCircleLoadingView.m in Sources */,
+				2105AE8920205599003DF0DE /* CGFloat+BBase.swift in Sources */,
 				215AFAD91FC2BC0400D6BD59 /* AppLoginHelper.swift in Sources */,
 				212CE1911FE38C6800E786E8 /* RightMenuView.swift in Sources */,
 				21D965EA1FECAE120089D12E /* RightMenuViewTableViewCell.swift in Sources */,
@@ -614,10 +642,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		2105AE90202059F6003DF0DE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2105AE8F202059F6003DF0DE /* en */,
+				2105AE91202059F8003DF0DE /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		21CC63501FA7294300B8E491 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				21CC63511FA7294300B8E491 /* Base */,
+				2105AE8A20205801003DF0DE /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -626,6 +664,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				21CC63561FA7294300B8E491 /* Base */,
+				2105AE8B20205801003DF0DE /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -637,6 +676,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -688,6 +728,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

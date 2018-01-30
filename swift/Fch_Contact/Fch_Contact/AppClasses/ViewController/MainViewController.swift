@@ -110,7 +110,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "风驰电话本";
+        self.title = BLocalizedString(key: "FCHContact")
         self.navigationController?.isNavigationBarHidden = false;
         
         //右侧按钮

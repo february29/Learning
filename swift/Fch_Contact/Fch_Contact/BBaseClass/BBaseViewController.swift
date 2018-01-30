@@ -23,8 +23,8 @@ class BBaseViewController: UIViewController {
 
         //导航条颜色
         self.view.backgroundColor = UIColor.white;
-        self.navigationController?.navigationBar.barTintColor = UIColor.white;
-        self.navigationController?.navigationBar.isTranslucent = true;
+//        self.navigationController?.navigationBar.barTintColor = UIColor.white;
+//        self.navigationController?.navigationBar.isTranslucent = true;
         
         //左侧按钮
         let leftImage = UIImage(named: "btn_top_menu")

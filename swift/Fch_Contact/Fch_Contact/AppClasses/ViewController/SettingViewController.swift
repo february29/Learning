@@ -56,7 +56,7 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "设置";
+        self.title = BLocalizedString(key: "Setting");
         leftBtn?.setImage(UIImage.init(named: "btn_top_back"), for: .normal);
         self.view.addSubview(self.tableView);
         tableView.snp.makeConstraints { (make) in
@@ -85,6 +85,9 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
                 let  vc  = FontViewController();
                 self.navigationController!.pushViewController(vc, animated: true);
                 
+            }else if indexPath.row == 1{
+                let  vc  = ThemeViewContoller();
+                self.navigationController!.pushViewController(vc, animated: true);
             }
         }
     }
