@@ -37,10 +37,10 @@ class ThemeViewContoller: BBaseViewController ,UITableViewDelegate,UITableViewDa
         //        table.estimatedRowHeight = 30;
         table.delegate = self;
         table.dataSource = self;
+        table.setBackgroundColor(.tableBackground);
+        table.setSeparatorColor(.primary);
         table.register(FontTableViewCell.self, forCellReuseIdentifier: "cell")
         table.rowHeight = UITableViewAutomaticDimension;
-        //        table.separatorStyle = .none;
-        table.backgroundColor  = BGlobalGrayColor();
         table.tableFooterView = UIView();
         
         
@@ -55,7 +55,7 @@ class ThemeViewContoller: BBaseViewController ,UITableViewDelegate,UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = BLocalizedString(key: "Theme");
-        leftBtn?.setImage(UIImage.init(named: "btn_top_back"), for: .normal);
+
         
         self.view.addSubview(self.tableView);
         
@@ -84,6 +84,10 @@ class ThemeViewContoller: BBaseViewController ,UITableViewDelegate,UITableViewDa
     
         ColorCenter.shared.theme = dataArray[indexPath.row] ;
         
+       
+        let setting =  UserDefaults.standard.getUserSettingModel()
+        setting.theme = dataArray[indexPath.row];
+        UserDefaults.standard.setUserSettingModel(model: setting);
         
         
     }

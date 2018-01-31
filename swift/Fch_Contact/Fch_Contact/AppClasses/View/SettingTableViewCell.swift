@@ -19,7 +19,7 @@ class SettingTableViewCell: BBaseTableViewCell {
         
         self.selectionStyle = .default;
         self.backgroundColor = UIColor.clear;
-        //        self.contentView.backgroundColor = UIColor.clear;
+//        self.contentView.backgroundColor = UIColor.clear;
         
 //        lineView.image = UIImage.init(named: "bg_menu_item");
 //        self.contentView.addSubview(lineView);
@@ -32,12 +32,14 @@ class SettingTableViewCell: BBaseTableViewCell {
         
         
         coloumLable1 = UILabel();
-        coloumLable1?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
-        coloumLable1?.textColor = UIColor.black;
+        coloumLable1?.setTextFontSize(type: .primary);
+//        coloumLable1?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
+//        coloumLable1?.textColor = UIColor.black;
         //        coloumLable1?.numberOfLines = 0;
         //
         //        coloumLable1?.lineBreakMode = .byCharWrapping;
         //        coloumLable1?.sizeToFit();
+        coloumLable1?.setTextColor(.primary);
         self.contentView.addSubview(coloumLable1!);
         coloumLable1?.snp.makeConstraints({ (make) in
             make.top.equalTo(self.contentView);
@@ -47,7 +49,7 @@ class SettingTableViewCell: BBaseTableViewCell {
             
         });
         
-        self.contentView.backgroundColor = UIColor.white;
+//        self.contentView.backgroundColor = UIColor.white;
         
         
     }

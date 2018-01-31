@@ -18,6 +18,8 @@ class RightMenuViewTableViewCell: BBaseTableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
+        self.backgroundColor = UIColor.clear;
+        
         iconImageView = UIImageView();
         self.contentView.addSubview(iconImageView!);
         iconImageView?.snp.makeConstraints({ (make) in
@@ -27,7 +29,9 @@ class RightMenuViewTableViewCell: BBaseTableViewCell {
         })
         
         nameLable = UILabel();
-        nameLable?.font = UIFont.systemFont(ofSize: 13);
+        nameLable?.setTextFontSize(type: .primary);
+        nameLable?.setTextColor(.primary);
+//        nameLable?.font = UIFont.systemFont(ofSize: 13);
         self.contentView.addSubview(nameLable!);
 //        nameLable?.textAlignment = .center;
         nameLable?.snp.makeConstraints({ (make) in

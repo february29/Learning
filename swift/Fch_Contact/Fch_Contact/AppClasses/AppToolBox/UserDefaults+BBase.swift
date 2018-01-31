@@ -10,6 +10,10 @@ import Foundation
 
 extension UserDefaults{
     
+    
+    /// 获取用户信息
+    ///
+    /// - Returns: 用户信息
     func getUserModel() -> UserModel? {
         let jsonStr = UserDefaults.standard.string(forKey: "userModel");
         return UserModel.deserialize(from:jsonStr);
@@ -32,6 +36,7 @@ extension UserDefaults{
     
     
     func setUserSettingModel(model:UserSettingModel)  {
+        
         if let jsonStr = model.toJSONString(){
             UserDefaults.standard.set(jsonStr, forKey: "UserSettingModel")
         }

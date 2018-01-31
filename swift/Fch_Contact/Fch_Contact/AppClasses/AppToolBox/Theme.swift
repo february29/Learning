@@ -7,11 +7,12 @@
 //
 
 import Foundation
-import RxCocoa
+//import RxCocoa
 import RxSwift
+import HandyJSON
 
 
-enum Theme:String{
+enum Theme:String,HandyJSONEnum{
     case white
     case black
     case green
@@ -23,11 +24,13 @@ enum Theme:String{
 }
 
 enum ThemeColorType {
-    case navBar
-    case navBarTint
-    case background
-    case tableBackground
-    case primary
+    case navBar//导航栏背景
+    case navBarTitle//导航栏标题
+    case navBarBtn//导航栏按钮颜色
+    case background//view背景
+    case tableBackground//主列表背景
+    case leftTableBackground//菜单列表背景
+    case primary//lable buttom等
     case secondary
     case selectedCell
 }
@@ -47,19 +50,67 @@ extension Theme {
         switch self {
         
         case .white:
-            return [rgb("ffffff")!,rgb("000000")!,rgb("ffffff")!,rgb("f2f2f2")!,rgba("333333", 0.8)!,rgba("333333", 0.5)!]
+            return [rgb("ffffff")!,
+                    rgb("000000")!,
+                    BGlobalRedColor(),
+                    rgb("ffffff")!,
+                    UIColor.white,
+                    rgba("333333", 0.8)!,
+                    rgba("333333", 0.8)!,
+                    rgba("333333", 0.5)!]
         case .black:
-            return [rgb("313231")!,rgb("cccccc")!,rgb("313231")!,rgb("333333")!,rgba("cccccc", 0.8)!,rgba("cccccc", 0.5)!]
+            return [rgb("313231")!,
+                    rgb("cccccc")!,
+                    rgb("ffffff")!,
+                    rgb("313231")!,
+                    rgb("333333")!,
+                    rgba("313231", 0.8)!,
+                    rgba("cccccc", 0.8)!,
+                    rgba("cccccc", 0.5)!]
         case .blue:
-            return [rgb("0291D4")!,rgb("ffffff")!,rgb("ffffff")!,rgb("f2f2f2")!,rgba("0291D4", 0.8)!,rgba("0291D4", 0.5)!]
+            return [rgb("0291D4")!,
+                    rgb("ffffff")!,
+                    rgb("ffffff")!,
+                    rgb("ffffff")!,
+                    UIColor.white,
+                    rgba("0291D4", 0.8)!,
+                    rgba("0291D4", 0.8)!,
+                    rgba("0291D4", 0.5)!]
         case .purple:
-            return [rgb("6c16c7")!,rgb("ffffff")!,rgb("ffffff")!,rgb("f2f2f2")!,rgba("6c16c7", 0.8)!,rgba("6c16c7", 0.5)!]
+            return [rgb("6c16c7")!,
+                    rgb("ffffff")!,
+                    rgb("ffffff")!,
+                    rgb("ffffff")!,
+                    UIColor.white,
+                    rgba("6c16c7", 0.8)!,
+                    rgba("6c16c7", 0.8)!,
+                    rgba("6c16c7", 0.5)!]
         case .red:
-            return [rgb("D2373B")!,rgb("ffffff")!,rgb("ffffff")!,rgb("f2f2f2")!,rgba("D2373B", 0.8)!,rgba("D2373B", 0.5)!]
+            return [rgb("D2373B")!,
+                    rgb("ffffff")!,rgb("ffffff")!,
+                    rgb("ffffff")!,
+                    UIColor.white,
+                    rgba("D2373B", 0.8)!,
+                    rgba("D2373B", 0.8)!,
+                    rgba("D2373B", 0.5)!]
         case .green:
-            return [rgb("01BD70")!,rgb("ffffff")!,rgb("ffffff")!,rgb("f2f2f2")!,rgba("01BD70", 0.8)!,rgba("01BD70", 0.5)!]
+            return [rgb("01BD70")!,
+                    rgb("ffffff")!,
+                    rgb("ffffff")!,
+                    rgb("ffffff")!,
+                    UIColor.white,
+                    rgba("333333", 0.8)!,
+                    rgba("01BD70", 0.8)!,
+                    rgba("01BD70", 0.5)!]
         case .pink:
-            return [rgb("E52D7C")!,rgb("ffffff")!,rgb("ffffff")!,rgb("f2f2f2")!,rgba("E52D7C", 0.8)!,rgba("E52D7C", 0.5)!]
+            return [rgb("E52D7C")!,
+                    rgb("ffffff")!,
+                    rgb("ffffff")!,
+                    rgb("ffffff")!,
+                    UIColor.white,
+                    rgba("333333", 0.8)!,
+                    rgba("E52D7C", 0.8)!,
+                    rgba("E52D7C", 0.5)!]
         }
     }
     
@@ -88,21 +139,25 @@ class ColorCenter {
     static let shared = ColorCenter()
     
     let navBar = Variable(UIColor.clear)
-    let navBarTint = Variable(UIColor.clear)
+    let navBarTitle = Variable(UIColor.clear)
+    let navBarBtn = Variable(UIColor.clear)
     let primary = Variable(UIColor.clear)
     let secondary = Variable(UIColor.clear)
     let background = Variable(UIColor.clear)
     let tableBackground = Variable(UIColor.clear)
+    let leftTableBackground = Variable(UIColor.clear)
     let selectedCell = Variable(UIColor.clear)
     
     var theme: Theme = .white {
         didSet {
             navBar.value = theme.colors[0]
-            navBarTint.value = theme.colors[1]
-            background.value = theme.colors[2]
-            tableBackground.value = theme.colors[3]
-            primary.value = theme.colors[4]
-            secondary.value = theme.colors[5]
+            navBarTitle.value = theme.colors[1]
+            navBarBtn.value = theme.colors[2]
+            background.value = theme.colors[3]
+            tableBackground.value = theme.colors[4]
+            leftTableBackground.value = theme.colors[5]
+            primary.value = theme.colors[6]
+            secondary.value = theme.colors[7]
             selectedCell.value = theme == .black ? rgb("151515")! : rgb("e0e0e0")!
         }
     }
@@ -111,8 +166,10 @@ class ColorCenter {
         switch type {
         case .navBar:
             return navBar
-        case .navBarTint:
-            return navBarTint
+        case .navBarTitle:
+            return navBarTitle
+        case .navBarBtn:
+            return navBarBtn
         case .primary:
             return primary
         case .secondary:
@@ -121,6 +178,8 @@ class ColorCenter {
             return background
         case .tableBackground:
             return tableBackground
+        case .leftTableBackground:
+            return leftTableBackground
         case .selectedCell:
             return selectedCell
         }
@@ -181,13 +240,38 @@ extension UIButton {
     }
 }
 
-//extension UITableView {
-//    func setSeparatorColor(_ color: ThemeColorType) {
+extension UIBarButtonItem {
+    
+    func setTintColor(_ color: ThemeColorType, forState: UIControlState = .normal) {
+        
+        
+       _ = ColorCenter.shared.colorVariable(with: color).asObservable().takeUntil(rx.deallocated).subscribe(onNext: { [unowned self](color) in
+            self.tintColor = color;
+        })
+    }
+    
+    
+    
+    
+}
+
+extension UITableView {
+    func setSeparatorColor(_ color: ThemeColorType) {
+        
+        
+       _ = ColorCenter.shared.colorVariable(with: color).asObservable().takeUntil(rx.deallocated).subscribe(onNext: { [unowned self](color) in
+       
+        
+        self.separatorColor = color.withAlphaComponent(0.1);
+        })
+        
+
+        
 //        _ = ColorCenter.shared.colorVariable(with: color).asObservable().takeUntil(rx.deallocated).subscribe(onNext: { [unowned self](color) in
 //            self.separatorColor = color * 0.1
 //        })
-//    }
-//}
+    }
+}
 
 extension UITextField {
     func setTextColor(_ color: ThemeColorType) {

@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class TriangleView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect);
@@ -48,6 +49,7 @@ class RightMenuView: UIView,UITableViewDelegate,UITableViewDataSource {
         table.dataSource = self;
         table.layer.cornerRadius = 5;
         table.separatorStyle = .none;
+        table.backgroundColor = UIColor.clear;
         table.layer.masksToBounds = true;
         table.register(RightMenuViewTableViewCell.self, forCellReuseIdentifier: "cell")
         table.rowHeight = UITableViewAutomaticDimension;
@@ -57,10 +59,14 @@ class RightMenuView: UIView,UITableViewDelegate,UITableViewDataSource {
     }();
 
     
+
+    
+    
+    
     let menuArray = [
-                     ["icon":"icon_menu_refresh","name":"刷  新"],
-                     ["icon":"icon_menu_share","name":"分  享"],
-                     ["icon":"icon_menu_setting","name":"设  置"]
+                     ["icon":"icon_menu_refresh","name":BLocalizedString(key: "Refresh")],
+                     ["icon":"icon_menu_share","name":BLocalizedString(key: "Share")],
+                     ["icon":"icon_menu_setting","name":BLocalizedString(key: "Setting")]
                     ];
     
 
@@ -77,8 +83,11 @@ class RightMenuView: UIView,UITableViewDelegate,UITableViewDataSource {
 
         contentView.layer.cornerRadius = contentCornerRadius;
         contentView.backgroundColor = UIColor.white;
+//        contentView.setTintColor(.background);
+//        arrowView.setTintColor(.background);
         self.addSubview(arrowView);
         self.addSubview(contentView);
+//
         contentView .addSubview(tableView);
         
     }
@@ -108,7 +117,8 @@ class RightMenuView: UIView,UITableViewDelegate,UITableViewDataSource {
         
         cell = RightMenuViewTableViewCell(style: .default, reuseIdentifier:"cell");
         
-        cell?.iconImageView?.image = UIImage.init(named: menuArray[indexPath.row]["icon"]!)
+        cell?.iconImageView?.image = UIImage.init(named: menuArray[indexPath.row]["icon"]!)?.withRenderingMode(.alwaysTemplate);
+        cell?.iconImageView?.setTintColor(.primary);
         cell?.nameLable?.text = menuArray[indexPath.row]["name"];
         //        cell?.textLabel?.font = UIFont.systemFont(ofSize: 13);
         

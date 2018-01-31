@@ -16,6 +16,12 @@
 "Font"="Font";
 "Theme"="Theme";
 
+
+"small"="small";
+"middle"="middle";
+"large"="large";
+
+
 "ThemeWhite"="White";
 "ThemeBlack"="Dark";
 "ThemeBlue"="Blue";

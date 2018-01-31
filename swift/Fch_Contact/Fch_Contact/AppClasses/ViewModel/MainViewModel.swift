@@ -91,38 +91,6 @@ class MainViewModel: NSObject {
             sections.append(SectionModel<String, PersonModel>.init(model: item.key, items: item.value));
         }
         
-        
-        
-        
-        
-       
-            
-        
-        
-        
-        
-        
-//        var sections2:[SectionModel<String,PersonModel>] =  [];
-//        for  model in persons{
-//            let firstUInt8 = UInt8(pinyinFirstLetter((model.column1 as NSString).character(at: 0)))
-//            let firstString =  String(Character( UnicodeScalar(firstUInt8)));
-//            let hasContains =  sections.contains(where: { (sectionModel) -> Bool in
-//                return sectionModel.model == firstString;
-//            });
-//
-//            if !hasContains{
-//                var itemArray1:[PersonModel] = [];
-//                itemArray1.append(model);
-//                let section = SectionModel.init(model: firstString, items:itemArray1)
-//                sections2.append(section);
-////                sections.app
-//            }else{
-//
-////                sections2[]
-//            }
-//        }
-        
-        
         return sections;
        });
     }

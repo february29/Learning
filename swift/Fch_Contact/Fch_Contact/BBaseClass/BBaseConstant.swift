@@ -13,7 +13,17 @@ let BSCREENW = UIScreen.main.bounds.size.width
 /// 屏幕的高
 let BSCREENH = UIScreen.main.bounds.size.height
 
+let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
 
+let isPad = UIDevice.current.userInterfaceIdiom == .pad
+let isPhone = UIDevice.current.userInterfaceIdiom == .phone
+
+let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first ?? ""
+
+let tempFolderPath = documentPath + "/temp"
+
+
+/// 通知
 let relodDataNotificationName =  NSNotification.Name("fch_contact_reloadData")
 
 let showAllDataNotificationName =  NSNotification.Name("fch_contact_showAllData")

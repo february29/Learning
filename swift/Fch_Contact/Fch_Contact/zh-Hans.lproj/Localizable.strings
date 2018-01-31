@@ -16,6 +16,11 @@
 "Font"="字体";
 "Theme"="主题";
 
+"small"="小";
+"middle"="中";
+"large"="大";
+
+
 "ThemeWhite"="简洁白";
 "ThemeBlack"="高端黑";
 "ThemeBlue"="清新蓝";

@@ -16,7 +16,7 @@ import SnapKit
 class BBaseViewController: UIViewController {
 
     
-    var leftBtn:UIButton?;
+//    var leftBtn:UIButton?;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +27,9 @@ class BBaseViewController: UIViewController {
 //        self.navigationController?.navigationBar.isTranslucent = true;
         
         //左侧按钮
-        let leftImage = UIImage(named: "btn_top_menu")
-        leftBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 44));
-        leftBtn!.addTarget(self, action: #selector(BBaseViewController.back), for:.touchUpInside)
-        leftBtn!.setImage(leftImage, for: .normal);
-        leftBtn!.contentHorizontalAlignment = .left;
-//        leftBtn.contentMode = .left;
-//        leftBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-        let leftBtnItem = UIBarButtonItem.init(customView: leftBtn!);
+
+        let leftBtnItem = UIBarButtonItem(image: #imageLiteral(resourceName: "btn_top_back"), style: .plain, target: self, action: #selector(BBaseViewController.back));
+        leftBtnItem.setTintColor(.navBarBtn);
         self.navigationItem.leftBarButtonItem = leftBtnItem;
         
         

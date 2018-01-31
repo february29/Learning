@@ -38,6 +38,7 @@ class FontTableViewCell: BBaseTableViewCell {
         //
         //        coloumLable1?.lineBreakMode = .byCharWrapping;
         //        coloumLable1?.sizeToFit();
+        coloumLable1?.setTextColor(.primary);
         self.contentView.addSubview(coloumLable1!);
         coloumLable1?.snp.makeConstraints({ (make) in
             make.top.equalTo(self.contentView);
@@ -47,7 +48,7 @@ class FontTableViewCell: BBaseTableViewCell {
             
         });
         
-        self.contentView.backgroundColor = UIColor.white;
+//self.contentView.backgroundColor = UIColor.white;
         
         
         

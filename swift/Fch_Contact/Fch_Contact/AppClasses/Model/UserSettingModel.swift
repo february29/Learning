@@ -12,17 +12,19 @@ class UserSettingModel: HandyJSON {
 
     required init() {
         
-        fontSize = 13.0
-        
-        
+        fontSize = .middle;
+        fontName = "";
+        theme = Theme.white;
         
         
         
         
     }
     
-    var fontSize : CGFloat!
+    var fontSize :FontSize
     var fontName : NSString!
+    var theme :Theme!
+    
     
     
 }

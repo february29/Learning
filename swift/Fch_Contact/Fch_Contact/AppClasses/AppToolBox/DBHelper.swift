@@ -10,9 +10,6 @@ import Foundation
 import FMDB
 
 let personTableName = "t_person";
-
-
-
 let deptTableName = "t_dept";
 
 

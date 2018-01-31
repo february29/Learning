@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Fch_Contact/AppClasses/AppToolBox/DBHelper.swift"
-            timestampString = "534674690.530753"
+            timestampString = "539084001.562986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "getPersonsFromDB(deptId:)"
             landmarkType = "7">
          </BreakpointContent>

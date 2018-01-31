@@ -64,7 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setup() {
         
-        ColorCenter.shared.theme = .white;
+        let setting =  UserDefaults.standard.getUserSettingModel()
+        ColorCenter.shared.theme = setting.theme;
+        FontCenter.shared.fontSize = setting.fontSize;
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

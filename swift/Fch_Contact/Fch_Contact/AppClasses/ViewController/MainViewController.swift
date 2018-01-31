@@ -26,6 +26,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         table.showsHorizontalScrollIndicator = false;
         table.estimatedRowHeight = 30;
         table.delegate = self;
+        table.setBackgroundColor(.tableBackground);
+        table.setSeparatorColor(.primary);
         table.register(MainTableViewCell.self, forCellReuseIdentifier: "cell")
         table.rowHeight = UITableViewAutomaticDimension;
         table.tableFooterView = UIView();
@@ -113,15 +115,14 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         self.title = BLocalizedString(key: "FCHContact")
         self.navigationController?.isNavigationBarHidden = false;
         
+        let leftBtnItem = UIBarButtonItem(image: #imageLiteral(resourceName: "btn_top_menu"), style: .plain, target: self, action: #selector(BBaseViewController.back));
+        leftBtnItem.setTintColor(.navBarBtn);
+        self.navigationItem.leftBarButtonItem = leftBtnItem;
+        
         //右侧按钮
-        let rightImage = UIImage(named: "btn_top_pop")
-        let rightBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 44));
-        rightBtn.addTarget(self, action: #selector(MainViewController.showRightMenu), for:.touchUpInside)
-        rightBtn.setImage(rightImage, for: .normal);
-        rightBtn.contentHorizontalAlignment = .right;
-        //        leftBtn.contentMode = .left;
-        //        leftBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-        let rightBtnItem = UIBarButtonItem.init(customView: rightBtn);
+
+        let rightBtnItem = UIBarButtonItem(image: #imageLiteral(resourceName: "btn_top_add"), style: .plain, target: self, action: #selector(MainViewController.showRightMenu))
+        rightBtnItem.setTintColor(.navBarBtn);
         self.navigationItem.rightBarButtonItem = rightBtnItem;
         
         
@@ -175,6 +176,12 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         
     }
     
+//    //状态栏黑色
+//    override var preferredStatusBarStyle: UIStatusBarStyle{
+//        return UIStatusBarStyle.default;
+//    }
+    
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);
         NotificationCenter.default.removeObserver(self);
@@ -202,6 +209,10 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if dataSource.sectionModels.count<2 {
+            return 0;
+        }
+        
         return 25;
     }
 
@@ -219,8 +230,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     
     @objc func showRightMenu() {
         
-        BAlert.sharedInstance.show(view: menuView, showHandler: { (view) in
-            
+        
+        BAlert.sharedInstance.show(view: menuView, config: nil, showHandler: { (view, config) in
             // 显示动画
             let animation1 = CABasicAnimation(keyPath: "position.y");
             animation1.fromValue = view.frame.origin.y;
@@ -231,7 +242,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             animation2.fromValue = view.frame.origin.x+view.frame.width;
             animation2.toValue = view.centerX;
             animation2.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn);
-           
+            
             
             let animation3 = CABasicAnimation(keyPath: "transform.scale");
             animation3.fromValue = 0;
@@ -239,14 +250,13 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             animation3.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn);
             
             let animations = CAAnimationGroup();
-            animations.duration = BAlert.sharedInstance.b_AnimationTime;
+            animations.duration = config.b_AnimationTime!;
             animation2.fillMode = kCAFillModeForwards;
             animation2.isRemovedOnCompletion = false;
             animations.animations = [animation1,animation2,animation3];
-            
             view.layer.add(animations, forKey: "startAn");
-        }) { (view) in
-            // 显示动画
+        }) { (view, config) in
+            // 隐藏动画
             let animation1 = CABasicAnimation(keyPath: "position.y");
             animation1.fromValue = view.centerY;
             animation1.toValue = view.frame.origin.y;
@@ -263,13 +273,16 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             animation3.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn);
             
             let animations = CAAnimationGroup();
-            animations.duration = BAlert.sharedInstance.b_AnimationTime;
+            animations.duration = config.b_AnimationTime!;
             animation2.fillMode = kCAFillModeForwards;
             animation2.isRemovedOnCompletion = false;
             animations.animations = [animation1,animation2,animation3];
             
             view.layer.add(animations, forKey: "hideAn");
-        }
+        };
+        
+        
+       
     }
     
     // MARK: 网络请求

@@ -12,7 +12,7 @@ class LeftDeptTableViewCell: BBaseTableViewCell {
 
     
     var coloumLable1:UILabel?;
-    let lineView = UIImageView();
+//    let lineView = UIImageView();
     
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -22,30 +22,26 @@ class LeftDeptTableViewCell: BBaseTableViewCell {
         self.backgroundColor = UIColor.clear;
 //        self.contentView.backgroundColor = UIColor.clear;
        
-        lineView.image = UIImage.init(named: "bg_menu_item");
-        self.contentView.addSubview(lineView);
-        lineView.snp.makeConstraints { (make) in
-            make.bottom.left.right.equalTo(self.contentView);
-            make.height.equalTo(0.5);
-        }
+//        lineView.image = UIImage.init(named: "bg_menu_item")!.withRenderingMode(.alwaysTemplate);
+//        lineView.setTintColor(.primary);
+//        self.contentView.addSubview(lineView);
+//        lineView.snp.makeConstraints { (make) in
+//            make.bottom.left.right.equalTo(self.contentView);
+//            make.height.equalTo(0.5);
+//        }
 
-        self.selectedBackgroundView = UIImageView(image: UIImage.init(named: "bg_menu_head"));
+//        self.selectedBackgroundView = UIImageView(image: UIImage.init(named: "bg_menu_head"));
         
         
         coloumLable1 = UILabel();
-        coloumLable1?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
-        coloumLable1?.textColor = UIColor.black;
-        coloumLable1?.textColor = UIColor.white;
-//        coloumLable1?.numberOfLines = 0;
-//
-//        coloumLable1?.lineBreakMode = .byCharWrapping;
-//        coloumLable1?.sizeToFit();
+        coloumLable1?.setTextFontSize(type: .primary);
+        coloumLable1?.setTextColor(.primary);
         self.contentView.addSubview(coloumLable1!);
         coloumLable1?.snp.makeConstraints({ (make) in
             make.top.equalTo(self.contentView);
             make.left.equalTo(self.contentView).offset(15);
             make.right.equalTo(self.contentView).offset(-15);
-            make.bottom.equalTo(lineView.snp.top);
+            make.bottom.equalTo(self.contentView.snp.bottom);
             make.height.greaterThanOrEqualTo(35);
         });
         
@@ -66,7 +62,11 @@ class LeftDeptTableViewCell: BBaseTableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
  
-        self.selectedBackgroundView = UIImageView(image: UIImage.init(named: "bg_menu_head"));
+        
+        let view = UIImageView();
+        view.image =  UIImage.init(named: "bg_menu_head")?.withRenderingMode(.alwaysTemplate);
+        view.setTintColor(.selectedCell)
+        self.selectedBackgroundView = view;
         // Configure the view for the selected state
     }
 

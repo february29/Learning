@@ -34,17 +34,28 @@ class LeftMenuViewController: BBaseViewController,UITableViewDelegate {
     let disposeBag = DisposeBag();
     
     
-    lazy var topbgImageView:UIImageView = {
-        let bg = UIImageView();
-        bg.image = UIImage.init(named: "bg_menu_head");
+//    lazy var topbgImageView:UIImageView = {
+//        let bg = UIImageView();
+//        let image = UIImage.init(named: "bg_menu_head");
+//        bg.image = image?.withRenderingMode(.alwaysTemplate);
+//        bg.setTintColor(.navBar);
+//        return bg;
+//    }();
+    
+    lazy var topLineView:UIView = {
+        let bg = UIView();
+        
+        bg.setBackgroundColor(.primary);
         return bg;
     }();
     
     lazy var topBtn:UIButton = {
         let btn = UIButton();
         btn.setTitle("公司架构", for: .normal);
-        btn.titleLabel?.font = UIFont.systemFont(ofSize: 18);
-        btn.setTitleColor(UIColor.white, for: .normal);
+        btn.titleLabel?.setTextFontSize(type: .navBarTitle);
+//        btn.titleLabel?.font = UIFont.systemFont(ofSize: 18);
+//        btn.setTitleColor(UIColor.white, for: .normal);
+        btn.setTitleColor(.navBarBtn);
         let selector = #selector(self.cancelSelected);
         btn.addTarget(self, action: selector, for: .touchUpInside)
         return btn;
@@ -55,18 +66,21 @@ class LeftMenuViewController: BBaseViewController,UITableViewDelegate {
         NotificationCenter.default.post(name: showAllDataNotificationName, object: nil);
     }
     
-    lazy var bgImageView:UIImageView = {
-        let bg = UIImageView(image:UIImage(named:"bg_memu"));
-        return bg;
-    }();
+//    lazy var bgImageView:UIImageView = {
+//        let bg = UIImageView();
+//        bg.image = UIImage(named:"bg_memu")?.withRenderingMode(.alwaysTemplate);
+//        bg.setTintColor(.leftTableBackground);
+//        return bg;
+//    }();
     lazy var tableView:UITableView = {
         let table = UITableView();
         table.showsVerticalScrollIndicator = false;
         table.showsHorizontalScrollIndicator = false;
         table.estimatedRowHeight = 30;
         table.delegate = self;
-        table.separatorStyle = .none;
-        table.backgroundColor = UIColor.clear;
+//        table.backgroundColor = UIColor.clear;
+        table.setBackgroundColor(.tableBackground);
+        table.setSeparatorColor(.primary);
         table.register(LeftDeptTableViewCell.self, forCellReuseIdentifier: "LeftDeptTableViewCell")
         table.rowHeight = UITableViewAutomaticDimension;
         table.tableFooterView = UIView();
@@ -87,35 +101,50 @@ class LeftMenuViewController: BBaseViewController,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad();
        
-        self.view.addSubview(self.bgImageView);
-        bgImageView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self.view);
-        }
+        self.view.setBackgroundColor(.navBar);
+//        self.view.addSubview(self.bgImageView);
+//        bgImageView.snp.makeConstraints { (make) in
+//            make.edges.equalTo(self.view);
+//        }
+
+//        self.view.addSubview(self.topbgImageView);
+//        topbgImageView.snp.makeConstraints { (make) in
+//            if UIDevice.isIPhoneX(){
+//                make.top.equalTo(self.view).offset(44);
+//            }else{
+//                make.top.equalTo(self.view).offset(20);
+//            }
+//            make.left.equalTo(self.view);
+//            make.height.equalTo(44);
+//            make.width.equalTo(120);
+//
+//        }
         
-        self.view.addSubview(self.topbgImageView);
-        topbgImageView.snp.makeConstraints { (make) in
+        self.view.addSubview(self.topBtn);
+        topBtn.snp.makeConstraints { (make) in
             if UIDevice.isIPhoneX(){
                 make.top.equalTo(self.view).offset(44);
             }else{
                 make.top.equalTo(self.view).offset(20);
             }
-            
+
             make.left.equalTo(self.view);
             make.height.equalTo(44);
-            make.width.equalTo(120);
-            
+//            make.width.equalTo(120);
+            make.width.equalTo(110);
         }
         
-        self.view.addSubview(self.topBtn);
-        topBtn.snp.makeConstraints { (make) in
-            make.top.left.bottom.equalTo(self.topbgImageView);
-            make.width.equalTo(110);
+        self.view.addSubview(topLineView)
+        topLineView.snp.makeConstraints { (make) in
+            make.top.equalTo(topBtn.snp.bottom)
+            make.left.right.equalTo(topBtn);
+            make.height.equalTo(0.25);
         }
         
         self.view.addSubview(tableView);
         tableView.snp.makeConstraints { (make) in
             make.bottom.left.right.equalTo(self.view);
-            make.top.equalTo(topbgImageView.snp.bottom);
+            make.top.equalTo(topLineView.snp.bottom);
         }
         
         
@@ -134,6 +163,9 @@ class LeftMenuViewController: BBaseViewController,UITableViewDelegate {
             
         }
     }
+    
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated);

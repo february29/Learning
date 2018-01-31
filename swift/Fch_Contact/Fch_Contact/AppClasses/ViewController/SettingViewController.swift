@@ -22,8 +22,9 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
         table.delegate = self;
         table.register(SettingTableViewCell.self, forCellReuseIdentifier: "cell")
         table.rowHeight = UITableViewAutomaticDimension;
-//        table.separatorStyle = .none;
-        table.backgroundColor  = BGlobalGrayColor();
+
+        table.setSeparatorColor(.primary);
+        table.setBackgroundColor(.tableBackground);
         table.tableFooterView = UIView();
 //        table.mj_header = MJRefreshNormalHeader(refreshingBlock: {
 //
@@ -57,7 +58,8 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = BLocalizedString(key: "Setting");
-        leftBtn?.setImage(UIImage.init(named: "btn_top_back"), for: .normal);
+        
+        
         self.view.addSubview(self.tableView);
         tableView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view);
@@ -104,6 +106,8 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
         let sectionHead = UILabel();
         sectionHead.backgroundColor = BGlobalGrayColor();
         sectionHead.textColor = BGlobalRedColor();
+        sectionHead.setTextColor(.primary);
+        sectionHead.setTextFontSize(type: .senondary);
         sectionHead.text = data.model;
         return sectionHead;
     }

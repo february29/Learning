@@ -9,39 +9,12 @@
 import UIKit
 
 
-typealias BAlertHandler = (_ view:UIView)->Void;
+typealias BAlertHandler = (_ view:UIView,_ config:BAlertConfig)->Void;
 
 extension UIView{
     
     
-//    private struct AssociatedKeys {
-//        static var b_showHandler:BAlertHandler?
-//        static var b_hideHandler:BAlertHandler?
-//    }
-//
-//    var b_showHandler: BAlertHandler? {
-//        get {
-//            return objc_getAssociatedObject(self, &AssociatedKeys.b_showHandler) as? BAlertHandler
-//        }
-//        set {
-//            if let newValue = newValue {
-//                objc_setAssociatedObject(self, &AssociatedKeys.b_showHandler, newValue as BAlertHandler?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-//            }
-//        }
-//    }
-//
-//    var b_hideHandler: BAlertHandler? {
-//        get {
-//            return objc_getAssociatedObject(self, &AssociatedKeys.b_hideHandler) as? BAlertHandler
-//        }
-//        set {
-//            if let newValue = newValue {
-//                objc_setAssociatedObject(self, &AssociatedKeys.b_hideHandler, newValue as BAlertHandler?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-//            }
-//        }
-//    }
-//
-    
+
     struct BRuntimeKey {
         static let b_showHandler = UnsafeRawPointer.init(bitPattern: "b_showHandler".hashValue);
         static let b_hideHandler = UnsafeRawPointer.init(bitPattern: "b_hideHandler".hashValue);
@@ -70,8 +43,91 @@ extension UIView{
     
     
     
-//    var b_showHandler:BAlertHandler?
-//    var b_hideHandler:BAlertHandler?
+    
+    /// x
+    var bAlert_x: CGFloat {
+        get {
+            return frame.origin.x
+        }
+        set(newValue) {
+            var tempFrame: CGRect = frame
+            tempFrame.origin.x    = newValue
+            frame                 = tempFrame
+        }
+    }
+    
+    /// y
+    var bAlert_y: CGFloat {
+        get {
+            return frame.origin.y
+        }
+        set(newValue) {
+            var tempFrame: CGRect = frame
+            tempFrame.origin.y    = newValue
+            frame                 = tempFrame
+        }
+    }
+    
+    /// height
+    var bAlert_height: CGFloat {
+        get {
+            return frame.size.height
+        }
+        set(newValue) {
+            var tempFrame: CGRect = frame
+            tempFrame.size.height = newValue
+            frame                 = tempFrame
+        }
+    }
+    
+    /// width
+    var bAlert_width: CGFloat {
+        get {
+            return frame.size.width
+        }
+        set(newValue) {
+            var tempFrame: CGRect = frame
+            tempFrame.size.width = newValue
+            frame = tempFrame
+        }
+    }
+    
+    /// size
+    var bAlert_size: CGSize {
+        get {
+            return frame.size
+        }
+        set(newValue) {
+            var tempFrame: CGRect = frame
+            tempFrame.size = newValue
+            frame = tempFrame
+        }
+    }
+    
+    /// centerX
+    var bAlert_centerX: CGFloat {
+        get {
+            return center.x
+        }
+        set(newValue) {
+            var tempCenter: CGPoint = center
+            tempCenter.x = newValue
+            center = tempCenter
+        }
+    }
+    
+    /// centerY
+    var bAlert_centerY: CGFloat {
+        get {
+            return center.y
+        }
+        set(newValue) {
+            var tempCenter: CGPoint = center
+            tempCenter.y = newValue
+            center = tempCenter;
+        }
+    }
+
     
     
     
