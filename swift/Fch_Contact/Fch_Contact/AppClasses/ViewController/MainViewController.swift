@@ -28,6 +28,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         table.delegate = self;
         table.setBackgroundColor(.tableBackground);
         table.setSeparatorColor(.primary);
+        table.setSectionIndexColor(.primary);
+//        table.sectionIndexMinimumDisplayRowCount = 2;
         table.register(MainTableViewCell.self, forCellReuseIdentifier: "cell")
         table.rowHeight = UITableViewAutomaticDimension;
         table.tableFooterView = UIView();
@@ -81,10 +83,24 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         cell.coloumLable4?.text = item.column4;
         cell.coloumLable5?.text = item.column5;
         return cell;
-    },titleForHeaderInSection: { dataSource, index in
-        let section = dataSource[index];
+    },titleForHeaderInSection: { dataSource, section in
+        let section = dataSource[section];
         return section.model;
+    },sectionIndexTitles:{ds in
+        //索引
+        if ds.sectionModels.count<2 {
+            return nil;
+        }
+        
+        return ds.sectionModels.map({ (model) -> String in
+            model.model;
+        });
+    },sectionForSectionIndexTitle:{ds,title,index in
+        //索引点击
+        return index;
     })
+    
+   
     
     
 //    let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, PersonModel>>(configureCell: { ds, tv, ip, item in
@@ -215,6 +231,18 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         
         return 25;
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let data = dataSource[section];
+        let sectionHead = UILabel();
+        sectionHead.setBackgroundColor(.secondary);
+        sectionHead.setTextColor(.primary);
+        sectionHead.setTextFontSize(type: .senondary);
+        sectionHead.text = "   \(data.model)";
+        return sectionHead;
+    }
+    
+    
 
     
     // MARK: 左侧菜单代理
@@ -230,10 +258,10 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     
     @objc func showRightMenu() {
         
-        let config = BAlertConfig()
-        config.b_AnimationTime = 5;
+//        let config = BAlertConfig()
+//        config.b_AnimationTime = 5;
         
-        BAlert.sharedInstance.show(view: menuView, config: config, showHandler: { (view, config) in
+        BAlert.sharedInstance.show(view: menuView, config: nil, showHandler: { (view, config) in
             // 显示动画
             let animation1 = CABasicAnimation(keyPath: "position.y");
             animation1.fromValue = view.frame.origin.y;
@@ -498,7 +526,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     override func back() {
         let sliderVC = self.sliderVC();
         
-        if  sliderVC.state == .Open{
+        if  sliderVC.state == .OpenLeft{
             self.sliderVC().hideLeftMenu();
         }else if sliderVC.state == .Close{
             self.sliderVC().showLeftMenu();

@@ -44,7 +44,7 @@ class MainTableViewCell: BBaseTableViewCell {
             make.left.equalTo(self.contentView);
             make.centerY.equalTo(self.contentView);
             make.height.greaterThanOrEqualTo(35);
-            make.width.equalTo(BSCREENW/5);
+            make.width.equalTo(BSCREENW/5-20);
         });
         
         coloumLable2 = UILabel();
@@ -58,7 +58,7 @@ class MainTableViewCell: BBaseTableViewCell {
             make.left.equalTo(coloumLable1!.snp.right);
             make.centerY.equalTo(self.contentView);
             make.height.greaterThanOrEqualTo(h);
-            make.width.equalTo(BSCREENW/5);
+            make.width.equalTo(BSCREENW/5+15);
         });
         
         coloumLable3 = UILabel();
@@ -72,7 +72,7 @@ class MainTableViewCell: BBaseTableViewCell {
             make.left.equalTo(coloumLable2!.snp.right);
             make.centerY.equalTo(self.contentView);
             make.height.greaterThanOrEqualTo(h);
-            make.width.equalTo(BSCREENW/5);
+            make.width.equalTo(BSCREENW/5+15);
         });
         
         
@@ -89,7 +89,7 @@ class MainTableViewCell: BBaseTableViewCell {
             make.left.equalTo(coloumLable3!.snp.right);
             make.centerY.equalTo(self.contentView);
             make.height.greaterThanOrEqualTo(h);
-            make.width.equalTo(BSCREENW/5);
+            make.width.equalTo(BSCREENW/5-25);
         });
         
         coloumLable5 = UILabel();
@@ -103,7 +103,7 @@ class MainTableViewCell: BBaseTableViewCell {
             make.left.equalTo(coloumLable4!.snp.right)
             make.centerY.equalTo(self.contentView);
             make.height.greaterThanOrEqualTo(h);
-            make.width.equalTo(BSCREENW/5);
+            make.width.equalTo(BSCREENW/5+15);
         });
         
         coloumLable1?.textAlignment = .center;

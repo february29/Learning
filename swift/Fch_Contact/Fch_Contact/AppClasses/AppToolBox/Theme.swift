@@ -29,9 +29,9 @@ enum ThemeColorType {
     case navBarBtn//导航栏按钮颜色
     case background//view背景
     case tableBackground//主列表背景
-    case leftTableBackground//菜单列表背景
+    case leftTableBackground//菜单列表背景 暂时未用
     case primary//lable buttom等
-    case secondary
+    case secondary//tablesection
     case selectedCell
 }
 
@@ -56,8 +56,8 @@ extension Theme {
                     rgb("ffffff")!,
                     UIColor.white,
                     rgba("333333", 0.8)!,
-                    rgba("333333", 0.8)!,
-                    rgba("333333", 0.5)!]
+                    rgba("222222", 0.8)!,
+                    BRGBColor(r: 236, g: 236, b: 236, a:1)]
         case .black:
             return [rgb("313231")!,
                     rgb("cccccc")!,
@@ -66,7 +66,7 @@ extension Theme {
                     rgb("333333")!,
                     rgba("313231", 0.8)!,
                     rgba("cccccc", 0.8)!,
-                    rgba("cccccc", 0.5)!]
+                    rgba("222222", 1)!]
         case .blue:
             return [rgb("0291D4")!,
                     rgb("ffffff")!,
@@ -75,7 +75,7 @@ extension Theme {
                     UIColor.white,
                     rgba("0291D4", 0.8)!,
                     rgba("0291D4", 0.8)!,
-                    rgba("0291D4", 0.5)!]
+                    BRGBColor(r: 236, g: 236, b: 236, a:1)]
         case .purple:
             return [rgb("6c16c7")!,
                     rgb("ffffff")!,
@@ -84,7 +84,7 @@ extension Theme {
                     UIColor.white,
                     rgba("6c16c7", 0.8)!,
                     rgba("6c16c7", 0.8)!,
-                    rgba("6c16c7", 0.5)!]
+                    BRGBColor(r: 236, g: 236, b: 236, a:1)]
         case .red:
             return [rgb("D2373B")!,
                     rgb("ffffff")!,rgb("ffffff")!,
@@ -92,7 +92,7 @@ extension Theme {
                     UIColor.white,
                     rgba("D2373B", 0.8)!,
                     rgba("D2373B", 0.8)!,
-                    rgba("D2373B", 0.5)!]
+                    BRGBColor(r: 236, g: 236, b: 236, a:1)]
         case .green:
             return [rgb("01BD70")!,
                     rgb("ffffff")!,
@@ -101,7 +101,7 @@ extension Theme {
                     UIColor.white,
                     rgba("333333", 0.8)!,
                     rgba("01BD70", 0.8)!,
-                    rgba("01BD70", 0.5)!]
+                    BRGBColor(r: 236, g: 236, b: 236, a:1)]
         case .pink:
             return [rgb("E52D7C")!,
                     rgb("ffffff")!,
@@ -110,7 +110,7 @@ extension Theme {
                     UIColor.white,
                     rgba("333333", 0.8)!,
                     rgba("E52D7C", 0.8)!,
-                    rgba("E52D7C", 0.5)!]
+                    BRGBColor(r: 236, g: 236, b: 236, a:1)]
         }
     }
     
@@ -265,11 +265,17 @@ extension UITableView {
         self.separatorColor = color.withAlphaComponent(0.1);
         })
         
-
+    }
+    
+    func setSectionIndexColor(_ color: ThemeColorType) {
         
-//        _ = ColorCenter.shared.colorVariable(with: color).asObservable().takeUntil(rx.deallocated).subscribe(onNext: { [unowned self](color) in
-//            self.separatorColor = color * 0.1
-//        })
+        
+        _ = ColorCenter.shared.colorVariable(with: color).asObservable().takeUntil(rx.deallocated).subscribe(onNext: { [unowned self](color) in
+            
+            
+            self.sectionIndexColor = color;
+        })
+        
     }
 }
 

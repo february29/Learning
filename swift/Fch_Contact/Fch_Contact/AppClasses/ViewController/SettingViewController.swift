@@ -104,8 +104,7 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let data = dataSource[section];
         let sectionHead = UILabel();
-        sectionHead.backgroundColor = BGlobalGrayColor();
-        sectionHead.textColor = BGlobalRedColor();
+        sectionHead.setBackgroundColor(.secondary);
         sectionHead.setTextColor(.primary);
         sectionHead.setTextFontSize(type: .senondary);
         sectionHead.text = data.model;
