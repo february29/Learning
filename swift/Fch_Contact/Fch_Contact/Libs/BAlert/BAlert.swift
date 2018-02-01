@@ -119,11 +119,14 @@ class BAlert {
         UIView.animate(withDuration: (nowConfig?.b_AnimationTime)!, animations: {
             self.alertWindow.backBtn.alpha = 0;
         }) { (over) in
+            UIApplication.shared.delegate?.window??.makeKeyAndVisible();
             for (_, view) in self.viewArrays.enumerated(){
+//                view.alpha = 0;
                 view .removeFromSuperview();
+                
             }
             self.viewArrays.removeAll();
-            UIApplication.shared.delegate?.window??.makeKeyAndVisible();
+           
             if finishedHandle != nil{
                 finishedHandle!();
             }
@@ -149,8 +152,8 @@ class BAlert {
             UIView.animate(withDuration: (nowConfig?.b_AnimationTime)!, animations: {
                 self.alertWindow.backBtn.alpha = 0;
             }) { (over) in
-                view.removeFromSuperview();
                 UIApplication.shared.delegate?.window??.makeKeyAndVisible();
+                view.removeFromSuperview();
                 if finishedHandle != nil{
                     finishedHandle!();
                 }

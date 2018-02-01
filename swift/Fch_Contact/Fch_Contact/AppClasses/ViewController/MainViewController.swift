@@ -230,8 +230,10 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     
     @objc func showRightMenu() {
         
+        let config = BAlertConfig()
+        config.b_AnimationTime = 5;
         
-        BAlert.sharedInstance.show(view: menuView, config: nil, showHandler: { (view, config) in
+        BAlert.sharedInstance.show(view: menuView, config: config, showHandler: { (view, config) in
             // 显示动画
             let animation1 = CABasicAnimation(keyPath: "position.y");
             animation1.fromValue = view.frame.origin.y;
