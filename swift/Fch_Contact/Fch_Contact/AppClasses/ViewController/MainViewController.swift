@@ -25,13 +25,15 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         table.showsVerticalScrollIndicator = false;
         table.showsHorizontalScrollIndicator = false;
         table.estimatedRowHeight = 30;
+        table.rowHeight = UITableViewAutomaticDimension;
         table.delegate = self;
         table.setBackgroundColor(.tableBackground);
         table.setSeparatorColor(.primary);
         table.setSectionIndexColor(.primary);
 //        table.sectionIndexMinimumDisplayRowCount = 2;
+        table.sectionIndexBackgroundColor = UIColor.clear;
         table.register(MainTableViewCell.self, forCellReuseIdentifier: "cell")
-        table.rowHeight = UITableViewAutomaticDimension;
+        
         table.tableFooterView = UIView();
         table.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             
@@ -60,7 +62,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             if idx == 0 {
                 
                 BAlert.sharedInstance.hide(view: menuView);
-                self.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!,showHud: false,finshedHandler: { (isSuccess) in
+                self.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!,showHud: true,finshedHandler: { (isSuccess) in
                     
                 })
             }else if idx == 1 {
@@ -99,24 +101,6 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         //索引点击
         return index;
     })
-    
-   
-    
-    
-//    let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, PersonModel>>(configureCell: { ds, tv, ip, item in
-//        let cell = tv.dequeueReusableCell(withIdentifier: "cell") as! MainTableViewCell;
-//        cell.coloumLable1?.text = item.column1;
-//        cell.coloumLable2?.text = item.column2;
-//        cell.coloumLable3?.text = item.column3;
-//        cell.coloumLable4?.text = item.column4;
-//        cell.coloumLable5?.text = item.column5;
-//        return cell;
-//    });
-    
-    
-
-
-    
     
    
     
@@ -456,7 +440,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         if let telBookModel = telBook {
            
             if showHud {
-                BHudView.showHud(in: self.view);
+                BHudView.showHud(in: self.navigationController?.view);
             }
             
             let fileName =  DBHelper.sharedInstance.getDBSaveName(telBook: telBookModel);
@@ -466,7 +450,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
                 print("\(progress.completedUnitCount)/\(progress.totalUnitCount)");
             }, toLocalPath: DBFileSavePath,fileName:fileName) { (response) in
                 if showHud {
-                    BHudView.hideHud(in: self.view);
+                    BHudView.hideHud(in: self.navigationController?.view);
                 }
                 if let data =  response.result.value {
                     print("文件下载成功:\(String(describing: DBFileSavePath))\(fileName)\\n size:\(data.count)");

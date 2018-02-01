@@ -116,20 +116,21 @@ class BAlert {
        
         
         self.alertWindow.backBtn.alpha = 1;
-        UIView.animate(withDuration: (nowConfig?.b_AnimationTime)!, animations: {
+        UIView.animate(withDuration: (nowConfig?.b_AnimationTime)!-0.1, animations: {
             self.alertWindow.backBtn.alpha = 0;
         }) { (over) in
+            
+            
             UIApplication.shared.delegate?.window??.makeKeyAndVisible();
             for (_, view) in self.viewArrays.enumerated(){
-//                view.alpha = 0;
                 view .removeFromSuperview();
-                
             }
             self.viewArrays.removeAll();
-           
+            
             if finishedHandle != nil{
                 finishedHandle!();
             }
+            
         }
     }
     
@@ -149,7 +150,7 @@ class BAlert {
         if hideWindow {
             // 如果需要隐藏window
             self.alertWindow.backBtn.alpha = 1;
-            UIView.animate(withDuration: (nowConfig?.b_AnimationTime)!, animations: {
+            UIView.animate(withDuration: (nowConfig?.b_AnimationTime)!-0.1, animations: {
                 self.alertWindow.backBtn.alpha = 0;
             }) { (over) in
                 UIApplication.shared.delegate?.window??.makeKeyAndVisible();

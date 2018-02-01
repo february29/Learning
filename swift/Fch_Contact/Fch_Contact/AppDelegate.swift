@@ -48,7 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let mainNV = BBaseNavigationViewController(rootViewController: mainVC)
             let leftMenuVC = LeftMenuViewController();
             leftMenuVC.menuSelectedDelegate = mainVC;
-            let sliderMenuVC = BSlideMenuViewController.init(mainViewController: mainNV, leftViewController: leftMenuVC, rightViewContoller: nil);
+            let rightVC = RightViewController();
+            let sliderMenuVC = BSlideMenuViewController.init(mainViewController: mainNV, leftViewController: leftMenuVC, rightViewContoller: rightVC);
             window?.rootViewController = sliderMenuVC;
         }else{
             let nv = BBaseNavigationViewController(rootViewController: rootVc);

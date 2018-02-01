@@ -262,7 +262,7 @@ extension UITableView {
        _ = ColorCenter.shared.colorVariable(with: color).asObservable().takeUntil(rx.deallocated).subscribe(onNext: { [unowned self](color) in
        
         
-        self.separatorColor = color.withAlphaComponent(0.1);
+        self.separatorColor = color.withAlphaComponent(0.25);
         })
         
     }

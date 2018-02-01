@@ -9,9 +9,10 @@
 import UIKit
 
 //侧滑菜单宽度
-let menuViewExpandedOffset: CGFloat = 110;
-let leftDragbleWidth:CGFloat = 150;
-let rightDragbleWidth:CGFloat = 150;
+let leftExpandedOffset: CGFloat = 110;
+let rightExpandedOffset: CGFloat = 250;
+let leftDragbleWidth:CGFloat = 200;
+let rightDragbleWidth:CGFloat = 200;
 
 
 //弹簧动画偏移量
@@ -61,10 +62,10 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
                 
             }else if state == BSliderState.OpenLeft
             {
-                nowPostionX = menuViewExpandedOffset;
+                nowPostionX = leftExpandedOffset;
             }else if state == BSliderState.OpenRight
             {
-                nowPostionX = -menuViewExpandedOffset;
+                nowPostionX = -rightExpandedOffset;
             }
         }
     }
@@ -91,7 +92,7 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
 //        _maskView.isHidden = true;
         
         _mainContainerView.layer.shadowColor = UIColor.black.cgColor;
-        _mainContainerView.layer.shadowOffset = CGSize(width: -3, height: 0);
+        _mainContainerView.layer.shadowOffset = CGSize(width: 0, height: 0);
         _mainContainerView.layer.shadowOpacity = 0.5;
        
 
@@ -124,6 +125,8 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
     }
     
     
+    // MARK: GestureRecognizer
+    
     @objc func handlePanGesture(recognizer: UIPanGestureRecognizer) {
         //偏移量
         let  offset = recognizer.translation(in: view).x;
@@ -132,10 +135,10 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
        
         
         var newPostionX =  nowPostionX + offset;
-        if newPostionX > menuViewExpandedOffset{
-            newPostionX = menuViewExpandedOffset;
-        }else if newPostionX < -menuViewExpandedOffset{
-            newPostionX = -menuViewExpandedOffset;
+        if newPostionX > leftExpandedOffset{
+            newPostionX = leftExpandedOffset;
+        }else if newPostionX < -rightExpandedOffset{
+            newPostionX = -rightExpandedOffset;
         }
         
         switch(recognizer.state) {
@@ -147,28 +150,28 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
             state = BSliderState.Sliding;
             moveViewToPosionX(postionX: newPostionX, animation: false);
         case .ended:
-            if abs(newPostionX)  > menuViewExpandedOffset/2{
+            if newPostionX  > leftExpandedOffset/2 || newPostionX < -rightExpandedOffset/2{
                 //超过一半，则展开
                 
                 if newPostionX > 0 {
                     //右滑，左侧展开
                     
-                    if  abs(newPostionX) < menuViewExpandedOffset{
+                    if  abs(newPostionX) < leftExpandedOffset{
                         // 结束时未超过展开值 做动画
-                        moveViewToPosionX(postionX:menuViewExpandedOffset, animation: true);
+                        moveViewToPosionX(postionX:leftExpandedOffset, animation: true);
                     }else{
                         // 结束时超过或等于展开值 不做动画
-                        moveViewToPosionX(postionX:menuViewExpandedOffset, animation: false);
+                        moveViewToPosionX(postionX:leftExpandedOffset, animation: false);
                     }
                     state = BSliderState.OpenLeft;
                     
                 }else{
                     //左滑，右侧展开
-                    nowPostionX = -menuViewExpandedOffset;
-                    if  abs(newPostionX)  < menuViewExpandedOffset{
-                        moveViewToPosionX(postionX:-menuViewExpandedOffset, animation: true);
+                    nowPostionX = -rightExpandedOffset;
+                    if  abs(newPostionX)  < rightExpandedOffset{
+                        moveViewToPosionX(postionX:-rightExpandedOffset, animation: true);
                     }else{
-                        moveViewToPosionX(postionX:-menuViewExpandedOffset, animation: false);
+                        moveViewToPosionX(postionX:-rightExpandedOffset, animation: false);
                     }
                     state = BSliderState.OpenRight;
                     
@@ -185,11 +188,59 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
         }
     }
     
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        
+        
+        
+        //        print("gestureRecognizerShouldBegin");
+        
+        // 防止进入多级界面后依然可以呼出侧滑菜单栏
+        
+        if  (mainVC?.isKind(of: UINavigationController.self))!{
+            if mainVC!.childViewControllers.count > 1{
+                return false;
+            }
+        }else{
+            for  contoller in (mainVC?.childViewControllers)!{
+                if contoller.isKind(of: UINavigationController.self){
+                    if contoller.childViewControllers.count > 1{
+                        return false;
+                    }
+                }
+            }
+        }
+        
+        
+        
+        // 判断点击拖动手势是否在允许拖动范围内
+        if gestureRecognizer.location(in: _mainContainerView).x < leftDragbleWidth {
+            if leftVC != nil{
+                return true;
+            }else{
+                return false;
+            }
+            
+        }
+        if gestureRecognizer.location(in: _mainContainerView).x > UIScreen.main.bounds.width - rightDragbleWidth {
+            if rigthVC != nil{
+                return true;
+            }else{
+                return false;
+            }
+            
+        }
+        
+        return false;
+        
+        
+    }
+
+    
     // MARK: BSliderMenuViewControllerProtocol
     
     func showLeftMenu() {
         if let _ = leftVC{
-            moveViewToPosionX(postionX: menuViewExpandedOffset, animation: true);
+            moveViewToPosionX(postionX: leftExpandedOffset, animation: true);
             self.state = .OpenLeft;
         }
     }
@@ -204,7 +255,7 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
     
     func showRightMenu() {
         if let _ = rigthVC{
-            moveViewToPosionX(postionX:-menuViewExpandedOffset, animation: true);
+            moveViewToPosionX(postionX:-rightExpandedOffset, animation: true);
             self.state = .OpenRight;
         }
     }
@@ -244,10 +295,10 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
         if animation {
             
            var springx:CGFloat;
-            if postionX == menuViewExpandedOffset{
-                springx = menuViewExpandedOffset + 5
-            }else if postionX == -menuViewExpandedOffset{
-                springx = -menuViewExpandedOffset - 5
+            if postionX == leftExpandedOffset{
+                springx = leftExpandedOffset + 5
+            }else if postionX == -rightExpandedOffset{
+                springx = -rightExpandedOffset - 5
             }else{
                 springx = 0
             }
@@ -282,52 +333,6 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
         _rightContainerView.isHidden = true;
     }
 
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        
-        
-    
-//        print("gestureRecognizerShouldBegin");
-        
-        // 防止进入多级界面后依然可以呼出侧滑菜单栏
-        
-        if  (mainVC?.isKind(of: UINavigationController.self))!{
-            if mainVC!.childViewControllers.count > 1{
-                return false;
-            }
-        }else{
-            for  contoller in (mainVC?.childViewControllers)!{
-                if contoller.isKind(of: UINavigationController.self){
-                    if contoller.childViewControllers.count > 1{
-                        return false;
-                    }
-                }
-            }
-        }
-        
-        
-        
-        // 判断点击拖动手势是否在允许拖动范围内
-        if gestureRecognizer.location(in: _mainContainerView).x < leftDragbleWidth {
-            if leftVC != nil{
-                return true;
-            }else{
-                return false;
-            }
-            
-        }
-        if gestureRecognizer.location(in: _mainContainerView).x > UIScreen.main.bounds.width - rightDragbleWidth {
-            if rigthVC != nil{
-                return true;
-            }else{
-                return false;
-            }
-            
-        }
-       
-        return false;
-        
-       
-    }
     
 
 }
