@@ -10,6 +10,130 @@ import Foundation
 
 
 extension String {
+    
+    
+    /// 是否为空或者只有空格会车
+    public var isBlank: Bool {
+        let trimmed = trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty
+    }
+    
+    
+    
+    /// 去除空格回车
+    public func trimmed() -> String {
+        return self.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+  
+    
+    /// 是否是数字
+    public func isNumber() -> Bool {
+        if let _ = NumberFormatter().number(from: self) {
+            return true
+        }
+        return false
+    }
+    
+    /// 转Int
+    public func toInt() -> Int? {
+        if let num = NumberFormatter().number(from: self) {
+            return num.intValue
+        } else {
+            return nil
+        }
+    }
+    
+    /// 转Double
+    public func toDouble() -> Double? {
+        if let num = NumberFormatter().number(from: self) {
+            return num.doubleValue
+        } else {
+            return nil
+        }
+    }
+    
+    /// 转Float
+    public func toFloat() -> Float? {
+        if let num = NumberFormatter().number(from: self) {
+            return num.floatValue
+        } else {
+            return nil
+        }
+    }
+    
+    /// 转Bool
+    public func toBool() -> Bool? {
+        let trimmedString = trimmed().lowercased()
+        if trimmedString == "true" || trimmedString == "false" {
+            return (trimmedString as NSString).boolValue
+        }
+        return nil
+    }
+    
+    
+    
+    /// 转NSString
+    public var toNSString: NSString { return self as NSString }
+    
+    #if os(iOS)
+    
+    /// 粗体NSAttributedString
+    public func bold(fontSize:CGFloat) -> NSAttributedString {
+        
+        let boldString = NSMutableAttributedString(string: self, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: fontSize)])
+        return boldString
+    }
+    
+    #endif
+    
+    /// 下划线NSAttributedString
+    public func underline() -> NSAttributedString {
+        let underlineString = NSAttributedString(string: self, attributes: [NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue])
+        return underlineString
+    }
+    
+    #if os(iOS)
+    
+    /// 斜体NSAttributedString
+    public func italic(fontSize:CGFloat) -> NSAttributedString {
+        let italicString = NSMutableAttributedString(string: self, attributes: [NSAttributedStringKey.font: UIFont.italicSystemFont(ofSize: fontSize)])
+        return italicString
+    }
+    
+    #endif
+    #if os(iOS) || os(tvOS)
+    /// 颜色NSAttributedString
+    public func color(_ color: UIColor) -> NSAttributedString {
+        let colorString = NSMutableAttributedString(string: self, attributes: [NSAttributedStringKey.foregroundColor: color])
+        return colorString
+    }
+    
+    /// 子字符颜色NSAttributedString
+    public func colorSubString(_ subString: String, color: UIColor) -> NSMutableAttributedString {
+        var start = 0
+        var ranges: [NSRange] = []
+        while true {
+            let range = (self as NSString).range(of: subString, options: NSString.CompareOptions.literal, range: NSRange(location: start, length: (self as NSString).length - start))
+            if range.location == NSNotFound {
+                break
+            } else {
+                ranges.append(range)
+                start = range.location + range.length
+            }
+        }
+        let attrText = NSMutableAttributedString(string: self)
+        for range in ranges {
+            attrText.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
+        }
+        return attrText
+
+    }
+
+    #endif
+
+
+    /// md5
     var md5 : String{
         let str = self.cString(using: String.Encoding.utf8)
         let strLen = CC_LONG(self.lengthOfBytes(using: String.Encoding.utf8))
@@ -26,4 +150,9 @@ extension String {
         
         return String(format: hash as String)
     }
+    
+    
+    
+    
+    
 }

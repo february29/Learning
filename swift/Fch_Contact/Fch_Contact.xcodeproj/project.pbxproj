@@ -13,6 +13,7 @@
 		2105AE8E202059F6003DF0DE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2105AE90202059F6003DF0DE /* Localizable.strings */; };
 		2105AE94202063F9003DF0DE /* UIImage+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105AE93202063F9003DF0DE /* UIImage+BBase.swift */; };
 		2105AE962020724C003DF0DE /* ThemeViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2105AE952020724C003DF0DE /* ThemeViewContoller.swift */; };
+		210BF8E3202458B7006292B2 /* Date+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210BF8E2202458B7006292B2 /* Date+BBase.swift */; };
 		210F2F281FAFF43D00A87AA6 /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2F271FAFF43D00A87AA6 /* LaunchViewModel.swift */; };
 		210F2F2A1FAFF5FD00A87AA6 /* UITextFiled+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2F291FAFF5FD00A87AA6 /* UITextFiled+BBase.swift */; };
 		210F2F2C1FAFF71D00A87AA6 /* Array+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2F2B1FAFF71D00A87AA6 /* Array+BBase.swift */; };
@@ -90,6 +91,7 @@
 		2105AE91202059F8003DF0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		2105AE93202063F9003DF0DE /* UIImage+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+BBase.swift"; sourceTree = "<group>"; };
 		2105AE952020724C003DF0DE /* ThemeViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewContoller.swift; sourceTree = "<group>"; };
+		210BF8E2202458B7006292B2 /* Date+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+BBase.swift"; sourceTree = "<group>"; };
 		210F2F271FAFF43D00A87AA6 /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
 		210F2F291FAFF5FD00A87AA6 /* UITextFiled+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextFiled+BBase.swift"; sourceTree = "<group>"; };
 		210F2F2B1FAFF71D00A87AA6 /* Array+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+BBase.swift"; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				2105AE86202054BF003DF0DE /* UIColor+BBase.swift */,
 				2105AE8820205599003DF0DE /* CGFloat+BBase.swift */,
 				2105AE93202063F9003DF0DE /* UIImage+BBase.swift */,
+				210BF8E2202458B7006292B2 /* Date+BBase.swift */,
 			);
 			path = BExtension;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				21D965EE1FECD2340089D12E /* SettingViewController.swift in Sources */,
 				21B10DE31FB04AD6006257F2 /* HandyJSON+BRXModel.swift in Sources */,
 				2105AE852020529B003DF0DE /* Theme.swift in Sources */,
+				210BF8E3202458B7006292B2 /* Date+BBase.swift in Sources */,
 				213FF3662015D1B5002B1D2D /* FontTableViewCell.swift in Sources */,
 				2105AE94202063F9003DF0DE /* UIImage+BBase.swift in Sources */,
 				21CC634F1FA7294300B8E491 /* ViewController.swift in Sources */,
