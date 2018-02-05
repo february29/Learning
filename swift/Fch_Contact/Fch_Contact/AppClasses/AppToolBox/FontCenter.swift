@@ -88,4 +88,12 @@ extension UILabel{
 }
 
 
+extension UITextField{
+    func setTextFontSize(type:FontSizeType){
+        _ = FontCenter.shared.sizeVariable(type: type).asObservable().takeUntil(rx.deallocated).subscribe(onNext: { (size) in
+            self.font = UIFont.systemFont(ofSize: size);
+        })
+    }
+}
+
 

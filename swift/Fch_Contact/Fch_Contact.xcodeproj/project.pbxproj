@@ -77,6 +77,7 @@
 		21D965EE1FECD2340089D12E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D965ED1FECD2340089D12E /* SettingViewController.swift */; };
 		21F0E57D1FF2462D002AA057 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */; };
 		21F0E57F1FF24673002AA057 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0E57E1FF24673002AA057 /* SettingViewModel.swift */; };
+		21F75F052028433E00E3A852 /* RightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F75F042028433E00E3A852 /* RightViewModel.swift */; };
 		3AB90C5C3DA5860E446F4CD3 /* Pods_Fch_Contact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */; };
 /* End PBXBuildFile section */
 
@@ -167,6 +168,7 @@
 		21D965ED1FECD2340089D12E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		21F0E57E1FF24673002AA057 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		21F75F042028433E00E3A852 /* RightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewModel.swift; sourceTree = "<group>"; };
 		402F35785043CE5C78CF273B /* Pods-Fch_Contact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.debug.xcconfig"; sourceTree = "<group>"; };
 		651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fch_Contact.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -201,6 +203,7 @@
 				210F2F271FAFF43D00A87AA6 /* LaunchViewModel.swift */,
 				212C0FE81FCFADD60044EA6C /* MainViewModel.swift */,
 				212C0FF61FD11AB20044EA6C /* LeftMemuViewModel.swift */,
+				21F75F042028433E00E3A852 /* RightViewModel.swift */,
 				21F0E57E1FF24673002AA057 /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
@@ -608,6 +611,7 @@
 				21CC63671FA803A800B8E491 /* BBaseNavigationViewController.swift in Sources */,
 				21B10DE51FB04BA0006257F2 /* BMoyaNetWorkingManager.swift in Sources */,
 				211B4EA01FBEA5060033C793 /* UserDefaults+BBase.swift in Sources */,
+				21F75F052028433E00E3A852 /* RightViewModel.swift in Sources */,
 				212CE1141FDE5FC600E786E8 /* pinyin.c in Sources */,
 				210F2F281FAFF43D00A87AA6 /* LaunchViewModel.swift in Sources */,
 				21CC63961FA83B2B00B8E491 /* BJumpingBarView.m in Sources */,

@@ -9,7 +9,7 @@
 import Foundation
 
 extension Array{
-    mutating func exchangeObjectAdIndex(IndexA:Int,atIndexB:Int)
+    mutating func exchangeObjectAtIndex(IndexA:Int,atIndexB:Int)
     {
         if IndexA >= self.count || IndexA < 0{
             return
