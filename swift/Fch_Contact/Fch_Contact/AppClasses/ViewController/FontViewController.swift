@@ -40,7 +40,7 @@ class FontViewController: BBaseViewController ,UITableViewDelegate,UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "字体大小";
+        self.title = BLocalizedString(key: "Font Size");
 
         self.view.addSubview(self.tableView);
         

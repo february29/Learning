@@ -199,12 +199,57 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let personModel = dataSource[indexPath];
         let url =  URL(string: "tel:" + personModel.column3);
-//        let webView = WKWebView();
-//        webView.load(URLRequest(url: url!));
+        
+        
+        let alertVC = UIAlertController(title:BLocalizedString(key: "Call phone?") , message: nil, preferredStyle: .actionSheet)
+        var phoneArray = [String]();
+        
+        
+        
+       
+        
+        if personModel.column3 != nil && personModel.column3.isFchPhone {
+            phoneArray.append(personModel.column3)
+        }
+        if personModel.column4 != nil && personModel.column4.isFchPhone {
+            phoneArray.append(personModel.column4)
+        }
+        if personModel.column5 != nil && personModel.column5.isFchPhone {
+            phoneArray.append(personModel.column5)
+        }
+
+        
+        if phoneArray.count == 1 {
+            webView.loadRequest(URLRequest(url: url!));
+            self.view.addSubview(webView);
+            
+        }else{
+            for phoneString in phoneArray {
+                let action = UIAlertAction(title: phoneString, style: .default, handler: { (action) in
+                    self.webView.loadRequest(URLRequest(url: url!));
+                    self.view.addSubview(self.webView);
+                    
+                })
+                alertVC.addAction(action);
+                
+            }
+            alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil));
+            self.present(alertVC, animated: true, completion: nil);
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
     
         
-        webView.loadRequest(URLRequest(url: url!));
-        self.view.addSubview(webView);
+        
+        
         
     }
     

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import IQKeyboardManagerSwift
+import IQKeyboardManagerSwift
 import Alamofire
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,10 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-//        let  keyboardManager = IQKeyboardManager.sharedManager();
-//        keyboardManager.enable = true
-//        keyboardManager.shouldResignOnTouchOutside = true;
-//        keyboardManager.enableAutoToolbar = false;
+        let  keyboardManager = IQKeyboardManager.sharedManager();
+        keyboardManager.enable = true
+        keyboardManager.shouldResignOnTouchOutside = true;
+        keyboardManager.enableAutoToolbar = false;
         
         
 

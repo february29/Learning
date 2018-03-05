@@ -30,4 +30,32 @@ class PersonModel: HandyJSON {
     
     
     
+    
+    
+}
+
+extension String{
+    public var isFchPhone:Bool
+    {
+        
+       
+        if self.isPhoneNumber {
+            return true;
+        }
+        
+        let mobile = "^6[0-9]\\d{3}"
+        let tel = "^0(10|2[0-5789]|\\d{3})(-)?\\d{7,8}$";
+        
+        let regextestmobile = NSPredicate(format: "SELF MATCHES %@",mobile)
+        let regextesttle = NSPredicate(format: "SELF MATCHES %@",tel)
+        
+        if ((regextestmobile.evaluate(with: self) == true)||(regextesttle.evaluate(with: self) == true))
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
 }

@@ -16,11 +16,12 @@ class RightViewController: BBaseViewController {
     
     lazy var searchTextField: UITextField = {
         let tf = UITextField();
+        tf.addOffsetView(value: 5);
         tf.setTextColor(.primary);
         tf.setTextFontSize(type: .primary);
         tf.layer.borderColor = UIColor.lightGray.cgColor;
         tf.layer.borderWidth = 1;
-        tf.placeholder = "姓名、部门";
+        tf.placeholder = "姓名、部门、电话";
         tf.layer.cornerRadius =  5;
         
         return tf
