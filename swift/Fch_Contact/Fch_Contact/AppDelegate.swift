@@ -49,6 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let leftMenuVC = LeftMenuViewController();
             leftMenuVC.menuSelectedDelegate = mainVC;
             let rightVC = RightViewController();
+            rightVC.delegate = mainVC;
             let sliderMenuVC = BSlideMenuViewController.init(mainViewController: mainNV, leftViewController: leftMenuVC, rightViewContoller: rightVC);
             window?.rootViewController = sliderMenuVC;
         }else{

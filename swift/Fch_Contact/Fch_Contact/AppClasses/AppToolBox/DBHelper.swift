@@ -54,18 +54,6 @@ class DBHelper {
                 persons.append(PersonModel.deserialize(from: dic! as NSDictionary)!)
             };
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
         }
         
         
@@ -95,6 +83,31 @@ class DBHelper {
         
         
         return deps;
+    }
+    
+    func getPersons(searchString:String) -> Array<PersonModel> {
+        
+        
+        var persons:[PersonModel] = Array();
+        let dbName = getDBSaveName(telBook: UserDefaults.standard.getTelBookModel());
+        let db = FMDatabase.init(url: DBFileSavePath?.appendingPathComponent(dbName))
+        if db.open() {
+            let selectSql:String?;
+            selectSql="select * from \(personTableName)  where is_title = 0 and column1 like '%%%\(searchString)%%%' or column2 like '%%%\(searchString)%%%' or column3 like '%%%\(searchString)%%%' or column4 like '%%%\(searchString)%%%' or column5 like '%%%\(searchString)%%%'";
+            
+            let resultSet =  db.executeQuery(selectSql!, withParameterDictionary: nil);
+            
+            
+            while resultSet!.next() {
+                let dic =  resultSet?.resultDictionary;
+                persons.append(PersonModel.deserialize(from: dic! as NSDictionary)!)
+            };
+            
+        }
+        
+        
+        return persons;
+        
     }
    
 }

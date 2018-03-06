@@ -12,6 +12,12 @@ import RxSwift
 import SnapKit
 
 
+protocol RightViewControllerDelegate {
+
+    func shouldSearchFor(searchString:String)  ;
+}
+
+
 class RightViewController: BBaseViewController {
     
     lazy var searchTextField: UITextField = {
@@ -27,8 +33,17 @@ class RightViewController: BBaseViewController {
         return tf
     }()
 
+    
+    var viewModel:RightViewModel?;
+    let diposbage = DisposeBag();
+    
+    
+    var delegate:RightViewControllerDelegate?;
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.setBackgroundColor(.background)
 
         self.view.addSubview(self.searchTextField);
         searchTextField.snp.makeConstraints { (make) in
@@ -38,6 +53,17 @@ class RightViewController: BBaseViewController {
             make.centerY.equalTo(self.view);
         }
         
+        viewModel =  RightViewModel(input: self.searchTextField.rx.text.orEmpty.asObservable())
+        
+        
+        
+        
+        
+        viewModel?.searchObservable.throttle(0.5, scheduler:MainScheduler.instance ).subscribe(onNext: { (searchString) in
+            if let dele = self.delegate{
+                dele.shouldSearchFor(searchString: searchString);
+            }
+        }).disposed(by: diposbage);
     }
 
     

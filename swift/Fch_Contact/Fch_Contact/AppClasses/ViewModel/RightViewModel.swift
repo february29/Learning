@@ -7,7 +7,22 @@
 //
 
 import UIKit
+import RxSwift
 
-class RightViewModel: NSObject {
+class RightViewModel {
 
+    
+    let searchObservable:Observable<String>;
+    
+    
+    init(input:Observable<String>) {
+        searchObservable = input;
+        
+        
+    }
+    
+    
+    
+    
+    
 }

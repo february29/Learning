@@ -156,6 +156,8 @@ extension String {
         }
     }
     
+    
+    
 
     /// md5
     var md5 : String{

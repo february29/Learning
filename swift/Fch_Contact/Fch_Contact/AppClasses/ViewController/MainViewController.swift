@@ -14,7 +14,9 @@ import RxDataSources
 import MJRefresh
 import WebKit
 
-class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDelegate{
+class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDelegate,RightViewControllerDelegate{
+   
+    
     
     
     
@@ -283,8 +285,19 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
 //        offset.y = self.tableView.contentInset.top;
 //        self.tableView.setContentOffset(offset, animated: true);
     }
-    // MARK: 显示右侧菜单
     
+    // MARK: 左侧搜索代理
+    func shouldSearchFor(searchString: String) {
+        
+        if searchString.toNSString.length>0 {
+            viewModel.reloadData(searchString: searchString);
+        }else{
+            viewModel.reloadData(depId: -1);
+        }
+        
+        self.tableView.reloadData();
+    }
+    // MARK: 显示右侧菜单
     @objc func showRightMenu() {
         
 //        let config = BAlertConfig()

@@ -13,7 +13,7 @@ import RxDataSources
 class MainViewModel: NSObject {
 
     
-    var loadData = PublishSubject<Int>();
+    var loadData = PublishSubject<(Int,String)>();
     
 //    var dataSource = [SectionModel<String, PersonModel>]();
     public var result:Observable<[SectionModel<String, PersonModel>]>?
@@ -28,18 +28,43 @@ class MainViewModel: NSObject {
     
     func prepare(){
         
-        result = loadData.flatMapLatest({ (depId) -> Observable<[SectionModel<String, PersonModel>]> in
+        result = loadData.flatMapLatest({ (depId,seartchStr) -> Observable<[SectionModel<String, PersonModel>]> in
     
             if depId == -1 {
                 return self.getPersonsSorted(deptId: -1);
-            }else{
+            }else if depId > 0{
                 return self.getPersonsNoSorted(deptId: depId);
+            }else{
+                return self.getSearchedPersons(searchString: seartchStr);
             }
             
             
         })
 
         
+    }
+    
+    func getPersons(searchString:String)->Observable<[PersonModel]> {
+        
+        return Observable.create({ (observer) -> Disposable in
+            let persons = DBHelper.sharedInstance.getPersons(searchString: searchString);
+            observer.onNext(persons);
+            observer.onCompleted();
+            return Disposables.create {
+            
+            }
+        })
+    }
+    
+    func getSearchedPersons(searchString:String)->Observable<[SectionModel<String, PersonModel>]> {
+        
+        return self.getPersons(searchString:searchString).map({ (persons) -> [SectionModel<String, PersonModel>] in
+            
+            
+            return [SectionModel(model: "", items: persons)]
+        });
+        
+       
     }
     
     
@@ -54,14 +79,12 @@ class MainViewModel: NSObject {
         })
     }
     
+    
     func getPersonsSorted(deptId:Int) -> Observable<[SectionModel<String, PersonModel>]> {
        return self.getPersons(deptId:deptId).map({ (persons) -> [SectionModel<String, PersonModel>] in
         
         
-        
-        
         var dic = Dictionary<String,[PersonModel]>();
-        
         
         for  model in persons{
             let firstUInt8 = UInt8(pinyinFirstLetter((model.column1 as NSString).character(at: 0)))
@@ -104,8 +127,13 @@ class MainViewModel: NSObject {
     }
     
     func reloadData(depId:Int)  {
-        loadData.onNext(depId);
+        loadData.onNext((depId,""));
     }
+    
+    func reloadData(searchString:String) {
+        loadData.onNext((-2,searchString));
+    }
+    
     
     
     
