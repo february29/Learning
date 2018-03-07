@@ -14,7 +14,7 @@ import SnapKit
 
 protocol RightViewControllerDelegate {
 
-    func shouldSearchFor(searchString:String)  ;
+    func shouldSearchFor(searchString:String);
 }
 
 
@@ -56,12 +56,22 @@ class RightViewController: BBaseViewController {
         viewModel =  RightViewModel(input: self.searchTextField.rx.text.orEmpty.asObservable())
         
         
-        
-        
-        
         viewModel?.searchObservable.throttle(0.5, scheduler:MainScheduler.instance ).subscribe(onNext: { (searchString) in
             if let dele = self.delegate{
                 dele.shouldSearchFor(searchString: searchString);
+            }
+        }).disposed(by: diposbage);
+        
+        
+//        ConcurrentDispatchQueueScheduler(qos: DispatchQoS)
+        
+        
+        self.sliderVC().rx.observe(String.self, "kvoState").observeOn(MainScheduler.instance).subscribe(onNext: { (state) in
+            if state == "close" {
+                
+                self.searchTextField.resignFirstResponder();
+            }else if state == "rightOpen"{
+                self.searchTextField.becomeFirstResponder();
             }
         }).disposed(by: diposbage);
     }

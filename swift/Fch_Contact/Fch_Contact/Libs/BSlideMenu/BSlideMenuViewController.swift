@@ -49,6 +49,8 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
     
     
     var nowPostionX:CGFloat = 0.0;
+    
+    @objc dynamic var  kvoState:String = "close";
 
     var state: BSliderState = BSliderState.Close{
         didSet
@@ -56,16 +58,19 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
             
             if state == BSliderState.Close
             {
-               nowPostionX = 0;
+                nowPostionX = 0;
+                kvoState = "close"
             }else if state == BSliderState.Sliding
             {
-                
+//                kvoStare = ""
             }else if state == BSliderState.OpenLeft
             {
                 nowPostionX = leftExpandedOffset;
+                kvoState = "leftOpen"
             }else if state == BSliderState.OpenRight
             {
                 nowPostionX = -rightExpandedOffset;
+                kvoState = "rightOpen"
             }
         }
     }
