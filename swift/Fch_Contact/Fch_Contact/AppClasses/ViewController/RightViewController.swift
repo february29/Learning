@@ -53,6 +53,10 @@ class RightViewController: BBaseViewController {
             make.centerY.equalTo(self.view);
         }
         
+        
+        
+        
+        
         viewModel =  RightViewModel(input: self.searchTextField.rx.text.orEmpty.asObservable())
         
         
