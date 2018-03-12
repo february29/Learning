@@ -49,10 +49,15 @@ class DBHelper {
             
             let resultSet =  db.executeQuery(selectSql!, withParameterDictionary: nil);
             
-            while resultSet!.next() {
-                let dic =  resultSet?.resultDictionary;
-                persons.append(PersonModel.deserialize(from: dic! as NSDictionary)!)
-            };
+            if  resultSet != nil{
+                while resultSet!.next() {
+                    let dic =  resultSet?.resultDictionary;
+                    persons.append(PersonModel.deserialize(from: dic! as NSDictionary)!)
+                };
+                
+            }
+            
+           
             
         }
         
@@ -74,10 +79,13 @@ class DBHelper {
             
             let resultSet =  db.executeQuery(selectSql!, withParameterDictionary: nil);
             
-            while resultSet!.next() {
-                let dic =  resultSet?.resultDictionary;
-                deps.append(DeptModel.deserialize(from: dic! as NSDictionary)!)
-            };
+            if  resultSet != nil{
+                while resultSet!.next() {
+                    let dic =  resultSet?.resultDictionary;
+                    deps.append(DeptModel.deserialize(from: dic! as NSDictionary)!)
+                };
+            }
+           
             
         }
         
@@ -97,11 +105,13 @@ class DBHelper {
             
             let resultSet =  db.executeQuery(selectSql!, withParameterDictionary: nil);
             
+            if resultSet != nil {
+                while resultSet!.next() {
+                    let dic =  resultSet?.resultDictionary;
+                    persons.append(PersonModel.deserialize(from: dic! as NSDictionary)!)
+                };
+            }
             
-            while resultSet!.next() {
-                let dic =  resultSet?.resultDictionary;
-                persons.append(PersonModel.deserialize(from: dic! as NSDictionary)!)
-            };
             
         }
         

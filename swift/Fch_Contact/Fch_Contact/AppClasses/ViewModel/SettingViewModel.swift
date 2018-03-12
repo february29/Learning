@@ -35,9 +35,10 @@ class SettingViewModel: NSObject {
             
             let secion1 = SectionModel(model: "  通用", items: ["字体大小","主题颜色"/*,"检查更新","关于"*/]);
             let secion2 = SectionModel(model: "  来电识别", items: ["风驰来电识别"]);
-//            let secion3 = SectionModel(model: "  用户", items: ["退出登录"]);
+            let imei = AppLoginHelper.uuidInKeyChain();
+            let secion3 = SectionModel(model: "  标识符", items: [imei]);
             
-            observer.onNext([secion1,secion2]);
+            observer.onNext([secion1,secion2,secion3]);
             observer.onCompleted();
             return Disposables.create {
             }
