@@ -26,4 +26,10 @@ let TelBooksList_URL = BASE_URL + "telBook/list.json"
 //db文件下载
 let DownLoadDB_URL = BASE_URL + "/person/personList"
 
+//imei验证接口
+let TestIMEIVerify_URL = "http://oa.fchsoft.com:8442/mobile/checkImei.json";
+
+//客户端更新接口
+let AppUpdate_URL = BASE_URL + "/app/detail/1.json"
+
 

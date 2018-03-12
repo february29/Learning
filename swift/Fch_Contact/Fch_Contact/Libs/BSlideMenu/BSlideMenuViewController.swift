@@ -320,6 +320,11 @@ class BSlideMenuViewController: UIViewController,BSliderMenuViewControllerProtoc
             self._mainContainerView.transform =  CGAffineTransform(translationX:postionX, y: 0);
         }
         
+        
+//        if postionX == leftExpandedOffset || postionX == -rightExpandedOffset {
+//            self.state = .Close;
+//        }
+        
     }
     
 

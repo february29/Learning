@@ -34,7 +34,27 @@ class AppLoginHelper{
         }
         
     }
+    
+    
+    
+   
+    class func uuidInKeyChain() -> String {
+       
+        let SERVICE_NAME = "com.fchsoft.www.Bai.ReadUUID";//最好用程序的bundle id
+        var deviceID = try? SFHFKeychainUtils.getPasswordForUsername("UUID", andServiceName: SERVICE_NAME);
+        
+        if deviceID == nil{
+            deviceID = (UIDevice.current.identifierForVendor?.uuidString)!;
+            try? SFHFKeychainUtils.storeUsername("UUID", andPassword: deviceID, forServiceName:SERVICE_NAME , updateExisting: true);
+            return deviceID!;
+        }else{
+            return deviceID!;
+        }
+        
+    }
 }
+
+
 
 
 

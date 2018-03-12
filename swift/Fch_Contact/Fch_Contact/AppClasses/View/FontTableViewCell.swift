@@ -67,7 +67,12 @@ class FontTableViewCell: BBaseTableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
+        
+        let view = UIImageView();
+        view.image =  UIImage.init(named: "bg_menu_head")?.withRenderingMode(.alwaysTemplate);
+        view.setTintColor(.selectedCell)
+        self.selectedBackgroundView = view;
         // Configure the view for the selected state
     }
 

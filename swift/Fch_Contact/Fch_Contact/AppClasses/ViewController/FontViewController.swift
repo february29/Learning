@@ -69,7 +69,7 @@ class FontViewController: BBaseViewController ,UITableViewDelegate,UITableViewDa
             cell.coloumLable1?.font = UIFont.systemFont(ofSize: 15);
         }
         
-        
+//        cell.setSelected(true, animated: false);
         
         return cell;
     }

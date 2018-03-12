@@ -10,6 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 import RxDataSources
+import BAlertView
 
 
 class SettingViewController: BBaseViewController,UITableViewDelegate {
@@ -90,6 +91,12 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
             }else if indexPath.row == 1{
                 let  vc  = ThemeViewContoller();
                 self.navigationController!.pushViewController(vc, animated: true);
+            }
+        } else if indexPath.section == 1{
+            if indexPath.row == 0 {
+            
+                BAlertModal.sharedInstance().makeToast("开发中");
+                
             }
         }
     }

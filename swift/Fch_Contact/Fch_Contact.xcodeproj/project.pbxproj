@@ -47,6 +47,8 @@
 		21B10DE51FB04BA0006257F2 /* BMoyaNetWorkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B10DE41FB04BA0006257F2 /* BMoyaNetWorkingManager.swift */; };
 		21B10DE71FB04BC8006257F2 /* APPAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B10DE61FB04BC8006257F2 /* APPAPIManager.swift */; };
 		21B10DEA1FB062A5006257F2 /* BNetWokingBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B10DE91FB062A5006257F2 /* BNetWokingBase.swift */; };
+		21B6A4A620524D3D00744BE5 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B6A4A520524D3D00744BE5 /* ShareViewController.swift */; };
+		21B6A4A920525E4D00744BE5 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B6A4A720525E4D00744BE5 /* SFHFKeychainUtils.m */; };
 		21CBAE2A1FBEE299007E4446 /* UIViewController+BSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CBAE291FBEE299007E4446 /* UIViewController+BSlider.swift */; };
 		21CC634D1FA7294300B8E491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC634C1FA7294300B8E491 /* AppDelegate.swift */; };
 		21CC634F1FA7294300B8E491 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CC634E1FA7294300B8E491 /* ViewController.swift */; };
@@ -127,6 +129,9 @@
 		21B10DE41FB04BA0006257F2 /* BMoyaNetWorkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMoyaNetWorkingManager.swift; sourceTree = "<group>"; };
 		21B10DE61FB04BC8006257F2 /* APPAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPAPIManager.swift; sourceTree = "<group>"; };
 		21B10DE91FB062A5006257F2 /* BNetWokingBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BNetWokingBase.swift; sourceTree = "<group>"; };
+		21B6A4A520524D3D00744BE5 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		21B6A4A720525E4D00744BE5 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		21B6A4A820525E4D00744BE5 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
 		21CBAE291FBEE299007E4446 /* UIViewController+BSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+BSlider.swift"; sourceTree = "<group>"; };
 		21CC63491FA7294300B8E491 /* Fch_Contact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fch_Contact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CC634C1FA7294300B8E491 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -232,6 +237,7 @@
 				21D965ED1FECD2340089D12E /* SettingViewController.swift */,
 				2134596B200C3B8C00D41CF9 /* FontViewController.swift */,
 				2105AE952020724C003DF0DE /* ThemeViewContoller.swift */,
+				21B6A4A520524D3D00744BE5 /* ShareViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -270,6 +276,8 @@
 				2105AE842020529B003DF0DE /* Theme.swift */,
 				21180DA82021A2A100B77E40 /* FontCenter.swift */,
 				21D1B0CC1FC53999002E4357 /* DBHelper.swift */,
+				21B6A4A820525E4D00744BE5 /* SFHFKeychainUtils.h */,
+				21B6A4A720525E4D00744BE5 /* SFHFKeychainUtils.m */,
 				212CE1121FDE5FC600E786E8 /* pinyin.c */,
 				212CE1131FDE5FC600E786E8 /* pinyin.h */,
 			);
@@ -503,6 +511,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -652,6 +663,8 @@
 				21CC634D1FA7294300B8E491 /* AppDelegate.swift in Sources */,
 				213CD4301FAB0A90004A5E8F /* UserModel.swift in Sources */,
 				21180DB22021C41A00B77E40 /* BAlertConfig.swift in Sources */,
+				21B6A4A920525E4D00744BE5 /* SFHFKeychainUtils.m in Sources */,
+				21B6A4A620524D3D00744BE5 /* ShareViewController.swift in Sources */,
 				212C0FFD1FD1558B0044EA6C /* UIDevice+BBase.swift in Sources */,
 				21CC63941FA83B2B00B8E491 /* BCircleLoadingView.m in Sources */,
 				2105AE8920205599003DF0DE /* CGFloat+BBase.swift in Sources */,

@@ -109,5 +109,22 @@ class DBHelper {
         return persons;
         
     }
+    
+    
+    func clearDB()  {
+        let dbName = getDBSaveName(telBook: UserDefaults.standard.getTelBookModel());
+        let db = FMDatabase.init(url: DBFileSavePath?.appendingPathComponent(dbName))
+        if db.open() {
+            let selectSql = "delete from \(personTableName)";
+            db.executeStatements(selectSql);
+          
+            let selectSql2 = "delete from \(deptTableName)";
+            db.executeStatements(selectSql2);
+            
+            
+            
+            
+        }
+    }
    
 }

@@ -22,7 +22,7 @@ class ThemeViewContoller: BBaseViewController ,UITableViewDelegate,UITableViewDa
     
     let dataArray =
         [Theme.white,
-         Theme.black,
+//         Theme.black,
          Theme.green,
         Theme.red,
         Theme.blue,

@@ -16,7 +16,20 @@ extension UserDefaults{
     /// - Returns: 用户信息
     func getUserModel() -> UserModel? {
         let jsonStr = UserDefaults.standard.string(forKey: "userModel");
-        return UserModel.deserialize(from:jsonStr);
+        if jsonStr != nil{
+            return UserModel.deserialize(from:jsonStr);
+            
+            
+        }
+        if  let userDic = UserDefaults.standard.dictionary(forKey: "LUNCHEDUSER"){
+
+            let model = UserModel.deserialize(from: userDic);
+            self.setUserModel(model: model!);
+            return model;
+        }
+        
+        return nil;
+        
     }
     
     func setUserModel(model:UserModel)  {

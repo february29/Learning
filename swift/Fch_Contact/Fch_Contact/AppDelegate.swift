@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     
         window = UIWindow(frame: UIScreen.main.bounds);
-        let rootVc = LaunchViewController();
+       
         
         
         
@@ -44,27 +44,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //如果登陆
         if  UserDefaults.standard.getUserModel() != nil  {
             let mainVC = MainViewController();
-            
             let mainNV = BBaseNavigationViewController(rootViewController: mainVC)
+           
             let leftMenuVC = LeftMenuViewController();
             leftMenuVC.menuSelectedDelegate = mainVC;
+           
             let rightVC = RightViewController();
             rightVC.delegate = mainVC;
+            
             let sliderMenuVC = BSlideMenuViewController.init(mainViewController: mainNV, leftViewController: leftMenuVC, rightViewContoller: rightVC);
+            
             window?.rootViewController = sliderMenuVC;
         }else{
+            let rootVc = LaunchViewController();
+           
             let nv = BBaseNavigationViewController(rootViewController: rootVc);
             window?.rootViewController = nv;
         }
         
-        self.setup();
+        self.setupConfig();
        
         window?.makeKeyAndVisible();
         return true
     }
 
     
-    func setup() {
+    func setupConfig() {
         
         let setting =  UserDefaults.standard.getUserSettingModel()
         ColorCenter.shared.theme = setting.theme;

@@ -75,7 +75,7 @@ class RightViewController: BBaseViewController {
                 
                 self.searchTextField.resignFirstResponder();
             }else if state == "rightOpen"{
-                self.searchTextField.becomeFirstResponder();
+//                self.searchTextField.becomeFirstResponder();
             }
         }).disposed(by: diposbage);
     }
