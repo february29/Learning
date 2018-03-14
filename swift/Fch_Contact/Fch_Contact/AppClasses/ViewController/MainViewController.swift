@@ -394,7 +394,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     
     
     
-    /// 验证imei 是否过期
+    /// 验证imei 是否可用
     ///
     /// - Parameter successHandler: 验证回掉
     func fchTestImeiVerify(successHandler:@escaping (_ isVerify:Bool)->Void) {
