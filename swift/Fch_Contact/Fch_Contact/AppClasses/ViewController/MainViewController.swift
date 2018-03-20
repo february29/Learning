@@ -526,6 +526,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
                             let localInfomation = Int(UserDefaults.standard.getTelBookModel()!.information);
                             
                             
+                            
                             if webInfomation! > localInfomation!{
                                 
                                 //需要更新数据库
