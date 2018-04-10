@@ -319,7 +319,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
 //        self.tableView.setContentOffset(offset, animated: true);
     }
     
-    // MARK: 左侧搜索代理
+    // MARK: 右侧搜索代理
     func shouldSearchFor(searchString: String) {
         
         if searchString.toNSString.length>0 {
@@ -646,6 +646,10 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
                     }else{
                         BAlertModal.sharedInstance().makeToast("登录失败：\(error)，请退出重新登录。");
                     }
+                    
+                    
+                    
+                    
                     
                 }else{
                     if let app = value["app"]as? Dictionary<String,Any>  {
