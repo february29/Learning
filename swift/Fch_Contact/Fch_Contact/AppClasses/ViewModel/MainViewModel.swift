@@ -14,9 +14,11 @@ class MainViewModel: NSObject {
 
     
     var loadData = PublishSubject<(Int,String)>();
-    
 //    var dataSource = [SectionModel<String, PersonModel>]();
     public var result:Observable<[SectionModel<String, PersonModel>]>?
+    
+//    let shouldUpDateAPP:Variable<Bool> = Variable(false);
+//    let shouldUpDateTelDataDB:Variable<Bool> = Variable(false);
     
     
     
@@ -44,6 +46,11 @@ class MainViewModel: NSObject {
         
     }
     
+    
+    /// 模糊搜索获取人员
+    ///
+    /// - Parameter searchString: 搜索字符
+    /// - Returns: 搜索结果
     func getPersons(searchString:String)->Observable<[PersonModel]> {
         
         return Observable.create({ (observer) -> Disposable in
@@ -56,11 +63,14 @@ class MainViewModel: NSObject {
         })
     }
     
+    
+    /// 获取整理数据后 将数据整理成列表可用数据 无排序
+    ///
+    /// - Parameter searchString: 搜索字符
+    /// - Returns: 搜索结果
     func getSearchedPersons(searchString:String)->Observable<[SectionModel<String, PersonModel>]> {
         
         return self.getPersons(searchString:searchString).map({ (persons) -> [SectionModel<String, PersonModel>] in
-            
-            
             return [SectionModel(model: "", items: persons)]
         });
         
@@ -68,6 +78,10 @@ class MainViewModel: NSObject {
     }
     
     
+    /// 根据部门ID 获取部门人员
+    ///
+    /// - Parameter deptId: 部门ID -1表示全部
+    /// - Returns: 部门人员
     func getPersons(deptId:Int)->Observable<[PersonModel]> {
         
         return Observable.create({ (observer) -> Disposable in
@@ -80,6 +94,11 @@ class MainViewModel: NSObject {
     }
     
     
+    
+    /// 根据部门ID获取排序后的人员
+    ///
+    /// - Parameter deptId: 部门ID -1表示全部
+    /// - Returns: 人员
     func getPersonsSorted(deptId:Int) -> Observable<[SectionModel<String, PersonModel>]> {
        return self.getPersons(deptId:deptId).map({ (persons) -> [SectionModel<String, PersonModel>] in
         
@@ -118,10 +137,13 @@ class MainViewModel: NSObject {
        });
     }
     
+    
+    /// 根据部门ID 获取无排序的人员
+    ///
+    /// - Parameter deptId: 部门ID
+    /// - Returns: 人员
     func getPersonsNoSorted(deptId:Int) -> Observable<[SectionModel<String, PersonModel>]> {
         return self.getPersons(deptId:deptId).map({ (persons) -> [SectionModel<String, PersonModel>] in
-            
-        
             return [SectionModel(model: "", items: persons)]
         });
     }

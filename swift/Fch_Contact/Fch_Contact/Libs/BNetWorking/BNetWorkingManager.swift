@@ -50,32 +50,31 @@ class BNetWorkingManager: NSObject {
     
     //-------------------------------实例方法----------------------------------
     
-
-    
     func request(url:String,method:HTTPMethod = .get,
                  parameters:[String:Any]? = nil,
                  completionHandler:@escaping (DataResponse<Any>) -> Void) {
-        
-        
         self.sessionManager.request(url, method:method, parameters: parameters).responseJSON { (response) in
-            
-            
-            //方便调试显示
-            print("😊😊😊😊😊😊😊😊😊😊😊😊😊");
-            print(response.request?.url ?? "requset error");
-            print("statusCode:\(response.response?.statusCode ?? 0)");
-            if method == .post{print("POST parameters:\(parameters)");}else{print("GET parameters:\(parameters)")}
-    
-            if let value = response.result.value as? NSDictionary{
-//                print(value);
+           
+            // 判断是否在测试环境下
+            #if DEBUG
+                print("⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️⛳️")
+                print(response.request?.url ?? "requset error");
+                print("\(method.rawValue) parameters:\(String(describing: parameters))");
+                print("statusCode:\(response.response?.statusCode ?? 0)");
                 
-                let data : NSData! = try? JSONSerialization.data(withJSONObject: value, options: []) as NSData!
-                let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
-
-                print(JSONString ?? "");
-            }
-            
-            
+                if response.error != nil{
+                    print("😱😱😱😱😱😱😱😱😱😱😱😱😱");
+                    print("error:\(String(describing: response.error))")
+                }else{
+                    print("😊😊😊😊😊😊😊😊😊😊😊😊😊");
+                    if let value = response.result.value as? NSDictionary{
+                        let data : NSData! = try? JSONSerialization.data(withJSONObject: value, options: []) as NSData!
+                        let JSONString = NSString(data:data as Data,encoding: String.Encoding.utf8.rawValue)
+                        
+                        print(JSONString ?? "");
+                    }
+                }
+            #endif
             completionHandler(response);
         }
 
@@ -92,8 +91,6 @@ class BNetWorkingManager: NSObject {
         
         var downloadRequest: DownloadRequest!
         downloadRequest = self.sessionManager.download(url, method: method, parameters: parameters,  to: { (url, response) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
-            
-            
             var fileURL:URL!;
             
             if let name = fileName{

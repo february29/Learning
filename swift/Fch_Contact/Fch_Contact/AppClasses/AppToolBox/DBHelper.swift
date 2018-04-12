@@ -22,6 +22,10 @@ class DBHelper {
     
     
     
+    /// 获取电话本存储名称
+    ///
+    /// - Parameter telBook: 电话本
+    /// - Returns: 电话本存储名称
     func getDBSaveName(telBook:TelBookModel?) -> String {
         if let model = telBook {
             return "\(model.bookName!)_\(model.id!).db";
@@ -34,6 +38,10 @@ class DBHelper {
     
     
     
+    /// 根据部门ID  获取部门人员
+    ///
+    /// - Parameter deptId: 部门ID  -1 表示全部
+    /// - Returns: 部门人员
     func getPersonsFromDB(deptId:Int) -> Array<PersonModel> {
         
         var persons:[PersonModel] = Array();
@@ -66,6 +74,10 @@ class DBHelper {
     }
     
     
+    
+    /// 获取所有部门
+    ///
+    /// - Returns: 部门
     func getDepsFromDB() -> Array<DeptModel> {
         
         var deps:[DeptModel] = Array();
@@ -93,6 +105,11 @@ class DBHelper {
         return deps;
     }
     
+    
+    /// 模糊搜索人员
+    ///
+    /// - Parameter searchString: 搜索字符
+    /// - Returns: 人员
     func getPersons(searchString:String) -> Array<PersonModel> {
         
         
@@ -121,6 +138,7 @@ class DBHelper {
     }
     
     
+    /// 清空数据
     func clearDB()  {
         let dbName = getDBSaveName(telBook: UserDefaults.standard.getTelBookModel());
         let db = FMDatabase.init(url: DBFileSavePath?.appendingPathComponent(dbName))

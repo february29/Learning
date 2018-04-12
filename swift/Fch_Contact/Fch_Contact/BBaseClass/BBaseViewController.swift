@@ -40,13 +40,15 @@ class BBaseViewController: UIViewController {
     func showAlert(title: String?, message: String?, preferredStyle: UIAlertControllerStyle? = .alert,cancleTitle: String? = "取消",okTitle: String? = "确定", cancleHandler:BBaseHandler? = nil,OkHandler:BBaseHandler? = nil) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: preferredStyle ?? UIAlertControllerStyle.alert );
         
-        if let cancle = cancleHandler {
-            let cancleAction = UIAlertAction(title: cancleTitle, style: .cancel, handler: { (alertVC) in
+        //取消按钮必须有
+        let cancleAction = UIAlertAction(title: cancleTitle, style: .cancel, handler: { (alertVC) in
+            if let cancle = cancleHandler {
                 cancle();
-            })
-            alertVC.addAction(cancleAction);
-        }
+            }
+        })
+        alertVC.addAction(cancleAction);
         
+        //确定按钮可有可无
         if let ok = OkHandler {
             let okAction = UIAlertAction(title: okTitle, style: .default, handler: { (alertVC) in
                 ok();

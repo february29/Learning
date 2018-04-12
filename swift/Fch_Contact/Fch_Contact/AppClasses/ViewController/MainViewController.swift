@@ -36,7 +36,6 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
 //        table.sectionIndexMinimumDisplayRowCount = 2;
         table.sectionIndexBackgroundColor = UIColor.clear;
         table.register(MainTableViewCell.self, forCellReuseIdentifier: "cell")
-        
         table.tableFooterView = UIView();
         table.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             
@@ -60,7 +59,10 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
            
             
         });
-        
+//        table.rx.modelSelected(PersonModel.self).subscribe(onNext: { (model) in
+//            print("dfsdfasd")
+//        }).disposed(by: disposeBag);
+//
         
         return table;
     }();
@@ -589,8 +591,6 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     /// - Parameter telBook: telBook
     func downLoadDB(telBook:TelBookModel?,showHud:Bool, finshedHandler:@escaping (_ isSuccess:Bool)->Void)  {
         
-        
-        
         print("开始下载数据库文件");
         
         if let telBookModel = telBook {
@@ -674,7 +674,6 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
                             
                             let alert = UIAlertController.init(title: "提示", message: "客户端有新版本，是否现在更新?", preferredStyle: .alert)
                             let okAction = UIAlertAction(title: "更新", style: .default, handler: { (action) in
-                                
                                 UIApplication.shared.openURL(URL.init(string: iosUrl)!);
                             })
                             let cancleAction = UIAlertAction(title: "下次再说", style: .cancel, handler: { (action) in
