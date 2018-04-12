@@ -11,6 +11,8 @@ import UIKit
 class SettingTableViewCell: BBaseTableViewCell {
 
     var coloumLable1:UILabel?;
+    var infoLable:UILabel?;
+    var arrowImageView: UIImageView?
 //    let lineView = UIView();
     
     
@@ -18,6 +20,7 @@ class SettingTableViewCell: BBaseTableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier);
         
         self.selectionStyle = .default;
+//        self.accessoryType = .disclosureIndicator;
         self.backgroundColor = UIColor.clear;
 //        self.contentView.backgroundColor = UIColor.clear;
         
@@ -33,18 +36,37 @@ class SettingTableViewCell: BBaseTableViewCell {
         
         coloumLable1 = UILabel();
         coloumLable1?.setTextFontSize(type: .primary);
-//        coloumLable1?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
-//        coloumLable1?.textColor = UIColor.black;
-        //        coloumLable1?.numberOfLines = 0;
-        //
-        //        coloumLable1?.lineBreakMode = .byCharWrapping;
-        //        coloumLable1?.sizeToFit();
         coloumLable1?.setTextColor(.primary);
         self.contentView.addSubview(coloumLable1!);
         coloumLable1?.snp.makeConstraints({ (make) in
             make.top.equalTo(self.contentView);
             make.left.equalTo(self.contentView).offset(15);
             make.right.equalTo(self.contentView).offset(-15);
+            make.bottom.equalTo(self.contentView);
+            
+        });
+        
+       
+        
+        arrowImageView = UIImageView(image: #imageLiteral(resourceName: "bg_list_item"));
+        self.contentView.addSubview(arrowImageView!)
+        arrowImageView?.snp.makeConstraints({ (make) in
+            make.centerY.equalTo(self.contentView);
+            make.right.equalTo(self.contentView).offset(-10);
+            make.height.equalTo(10);
+            make.width.equalTo(7);
+        })
+        
+        infoLable = UILabel();
+        infoLable?.setTextFontSize(type: .primary);
+        infoLable?.setTextColor(.primary);
+//        infoLable?.setTextThemeName();
+        infoLable?.textAlignment = .right;
+        self.contentView.addSubview(infoLable!);
+        infoLable?.snp.makeConstraints({ (make) in
+            make.top.equalTo(self.contentView);
+            make.left.equalTo(self.contentView).offset(15);
+            make.right.equalTo((arrowImageView?.snp.left)!).offset(-10);
             make.bottom.equalTo(self.contentView);
             
         });

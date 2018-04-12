@@ -13,6 +13,7 @@ import RxSwift
 import RxDataSources
 import MJRefresh
 import WebKit
+import FMDB
 
 class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDelegate,RightViewControllerDelegate{
    
@@ -41,7 +42,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             
             //这里应该在判断一次是否过期...
             //验证imei
-            self.fchTestImeiVerify(successHandler: { (isVerify) in
+            self.fchCheckImeiVerify(successHandler: { (isVerify) in
                 
                 if isVerify {
                     self.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!,showHud: false,finshedHandler: { (isSuccess) in
@@ -78,7 +79,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
                 
                 BAlert.sharedInstance.hide(view: menuView);
                 
-                self.fchTestImeiVerify(successHandler: { (isVerify) in
+                self.fchCheckImeiVerify(successHandler: { (isVerify) in
                     
                     if isVerify {
                         self.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!,showHud: true,finshedHandler: { (isSuccess) in
@@ -203,6 +204,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             self.tableView.reloadData();
             self.tableView.mj_header.endRefreshing();
         }
+        
+//        self.getDataFromDB();
         
     }
     
@@ -397,7 +400,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     /// 验证imei 是否可用
     ///
     /// - Parameter successHandler: 验证回掉
-    func fchTestImeiVerify(successHandler:@escaping (_ isVerify:Bool)->Void) {
+    func fchCheckImeiVerify(successHandler:@escaping (_ isVerify:Bool)->Void) {
         
         
         
@@ -459,7 +462,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
                                     UserDefaults.standard.setTelBookModel(model:telBook);
                                     
                                     
-                                    self.fchTestImeiVerify(successHandler: { (isVerify) in
+                                    self.fchCheckImeiVerify(successHandler: { (isVerify) in
                                         
                                         if isVerify {
                                             self.downLoadDB(telBook: telBook,showHud: true, finshedHandler: { (isSuccessful) in
@@ -538,7 +541,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
                                     }else{
                                         
                                         //验证imei
-                                        self.fchTestImeiVerify(successHandler: { (isVerify) in
+                                        self.fchCheckImeiVerify(successHandler: { (isVerify) in
                                             
                                             if isVerify {
                                                 self.downLoadDB(telBook: webTelbookModel,showHud: true, finshedHandler: { (isSuccess) in
@@ -611,6 +614,14 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
                     UserDefaults.standard.setTelBookModel(model: telBookModel);
                     //发送通知 刷新数据
                     NotificationCenter.default.post(name:relodDataNotificationName, object: nil);
+                    //更新来电提示数据
+                    CallDirectoryExtensionHelper.sharedInstance.reloadExtension(completeHandler: { (supprot, error) in
+                        if supprot && error == nil{
+                            print("来电显示数据更新成功");
+                        }else{
+                            print("来电显示数据更新失败或者系统不支持");
+                        }
+                    })
                     finshedHandler(true);
                 }else{
                     finshedHandler(false);
@@ -745,16 +756,15 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     }
 
     
-//    func getDBSaveName(telBook:TelBookModel) -> String {
-//        return "\(telBook.bookName!)_\(telBook.id!).db";
-//    }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     
+   
+    
+
     
     
    

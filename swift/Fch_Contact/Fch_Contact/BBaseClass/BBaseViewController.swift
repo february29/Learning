@@ -37,6 +37,26 @@ class BBaseViewController: UIViewController {
     }
     
     
+    func showAlert(title: String?, message: String?, preferredStyle: UIAlertControllerStyle? = .alert,cancleTitle: String? = "取消",okTitle: String? = "确定", cancleHandler:BBaseHandler? = nil,OkHandler:BBaseHandler? = nil) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: preferredStyle ?? UIAlertControllerStyle.alert );
+        
+        if let cancle = cancleHandler {
+            let cancleAction = UIAlertAction(title: cancleTitle, style: .cancel, handler: { (alertVC) in
+                cancle();
+            })
+            alertVC.addAction(cancleAction);
+        }
+        
+        if let ok = OkHandler {
+            let okAction = UIAlertAction(title: okTitle, style: .default, handler: { (alertVC) in
+                ok();
+            })
+            alertVC.addAction(okAction);
+        }
+        
+        self .present(alertVC, animated: true, completion: nil);
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

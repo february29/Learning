@@ -10,10 +10,14 @@ import UIKit
 import RxSwift
 import RxDataSources
 
+
 class SettingViewModel: NSObject {
 
     var loadData = PublishSubject<Bool>();
-    public var result:Observable<[SectionModel<String, String>]>?
+    public var result:Observable<[SectionModel<String, SettingCellModel>]>?
+    
+    let disposeBag = DisposeBag();
+    
     
     override init() {
         super.init();
@@ -23,20 +27,47 @@ class SettingViewModel: NSObject {
     
     func prepare(){
         
-        result = loadData.flatMapLatest({ (_) -> Observable<[SectionModel<String, String>]> in
+        result = loadData.flatMapLatest({ (_) -> Observable<[SectionModel<String, SettingCellModel>]> in
             return self.getSettingConfig();
         })
+        
+    
+        ColorCenter.shared.themeName.asObservable().subscribe(onNext: { (themName) in
+            self.loadData.onNext(true);
+        }).disposed(by: disposeBag)
+        
+        FontCenter.shared.fontName.asObservable().subscribe(onNext: { (fontName) in
+            self.loadData.onNext(true);
+        }).disposed(by: disposeBag)
+        
         
         
     }
     
-    func getSettingConfig() -> Observable<[SectionModel<String, String>]> {
+    func getSettingConfig() -> Observable<[SectionModel<String, SettingCellModel>]> {
+        
+        let imei = AppLoginHelper.uuidInKeyChain();
+        let fontSizeName = FontCenter.shared.fontSize.displayName;
+        let themName = ColorCenter.shared.theme.displayName;
+        let information = "v\(UserDefaults.standard.getTelBookModel()?.information ?? "0")";
+        
+        let fontModel = SettingCellModel(labStr: "字体大小", infoStr: fontSizeName, showArrow: true)
+        let themModel = SettingCellModel(labStr: "主题颜色", infoStr: themName, showArrow: true);
+        let secion1 = SectionModel(model: "  通用", items: [fontModel,themModel]);
+        
+        
+        let openldModel = SettingCellModel(labStr: "开启来电识别", infoStr: "", showArrow: true);
+        let updateldModel = SettingCellModel(labStr: "刷新来电提示数据", infoStr: information, showArrow: true)
+        let secion2 = SectionModel(model: "  来电识别", items: [openldModel,updateldModel ]);
+        
+        
+        let identifierModel = SettingCellModel(labStr:imei, infoStr: "", showArrow: false)
+        let secion3 = SectionModel(model: "  标识符", items: [identifierModel]);
+        
+        
         return Observable.create({ (observer) -> Disposable in
             
-            let secion1 = SectionModel(model: "  通用", items: ["字体大小","主题颜色"/*,"检查更新","关于"*/]);
-            let secion2 = SectionModel(model: "  来电识别", items: ["风驰来电识别"]);
-            let imei = AppLoginHelper.uuidInKeyChain();
-            let secion3 = SectionModel(model: "  标识符", items: [imei]);
+            
             
             observer.onNext([secion1,secion2,secion3]);
             observer.onCompleted();

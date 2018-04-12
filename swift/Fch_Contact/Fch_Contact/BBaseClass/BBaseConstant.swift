@@ -31,6 +31,7 @@ let showAllDataNotificationName =  NSNotification.Name("fch_contact_showAllData"
 let changeFontNotificationName =  NSNotification.Name("fch_contact_changeFont")
 
 
+typealias BBaseHandler = ()->Void;
 
 
 func BLocalizedString(key:String) -> String{
@@ -54,4 +55,6 @@ func BGlobalGrayColor() -> UIColor {
 func BGlobalRedColor() -> UIColor {
     return BRGBColor(r: 166, g: 41, b: 40, a: 1.0)
 }
+
+
 

@@ -147,6 +147,7 @@ class ColorCenter {
     let tableBackground = Variable(UIColor.clear)
     let leftTableBackground = Variable(UIColor.clear)
     let selectedCell = Variable(UIColor.clear)
+    let themeName = Variable("");
     
     var theme: Theme = .white {
         didSet {
@@ -159,6 +160,7 @@ class ColorCenter {
             primary.value = theme.colors[6]
             secondary.value = theme.colors[7]
             selectedCell.value = theme == .black ? rgb("151515")! : rgb("e0e0e0")!
+            themeName.value = theme.displayName;
         }
     }
     
@@ -229,6 +231,12 @@ extension UILabel {
             self.textColor = color
         })
     }
+    
+//    func setTextThemeName()  {
+//        _ = ColorCenter.shared.themeName.asObservable().takeUntil(rx.deallocated).subscribe(onNext: { [unowned self](name) in
+//            self.text = name;
+//        })
+//    }
 }
 
 extension UIButton {

@@ -20,4 +20,16 @@ extension UIDevice {
         
         return false
     }
+    
+    static func versionGreatThanOrEqual(version:String) -> Bool{
+        let result =  self.current.systemVersion.compare(version);
+        
+        if result == .orderedAscending{
+            return false;
+        }else{
+            return true;
+        }
+        
+    }
+    
 }

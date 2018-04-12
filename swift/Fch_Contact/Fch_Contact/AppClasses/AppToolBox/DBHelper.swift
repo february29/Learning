@@ -13,7 +13,7 @@ let personTableName = "t_person";
 let deptTableName = "t_dept";
 
 
-//数据库存储文件夹
+//数据库存储文件夹  app拓展里面有同样定义
 let DBFileSavePath = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.Fch_OA");
 
 class DBHelper {

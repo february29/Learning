@@ -11,6 +11,8 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 import BAlertView
+import CallKit
+
 
 
 class SettingViewController: BBaseViewController,UITableViewDelegate {
@@ -41,9 +43,12 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
     
     
     
-    let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String,String >>(configureCell: { ds, tv, ip, item in
+    let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String,SettingCellModel >>(configureCell: { ds, tv, idx, item in
         let cell = tv.dequeueReusableCell(withIdentifier: "cell") as! SettingTableViewCell;
-        cell.coloumLable1?.text = item;
+        
+        cell.coloumLable1?.text = item.lab;
+        cell.infoLable?.text = item.info; //后期修改这里能显示但是不会根据字体颜色变化而变化
+        cell.arrowImageView?.isHidden = !item.showArrow!;
         return cell;
     },titleForHeaderInSection: { dataSource, index in
         let section = dataSource[index];
@@ -95,8 +100,64 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
         } else if indexPath.section == 1{
             if indexPath.row == 0 {
             
-                BAlertModal.sharedInstance().makeToast("开发中");
+                //打开来电提示
+                CallDirectoryExtensionHelper.sharedInstance.checkCallKitOpen(finishedHandler: { (support,isOpen) in
+                    
+                    if support {
+                        if isOpen{
+                            BAlertModal.sharedInstance().makeToast("已开启");
+                        }else{
+                           
+                            self.showAlert(title: "授权", message: "请在设置->电话->来电阻止与身份识别开启相关权限", okTitle: "去设置", OkHandler: {
+                                let url = URL(string: "prefs:root=Phone");
+                                if UIApplication.shared.canOpenURL(url!){
+                                    UIApplication.shared.openURL(url!);
+                                }
+                                
+                            })
+                            
+                        }
+                        
+                       
+                    }else{
+                        BAlertModal.sharedInstance().makeToast("该功能适用于iOS10及以上版本系统");
+                    }
+                })
                 
+            }else if indexPath.row == 1{
+                //更新来电提示
+                
+                CallDirectoryExtensionHelper.sharedInstance.checkCallKitOpen(finishedHandler: { (support,isOpen) in
+                    
+                    if support {//支持
+                        if isOpen{//已打开
+                            //更新数据
+                            CallDirectoryExtensionHelper.sharedInstance.reloadExtension(completeHandler: { (support, error) in
+                                    if error == nil{
+                                        BAlertModal.sharedInstance().makeToast("数据更新成功");
+                                    }else{
+                                        BAlertModal.sharedInstance().makeToast("数据更新失败");
+                                    }
+                            })
+                        }else{//未打开
+                            
+                            self.showAlert(title: "授权", message: "请在设置->电话->来电阻止与身份识别开启相关权限", okTitle: "去设置", OkHandler: {
+                                let url = URL(string: "prefs:root=Phone");
+                                if UIApplication.shared.canOpenURL(url!){
+                                    UIApplication.shared.openURL(url!);
+                                }
+                                
+                            })
+                            
+                        }
+                    }else{//不支持
+                        
+                        BAlertModal.sharedInstance().makeToast("该功能适用于iOS10及以上版本系统");
+                    }
+                })
+                
+                
+               
             }
         }
     }
@@ -125,6 +186,13 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
         return UIView();
         
     }
+    
+    
+    // MARK: call directoryextension
+    
+   
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -56,12 +56,15 @@ class FontCenter {
     let navBarTitle:Variable<CGFloat> = Variable(15.0)
     let primary:Variable<CGFloat> = Variable(11.0)
     let secondary:Variable<CGFloat> = Variable(13.0)
+    let fontName:Variable<String> = Variable("");
+    
     
     var fontSize:FontSize = .middle {
         didSet{
             navBarTitle.value = fontSize.sizes[0]
             primary.value = fontSize.sizes[1]
             secondary.value = fontSize.sizes[2]
+            fontName.value = fontSize.displayName;
         }
     }
     
@@ -85,6 +88,8 @@ extension UILabel{
             self.font = UIFont.systemFont(ofSize: size);
         })
     }
+    
+    
 }
 
 
