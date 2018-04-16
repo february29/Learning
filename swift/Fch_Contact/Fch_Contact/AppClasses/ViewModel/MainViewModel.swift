@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import BAlertView
 
 class MainViewModel: NSObject {
 
@@ -156,6 +157,128 @@ class MainViewModel: NSObject {
         loadData.onNext((-2,searchString));
     }
     
+    
+    
+    // MARK: 网络请求
+    
+    /// 验证imei 是否可用
+    ///
+    /// - Parameter successHandler: 验证回掉
+    func fchCheckImeiVerify(successHandler:@escaping (_ isVerify:Bool)->Void) {
+        
+        
+        
+        let uuid = AppLoginHelper.uuidInKeyChain();
+        let par = ["imei":uuid];
+        BNetWorkingManager.shared.request(url: TestIMEIVerify_URL,method: .get, parameters:par) { (response) in
+            
+            if let value = response.result.value as? Dictionary<String, Any> {
+                if let error = value["error"]  {
+                    let errorStr = error as! String;
+                    if errorStr == "验证失败"{
+//                        BAlertModal.sharedInstance().makeToast(errorStr);
+                        successHandler(false);
+                        self.clearDBAndPostNotification();
+                    }else{
+                        successHandler(true);
+                    }
+                    
+                }else{
+                    successHandler(true);
+                }
+            }else{
+                successHandler(true);
+                BAlertModal.sharedInstance().makeToast("网络异常");
+            }
+        }
+    }
+    
+    
+    
+    
+    /// 下载telBook对应的db文件
+    ///
+    /// - Parameter telBook: telBook
+    func downLoadDB(telBook:TelBookModel?, finshedHandler:@escaping (_ isSuccess:Bool)->Void)  {
+        
+        print("开始下载数据库文件");
+        
+        if let telBookModel = telBook {
+            
+            
+            
+            let fileName =  DBHelper.sharedInstance.getDBSaveName(telBook: telBookModel);
+            let url = "\(DownLoadDB_URL)/\(telBookModel.id!)"
+            
+            BNetWorkingManager.shared.download(url:url, method: .get, parameters: nil, progress: { (progress) in
+                print("\(progress.completedUnitCount)/\(progress.totalUnitCount)");
+            }, toLocalPath: DBFileSavePath,fileName:fileName) { (response) in
+                
+                if let data =  response.result.value {
+                    print("文件下载成功:\(String(describing: DBFileSavePath))\(fileName)\\n size:\(data.count)");
+                    //下载成功后重新设置本地的telBook  防止重复提示新数据
+                    UserDefaults.standard.setTelBookModel(model: telBookModel);
+                    //发送通知 刷新数据
+                    NotificationCenter.default.post(name:relodDataNotificationName, object: nil);
+                    //更新来电提示数据
+                    CallDirectoryExtensionHelper.sharedInstance.reloadExtension(completeHandler: { (supprot, error) in
+                        if supprot && error == nil{
+                            print("来电显示数据更新成功");
+                        }else{
+                            print("来电显示数据更新失败或者系统不支持");
+                        }
+                    })
+                    finshedHandler(true);
+                }else{
+                    finshedHandler(false);
+                    BAlertModal.sharedInstance().makeToast("网络异常");
+                }
+            }
+        }else{
+            finshedHandler(false);
+        }
+        
+        
+    }
+    
+    // MARK: 本地方法
+    
+    /// 清空数据库并且发送通知
+    func clearDBAndPostNotification() {
+        DBHelper.sharedInstance.clearDB();
+        NotificationCenter.default.post(name:relodDataNotificationName, object: nil);
+    }
+    
+    
+    /// 判断电话本是否过期，如果timeNow == ""则根据 days判断
+    ///
+    /// - Parameters:
+    ///   - expiredTime: 过期时间
+    ///   - timeNow: 现在时间
+    ///   - days: 剩余天数
+    /// - Returns: 是否过期
+    func checkTelBookExpired(expiredTime:TimeInterval,timeNow:String,days:Int) -> Bool {
+        
+        if timeNow == "" {
+            
+            if days <= 3{
+                BAlertModal.sharedInstance().makeToast("电话本使用即将到期，请您尽快续费!");
+            }
+            return days > 0;
+        }else{
+            let now = BDateTool.sharedInstance.dateFromGMTTimeString(timeString: timeNow);
+            let timeNowTimeInterval = BDateTool.sharedInstance.timeIntervalSince1970FromDate(date: now);
+            
+            if expiredTime - timeNowTimeInterval < 3*24*60*60*1000 {
+                BAlertModal.sharedInstance().makeToast("电话本使用即将到期，请您尽快续费!");
+            }
+            
+            
+            return expiredTime - timeNowTimeInterval < 0;
+        }
+        
+        
+    }
     
     
     
