@@ -14,6 +14,7 @@ import RxDataSources
 import MJRefresh
 import WebKit
 import FMDB
+import Alamofire
 
 class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDelegate,RightViewControllerDelegate{
    
@@ -45,7 +46,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
                 
                 if isVerify {
                     self.viewModel.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!,finshedHandler: { (isSuccess) in
-                        
+                        self.tableView.mj_header .endRefreshing();
                     })
                 }else{
                     self.tableView.reloadData();
@@ -79,14 +80,12 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             if idx == 0 {
                 
                 BAlert.sharedInstance.hide(view: menuView);
-                
-                
                 self.viewModel.fchCheckImeiVerify(successHandler: { (isVerify) in
                     
                     if isVerify {
-                        BHudView.showHud(in: self.view);
+                        BHudView.showHud(in: self.navigationController?.view);
                         self.viewModel.downLoadDB(telBook: UserDefaults.standard.getTelBookModel()!,finshedHandler: { (isSuccess) in
-                            BHudView.showHud(in: self.view);
+                            BHudView.hideHud(in: self.navigationController?.view);
                         })
                     }else{
                         
@@ -172,29 +171,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         
         
         
-        
-        //已经设置电话本
-        if let telBook = UserDefaults.standard.getTelBookModel() {
-            
-            checkTelBookDBShouldUpDate(telBookID: telBook.id, successHandler: {
-                
-            });
-            
-            
-            
-            
-        }else{
-            if let user = UserDefaults.standard.getUserModel(){
-                getUserTelBooks(userId: user.id, successHandler: {
-                    
-                })
-            }
-           
-        }
-        
-        self.checkAppHasNewVersion();
     
-        
         //注册通知
         NotificationCenter.default.addObserver(forName: relodDataNotificationName, object: nil, queue: nil) { (notifaction) in
             self.viewModel.reloadData(depId: -1);
@@ -231,9 +208,180 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     
     // MARK: VM绑定
     func bindViewModel()  {
+        // 列表数据绑定
         viewModel.result?.bind(to: tableView.rx.items(dataSource: dataSource)).disposed(by: disposeBag);
         self.viewModel.reloadData(depId: -1);
+       
+        
+        //app更新数据绑定
+        viewModel.checkAppShouldUpdateResult?.subscribe(onNext: { (result) in
+            
+            let value =  result.value as! NSDictionary
+            if let error = value ["error"]  {
+                let errorStr = error as! String;
+                if errorStr.components(separatedBy: "登录超时").count>1{
+                    AppLoginHelper.loginForTimeOut(successHandler: {
+                        self.viewModel.checkAppShouldUpdateSubject.onNext(true);
+                    })
+                }else{
+                    BAlertModal.sharedInstance().makeToast("登录失败：\(error)，请退出重新登录。");
+                }
+            }else{
+                if let app = value["app"]as? Dictionary<String,Any>  {
+                    let webVersion =  app["iosVersion"] as! String;
+                    let iosUrl = app["iosUrl"] as! String;
+                    let localVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String;
+                    if  webVersion.compare(localVersion) == .orderedDescending{
+                        self.showAlert(title: nil, message: "客户端有新版本，是否现在更新?",  cancleTitle: "下次再说", okTitle: "更新", cancleHandler: nil, OkHandler: {
+                             UIApplication.shared.openURL(URL.init(string: iosUrl)!);
+                        });
+                    }else{
+                        print("不需要更新");
+                    }
+                }
+            }
+        }, onError: { (error) in
+            BAlertModal.sharedInstance().makeToast("网络异常");
+        }).disposed(by: disposeBag);
+        
+        self.viewModel.checkAppShouldUpdateSubject.onNext(true);
+        
+        
+        if (UserDefaults.standard.getTelBookModel() == nil){
+            print("未设置电话本");
+            self.bingdingTelBookListResult();
+            return
+        }else{
+            self.bindingTelBookUpdateResult();
+        }
+        
     }
+    
+   
+    
+    /// 获取电话本列表（首次登录未设置本地电话本时调用） 数据绑定
+    func bingdingTelBookListResult()  {
+        guard let userId = UserDefaults.standard.getUserModel()?.id else { return  }
+        
+        viewModel.telBookListResult?.subscribe(onNext: { (result) in
+            let value = result.value as! NSDictionary
+            if let error = value["error"] {
+                let errorStr = error as! String;
+                if errorStr.components(separatedBy: "登录超时").count>1{
+                    AppLoginHelper.loginForTimeOut(successHandler: {
+                        self.viewModel.telBookListSubject.onNext(userId)
+                    })
+                }else{
+                    BAlertModal.sharedInstance().makeToast("登录失败：\(error)，请退出重新登录。");
+                }
+            }else{
+                let telbookArray = [TimeTelBookModel].deserialize(from:value["list"]as? NSArray);
+                if let telbooks = telbookArray  {
+                    if telbooks.count > 1{
+                        //多个电话本
+                        print("多个电话本 个数：\(telbooks.count)");
+                    }else if telbooks.count == 1{
+                        //一个电话本
+                        if let telBook = telbooks[0]!.telBook{
+                            
+                            if self.viewModel.checkTelBookExpired(expiredTime:0, timeNow: "",days: (telbooks[0]?.days)!){
+                                UserDefaults.standard.setTelBookModel(model:telBook);
+                                self.viewModel.fchCheckImeiVerify(successHandler: { (isVerify) in
+                                    
+                                    if isVerify {
+                                        BHudView.showHud(in: self.navigationController?.view);
+                                        self.viewModel.downLoadDB(telBook: telBook,finshedHandler: { (isSuccessful) in
+                                            
+                                            BHudView.hideHud(in: self.navigationController?.view);
+                                            
+                                        });
+                                    }else{
+                                        BAlertModal.sharedInstance().makeToast("客户端验证imei失败");
+                                    }
+                                })
+                                
+                            }else{
+                                BAlertModal.sharedInstance().makeToast("电话本已过期，请续费后使用！")
+                            }
+                        }
+                        
+                    }else{
+                        BAlertModal.sharedInstance().makeToast("您尚未创建电话本，请登录后台创建");
+                    }
+                    
+                }else{
+                    print("数据异常");
+                }
+            }
+            
+        }, onError: { (error) in
+            
+            BAlertModal.sharedInstance().makeToast("网络异常");
+        }).disposed(by: disposeBag);
+        
+        self.viewModel.telBookListSubject.onNext(userId);
+    }
+    
+    
+    /// 判断是否需要数据更新结果绑定，设置本地电话本后掉用。
+    func bindingTelBookUpdateResult()  {
+        
+        guard let telBookId = UserDefaults.standard.getTelBookModel()?.id else {
+            print("未设置电话本");
+            return
+        }
+        
+        //电话本db文件是否更新数据绑定
+        viewModel.telBookDBShouldUpDateResult?.subscribe(onNext: { (result) in
+            let value = result.value as! NSDictionary
+            if let error = value["error"]{
+                
+                let errorStr = error as! String;
+                if errorStr.components(separatedBy: "登录超时").count>1{
+                    AppLoginHelper.loginForTimeOut(successHandler: {
+                        self.viewModel.telBookDBShouldUpDateSubject.onNext(telBookId)
+                    })
+                }else{
+                    BAlertModal.sharedInstance().makeToast("登录失败：\(error)，请退出重新登录。");
+                }
+                
+            }else{
+                if let telbook = value["telBook"] as? Dictionary<String,Any>{
+                    if let webTelbookModel = TelBookModel.deserialize(from: telbook){
+                        
+                        let webInfomation = Int(webTelbookModel.information);
+                        let localInfomation = Int(UserDefaults.standard.getTelBookModel()!.information);
+                        if webInfomation! > localInfomation!{
+                            //需要更新数据库
+                            self.showAlert(title: "提示", message: "电话本数据已变更，是否现在更新?",  cancleTitle: "下次再说", okTitle: "更新数据", OkHandler: {
+                                //验证imei
+                                self.viewModel.fchCheckImeiVerify(successHandler: { (isVerify) in
+                                    if isVerify {
+                                        BHudView.showHud(in: self.navigationController?.view);
+                                        self.viewModel.downLoadDB(telBook: webTelbookModel, finshedHandler: { (isSuccess) in
+                                            BHudView.hideHud(in: self.navigationController?.view);
+                                        })
+                                    }else{
+                                        BAlertModal.sharedInstance().makeToast("客户端验证imei失败");
+                                    }
+                                    
+                                })
+                            })
+                        }
+                    }
+                    
+                }else{
+                    BAlertModal.sharedInstance().makeToast("数据异常");
+                }
+            }
+        }, onError: { (error) in
+            BAlertModal.sharedInstance().makeToast("网络异常");
+        }).disposed(by: disposeBag);
+        self.viewModel.telBookDBShouldUpDateSubject.onNext(telBookId)
+        
+    }
+    
+    
     
     
     // MARK: tableView代理
@@ -277,20 +425,6 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             alertVC.addAction(UIAlertAction(title: "取消", style: .cancel, handler: nil));
             self.present(alertVC, animated: true, completion: nil);
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-    
-        
-        
-        
         
     }
     
@@ -391,8 +525,6 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             
             view.layer.add(animations, forKey: "hideAn");
         };
-        
-        
        
     }
     
@@ -411,7 +543,6 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         print("获取用户电话本列表");
         let par = ["userId":userId];
         BNetWorkingManager.shared.request(url: TelBooksList_URL, method: .post,parameters:par,  completionHandler: { (response) in
-            
             if let value = response.result.value as? Dictionary<String, Any> {
                 if let error = value["error"] {
                     let errorStr = error as! String;
@@ -439,24 +570,20 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
                                     self.viewModel.fchCheckImeiVerify(successHandler: { (isVerify) in
                                         
                                         if isVerify {
-                                            BHudView.showHud(in: self.view);
+                                            BHudView.showHud(in: self.navigationController?.view);
                                             self.viewModel.downLoadDB(telBook: telBook,finshedHandler: { (isSuccessful) in
                                                 
-                                                BHudView.hideHud(in: self.view);
+                                                BHudView.hideHud(in: self.navigationController?.view);
+                                                
                                             });
                                         }else{
-                                            
                                             BAlertModal.sharedInstance().makeToast("客户端验证imei失败");
                                         }
-                                        
                                     })
-                                    
-                                    
-                                    
+
                                 }else{
                                     BAlertModal.sharedInstance().makeToast("电话本已过期，请续费后使用！")
                                 }
-                                
                             }
                             
                         }else{
@@ -476,183 +603,15 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     }
     
     
-    /// 检查电话本是否有新数据更新
-    ///
-    /// - Parameters:
-    ///   - telBookID: 电话本ID
-    ///   - successHandler: 需要更新回掉
-    func checkTelBookDBShouldUpDate(telBookID:Int,successHandler:@escaping ()->Void) {
-        print("检查电话本是否有新数据更新");
-        BNetWorkingManager.shared.request(url: "\(TelBook_Detail_URL)/\(telBookID)", method: .get, completionHandler: { (response) in
-            if let value = response.result.value as? NSDictionary{
-
-                if let error = value["error"]{
-                    
-                    let errorStr = error as! String;
-                    if errorStr.components(separatedBy: "登录超时").count>1{
-                        AppLoginHelper.loginForTimeOut(successHandler: {
-                            self.checkTelBookDBShouldUpDate(telBookID: telBookID, successHandler: successHandler)
-                        })
-                    }else{
-                        BAlertModal.sharedInstance().makeToast("登录失败：\(error)，请退出重新登录。");
-                    }
-                    
-                }else{
-                    if let telbook = value["telBook"] as? Dictionary<String,Any>{
-                        if let webTelbookModel = TelBookModel.deserialize(from: telbook){
-                            
-                            let webInfomation = Int(webTelbookModel.information);
-                            let localInfomation = Int(UserDefaults.standard.getTelBookModel()!.information);
-                            
-                            
-                            
-                            if webInfomation! > localInfomation!{
-                                
-                                //需要更新数据库
-                                let alert = UIAlertController(title: "提示", message: "电话本数据已变更，是否现在更新?", preferredStyle: .alert);
-                                let action = UIAlertAction(title: "确定", style: UIAlertActionStyle.default, handler: { (action) in
-                                    
-                                    if self.viewModel.checkTelBookExpired(expiredTime: webTelbookModel.expiredTime, timeNow: response.response?.allHeaderFields["Date"] as! String, days: 0){
-                                        BAlertModal.sharedInstance().makeToast("电话本已过期,数据无法更新");
-                                    }else{
-                                        
-                                        //验证imei
-                                        self.viewModel.fchCheckImeiVerify(successHandler: { (isVerify) in
-                                            
-                                            if isVerify {
-                                                BHudView.showHud(in: self.view);
-                                                self.viewModel.downLoadDB(telBook: webTelbookModel, finshedHandler: { (isSuccess) in
-                                                    BHudView.hideHud(in: self.view);
-                                                })
-                                            }else{
-                                                
-                                                BAlertModal.sharedInstance().makeToast("客户端验证imei失败");
-                                            }
-                                            
-                                        })
-                                        
-                                        
-                                    }
-                                    
-                                })
-                                let cancle = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: { (action) in
-                                })
-                                alert.addAction(action);
-                                alert.addAction(cancle);
-                                self.present(alert, animated: true, completion: {
-                                    
-                                });
-                            }
-                        }
-                        
-                    }else{
-                        BAlertModal.sharedInstance().makeToast("数据异常");
-                    }
-                }
-                
-            }else{
-                BAlertModal.sharedInstance().makeToast("网络异常");
-            }
-            
-        });
-            
-            
-        
-    }
-    
-    
-    
-    
-
-    
-    /// 验证客户端是否有更新
-    func checkAppHasNewVersion() {
-        
-        
-       
-       
-        BNetWorkingManager.shared.request(url: AppUpdate_URL,method: .get ) { (response) in
-            
-            if let value = response.result.value as? Dictionary<String, Any> {
-                if let error = value["error"]  {
-                    let errorStr = error as! String;
-                    if errorStr.components(separatedBy: "登录超时").count>1{
-                        AppLoginHelper.loginForTimeOut(successHandler: {
-                            self.checkAppHasNewVersion()
-                        })
-                    }else{
-                        BAlertModal.sharedInstance().makeToast("登录失败：\(error)，请退出重新登录。");
-                    }
-                    
-                    
-                }else{
-                    if let app = value["app"]as? Dictionary<String,Any>  {
-                       
-                        let webVersion =  app["iosVersion"] as! String;
-                        let iosUrl = app["iosUrl"] as! String;
-                        let localVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String;
-                       
-                       
-                        if  webVersion.compare(localVersion) == .orderedDescending{
-                            
-                            let alert = UIAlertController.init(title: "提示", message: "客户端有新版本，是否现在更新?", preferredStyle: .alert)
-                            let okAction = UIAlertAction(title: "更新", style: .default, handler: { (action) in
-                                UIApplication.shared.openURL(URL.init(string: iosUrl)!);
-                            })
-                            let cancleAction = UIAlertAction(title: "下次再说", style: .cancel, handler: { (action) in
-                                
-                            })
-                            alert.addAction(okAction);
-                            alert.addAction(cancleAction);
-                            self.present(alert, animated: true, completion: nil);
-                           
-                        }else{
-                            
-                        }
-                        
-                    }
-                   
-                    
-                    
-                }
-            }else{
-                
-                BAlertModal.sharedInstance().makeToast("网络异常");
-            }
-        }
-        
-    }
-    
-    
-    
-    
-   
-    
     //返回按钮打开侧滑菜单
     override func back() {
         let sliderVC = self.sliderVC();
-        
         if  sliderVC.state == .OpenLeft{
             self.sliderVC().hideLeftMenu();
         }else if sliderVC.state == .Close{
             self.sliderVC().showLeftMenu();
         }
         
-        
     }
-
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
-   
-    
-
-    
-    
-   
 
 }

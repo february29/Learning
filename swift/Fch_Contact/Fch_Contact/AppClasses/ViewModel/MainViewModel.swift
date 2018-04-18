@@ -10,18 +10,22 @@ import UIKit
 import RxSwift
 import RxDataSources
 import BAlertView
+import Alamofire
 
 class MainViewModel: NSObject {
 
     
     var loadData = PublishSubject<(Int,String)>();
-//    var dataSource = [SectionModel<String, PersonModel>]();
     public var result:Observable<[SectionModel<String, PersonModel>]>?
     
-//    let shouldUpDateAPP:Variable<Bool> = Variable(false);
-//    let shouldUpDateTelDataDB:Variable<Bool> = Variable(false);
+    var checkAppShouldUpdateSubject = PublishSubject<Bool>();
+    public var checkAppShouldUpdateResult:Observable<Result<Any>>?
     
+    var telBookDBShouldUpDateSubject = PublishSubject<Int>();
+    public var telBookDBShouldUpDateResult:Observable<Result<Any>>?
     
+    var telBookListSubject = PublishSubject<Int>();
+    public var telBookListResult:Observable<Result<Any>>?
     
     override init() {
         super.init();
@@ -43,6 +47,20 @@ class MainViewModel: NSObject {
             
             
         })
+        
+      checkAppShouldUpdateResult = checkAppShouldUpdateSubject.flatMapLatest { (isTimeOut) -> Observable<Result<Any>> in
+            return BNetWorkingManager.shared.RxRequset(url: AppUpdate_URL, method: .get);
+        }
+        telBookDBShouldUpDateResult =  telBookDBShouldUpDateSubject.flatMapLatest({ (telBookId) -> Observable<Result<Any>> in
+            
+            return BNetWorkingManager.shared.RxRequset(url: "\(TelBook_Detail_URL)/\(telBookId)", method: .get);
+        })
+        
+        telBookListResult = telBookListSubject.flatMapLatest({ (userId) -> Observable<Result<Any>> in
+            let par = ["userId":userId];
+            return BNetWorkingManager.shared.RxRequset(url: TelBooksList_URL, method: .post,parameters: par);
+        })
+        
 
         
     }
@@ -167,7 +185,6 @@ class MainViewModel: NSObject {
     func fchCheckImeiVerify(successHandler:@escaping (_ isVerify:Bool)->Void) {
         
         
-        
         let uuid = AppLoginHelper.uuidInKeyChain();
         let par = ["imei":uuid];
         BNetWorkingManager.shared.request(url: TestIMEIVerify_URL,method: .get, parameters:par) { (response) in
@@ -200,12 +217,9 @@ class MainViewModel: NSObject {
     ///
     /// - Parameter telBook: telBook
     func downLoadDB(telBook:TelBookModel?, finshedHandler:@escaping (_ isSuccess:Bool)->Void)  {
-        
         print("开始下载数据库文件");
         
         if let telBookModel = telBook {
-            
-            
             
             let fileName =  DBHelper.sharedInstance.getDBSaveName(telBook: telBookModel);
             let url = "\(DownLoadDB_URL)/\(telBookModel.id!)"
@@ -232,14 +246,84 @@ class MainViewModel: NSObject {
                 }else{
                     finshedHandler(false);
                     BAlertModal.sharedInstance().makeToast("网络异常");
+                    
                 }
             }
         }else{
             finshedHandler(false);
+            BAlertModal.sharedInstance().makeToast("数据异常");
         }
         
         
     }
+    
+    
+
+    /// 获取用户电话本列表
+    ///风驰电话本
+    /// - Parameters:
+    ///   - userId: 用户ID
+    ///   - successHandler: 成功回掉
+    func getUserTelBooks(userId:Int,successHandler:@escaping ()->Void)  {
+        print("获取用户电话本列表");
+        let par = ["userId":userId];
+        BNetWorkingManager.shared.request(url: TelBooksList_URL, method: .post,parameters:par,  completionHandler: { (response) in
+            
+            
+            
+            if let value = response.result.value as? Dictionary<String, Any> {
+                if let error = value["error"] {
+                    let errorStr = error as! String;
+                    if errorStr.components(separatedBy: "登录超时").count>1{
+                        AppLoginHelper.loginForTimeOut(successHandler: {
+                            self.getUserTelBooks(userId: userId, successHandler: successHandler);
+                        })
+                    }else{
+                        BAlertModal.sharedInstance().makeToast("登录失败：\(error)，请退出重新登录。");
+                        
+                    }
+                }else{
+                    let telbookArray = [TimeTelBookModel].deserialize(from:value["list"]as? NSArray);
+                    if let telbooks = telbookArray  {
+                        if telbooks.count > 1{
+                            //多个电话本
+                            print("多个电话本 个数：\(telbooks.count)");
+                        }else if telbooks.count == 1{
+                            //一个电话本
+                            if let telBook = telbooks[0]!.telBook{
+                                    UserDefaults.standard.setTelBookModel(model:telBook);
+                                    self.fchCheckImeiVerify(successHandler: { (isVerify) in
+                                        
+                                        if isVerify {
+                                            self.downLoadDB(telBook: telBook,finshedHandler: { (isSuccessful) in
+                                                
+                                            });
+                                        }else{
+                                            BAlertModal.sharedInstance().makeToast("客户端验证imei失败");
+                                        }
+                                    })
+                            }
+                            
+                        }else{
+                            BAlertModal.sharedInstance().makeToast("您尚未创建电话本，请登录后台创建");
+                        }
+                        
+                    }else{
+                        print("数据异常");
+                    }
+                }
+                
+            }else{
+                BAlertModal.sharedInstance().makeToast("网络异常");
+            }
+            
+        });
+    }
+    
+    
+    
+    
+    
     
     // MARK: 本地方法
     
@@ -279,14 +363,5 @@ class MainViewModel: NSObject {
         
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
    
 }

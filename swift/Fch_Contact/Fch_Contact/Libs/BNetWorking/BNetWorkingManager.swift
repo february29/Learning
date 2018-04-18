@@ -117,7 +117,7 @@ class BNetWorkingManager: NSObject {
     
      //-------------------------------rx方法----------------------------------
     
-    func RxRequset(url:String,method:HTTPMethod,parameters:[String:Any])->Observable<Any> {
+    func RxRequset(url:String,method:HTTPMethod,parameters:[String:Any]?=nil)->Observable<Result<Any>> {
         return Observable.create({ (observer) -> Disposable in
            
            
