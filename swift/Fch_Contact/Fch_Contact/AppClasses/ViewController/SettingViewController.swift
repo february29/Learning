@@ -42,6 +42,13 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
     }();
     
     
+    lazy var  loginView:LoginView = {
+        
+        return LoginView(frame: CGRect(x: 0, y: 0, width:BSCREENW*0.8 , height: 175))
+        
+    }()
+    
+    
     
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String,SettingCellModel >>(configureCell: { ds, tv, idx, item in
         let cell = tv.dequeueReusableCell(withIdentifier: "cell") as! SettingTableViewCell;
@@ -156,8 +163,12 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
                     }
                 })
                 
-                
                
+            }
+        }else if indexPath.section == 3{
+            if indexPath.row == 0{
+                
+                BAlert.sharedInstance.normalShow(view: loginView);
             }
         }
     }

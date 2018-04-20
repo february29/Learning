@@ -331,6 +331,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             return
         }
         
+        
+        
         //电话本db文件是否更新数据绑定
         viewModel.telBookDBShouldUpDateResult?.subscribe(onNext: { (result) in
             let value = result.value as! NSDictionary

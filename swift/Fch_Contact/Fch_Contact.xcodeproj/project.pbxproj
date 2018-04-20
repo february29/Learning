@@ -81,6 +81,7 @@
 		21D1B0CF1FC54470002E4357 /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0CE1FC54470002E4357 /* PersonModel.swift */; };
 		21D965EA1FECAE120089D12E /* RightMenuViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D965E91FECAE120089D12E /* RightMenuViewTableViewCell.swift */; };
 		21D965EE1FECD2340089D12E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D965ED1FECD2340089D12E /* SettingViewController.swift */; };
+		21E3C9882089D9F800EDE690 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3C9872089D9F800EDE690 /* LoginView.swift */; };
 		21F0E57D1FF2462D002AA057 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */; };
 		21F0E57F1FF24673002AA057 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0E57E1FF24673002AA057 /* SettingViewModel.swift */; };
 		21F75F052028433E00E3A852 /* RightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F75F042028433E00E3A852 /* RightViewModel.swift */; };
@@ -205,6 +206,7 @@
 		21D1B0CE1FC54470002E4357 /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
 		21D965E91FECAE120089D12E /* RightMenuViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightMenuViewTableViewCell.swift; sourceTree = "<group>"; };
 		21D965ED1FECD2340089D12E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		21E3C9872089D9F800EDE690 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		21F0E57E1FF24673002AA057 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		21F75F042028433E00E3A852 /* RightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewModel.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				21D965E91FECAE120089D12E /* RightMenuViewTableViewCell.swift */,
 				21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */,
 				213FF3652015D1B5002B1D2D /* FontTableViewCell.swift */,
+				21E3C9872089D9F800EDE690 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				212C0FF51FD1161B0044EA6C /* LeftDeptTableViewCell.swift in Sources */,
 				21CC63991FA83B2B00B8E491 /* UILabel+BAnimation.m in Sources */,
 				2105AE87202054BF003DF0DE /* UIColor+BBase.swift in Sources */,
+				21E3C9882089D9F800EDE690 /* LoginView.swift in Sources */,
 				21180DB42021C41A00B77E40 /* UIView+BAlert.swift in Sources */,
 				2134596C200C3B8C00D41CF9 /* FontViewController.swift in Sources */,
 				21D1B0C41FC3DA55002E4357 /* TimeTelBookModel.swift in Sources */,
