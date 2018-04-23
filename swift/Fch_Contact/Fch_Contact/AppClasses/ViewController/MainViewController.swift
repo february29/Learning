@@ -389,7 +389,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     // MARK: tableView代理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let personModel = dataSource[indexPath];
-        let url =  URL(string: "tel:" + personModel.column3);
+//        let url =  URL(string: "tel:" + personModel.column3);
         
         
         let alertVC = UIAlertController(title:BLocalizedString(key: "Call phone?") , message: nil, preferredStyle: .actionSheet)
@@ -411,12 +411,14 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
 
         
         if phoneArray.count == 1 {
+            let url =  URL(string: "tel:" + phoneArray[0]);
             webView.loadRequest(URLRequest(url: url!));
             self.view.addSubview(webView);
             
         }else{
             for phoneString in phoneArray {
                 let action = UIAlertAction(title: phoneString, style: .default, handler: { (action) in
+                    let url =  URL(string: "tel:" + phoneString);
                     self.webView.loadRequest(URLRequest(url: url!));
                     self.view.addSubview(self.webView);
                     
@@ -503,7 +505,7 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
             animations.animations = [animation1,animation2,animation3];
             view.layer.add(animations, forKey: "startAn");
         }) { (view, config) in
-            // 隐藏动画
+            // 隐藏动画 风驰电话本呢
             let animation1 = CABasicAnimation(keyPath: "position.y");
             animation1.fromValue = view.centerY;
             animation1.toValue = view.frame.origin.y;
@@ -530,79 +532,8 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
        
     }
     
-    // MARK: 网络请求
-    
-    
     
    
-    
-    /// 获取用户电话本列表
-    ///风驰电话本
-    /// - Parameters:
-    ///   - userId: 用户ID
-    ///   - successHandler: 成功回掉
-    func getUserTelBooks(userId:Int,successHandler:@escaping ()->Void)  {
-        print("获取用户电话本列表");
-        let par = ["userId":userId];
-        BNetWorkingManager.shared.request(url: TelBooksList_URL, method: .post,parameters:par,  completionHandler: { (response) in
-            if let value = response.result.value as? Dictionary<String, Any> {
-                if let error = value["error"] {
-                    let errorStr = error as! String;
-                    if errorStr.components(separatedBy: "登录超时").count>1{
-                        AppLoginHelper.loginForTimeOut(successHandler: {
-                            self.getUserTelBooks(userId: userId, successHandler: successHandler);
-                        })
-                    }else{
-                        BAlertModal.sharedInstance().makeToast("登录失败：\(error)，请退出重新登录。");
-                    }
-                }else{
-                    let telbookArray = [TimeTelBookModel].deserialize(from:value["list"]as? NSArray);
-                    if let telbooks = telbookArray  {
-                        if telbooks.count > 1{
-                            //多个电话本
-                            print("多个电话本 个数：\(telbooks.count)");
-                        }else if telbooks.count == 1{
-                            //一个电话本
-                            if let telBook = telbooks[0]!.telBook{
-                               
-                                if self.viewModel.checkTelBookExpired(expiredTime:0, timeNow: "",days: (telbooks[0]?.days)!){
-                                    UserDefaults.standard.setTelBookModel(model:telBook);
-                                    
-                                    
-                                    self.viewModel.fchCheckImeiVerify(successHandler: { (isVerify) in
-                                        
-                                        if isVerify {
-                                            BHudView.showHud(in: self.navigationController?.view);
-                                            self.viewModel.downLoadDB(telBook: telBook,finshedHandler: { (isSuccessful) in
-                                                
-                                                BHudView.hideHud(in: self.navigationController?.view);
-                                                
-                                            });
-                                        }else{
-                                            BAlertModal.sharedInstance().makeToast("客户端验证imei失败");
-                                        }
-                                    })
-
-                                }else{
-                                    BAlertModal.sharedInstance().makeToast("电话本已过期，请续费后使用！")
-                                }
-                            }
-                            
-                        }else{
-                            BAlertModal.sharedInstance().makeToast("您尚未创建电话本，请登录后台创建");
-                        }
-                        
-                    }else{
-                        print("数据异常");
-                    }
-                }
-                
-            }else{
-                BAlertModal.sharedInstance().makeToast("网络异常");
-            }
-            
-        });
-    }
     
     
     //返回按钮打开侧滑菜单

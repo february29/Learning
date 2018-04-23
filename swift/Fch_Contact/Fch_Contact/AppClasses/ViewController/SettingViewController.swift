@@ -44,7 +44,11 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
     
     lazy var  loginView:LoginView = {
         
-        return LoginView(frame: CGRect(x: 0, y: 0, width:BSCREENW*0.8 , height: 175))
+        let loginView = LoginView(frame: CGRect(x: 0, y: 0, width:BSCREENW*0.8 , height: 175))
+        
+//        loginView.
+        
+        return loginView;
         
     }()
     

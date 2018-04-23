@@ -84,6 +84,7 @@
 		21E3C9882089D9F800EDE690 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3C9872089D9F800EDE690 /* LoginView.swift */; };
 		21F0E57D1FF2462D002AA057 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */; };
 		21F0E57F1FF24673002AA057 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0E57E1FF24673002AA057 /* SettingViewModel.swift */; };
+		21F631D2208DB1CF00EA3B3D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F631D1208DB1CF00EA3B3D /* LoginViewModel.swift */; };
 		21F75F052028433E00E3A852 /* RightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F75F042028433E00E3A852 /* RightViewModel.swift */; };
 		3AB90C5C3DA5860E446F4CD3 /* Pods_Fch_Contact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */; };
 /* End PBXBuildFile section */
@@ -209,6 +210,7 @@
 		21E3C9872089D9F800EDE690 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		21F0E57E1FF24673002AA057 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		21F631D1208DB1CF00EA3B3D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		21F75F042028433E00E3A852 /* RightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewModel.swift; sourceTree = "<group>"; };
 		402F35785043CE5C78CF273B /* Pods-Fch_Contact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.debug.xcconfig"; sourceTree = "<group>"; };
 		651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fch_Contact.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +255,7 @@
 				212C0FF61FD11AB20044EA6C /* LeftMemuViewModel.swift */,
 				21F75F042028433E00E3A852 /* RightViewModel.swift */,
 				21F0E57E1FF24673002AA057 /* SettingViewModel.swift */,
+				21F631D1208DB1CF00EA3B3D /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				21D1B0CB1FC50F23002E4357 /* BDateTool.swift in Sources */,
 				21D1B0CF1FC54470002E4357 /* PersonModel.swift in Sources */,
 				21CC63691FA803A800B8E491 /* UIView+BBase.swift in Sources */,
+				21F631D2208DB1CF00EA3B3D /* LoginViewModel.swift in Sources */,
 				21CC63971FA83B2B00B8E491 /* BLaunchBarView.m in Sources */,
 				21D965EE1FECD2340089D12E /* SettingViewController.swift in Sources */,
 				21B10DE31FB04AD6006257F2 /* HandyJSON+BRXModel.swift in Sources */,

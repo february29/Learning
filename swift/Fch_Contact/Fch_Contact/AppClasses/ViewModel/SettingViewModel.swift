@@ -9,12 +9,15 @@
 import UIKit
 import RxSwift
 import RxDataSources
+import Alamofire
 
 
 class SettingViewModel: NSObject {
 
     var loadData = PublishSubject<Bool>();
     public var result:Observable<[SectionModel<String, SettingCellModel>]>?
+    
+//    public var loginResult:Observable<Result<Any>>?
     
     let disposeBag = DisposeBag();
     
@@ -30,6 +33,8 @@ class SettingViewModel: NSObject {
         result = loadData.flatMapLatest({ (_) -> Observable<[SectionModel<String, SettingCellModel>]> in
             return self.getSettingConfig();
         })
+        
+        
         
     
         ColorCenter.shared.themeName.asObservable().subscribe(onNext: { (themName) in

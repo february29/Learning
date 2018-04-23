@@ -8,7 +8,14 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
+
 class LoginView: UIView {
+    
+    
+    let viewModel = LoginViewModel();
+    
     
     lazy var  userName: UITextField  = {
         let tf = UITextField();
@@ -43,11 +50,15 @@ class LoginView: UIView {
     lazy var  loginBtn: UIButton  = {
         let btn = UIButton();
         btn.setTitle("登录", for: .normal)
-        btn.setTitleColor(.primary);
+        btn.setTitleColor(ThemeColorType.navBarTitle);
+        btn.setBackgroundColor(ThemeColorType.navBar);
         btn.layer.cornerRadius = 3;
-        btn.layer.borderWidth = 0.8;
-        btn.layer.borderColor = BRGBColor(r: 237, g: 237, b: 237, a: 1).cgColor;
+//        btn.layer.borderWidth = 0.8;
+//        btn.layer.borderColor = BRGBColor(r: 237, g: 237, b: 237, a: 1).cgColor;
         btn.titleLabel?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize);
+        
+        
+        
         return btn;
     }();
     
@@ -92,6 +103,13 @@ class LoginView: UIView {
         
         
         
+        
+        
+    }
+    
+    func bundingViewModel() {
+//        self.passWord.rx.text
+//        Observable.combineLatest(<#T##source1: ObservableType##ObservableType#>, <#T##source2: ObservableType##ObservableType#>, resultSelector: <#T##(ObservableType.E, ObservableType.E) throws -> _#>)
     }
     
     required init?(coder aDecoder: NSCoder) {
