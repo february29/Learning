@@ -9,82 +9,132 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Alamofire
 // 枚举
 enum LoginResult {
     
-    case LoginSuccess(message: String)
+    case loginSuccess(message: String)
     case empty
     case failed(message: String)
-    case ok(message:String)
+    case ok
+    
+    
+    var isValid: Bool {
+        switch self {
+        case .ok:
+            return true
+        default:
+            return false
+        }
+    }
 }
+
+
+enum NetWorkingStatus {
+    
+    case start
+    case end
+    case requseting
+    
+}
+
 
 
 class LoginViewModel {
     
-//    let usernameUsable: Driver<LoginResult>
-//    let loginButtonEnabled: Driver<Bool>
-//    let loginResult: Driver<LoginResult>
-//
-//    init(input: (username: Driver<String>, password: Driver<String>, loginTaps: Driver<Void>)) {
-//
-//        usernameUsable = input.username
-//            .flatMapLatest { username in
-//
-//                if username.count == 0 {
-//                    return .just(.empty)
-//                }
-//
-//                return .just(.ok(message: "用户名可用"))
-//
-//        }
-//
-//
-//
-//        let usernameAndPassword = Driver.combineLatest(input.username, input.password) {
-//            ($0, $1)
-//        }
-//
-//        loginResult = input.loginTaps.withLatestFrom(usernameAndPassword)
-//            .flatMapLatest { (username, password) in
-//                let par = ["loginName":username,
-//                           "password":password.md5];
-//
-//                return  BNetWorkingManager.shared.RxRequset(url: Login_URL, method: .post, parameters: par).map({ (result) -> Driver<LoginResult> in
-//                    if let value = result.value as? NSDictionary{
-//                        if value["error"] != nil{
-//
-//                            return .just(.failed(message:value["error"]as!String))
-//                        }else{
-//
-//
-//                            if let user = value["user"] as? Dictionary<String,Any>{
-//                                let userModel = UserModel.deserialize(from: user)
-//                                if userModel != nil{
-//                                    UserDefaults.standard.setUserModel(model: userModel!);
-//
-//                                }
-//
-//                            }
-//                             return .just(.LoginSuccess(message:"登录成功"));
-//
-//                        }
-//
-//                    }else{
-//                        return .just(.empty)
+    let validatedUsername: Driver<LoginResult>
+    let validatedPassword: Driver<LoginResult>
+    // Is signup button enabled
+    let signupEnabled: Driver<Bool>
+    
+    // Has user signed in
+//    let signedIn: Driver<NetWorkingStatus>
+    let signedIn: Driver<Bool>
+    
+    // Is signing process in progress
+//    let signingIn: Driver<Bool>
+   
+
+    init(
+        
+        usernameDriver: Driver<String>,
+        passwordDriver: Driver<String>,
+        loginTaps: Driver<Void>
+        
+        ) {
+       
+        
+        
+        validatedUsername = usernameDriver
+            .flatMapLatest { username in
+                
+                if username.count == 0{
+                    return .just(.empty)
+                }
+                return .just(.ok)
+                
+        }
+        
+        validatedPassword = passwordDriver
+            .flatMapLatest { password in
+                if password.count == 0{
+                    return .just(.empty)
+                }
+                return .just(.ok)
+        }
+        
+        
+        
+       
+        let usernameAndPassword = Driver.combineLatest(usernameDriver,passwordDriver) { (username: $0, password: $1) }
+
+        signedIn = loginTaps.withLatestFrom(usernameAndPassword)
+            .flatMapLatest { pair in
+               
+                
+                let par = ["loginName":pair.username,
+                           "password":pair.password.md5];
+                
+                return BNetWorkingManager.shared.RxRequset(url: Login_URL, method: .post, parameters: par).flatMapLatest({ (result) -> Observable<Bool> in
+                    
+                    if let value = result.value as? NSDictionary{
+                        if let user = value["user"] as? Dictionary<String,Any>{
+                            let userModel = UserModel.deserialize(from: user)
+                            if userModel != nil{
+                                UserDefaults.standard.setUserModel(model: userModel!);
+                            }
+                          return Observable.just(true)
+                        }else{
+                            return Observable.just(false)
+                        }
+                    }else{
+                        return Observable.just(false)
+                    }
+                }).asDriver(onErrorJustReturn: false);
+            }
+//            .flatMapLatest { loggedIn -> Driver<Bool> in
+//                let message = loggedIn ? "Mock: Signed in to GitHub." : "Mock: Sign in to GitHub failed"
+//                return wireframe.promptFor(message, cancelAction: "OK", actions: [])
+//                    // propagate original value
+//                    .map { _ in
+//                        loggedIn
 //                    }
-//
-//                })
-//
-//
+//                    .asDriver(onErrorJustReturn: false)
 //        }
-//        
-//        loginButtonEnabled = input.password
-//            .map { $0.count > 0 }
-//            .asDriver()
-//
-//
-//    }
-//
-//
+        
+        
+        signupEnabled = Driver.combineLatest(
+            validatedUsername,
+            validatedPassword
+            
+        )   { username, password  in
+            username.isValid &&
+                password.isValid
+            
+            }
+            .distinctUntilChanged()
+    
+}
+
     
 }

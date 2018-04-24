@@ -120,7 +120,7 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
                     let name =  dic!["column1"] as! String
                     let phone = dic!["column3"] as! String
                     let dep = dic!["column2"] as! String
-                    if name.hasSuffix("公司传真")||phone .hasSuffix("电话"){
+                    if phone.count == 0 || name.hasSuffix("公司传真")||phone .hasSuffix("电话"){
                         //不合法数据
                     }else{
                         let num = "86\(phone)".replacingOccurrences(of: "-", with: "");

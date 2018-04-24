@@ -10,11 +10,12 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
-
+import BAlertView
 class LoginView: UIView {
     
     
-    let viewModel = LoginViewModel();
+    var viewModel:LoginViewModel?
+    let disposeBag = DisposeBag();
     
     
     lazy var  userName: UITextField  = {
@@ -102,18 +103,35 @@ class LoginView: UIView {
         }
         
         
+        viewModel = LoginViewModel(usernameDriver: self.userName.rx.text.orEmpty.asDriver(), passwordDriver: self.passWord.rx.text.orEmpty.asDriver(), loginTaps: self.loginBtn.rx.tap.asDriver())
         
-        
+        self.bundingViewModel();
         
     }
     
     func bundingViewModel() {
-//        self.passWord.rx.text
-//        Observable.combineLatest(<#T##source1: ObservableType##ObservableType#>, <#T##source2: ObservableType##ObservableType#>, resultSelector: <#T##(ObservableType.E, ObservableType.E) throws -> _#>)
+
+        viewModel?.signupEnabled.drive(onNext: { (loginable) in
+            self.loginBtn.isEnabled = loginable
+            self.loginBtn.alpha = loginable ? 1.0 : 0.5
+        }) .disposed(by: disposeBag)
+        
+        viewModel?.signedIn
+            .drive(onNext: { signedIn in
+                print("User signed in \(signedIn)")
+                if signedIn {
+                    BAlertModal.sharedInstance().makeToast("登录成功")
+                }
+            })
+            .disposed(by: disposeBag)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    
     
 }
