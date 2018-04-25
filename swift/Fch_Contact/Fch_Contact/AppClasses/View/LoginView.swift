@@ -121,6 +121,9 @@ class LoginView: UIView {
                 print("User signed in \(signedIn)")
                 if signedIn {
                     BAlertModal.sharedInstance().makeToast("登录成功")
+                    BAlertModal.sharedInstance().hide(animated: true);
+                }else{
+                    BAlertModal.sharedInstance().makeToast("登录失败", disPlayStyle: BAlertModalToastDisPlayStyle.top)
                 }
             })
             .disposed(by: disposeBag)

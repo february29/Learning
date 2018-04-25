@@ -10,12 +10,33 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Alamofire
+
+
+
+
 // 枚举
+enum ValidationLoginInput {
+    
+    
+    case empty
+    case failed(message: String)
+    case ok(message: String)
+
+    var isValid: Bool {
+        switch self {
+        case .ok:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
 enum LoginResult {
     
     case loginSuccess(message: String)
     case empty
-    case failed(message: String)
+    case loginFailed(message: String)
     case ok
     
     
@@ -30,20 +51,13 @@ enum LoginResult {
 }
 
 
-enum NetWorkingStatus {
-    
-    case start
-    case end
-    case requseting
-    
-}
 
 
 
 class LoginViewModel {
     
-    let validatedUsername: Driver<LoginResult>
-    let validatedPassword: Driver<LoginResult>
+    let validatedUsername: Driver<ValidationLoginInput>
+    let validatedPassword: Driver<ValidationLoginInput>
     // Is signup button enabled
     let signupEnabled: Driver<Bool>
     
@@ -71,7 +85,7 @@ class LoginViewModel {
                 if username.count == 0{
                     return .just(.empty)
                 }
-                return .just(.ok)
+                return .just(.ok(message:"用户名合法"))
                 
         }
         
@@ -80,7 +94,7 @@ class LoginViewModel {
                 if password.count == 0{
                     return .just(.empty)
                 }
-                return .just(.ok)
+                return .just(.ok(message:"密码合法"))
         }
         
         
@@ -91,6 +105,7 @@ class LoginViewModel {
         signedIn = loginTaps.withLatestFrom(usernameAndPassword)
             .flatMapLatest { pair in
                
+                
                 
                 let par = ["loginName":pair.username,
                            "password":pair.password.md5];

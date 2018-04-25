@@ -85,6 +85,7 @@
 		21F0E57D1FF2462D002AA057 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */; };
 		21F0E57F1FF24673002AA057 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F0E57E1FF24673002AA057 /* SettingViewModel.swift */; };
 		21F631D2208DB1CF00EA3B3D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F631D1208DB1CF00EA3B3D /* LoginViewModel.swift */; };
+		21F631D520901BDA00EA3B3D /* BAutoHeightScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F631D420901BDA00EA3B3D /* BAutoHeightScrollView.swift */; };
 		21F75F052028433E00E3A852 /* RightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F75F042028433E00E3A852 /* RightViewModel.swift */; };
 		3AB90C5C3DA5860E446F4CD3 /* Pods_Fch_Contact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */; };
 /* End PBXBuildFile section */
@@ -211,6 +212,7 @@
 		21F0E57C1FF2462D002AA057 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		21F0E57E1FF24673002AA057 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		21F631D1208DB1CF00EA3B3D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		21F631D420901BDA00EA3B3D /* BAutoHeightScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAutoHeightScrollView.swift; sourceTree = "<group>"; };
 		21F75F042028433E00E3A852 /* RightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewModel.swift; sourceTree = "<group>"; };
 		402F35785043CE5C78CF273B /* Pods-Fch_Contact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.debug.xcconfig"; sourceTree = "<group>"; };
 		651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fch_Contact.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -388,7 +390,7 @@
 				21D1B0C91FC4231B002E4357 /* Fch_Contact.entitlements */,
 				210F2F231FAFF38D00A87AA6 /* AppClasses */,
 				21CC637C1FA82D1900B8E491 /* Libs */,
-				21CC636E1FA8093C00B8E491 /* Resource */,
+				21CC636E1FA8093C00B8E491 /* CommonViews */,
 				21CC63601FA803A800B8E491 /* BBaseClass */,
 				21CC63631FA803A800B8E491 /* BTools */,
 				21CC634C1FA7294300B8E491 /* AppDelegate.swift */,
@@ -446,11 +448,12 @@
 			path = BUtils;
 			sourceTree = "<group>";
 		};
-		21CC636E1FA8093C00B8E491 /* Resource */ = {
+		21CC636E1FA8093C00B8E491 /* CommonViews */ = {
 			isa = PBXGroup;
 			children = (
+				21F631D420901BDA00EA3B3D /* BAutoHeightScrollView.swift */,
 			);
-			path = Resource;
+			path = CommonViews;
 			sourceTree = "<group>";
 		};
 		21CC637C1FA82D1900B8E491 /* Libs */ = {
@@ -776,6 +779,7 @@
 				21B6A4A920525E4D00744BE5 /* SFHFKeychainUtils.m in Sources */,
 				21B6A4A620524D3D00744BE5 /* ShareViewController.swift in Sources */,
 				212C0FFD1FD1558B0044EA6C /* UIDevice+BBase.swift in Sources */,
+				21F631D520901BDA00EA3B3D /* BAutoHeightScrollView.swift in Sources */,
 				21CC63941FA83B2B00B8E491 /* BCircleLoadingView.m in Sources */,
 				2105AE8920205599003DF0DE /* CGFloat+BBase.swift in Sources */,
 				215AFAD91FC2BC0400D6BD59 /* AppLoginHelper.swift in Sources */,
