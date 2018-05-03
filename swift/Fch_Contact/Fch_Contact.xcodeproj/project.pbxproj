@@ -79,6 +79,7 @@
 		21D1B0CB1FC50F23002E4357 /* BDateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0CA1FC50F23002E4357 /* BDateTool.swift */; };
 		21D1B0CD1FC53999002E4357 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0CC1FC53999002E4357 /* DBHelper.swift */; };
 		21D1B0CF1FC54470002E4357 /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0CE1FC54470002E4357 /* PersonModel.swift */; };
+		21D8D70520996CC8004F24CF /* Pods_Fch_Contact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */; };
 		21D965EA1FECAE120089D12E /* RightMenuViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D965E91FECAE120089D12E /* RightMenuViewTableViewCell.swift */; };
 		21D965EE1FECD2340089D12E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D965ED1FECD2340089D12E /* SettingViewController.swift */; };
 		21E3C9882089D9F800EDE690 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3C9872089D9F800EDE690 /* LoginView.swift */; };
@@ -223,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21D8D70520996CC8004F24CF /* Pods_Fch_Contact.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

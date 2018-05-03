@@ -69,8 +69,8 @@ class SettingViewModel: NSObject {
         let identifierModel = SettingCellModel(labStr:imei, infoStr: "", showArrow: false)
         let secion3 = SectionModel(model: "  标识符", items: [identifierModel]);
         
-        let loginModel = SettingCellModel(labStr:"重新登录", infoStr: "", showArrow: false)
-        let secion4 = SectionModel(model: "  用户", items: [loginModel]);
+//        let loginModel = SettingCellModel(labStr:"重新登录", infoStr: "", showArrow: false)
+//        let secion4 = SectionModel(model: "  用户", items: [loginModel]);
         
         
         
@@ -78,7 +78,7 @@ class SettingViewModel: NSObject {
             
             
             
-            observer.onNext([secion1,secion2,secion3,secion4]);
+            observer.onNext([secion1,secion2,secion3]);
             observer.onCompleted();
             return Disposables.create {
             }
