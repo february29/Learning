@@ -79,7 +79,6 @@
 		21D1B0CB1FC50F23002E4357 /* BDateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0CA1FC50F23002E4357 /* BDateTool.swift */; };
 		21D1B0CD1FC53999002E4357 /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0CC1FC53999002E4357 /* DBHelper.swift */; };
 		21D1B0CF1FC54470002E4357 /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1B0CE1FC54470002E4357 /* PersonModel.swift */; };
-		21D8D70520996CC8004F24CF /* Pods_Fch_Contact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */; };
 		21D965EA1FECAE120089D12E /* RightMenuViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D965E91FECAE120089D12E /* RightMenuViewTableViewCell.swift */; };
 		21D965EE1FECD2340089D12E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D965ED1FECD2340089D12E /* SettingViewController.swift */; };
 		21E3C9882089D9F800EDE690 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3C9872089D9F800EDE690 /* LoginView.swift */; };
@@ -116,7 +115,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1ACC8DA08CD14DB85409BD70 /* Pods-Fch_Contact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.release.xcconfig"; sourceTree = "<group>"; };
 		2105AE842020529B003DF0DE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		2105AE86202054BF003DF0DE /* UIColor+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+BBase.swift"; sourceTree = "<group>"; };
 		2105AE8820205599003DF0DE /* CGFloat+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+BBase.swift"; sourceTree = "<group>"; };
@@ -215,8 +213,9 @@
 		21F631D1208DB1CF00EA3B3D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		21F631D420901BDA00EA3B3D /* BAutoHeightScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAutoHeightScrollView.swift; sourceTree = "<group>"; };
 		21F75F042028433E00E3A852 /* RightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewModel.swift; sourceTree = "<group>"; };
-		402F35785043CE5C78CF273B /* Pods-Fch_Contact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.debug.xcconfig"; sourceTree = "<group>"; };
 		651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fch_Contact.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DFD727A00F35F32DA03F15C6 /* Pods-Fch_Contact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.release.xcconfig"; sourceTree = "<group>"; };
+		EFBBEBA8FBD977FCB87887A6 /* Pods-Fch_Contact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,7 +223,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21D8D70520996CC8004F24CF /* Pods_Fch_Contact.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,8 +519,8 @@
 		6377FE59EA978C1E0E5CC963 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				402F35785043CE5C78CF273B /* Pods-Fch_Contact.debug.xcconfig */,
-				1ACC8DA08CD14DB85409BD70 /* Pods-Fch_Contact.release.xcconfig */,
+				EFBBEBA8FBD977FCB87887A6 /* Pods-Fch_Contact.debug.xcconfig */,
+				DFD727A00F35F32DA03F15C6 /* Pods-Fch_Contact.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -677,13 +675,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Fch_Contact-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F38D1347DA61C47061B0109B /* [CP] Embed Pods Frameworks */ = {
@@ -692,9 +693,32 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BAlertView/BAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -835,7 +859,7 @@
 /* Begin XCBuildConfiguration section */
 		218F2C8B207CB34B0073F5B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 402F35785043CE5C78CF273B /* Pods-Fch_Contact.debug.xcconfig */;
+			baseConfigurationReference = EFBBEBA8FBD977FCB87887A6 /* Pods-Fch_Contact.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -850,6 +874,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ALEG9GB89Q;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Fch_contact_CallDirectoryExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -857,6 +882,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xianzhi.contact.Fch-contact-CallDirectoryExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "OC-Swift-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -864,7 +890,7 @@
 		};
 		218F2C8C207CB34B0073F5B7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1ACC8DA08CD14DB85409BD70 /* Pods-Fch_Contact.release.xcconfig */;
+			baseConfigurationReference = DFD727A00F35F32DA03F15C6 /* Pods-Fch_Contact.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -879,6 +905,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ALEG9GB89Q;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Fch_contact_CallDirectoryExtension/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -886,6 +913,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xianzhi.contact.Fch-contact-CallDirectoryExtension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "OC-Swift-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -894,6 +922,7 @@
 		21CC63591FA7294300B8E491 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -919,6 +948,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -946,6 +976,7 @@
 		21CC635A1FA7294300B8E491 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -971,6 +1002,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -990,7 +1022,7 @@
 		};
 		21CC635C1FA7294300B8E491 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 402F35785043CE5C78CF273B /* Pods-Fch_Contact.debug.xcconfig */;
+			baseConfigurationReference = EFBBEBA8FBD977FCB87887A6 /* Pods-Fch_Contact.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1014,7 +1046,7 @@
 		};
 		21CC635D1FA7294300B8E491 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1ACC8DA08CD14DB85409BD70 /* Pods-Fch_Contact.release.xcconfig */;
+			baseConfigurationReference = DFD727A00F35F32DA03F15C6 /* Pods-Fch_Contact.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

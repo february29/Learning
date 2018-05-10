@@ -35,6 +35,8 @@ class PersonModel: HandyJSON {
 }
 
 extension String{
+    
+   
     public var isFchPhone:Bool
     {
         

@@ -10,6 +10,7 @@ import Foundation
 import CallKit
 import FMDB
 
+
 class CallDirectoryHandler: CXCallDirectoryProvider {
 
     override func beginRequest(with context: CXCallDirectoryExtensionContext) {
@@ -41,7 +42,7 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         // consider only loading a subset of numbers at a given time and using autorelease pool(s) to release objects allocated during each batch of numbers which are loaded.
         //
         // Numbers must be provided in numerically ascending order.
-        let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = [ 1_408_555_5555, 1_800_555_5555 ]
+        let allPhoneNumbers: [CXCallDirectoryPhoneNumber] = [  ]
         for phoneNumber in allPhoneNumbers {
             context.addBlockingEntry(withNextSequentialPhoneNumber: phoneNumber)
         }
@@ -117,14 +118,17 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
                 while resultSet!.next() {
                     let dic =  resultSet?.resultDictionary;
                     
-                    let name =  dic!["column1"] as! String
-                    let phone = dic!["column3"] as! String
-                    let dep = dic!["column2"] as! String
-                    if phone.count == 0 || name.hasSuffix("公司传真")||phone .hasSuffix("电话"){
+                    guard let name =  dic!["column1"] as? String else{continue}
+                    guard let phone = dic!["column3"] as? String else{continue}
+                    guard let dep = dic!["column2"] as? String else{continue}
+                    
+                    
+                    
+                    if !phone.isTelNumber || name.hasSuffix("传真"){
                         //不合法数据
                     }else{
                         let num = "86\(phone)".replacingOccurrences(of: "-", with: "");
-                        let lab = "\(dep)-\(name)"
+                        let lab = "\(name)-\(dep)".replacingOccurrences(of: "\n", with: "")
                         
                         dataArray.append((num,lab));
                         
@@ -136,6 +140,7 @@ class CallDirectoryHandler: CXCallDirectoryProvider {
         }
         return dataArray;
     }
+
 }
 
 extension CallDirectoryHandler: CXCallDirectoryExtensionContextDelegate {
@@ -149,4 +154,52 @@ extension CallDirectoryHandler: CXCallDirectoryExtensionContextDelegate {
         // the user in Settings instead of via the app itself.
     }
 
+}
+
+extension String{
+    public var isPhoneNumber:Bool
+    {
+        let mobile = "1[34578]([0-9]){9}";//"^1(3[0-9]|5[0-35-9]|8[025-9])\\d{8}$"
+        let  CM = "^1(34[0-8]|(3[5-9]|5[017-9]|8[278])\\d)\\d{7}$"
+        let  CU = "^1(3[0-2]|5[256]|8[56])\\d{8}$"
+        let  CT = "^1((33|53|8[09])[0-9]|349)\\d{7}$"
+        let regextestmobile = NSPredicate(format: "SELF MATCHES %@",mobile)
+        let regextestcm = NSPredicate(format: "SELF MATCHES %@",CM )
+        let regextestcu = NSPredicate(format: "SELF MATCHES %@" ,CU)
+        let regextestct = NSPredicate(format: "SELF MATCHES %@" ,CT)
+        if ((regextestmobile.evaluate(with: self) == true)
+            || (regextestcm.evaluate(with: self)  == true)
+            || (regextestct.evaluate(with: self) == true)
+            || (regextestcu.evaluate(with: self) == true))
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    public var isTelNumber:Bool
+    {
+        
+        
+        if self.isPhoneNumber {
+            return true;
+        }
+        
+        
+        let tel = "^0(10|2[0-5789]|\\d{3})(-)?\\d{7,8}$";
+        
+        let regextesttle = NSPredicate(format: "SELF MATCHES %@",tel)
+        
+        if (regextesttle.evaluate(with: self) == true)
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    
 }

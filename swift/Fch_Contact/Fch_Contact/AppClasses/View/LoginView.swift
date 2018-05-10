@@ -11,12 +11,16 @@ import SnapKit
 import RxSwift
 import RxCocoa
 import BAlertView
+
+typealias completeHandler = (Bool)->Void
+
 class LoginView: UIView {
     
     
     var viewModel:LoginViewModel?
     let disposeBag = DisposeBag();
     
+    var loginCompleteHandler:completeHandler?
     
     lazy var  userName: UITextField  = {
         let tf = UITextField();
@@ -51,8 +55,10 @@ class LoginView: UIView {
     lazy var  loginBtn: UIButton  = {
         let btn = UIButton();
         btn.setTitle("登录", for: .normal)
-        btn.setTitleColor(ThemeColorType.navBarTitle);
-        btn.setBackgroundColor(ThemeColorType.navBar);
+//        btn.setTitleColor(ThemeColorType.navBarTitle);
+//        btn.setBackgroundColor(ThemeColorType.navBar);
+        btn.backgroundColor = rgb("D2373B");
+        btn.setTitleColor(UIColor.white, for: .normal);
         btn.layer.cornerRadius = 3;
 //        btn.layer.borderWidth = 0.8;
 //        btn.layer.borderColor = BRGBColor(r: 237, g: 237, b: 237, a: 1).cgColor;
@@ -120,10 +126,13 @@ class LoginView: UIView {
             .drive(onNext: { signedIn in
                 print("User signed in \(signedIn)")
                 if signedIn {
-                    BAlertModal.sharedInstance().makeToast("登录成功")
-                    BAlertModal.sharedInstance().hide(animated: true);
+                    if self.loginCompleteHandler != nil{
+                        self.loginCompleteHandler!(true);
+                    }
                 }else{
-                    BAlertModal.sharedInstance().makeToast("登录失败", disPlayStyle: BAlertModalToastDisPlayStyle.top)
+                    if self.loginCompleteHandler != nil{
+                        self.loginCompleteHandler!(false);
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -133,6 +142,9 @@ class LoginView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    
     
     
     

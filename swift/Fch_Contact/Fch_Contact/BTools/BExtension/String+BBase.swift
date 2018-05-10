@@ -155,6 +155,28 @@ extension String {
             return false
         }
     }
+    public var isTelNumber:Bool
+    {
+        
+        
+        if self.isPhoneNumber {
+            return true;
+        }
+        
+        
+        let tel = "^0(10|2[0-5789]|\\d{3})(-)?\\d{7,8}$";
+        
+        let regextesttle = NSPredicate(format: "SELF MATCHES %@",tel)
+        
+        if (regextesttle.evaluate(with: self) == true)
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
     
     
     

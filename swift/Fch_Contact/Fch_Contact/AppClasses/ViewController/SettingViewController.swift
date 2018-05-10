@@ -12,6 +12,7 @@ import RxSwift
 import RxDataSources
 import BAlertView
 import CallKit
+import FMDB
 
 
 
@@ -42,15 +43,6 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
     }();
     
     
-    lazy var  loginView:LoginView = {
-        
-        let loginView = LoginView(frame: CGRect(x: 0, y: 0, width:BSCREENW*0.8 , height: 175))
-        
-//        loginView.
-        
-        return loginView;
-        
-    }()
     
     
     
@@ -172,6 +164,30 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
         }else if indexPath.section == 3{
             if indexPath.row == 0{
                 
+                
+                let loginView = LoginView(frame: CGRect(x: 0, y: 0, width:BSCREENW*0.8 , height: 175))
+                
+                loginView.loginCompleteHandler = { (loginIn) in
+                    
+                    if(loginIn){
+                        UIApplication.shared.keyWindow?.endEditing(true);
+//                        BAlertModal.sharedInstance().hide(animated: true, withCompletionBlock: {
+//                            BAlertModal.sharedInstance().makeToast("登录成功", disPlayStyle: .top)
+//
+//
+//                        })
+                        BAlert.sharedInstance.hide(view: loginView,  finishedHandle: {
+                            BAlertModal.sharedInstance().makeToast("登录成功", disPlayStyle: .top)
+                        })
+                    }else{
+                        
+                        
+                        BAlertModal.sharedInstance().makeToast("登录失败", disPlayStyle: .top)
+                    }
+                    
+                    
+                };
+                
                 BAlert.sharedInstance.normalShow(view: loginView);
             }
         }
@@ -215,6 +231,8 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
     }
     
 
+    
+    
     
 
 }

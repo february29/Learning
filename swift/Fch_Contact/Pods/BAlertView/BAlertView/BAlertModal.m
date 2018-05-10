@@ -16,6 +16,7 @@
 typedef NS_ENUM(NSInteger,BAlertViewAnimateType){
     BAlertViewAnimateCenter,
     BAlertViewAnimateBottom,
+    BAlertViewAnimateBottom2,
     BAlertViewAnimateDropList,
     BAlertViewAnimateLeftMove
     
@@ -56,7 +57,8 @@ typedef NS_ENUM(NSInteger,BAlertViewAnimateType){
     return BAlertViewAPPStatusBarHidden; // 返回NO表示要显示，返回YES将hiden
 }
 - (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
+   
+    return [UIApplication sharedApplication].statusBarStyle;
 }
 -(void)setBackgroundColor:(UIColor *)backgroundColor{
     
@@ -97,6 +99,8 @@ static BToastLable *toastView = nil;
     BAlerterViewController *viewController;
     UIView *contentView;
     BAlertModalViewDisPlayStyle viewDisPlayStyle;
+    
+    UIWindow *delegateWindow;
 }
 @end
 
@@ -118,6 +122,7 @@ static BToastLable *toastView = nil;
     self = [super init];
     if (self) {
         self.shouldTapOutSideClosed = YES;
+        delegateWindow =  [[[UIApplication sharedApplication] delegate] window];
     }
     return self;
 }
@@ -157,7 +162,7 @@ static BToastLable *toastView = nil;
     }
     if (toastView.superview != [UIApplication sharedApplication].keyWindow) {
         [toastView removeFromSuperview];
-        [[[[UIApplication sharedApplication] delegate] window] makeKeyAndVisible];
+        [delegateWindow makeKeyAndVisible];
         [[UIApplication sharedApplication].keyWindow addSubview:toastView];
     }
     
@@ -187,6 +192,7 @@ static BToastLable *toastView = nil;
     [UIView animateWithDuration:time animations:^{
         toastView.alpha = 0;
     } completion:^(BOOL finished) {
+        [toastView removeFromSuperview];
     }];
 
 }
@@ -269,11 +275,26 @@ static BToastLable *toastView = nil;
         case BAlertModalViewBottom :
         {
             
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 [window makeKeyAndVisible];
                 
                 if(animated){
                     [self viewShowAnimateWithAnimateType:BAlertViewAnimateBottom completionBlock:completion];
+                }
+                contentView.hidden = NO;
+            });
+            break;
+        }
+        case BAlertModalViewBottom2 :
+        {
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [window makeKeyAndVisible];
+                
+                if(animated){
+                    [self viewShowAnimateWithAnimateType:BAlertViewAnimateBottom2 completionBlock:completion];
                 }
                 contentView.hidden = NO;
             });
@@ -334,6 +355,14 @@ static BToastLable *toastView = nil;
 
 -(void)viewShowAnimateWithAnimateType:(BAlertViewAnimateType)animateType completionBlock:(void(^)())completion{
     switch (animateType) {
+        case BAlertViewAnimateBottom2:
+        {
+            delegateWindow.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
+            [UIView animateWithDuration:BAlertViewAnimateDuration animations:^{
+               delegateWindow.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+            }];
+            
+        }
         case BAlertViewAnimateBottom:
         {
             
@@ -342,9 +371,10 @@ static BToastLable *toastView = nil;
             newRct.origin.x = 0;
             newRct.origin.y = MSCH; //开始的时候在屏幕下方
             contentView.frame = newRct;
-            
             contentView.alpha = 0.1f;
             contentView.hidden = NO;
+            
+            
             [UIView animateWithDuration:BAlertViewAnimateDuration animations:^{
                 CGRect newRct = contentView.frame ;
                 newRct.origin.y = MSCH-newRct.size.height;
@@ -476,13 +506,28 @@ static BToastLable *toastView = nil;
     
     switch (viewDisPlayStyle) {
             
+        case BAlertModalViewBottom2 :
+        {
+            
+           
+            delegateWindow.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+            [UIView animateWithDuration:BAlertViewAnimateDuration animations:^{
+                delegateWindow.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
+            }];
+
+        }
         case BAlertModalViewBottom :
         {
             
+            if (hiddeWindow) {
+                
+                [UIView animateWithDuration:BAlertViewAnimateDuration animations:^{
+                    viewController.backBtn.alpha = 0;
+                }];
+                
+            }
             
-            [UIView animateWithDuration:BAlertViewAnimateDuration animations:^{
-                viewController.backBtn.alpha = 0;
-            }];
+            
             
             contentView.layer.shouldRasterize = YES;
             [UIView animateWithDuration:BAlertViewAnimateDuration animations:^{
@@ -506,10 +551,12 @@ static BToastLable *toastView = nil;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                
-//                [UIView animateWithDuration:BAlertViewAnimateDuration animations:^{
-//                    viewController.backBtn.alpha = 0;
-//                }];
+                if (hiddeWindow) {
+                    [UIView animateWithDuration:BAlertViewAnimateDuration animations:^{
+                        viewController.backBtn.alpha = 0;
+                    }];
+ 
+                }
                 
                 contentView.layer.shouldRasterize = YES;
                 
@@ -548,7 +595,12 @@ static BToastLable *toastView = nil;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                
+                if (hiddeWindow) {
+                    [UIView animateWithDuration:BAlertViewAnimateDuration animations:^{
+                        viewController.backBtn.alpha = 0;
+                    }];
+                    
+                }
                 
                 contentView.alpha = 1;
                 contentView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity,0, 0);
@@ -579,9 +631,13 @@ static BToastLable *toastView = nil;
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 
-                [UIView animateWithDuration:BAlertViewAnimateDuration animations:^{
-                    viewController.backBtn.alpha = 0;
-                }];
+                if (hiddeWindow) {
+                    [UIView animateWithDuration:BAlertViewAnimateDuration animations:^{
+                        viewController.backBtn.alpha = 0;
+                    }];
+                    
+                }
+
                 
                 contentView.layer.shouldRasterize = YES;
                 [UIView animateWithDuration:BAlertViewAnimateDuration animations:^{
