@@ -22,7 +22,10 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     
     
     
-    var webView = UIWebView();
+    var webView: UIWebView = {
+        var webView = UIWebView();
+        return webView
+    }();
 
     lazy var tableView:UITableView = {
         let table = UITableView();
@@ -154,7 +157,6 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
         let leftBtnItem = UIBarButtonItem(image: #imageLiteral(resourceName: "btn_top_menu"), style: .plain, target: self, action: #selector(BBaseViewController.back));
         leftBtnItem.setTintColor(.navBarBtn);
         self.navigationItem.leftBarButtonItem = leftBtnItem;
-        
         //右侧按钮
 
         let rightBtnItem = UIBarButtonItem(image: #imageLiteral(resourceName: "btn_top_add"), style: .plain, target: self, action: #selector(MainViewController.showRightMenu))
@@ -411,16 +413,31 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
 
         
         if phoneArray.count == 1 {
+           
             let url =  URL(string: "tel:" + phoneArray[0]);
-            webView.loadRequest(URLRequest(url: url!));
-            self.view.addSubview(webView);
+//            webView.loadRequest(URLRequest(url: url!));
+//            self.view.addSubview(webView);
+//             UIApplication.shared.openURL(URL(string: "telprompt:10086")!)
+            if #available(iOS 10.0, *) {
+                let options = [UIApplicationOpenURLOptionUniversalLinksOnly : false]
+                UIApplication.shared.open(url!, options: options, completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url!)
+            }
             
         }else{
             for phoneString in phoneArray {
                 let action = UIAlertAction(title: phoneString, style: .default, handler: { (action) in
+                    
                     let url =  URL(string: "tel:" + phoneString);
-                    self.webView.loadRequest(URLRequest(url: url!));
-                    self.view.addSubview(self.webView);
+//                    self.webView.loadRequest(URLRequest(url: url!));
+//                    self.view.addSubview(self.webView);
+                   
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                    } else {
+                         UIApplication.shared.openURL(url!)
+                    }
                     
                 })
                 alertVC.addAction(action);
@@ -548,3 +565,5 @@ class MainViewController: BBaseViewController,UITableViewDelegate,LeftMemuViewDe
     }
 
 }
+
+

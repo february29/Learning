@@ -117,11 +117,11 @@ class BNetWorkingManager: NSObject {
     
      //-------------------------------rx方法----------------------------------
     
-    func RxRequset(url:String,method:HTTPMethod,parameters:[String:Any]?=nil)->Observable<Result<Any>> {
+    func RxRequset(url:String,method:HTTPMethod = .get,parameters:[String:Any]? = nil)->Observable<Result<Any>> {
         return Observable.create({ (observer) -> Disposable in
            
            
-            let request = self.sessionManager.request( url, method: HTTPMethod.get, parameters: parameters).responseJSON(completionHandler: { (response) in
+            let request = self.sessionManager.request( url, method: method, parameters: parameters).responseJSON(completionHandler: { (response) in
                 let result = response.result
                 switch result {
                 case .success:
@@ -138,13 +138,13 @@ class BNetWorkingManager: NSObject {
         }).debug("Http");
     }
     
-    func RxRequsetString(url:String,method:HTTPMethod,parameters:[String:Any])->Observable<String> {
+    func RxRequsetString(url:String,method:HTTPMethod = .get,parameters:[String:Any])->Observable<String> {
         
         
         return Observable.create({ (observer) -> Disposable in
             
             
-            let request = self.sessionManager.request( url, method: HTTPMethod.get, parameters: parameters).responseString(completionHandler: { (response) in
+            let request = self.sessionManager.request( url, method: method, parameters: parameters).responseString(completionHandler: { (response) in
                 
                 
                 let result = response.result

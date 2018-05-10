@@ -44,6 +44,36 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
     
     
     
+    lazy var loginView:LoginView = {
+        let loginView = LoginView(frame: CGRect(x: 0, y: 0, width:BSCREENW*0.8 , height: 175))
+        
+        loginView.loginCompleteHandler = { (loginIn) in
+            
+            if(loginIn){
+                UIApplication.shared.keyWindow?.endEditing(true);
+                //                        BAlertModal.sharedInstance().hide(animated: true, withCompletionBlock: {
+                //                            BAlertModal.sharedInstance().makeToast("登录成功", disPlayStyle: .top)
+                //
+                //
+                //                        })
+                BAlert.sharedInstance.hide(view: loginView,  finishedHandle: {
+                    BAlertModal.sharedInstance().makeToast("登录成功", disPlayStyle: .top)
+                })
+            }else{
+                
+                BAlert.sharedInstance.hide(view: loginView,  finishedHandle: {
+                    BAlertModal.sharedInstance().makeToast("登录失败", disPlayStyle: .top)
+                })
+                
+            }
+            
+            
+        };
+        return loginView;
+    }();
+    
+    
+    
     
     
     let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String,SettingCellModel >>(configureCell: { ds, tv, idx, item in
@@ -102,7 +132,6 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
             }
         } else if indexPath.section == 1{
             if indexPath.row == 0 {
-            
                 //打开来电提示
                 CallDirectoryExtensionHelper.sharedInstance.checkCallKitOpen(finishedHandler: { (support,isOpen) in
                     
@@ -112,7 +141,7 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
                         }else{
                            
                             self.showAlert(title: "授权", message: "请在设置->电话->来电阻止与身份识别开启相关权限", okTitle: "去设置", OkHandler: {
-                                let url = URL(string: "prefs:root=Phone");
+                                let url = URL(string: "App-Prefs:root=phone");
                                 if UIApplication.shared.canOpenURL(url!){
                                     UIApplication.shared.openURL(url!);
                                 }
@@ -145,9 +174,13 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
                         }else{//未打开
                             
                             self.showAlert(title: "授权", message: "请在设置->电话->来电阻止与身份识别开启相关权限", okTitle: "去设置", OkHandler: {
-                                let url = URL(string: "prefs:root=Phone");
+                                let url = URL(string: "App-Prefs:root=phone");
                                 if UIApplication.shared.canOpenURL(url!){
-                                    UIApplication.shared.openURL(url!);
+                                    if #available(iOS 10.0, *) {
+                                        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                                    } else {
+                                        UIApplication.shared.openURL(url!);
+                                    }
                                 }
                                 
                             })
@@ -164,31 +197,8 @@ class SettingViewController: BBaseViewController,UITableViewDelegate {
         }else if indexPath.section == 3{
             if indexPath.row == 0{
                 
-                
-                let loginView = LoginView(frame: CGRect(x: 0, y: 0, width:BSCREENW*0.8 , height: 175))
-                
-                loginView.loginCompleteHandler = { (loginIn) in
-                    
-                    if(loginIn){
-                        UIApplication.shared.keyWindow?.endEditing(true);
-//                        BAlertModal.sharedInstance().hide(animated: true, withCompletionBlock: {
-//                            BAlertModal.sharedInstance().makeToast("登录成功", disPlayStyle: .top)
-//
-//
-//                        })
-                        BAlert.sharedInstance.hide(view: loginView,  finishedHandle: {
-                            BAlertModal.sharedInstance().makeToast("登录成功", disPlayStyle: .top)
-                        })
-                    }else{
-                        
-                        
-                        BAlertModal.sharedInstance().makeToast("登录失败", disPlayStyle: .top)
-                    }
-                    
-                    
-                };
-                
                 BAlert.sharedInstance.normalShow(view: loginView);
+            
             }
         }
     }

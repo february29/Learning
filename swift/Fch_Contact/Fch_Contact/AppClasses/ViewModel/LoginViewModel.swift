@@ -6,7 +6,7 @@
 //  Copyright © 2018年 北京仙指信息技术有限公司. All rights reserved.
 //
 
-import UIKit
+//import UIKit
 import RxSwift
 import RxCocoa
 import Alamofire

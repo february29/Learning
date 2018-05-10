@@ -17,6 +17,7 @@
 		210F2F281FAFF43D00A87AA6 /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2F271FAFF43D00A87AA6 /* LaunchViewModel.swift */; };
 		210F2F2A1FAFF5FD00A87AA6 /* UITextFiled+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2F291FAFF5FD00A87AA6 /* UITextFiled+BBase.swift */; };
 		210F2F2C1FAFF71D00A87AA6 /* Array+BBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210F2F2B1FAFF71D00A87AA6 /* Array+BBase.swift */; };
+		21168C1920A3EDCA007026C6 /* Pods_Fch_Contact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */; };
 		21180DA92021A2A100B77E40 /* FontCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21180DA82021A2A100B77E40 /* FontCenter.swift */; };
 		21180DB02021C41A00B77E40 /* BAlert+NormalShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21180DAB2021C41A00B77E40 /* BAlert+NormalShow.swift */; };
 		21180DB12021C41A00B77E40 /* BAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21180DAC2021C41A00B77E40 /* BAlert.swift */; };
@@ -115,6 +116,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1904CEB9FA58BEFBEE3FA1ED /* Pods-Fch_Contact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.debug.xcconfig"; sourceTree = "<group>"; };
 		2105AE842020529B003DF0DE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		2105AE86202054BF003DF0DE /* UIColor+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+BBase.swift"; sourceTree = "<group>"; };
 		2105AE8820205599003DF0DE /* CGFloat+BBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+BBase.swift"; sourceTree = "<group>"; };
@@ -214,8 +216,7 @@
 		21F631D420901BDA00EA3B3D /* BAutoHeightScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BAutoHeightScrollView.swift; sourceTree = "<group>"; };
 		21F75F042028433E00E3A852 /* RightViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewModel.swift; sourceTree = "<group>"; };
 		651D7A5CAE649D92089810FE /* Pods_Fch_Contact.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fch_Contact.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DFD727A00F35F32DA03F15C6 /* Pods-Fch_Contact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.release.xcconfig"; sourceTree = "<group>"; };
-		EFBBEBA8FBD977FCB87887A6 /* Pods-Fch_Contact.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.debug.xcconfig"; sourceTree = "<group>"; };
+		ECA08E6A284A1B6DD3126375 /* Pods-Fch_Contact.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fch_Contact.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fch_Contact/Pods-Fch_Contact.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21168C1920A3EDCA007026C6 /* Pods_Fch_Contact.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,8 +521,8 @@
 		6377FE59EA978C1E0E5CC963 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EFBBEBA8FBD977FCB87887A6 /* Pods-Fch_Contact.debug.xcconfig */,
-				DFD727A00F35F32DA03F15C6 /* Pods-Fch_Contact.release.xcconfig */,
+				1904CEB9FA58BEFBEE3FA1ED /* Pods-Fch_Contact.debug.xcconfig */,
+				ECA08E6A284A1B6DD3126375 /* Pods-Fch_Contact.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -859,7 +861,7 @@
 /* Begin XCBuildConfiguration section */
 		218F2C8B207CB34B0073F5B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EFBBEBA8FBD977FCB87887A6 /* Pods-Fch_Contact.debug.xcconfig */;
+			baseConfigurationReference = 1904CEB9FA58BEFBEE3FA1ED /* Pods-Fch_Contact.debug.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -890,7 +892,7 @@
 		};
 		218F2C8C207CB34B0073F5B7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFD727A00F35F32DA03F15C6 /* Pods-Fch_Contact.release.xcconfig */;
+			baseConfigurationReference = ECA08E6A284A1B6DD3126375 /* Pods-Fch_Contact.release.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1022,7 +1024,7 @@
 		};
 		21CC635C1FA7294300B8E491 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EFBBEBA8FBD977FCB87887A6 /* Pods-Fch_Contact.debug.xcconfig */;
+			baseConfigurationReference = 1904CEB9FA58BEFBEE3FA1ED /* Pods-Fch_Contact.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1046,7 +1048,7 @@
 		};
 		21CC635D1FA7294300B8E491 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFD727A00F35F32DA03F15C6 /* Pods-Fch_Contact.release.xcconfig */;
+			baseConfigurationReference = ECA08E6A284A1B6DD3126375 /* Pods-Fch_Contact.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
