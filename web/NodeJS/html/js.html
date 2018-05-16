@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>hellow js</title>
+</head>
+<script type="text/javascript">
+	
+	
+	// alert("我的第一个 JavaScript");
+	document.write("<h1>这是一个标题</h1>");
+	document.write("<p>这是一个段落。</p>");	
+
+	function changep(argument) {
+		// body...
+	
+		x=document.getElementById("head");  // 找到元素
+		n = document.getElementById("input").value;
+
+		x.innerHTML=fabo(n).toString();    // 改变内容
+
+	}
+
+	function fabo(argument) {
+		var array = new Array();
+		
+
+
+		if (argument<=0) {
+			alert("输入数据不能为0");
+			return array;
+		}
+
+		array[0] = 1;
+		if (argument==1) {
+			return array;
+		}
+		array[1] = 1;
+		if (argument==2) {
+
+			return array;
+		}
+
+		for (var i = 2 ; i < argument ; i++) {
+			array[i] = array[i-1]+array[i-2];
+		}
+		return array
+       
+
+
+	}
+
+</script>
+<body>
+	<button type="button" onclick="changep()" >你好</button>
+	<p id="head">head1</p>
+	<input id="input" type="input" name="">
+
+
+</body>
+</html>
