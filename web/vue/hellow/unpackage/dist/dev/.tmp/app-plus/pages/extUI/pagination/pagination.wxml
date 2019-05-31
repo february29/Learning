@@ -1,0 +1,2 @@
+<import src="./pagination.vue.wxml" />
+    <template is="e0f0403a" data="{{ ...$root['0'], $root }}"/>

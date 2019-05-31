@@ -1,0 +1,1 @@
+<view bind:__l="__l"><page-head title="{{title}}"></page-head><view class="uni-common-mt"><view><map latitude="{{latitude}}" longitude="{{longitude}}" markers="{{covers}}"></map></view></view></view>

@@ -1,0 +1,133 @@
+<import src="/components/uni-swipe-action/uni-swipe-action.vue.wxml" />
+<import src="/components/uni-list/uni-list.vue.wxml" />
+<import src="/components/uni-list-item/uni-list-item.vue.wxml" />
+<import src="/components/uni-collapse/uni-collapse.vue.wxml" />
+<import src="/components/uni-collapse-item/uni-collapse-item.vue.wxml" />
+<import src="/components/uni-card/uni-card.vue.wxml" />
+<import src="/components/uni-popup/uni-popup.vue.wxml" />
+<import src="/components/uni-nav-bar/uni-nav-bar.vue.wxml" />
+<import src="/components/uni-icon/uni-icon.vue.wxml" />
+<import src="/components/uni-drawer/uni-drawer.vue.wxml" />
+<import src="/components/uni-steps/uni-steps.vue.wxml" />
+<import src="/components/uni-notice-bar/uni-notice-bar.vue.wxml" />
+<import src="/components/uni-grid/uni-grid.vue.wxml" />
+<import src="/components/uni-pagination/uni-pagination.vue.wxml" />
+<import src="/components/uni-rate/uni-rate.vue.wxml" />
+<import src="/components/uni-segmented-control/uni-segmented-control.vue.wxml" />
+<import src="/components/uni-tag/uni-tag.vue.wxml" />
+<import src="/components/uni-load-more/uni-load-more.vue.wxml" />
+<import src="/components/uni-number-box/uni-number-box.vue.wxml" />
+<import src="/components/uni-countdown/uni-countdown.vue.wxml" />
+<import src="/components/uni-badge/uni-badge.vue.wxml" />
+<import src="/components/page-head.vue.wxml" />
+<import src="/common/slots.wxml" />
+<import src="/components/uni-status-bar/uni-status-bar.vue.wxml" />
+<import src="/components/api-set-tabbar.vue.wxml" />
+<import src="/components/uni-fab.vue.wxml" />
+<import src="/components/page-foot.vue.wxml" />
+<import src="/components/im-chat/messageshow.vue.wxml" />
+<import src="/components/im-chat/chatinput.vue.wxml" />
+<import src="/components/tab-nvue/mediaList.vue.wxml" />
+<import src="/components/mpvue-picker/mpvuePicker.vue.wxml" />
+<import src="/components/mpvue-citypicker/mpvueCityPicker.vue.wxml" />
+<import src="/components/mpvueGestureLock/index.vue.wxml" />
+<import src="/components/mpvue-echarts/src/echarts.vue.wxml" />
+<import src="/components/qrcode/qrcode.vue.wxml" />
+<import src="/components/ly-markdown/ly-markdown.vue.wxml" />
+<import src="/components/uParse/src/wxParse.vue.wxml" />
+<import src="/components/uni-calendar/uni-calendar.vue.wxml" />
+<import src="/components/uni-calendar/uni-calendar-item.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseTemplate0.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseTemplate1.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseVideo.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseAudio.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseImg.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseTemplate2.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseTemplate3.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseTemplate4.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseTemplate5.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseTemplate6.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseTemplate7.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseTemplate8.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseTemplate9.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseTemplate10.vue.wxml" />
+<import src="/components/uParse/src/components/wxParseTemplate11.vue.wxml" />
+
+<template name="00657503-default-00657503-0"><view class="_view 00657503 cont">SwipeAction 基础使用场景</view></template>
+
+<template name="00657503-default-00657503-1"><view class="_view 00657503 cont">SwipeAction 禁止滑动展示</view></template>
+
+<template name="00657503-default-00657503-2"><view class="_view 00657503 cont">使用变量控制SwipeAction的开启状态</view></template>
+
+<template name="00657503-default-00657503-4"><template title="item1" data="{{...$root['0'], ...$root[$kk+'00657503-3'],$root}}" is="2dcafb89"></template></template>
+
+<template name="00657503-default-00657503-6"><template title="item2" data="{{...$root['0'], ...$root[$kk+'00657503-5'],$root}}" is="2dcafb89"></template></template>
+
+<template name="00657503-default-00657503-8"><template title="item3" data="{{...$root['0'], ...$root[$kk+'00657503-7'],$root}}" is="2dcafb89"></template></template>
+
+<template name="00657503-default-00657503-9"><template data="{{...$root['0'], ...$root[$kk+'00657503-4'],$root, $slotdefault:'00657503-default-00657503-4'}}" is="5760c7fd"></template><template data="{{...$root['0'], ...$root[$kk+'00657503-6'],$root, $slotdefault:'00657503-default-00657503-6'}}" is="5760c7fd"></template><template data="{{...$root['0'], ...$root[$kk+'00657503-8'],$root, $slotdefault:'00657503-default-00657503-8'}}" is="5760c7fd"></template></template>
+
+<template name="4b7ca083-default-4b7ca083-3"><template title="标题文字" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/hx.png" data="{{...$root['0'], ...$root[$kk+'4b7ca083-0'],$root}}" is="2dcafb89"></template><template title="标题文字" note="描述信息" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png" data="{{...$root['0'], ...$root[$kk+'4b7ca083-1'],$root}}" is="2dcafb89"></template><template title="标题文字" note="描述信息" data="{{...$root['0'], ...$root[$kk+'4b7ca083-2'],$root}}" is="2dcafb89"></template></template>
+
+<template name="4b7ca083-default-4b7ca083-4"><template data="{{...$root['0'], ...$root[$kk+'4b7ca083-3'],$root, $slotdefault:'4b7ca083-default-4b7ca083-3'}}" is="35ad909d"></template></template>
+
+<template name="4b7ca083-default-4b7ca083-5"><view style="padding: 30rpx;" class="_view 4b7ca083">折叠内容主体，可自定义内容及样式</view></template>
+
+<template name="4b7ca083-default-4b7ca083-6"><view style="padding: 30rpx;" class="_view 4b7ca083">禁用状态</view></template>
+
+<template name="4b7ca083-default-4b7ca083-7"><template title="标题文字" data="{{...$root['0'], ...$root[$kk+'4b7ca083-4'],$root, $slotdefault:'4b7ca083-default-4b7ca083-4'}}" is="0c2df9eb"></template><template title="默认开启" data="{{...$root['0'], ...$root[$kk+'4b7ca083-5'],$root, $slotdefault:'4b7ca083-default-4b7ca083-5'}}" is="0c2df9eb"></template><template title="禁用状态" data="{{...$root['0'], ...$root[$kk+'4b7ca083-6'],$root, $slotdefault:'4b7ca083-default-4b7ca083-6'}}" is="0c2df9eb"></template></template>
+
+<template name="4b7ca083-default-4b7ca083-8"><view style="padding: 30rpx;" class="_view 4b7ca083">手风琴效果</view></template>
+
+<template name="4b7ca083-default-4b7ca083-9"><view style="padding: 30rpx;" class="_view 4b7ca083">手风琴效果</view></template>
+
+<template name="4b7ca083-default-4b7ca083-10"><view style="padding: 30rpx;" class="_view 4b7ca083">手风琴效果</view></template>
+
+<template name="4b7ca083-default-4b7ca083-11"><template title="标题文字" data="{{...$root['0'], ...$root[$kk+'4b7ca083-8'],$root, $slotdefault:'4b7ca083-default-4b7ca083-8'}}" is="0c2df9eb"></template><template title="标题文字" data="{{...$root['0'], ...$root[$kk+'4b7ca083-9'],$root, $slotdefault:'4b7ca083-default-4b7ca083-9'}}" is="0c2df9eb"></template><template title="标题文字" data="{{...$root['0'], ...$root[$kk+'4b7ca083-10'],$root, $slotdefault:'4b7ca083-default-4b7ca083-10'}}" is="0c2df9eb"></template></template>
+
+<template name="4b7ca083-default-4b7ca083-12"><view style="padding: 30rpx;" class="_view 4b7ca083">折叠内容主体，可自定义内容及样式</view></template>
+
+<template name="4b7ca083-default-4b7ca083-13"><view style="padding: 30rpx;" class="_view 4b7ca083">折叠内容主体，可自定义内容及样式</view></template>
+
+<template name="4b7ca083-default-4b7ca083-14"><template title="标题文字" data="{{...$root['0'], ...$root[$kk+'4b7ca083-12'],$root, $slotdefault:'4b7ca083-default-4b7ca083-12'}}" is="0c2df9eb"></template><template title="标题文字" data="{{...$root['0'], ...$root[$kk+'4b7ca083-13'],$root, $slotdefault:'4b7ca083-default-4b7ca083-13'}}" is="0c2df9eb"></template></template>
+
+<template name="4b7ca083-default-4b7ca083-15"><view style="padding: 30rpx;" class="_view 4b7ca083">折叠内容主体，可自定义内容及样式</view></template>
+
+<template name="4b7ca083-default-4b7ca083-16"><view style="padding: 30rpx;" class="_view 4b7ca083">折叠内容主体，可自定义内容及样式</view></template>
+
+<template name="4b7ca083-default-4b7ca083-17"><template title="标题文字" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png" data="{{...$root['0'], ...$root[$kk+'4b7ca083-15'],$root, $slotdefault:'4b7ca083-default-4b7ca083-15'}}" is="0c2df9eb"></template><template title="标题文字" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/hx.png" data="{{...$root['0'], ...$root[$kk+'4b7ca083-16'],$root, $slotdefault:'4b7ca083-default-4b7ca083-16'}}" is="0c2df9eb"></template></template>
+
+<template name="55176423-default-55176423-4"><template title="标题文字" data="{{...$root['0'], ...$root[$kk+'55176423-0'],$root}}" is="2dcafb89"></template><template title="标题文字" data="{{...$root['0'], ...$root[$kk+'55176423-1'],$root}}" is="2dcafb89"></template><template title="标题文字" data="{{...$root['0'], ...$root[$kk+'55176423-2'],$root}}" is="2dcafb89"></template><template title="禁用状态" data="{{...$root['0'], ...$root[$kk+'55176423-3'],$root}}" is="2dcafb89"></template></template>
+
+<template name="55176423-default-55176423-8"><template title="标题文字" note="描述信息" data="{{...$root['0'], ...$root[$kk+'55176423-5'],$root}}" is="2dcafb89"></template><template title="标题文字" note="描述信息" data="{{...$root['0'], ...$root[$kk+'55176423-6'],$root}}" is="2dcafb89"></template><template title="标题文字" note="描述信息" data="{{...$root['0'], ...$root[$kk+'55176423-7'],$root}}" is="2dcafb89"></template></template>
+
+<template name="55176423-default-55176423-11"><template title="标题文字" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/hx.png" data="{{...$root['0'], ...$root[$kk+'55176423-9'],$root}}" is="2dcafb89"></template><template title="标题文字" note="描述信息" thumb="https://img-cdn-qiniu.dcloud.net.cn/new-page/uni.png" data="{{...$root['0'], ...$root[$kk+'55176423-10'],$root}}" is="2dcafb89"></template></template>
+
+<template name="55176423-default-55176423-14"><template title="标题文字" data="{{...$root['0'], ...$root[$kk+'55176423-12'],$root}}" is="2dcafb89"></template><template title="标题文字" note="描述信息" data="{{...$root['0'], ...$root[$kk+'55176423-13'],$root}}" is="2dcafb89"></template></template>
+
+<template name="55176423-default-55176423-18"><template title="标题文字" bindswitchChange="handleProxy" data-eventid="{{'55176423-0'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'55176423-15'],$root}}" is="2dcafb89"></template><template title="标题文字" bindswitchChange="handleProxy" data-eventid="{{'55176423-1'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'55176423-16'],$root}}" is="2dcafb89"></template><template title="禁用状态" bindswitchChange="handleProxy" data-eventid="{{'55176423-2'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'55176423-17'],$root}}" is="2dcafb89"></template></template>
+
+<template name="e123c93a-default-e123c93a-0">这是一个基础卡片示例，内容样式可自定义，卡片视图常用来显示完整独立的一段信息，比如一篇文章的预览图、作者信息、时间等。</template>
+
+<template name="e123c93a-default-e123c93a-1">内容主体，可自定义内容及样式</template>
+
+<template name="e123c93a-default-e123c93a-2">内容主体，可自定义内容及样式，内容主体，可自定义内容及样式，内容主体，可自定义内容及样式</template>
+
+<template name="2bec793d-default-2bec793d-3"><view class="_view 2bec793d uni-center center-box"><image class="_image 2bec793d image" src="/static/uni.png"></image></view></template>
+
+<template name="2bec793d-default-2bec793d-4"><scroll-view class="_scroll-view 2bec793d uni-center center-box" scroll-y="{{true}}"><view class="_view 2bec793d uni-list-item" wx:key="index" key="{{index}}" wx:for="{{list}}" wx:for-index="index" wx:for-item="item">滚动列表数据 {{ item }}</view></scroll-view></template>
+
+<template name="2bec793d-default-2bec793d-5"><view class="_view 2bec793d bottom-title">分享到</view><view class="_view 2bec793d bottom-content"><view class="_view 2bec793d bottom-content-box" wx:key="index" key="{{index}}" wx:for="{{bottomData}}" wx:for-index="index" wx:for-item="item"><view class="_view 2bec793d bottom-content-image"><text class="_text 2bec793d icon">{{ item.icon }}</text></view><view class="_view 2bec793d bottom-content-text">{{ item.text }}</view></view></view><view class="_view 2bec793d bottom-btn" bindtap="handleProxy" data-eventid="{{'2bec793d-11'}}" data-comkey="{{$k}}">取消分享</view></template>
+
+<template name="cf8f2312-default-cf8f2312-4"><view class="_view cf8f2312 input-view"><template type="search" size="22" color="#666666" data="{{...$root['0'], ...$root[$kk+'cf8f2312-3'],$root}}" is="2eadb6fd"></template><input confirm-type="search" bindconfirm="handleProxy" class="_input cf8f2312 input" type="text" placeholder="输入搜索关键词" data-eventid="{{'cf8f2312-2'}}" data-comkey="{{$k}}" /></view></template>
+
+<template name="cf8f2312-left-cf8f2312-4"><view class="_view cf8f2312 city"><view class="_view cf8f2312">{{city}}</view><template type="arrowdown" color="#333333" size="22" data="{{...$root['0'], ...$root[$kk+'cf8f2312-2'],$root}}" is="2eadb6fd"></template></view></template>
+
+<template name="4aa70683-default-4aa70683-4"><template title="Item1" data="{{...$root['0'], ...$root[$kk+'4aa70683-1'],$root}}" is="2dcafb89"></template><template title="Item2" data="{{...$root['0'], ...$root[$kk+'4aa70683-2'],$root}}" is="2dcafb89"></template><template title="Item3" badge-text="12" data="{{...$root['0'], ...$root[$kk+'4aa70683-3'],$root}}" is="2dcafb89"></template></template>
+
+<template name="4aa70683-default-4aa70683-5"><template data="{{...$root['0'], ...$root[$kk+'4aa70683-4'],$root, $slotdefault:'4aa70683-default-4aa70683-4'}}" is="35ad909d"></template><view class="_view 4aa70683 close"><button type="default" bindtap="handleProxy" data-eventid="{{'4aa70683-2'}}" data-comkey="{{$k}}" class="_button 4aa70683">关闭Drawer</button></view></template>
+
+<template name="4aa70683-default-4aa70683-9"><template title="Item1" data="{{...$root['0'], ...$root[$kk+'4aa70683-6'],$root}}" is="2dcafb89"></template><template title="Item2" data="{{...$root['0'], ...$root[$kk+'4aa70683-7'],$root}}" is="2dcafb89"></template><template title="Item3" badge-text="12" data="{{...$root['0'], ...$root[$kk+'4aa70683-8'],$root}}" is="2dcafb89"></template></template>
+
+<template name="4aa70683-default-4aa70683-10"><template data="{{...$root['0'], ...$root[$kk+'4aa70683-9'],$root, $slotdefault:'4aa70683-default-4aa70683-9'}}" is="35ad909d"></template><view class="_view 4aa70683 close"><button type="default" bindtap="handleProxy" data-eventid="{{'4aa70683-5'}}" data-comkey="{{$k}}" class="_button 4aa70683">关闭Drawer</button></view></template>
+

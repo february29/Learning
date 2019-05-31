@@ -1,0 +1,2 @@
+<import src="./cover-view.vue.wxml" />
+    <template is="629f88cb" data="{{ ...$root['0'], $root }}"/>

@@ -1,0 +1,149 @@
+{
+	"pages": [ 
+		{
+			"path": "pages/beautysalon/index",
+			"style": {
+				"navigationBarTitleText": "美容院",
+				"enablePullDownRefresh":true,
+				"app-plus":{
+					"scrollIndicator":"none"
+					
+				}
+			}
+		},
+		{
+			"path": "pages/beautysalon/beautyCategory",
+			"style": {
+				"navigationBarTitleText": "套餐分类",
+				// "enablePullDownRefresh":true,
+				"app-plus":{
+					"scrollIndicator":"none"
+					
+					
+				}
+			}
+		},
+		
+		{
+			"path": "pages/beautysalon/beautyMealDetail",
+			"style": {
+				"navigationBarTitleText": "套餐详情",
+				// #ifdef  H5 || MP
+				"navigationStyle":"custom",
+				// #endif
+				"app-plus":{
+					// "scrollIndicator":"none",
+					"titleNView": {
+						"type": "transparent"
+					}
+				}
+				
+				
+			}
+		},
+		{
+			"path": "pages/beautysalon/placeOrder",
+			"style": {
+				"navigationBarTitleText": "下单",
+				// "enablePullDownRefresh":true,
+				"app-plus":{
+					"scrollIndicator":"none"
+					
+					
+				}
+			}
+		},
+		
+		
+		
+		{
+			"path": "pages/beautysalon/beauticains",
+			"style": {
+				"navigationBarTitleText": "美容师",
+				"app-plus":{
+					"scrollIndicator":"none"
+					
+				}
+			}
+		},
+		{
+			"path": "pages/beautysalon/beauticainDetail",
+			"style": {
+				"navigationBarTitleText": "美容师详情",
+				"app-plus":{
+					"scrollIndicator":"none"
+					
+				}
+			}
+		},
+		{
+			"path": "pages/beautysalon/beautySalons",
+			"style": {
+				"navigationBarTitleText": "美容院",
+				"app-plus":{
+					"scrollIndicator":"none"
+					
+				}
+			}
+		},
+		{
+			"path": "pages/qd/qd",
+			"style": {
+				"navigationBarTitleText": "神抢手"
+			}
+		},
+		{
+			"path": "pages/set/set",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#F8F8F8"
+		// #ifdef  H5 || MP
+		// "navigationStyle":"custom"
+		// #endif
+	},
+	"tabBar":{
+		"backgroundColor":"#FFFFFF",
+		"borderStyle":"black",
+		"color": "#444444",
+		"selectedColor": "#FF80AB",
+		"list":[
+			{
+				"pagePath": "pages/beautysalon/index",
+				"iconPath": "static/icon_main_mry@3x.png",
+				"selectedIconPath": "static/icon_main_mry_on@3x.png",
+				"text": "美容院"
+			},
+			{
+				"pagePath": "pages/qd/qd",
+				"iconPath": "static/icon_main_sqs@3x.png",
+				"selectedIconPath": "static/icon_main_sqs_on@3x.png",
+				"text": "神抢手"
+			},
+			{
+				"pagePath": "pages/set/set",
+				"iconPath": "static/icon_main_my@3x.png",
+				"selectedIconPath": "static/icon_main_my_on@3x.png",
+				"text": "我的"
+			}				
+		]
+			   
+		
+	},
+	"condition" : { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [
+			{
+				"name": "", //模式名称
+				"path": "", //启动页面，必选
+				"query": "" //启动参数，在页面的onLoad函数里面得到
+			}
+		]
+	}
+}

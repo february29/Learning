@@ -1,0 +1,2 @@
+<import src="./speech.vue.wxml" />
+    <template is="131e52fc" data="{{ ...$root['0'], $root }}"/>

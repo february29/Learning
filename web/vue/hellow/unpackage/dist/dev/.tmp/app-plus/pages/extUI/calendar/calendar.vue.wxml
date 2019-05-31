@@ -1,0 +1,19 @@
+<import src="/components/uni-calendar/uni-calendar.vue.wxml" /><template name="d910d8ba"><view class="_view d910d8ba calendar-content"><text class="_text d910d8ba calendar-title">日历组件</text><view class="_view d910d8ba calendar-tags-group"><view class="_view d910d8ba calendar-tags {{[item.checked ? 'checked' : '']}}" wx:key="index" key="{{index}}" bindtap="handleProxy" data-eventid="{{'d910d8ba-0-'+index}}" data-comkey="{{$k}}" wx:for="{{tags}}" wx:for-index="index" wx:for-item="item"><view class="_view d910d8ba calendar-tags-item">{{ item.name }}</view></view></view><button class="_button d910d8ba calendar-button" type="button" bindtap="handleProxy" data-eventid="{{'d910d8ba-1'}}" data-comkey="{{$k}}">打开日历</button><text wx:if="{{timeData.lunar}}" class="_text d910d8ba calendar-title">已选日期</text><view wx:if="{{timeData.lunar}}" class="_view d910d8ba calendar-info"><view class="_view d910d8ba">当前选择时间 : {{timeData.fulldate}}</view><view wx:if="{{tags['lunar'].checked}}" class="_view d910d8ba">农历日期 : {{timeData.year +
+								'年' +
+								timeData.month +
+								'月' +
+								timeData.date +
+								'日 （' +
+								timeData.lunar.astro +
+								')'}}</view><view wx:if="{{tags['lunar'].checked}}" class="_view d910d8ba">{{
+				timeData.lunar.gzYear +
+					'年' +
+					timeData.lunar.gzMonth +
+					'月' +
+					timeData.lunar.gzDay +
+					'日 (' +
+					timeData.lunar.Animal +
+					'年)'
+			}}
+			{{ timeData.lunar.IMonthCn + timeData.lunar.IDayCn }}
+			{{ timeData.lunar.isTerm ? timeData.lunar.Term : '' }}</view></view><view wx:if="{{show}}" class="_view d910d8ba calendar-mask" bindtap="handleProxy" data-eventid="{{'d910d8ba-6'}}" data-comkey="{{$k}}"><view class="_view d910d8ba calendar-box" catchtap="handleProxy" data-eventid="{{'d910d8ba-5'}}" data-comkey="{{$k}}"><template bindchange="handleProxy" bindto-click="handleProxy" data-eventid="{{'d910d8ba-2'}}" data-comkey="{{$k}}" data="{{...$root['0'], ...$root[$kk+'d910d8ba-0'],$root}}" is="68791c9d"></template><view class="_view d910d8ba calendar-button-groups"><button class="_button d910d8ba calendar-button-confirm" bindtap="handleProxy" data-eventid="{{'d910d8ba-3'}}" data-comkey="{{$k}}">取消</button><button class="_button d910d8ba calendar-button-confirm" bindtap="handleProxy" data-eventid="{{'d910d8ba-4'}}" data-comkey="{{$k}}">确认</button></view></view></view></view></template>

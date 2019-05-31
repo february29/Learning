@@ -1,0 +1,2 @@
+<import src="./notice-bar.vue.wxml" />
+    <template is="036ff563" data="{{ ...$root['0'], $root }}"/>

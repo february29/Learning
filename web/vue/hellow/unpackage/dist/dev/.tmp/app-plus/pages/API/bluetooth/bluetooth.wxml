@@ -1,0 +1,2 @@
+<import src="./bluetooth.vue.wxml" />
+    <template is="34178cc6" data="{{ ...$root['0'], $root }}"/>

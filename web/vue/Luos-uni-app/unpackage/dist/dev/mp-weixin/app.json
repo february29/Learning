@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/beautysalon/index",
+    "pages/beautysalon/beautyCategory",
+    "pages/beautysalon/beautyMealDetail",
+    "pages/beautysalon/placeOrder",
+    "pages/beautysalon/beauticains",
+    "pages/beautysalon/beauticainDetail",
+    "pages/beautysalon/beautySalons",
+    "pages/qd/qd",
+    "pages/set/set"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {},
+  "tabBar": {
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
+    "color": "#444444",
+    "selectedColor": "#FF80AB",
+    "list": [
+      {
+        "pagePath": "pages/beautysalon/index",
+        "iconPath": "static/icon_main_mry@3x.png",
+        "selectedIconPath": "static/icon_main_mry_on@3x.png",
+        "text": "美容院"
+      },
+      {
+        "pagePath": "pages/qd/qd",
+        "iconPath": "static/icon_main_sqs@3x.png",
+        "selectedIconPath": "static/icon_main_sqs_on@3x.png",
+        "text": "神抢手"
+      },
+      {
+        "pagePath": "pages/set/set",
+        "iconPath": "static/icon_main_my@3x.png",
+        "selectedIconPath": "static/icon_main_my_on@3x.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

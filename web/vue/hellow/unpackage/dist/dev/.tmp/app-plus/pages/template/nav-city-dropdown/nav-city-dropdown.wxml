@@ -1,0 +1,2 @@
+<import src="./nav-city-dropdown.vue.wxml" />
+    <template is="c3c31940" data="{{ ...$root['0'], $root }}"/>

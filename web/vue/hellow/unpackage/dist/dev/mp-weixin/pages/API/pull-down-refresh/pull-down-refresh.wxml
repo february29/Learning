@@ -1,0 +1,1 @@
+<view bind:__l="__l"><page-head title="{{title}}"></page-head><view class="uni-padding-wrap uni-common-mt"><block wx:for="{{data}}" wx:for-item="num" wx:for-index="index" wx:key="index"><view class="text">{{"list - "+num}}</view></block><block wx:if="{{showLoadMore}}"><view class="uni-loadmore">{{loadMoreText}}</view></block></view></view>

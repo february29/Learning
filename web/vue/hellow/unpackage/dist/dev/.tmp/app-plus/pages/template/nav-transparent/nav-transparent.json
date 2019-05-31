@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "透明渐变导航栏",
+  "titleNView": {
+    "type": "transparent"
+  }
+}

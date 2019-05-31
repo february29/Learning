@@ -1,0 +1,2 @@
+<import src="./pull-down-refresh.vue.wxml" />
+    <template is="0938a65a" data="{{ ...$root['0'], $root }}"/>

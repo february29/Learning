@@ -1,0 +1,1 @@
+<view bind:__l="__l"><page-head title="{{title}}"></page-head><view class="page-body"><view class="page-body-wrapper"><canvas class="canvas" canvas-id="canvas"></canvas></view></view></view>
